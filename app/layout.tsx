@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const fonetika = localFont({
+  src: [
+    {
+      path: "../public/fonts/Fonetika/Fonetika-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Fonetika/Fonetika-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Fonetika/Fonetika-SemiBold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Fonetika/Fonetika-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-fonetika",
 });
 
 export const metadata: Metadata = {
@@ -24,11 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${fonetika.variable} antialiased`}>{children}</body>
     </html>
   );
 }
