@@ -37,7 +37,7 @@ const faqsArr = [
 const FAQsSection = () => {
   return (
     <div>
-      <h2 className="text-center">Got questions? we’ve got answers</h2>
+      <h3 className="text-center">Got questions? we’ve got answers</h3>
 
       <div className="flex flex-col gap-4 mt-8 md:mt-9">
         {faqsArr.map((faq, idx) => {

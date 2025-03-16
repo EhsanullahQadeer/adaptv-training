@@ -1,8 +1,8 @@
 import Image from "next/image";
 import CoachingSection from "./components/CoachingSection";
-import FAQsSection from "./components/FAQsSection";
 import LearnSection from "./components/LearnSection";
 import about_hero_img from "../assets/images/about-hero-img.png";
+import FAQsAccesPlatformSection from "../components/FAQsAccesPlatformSection";
 
 export default function Home() {
   return (
@@ -29,11 +29,7 @@ export default function Home() {
 
       <LearnSection />
 
-      <div className="mx-4">
-        <div className="mt-[66px] md:mt-[120px] mb-5 max-w-[1100px] mx-auto">
-          <FAQsSection />
-        </div>
-      </div>
+      <FAQsAccesPlatformSection />
     </div>
   );
 }
