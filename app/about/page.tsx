@@ -6,11 +6,11 @@ import FAQsAccesPlatformSection from "../components/FAQsAccesPlatformSection";
 
 export default function Page() {
   return (
-    <div className="mt-8 md:mt-[70px] bg-white">
+    <div className="pt-8 md:pt-[70px] bg-white">
       <div className="mx-4">
         <div className="max-w-[700px] m-auto text-black text-center">
           <h1 className="mb-2.5">Empowering Coaches. Transforming Fitness.</h1>
-          <p className="text-lg md:text-2xl font-normal tracking-[-0.18px] md:tracking-[-0.24px] leading-[24px] md:leading-[30px]">
+          <p className="heading-desc">
             We connect fitness professionals and Clients worldwide
           </p>
         </div>

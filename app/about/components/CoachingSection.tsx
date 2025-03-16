@@ -58,7 +58,7 @@ const CoachingSection = () => {
                   {title}
                 </h5>
 
-                <p className="text-slate-gray text-base md:text-xl font-normal tracking-[-0.16px] md:tracking-[-0.2px] leading-[132%]">
+                <p className="text-slate-gray sub-heading-desc">
                   {desc}
                 </p>
               </div>

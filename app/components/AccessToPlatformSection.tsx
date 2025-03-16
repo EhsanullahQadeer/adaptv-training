@@ -20,7 +20,7 @@ const AccessToPlatformSection = () => {
           <h2 className="text-center mb-2.5">
             Get early access to our platform
           </h2>
-          <p className="text-lg md:text-2xl font-normal tracking-[-0.18px] md:tracking-[-0.24px] leading-[24px] md:leading-[30px]">
+          <p className="heading-desc">
             Build your Client base before launch
           </p>
 
