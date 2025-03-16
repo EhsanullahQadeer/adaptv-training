@@ -27,6 +27,20 @@
     font-weight: 500;
   }
 
+  .heading-desc {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.24px;
+    font-weight: 400;
+  }
+
+  .sub-heading-desc {
+    font-size: 18px;
+    letter-spacing: -0.18px;
+    line-height: 132%;
+    font-weight: 400;
+  }
+
   @media (max-width: 768px) {
     h1 {
       font-size: 50px;
@@ -39,6 +53,15 @@
     h3 {
       font-size: 26px;
       letter-spacing: -1.04px;
+    }
+    .heading-desc {
+      font-size: 18px;
+      letter-spacing: -0.18px;
+      line-height: 24px;
+    }
+    .sub-heading-desc {
+      font-size: 16px;
+      letter-spacing: -0.16px;
     }
   }
 }
@@ -53,10 +76,12 @@
   --color-black: #000;
   --color-semi-transparent-black: rgba(0, 0, 0, 0.5);
   --color-white: #fff;
+  --color-snow-white: #FDFBFB;
   --color-translucent-white: #ffffffb5;
   --color-froasted-glass: rgba(255, 255, 255, 0.12);
   --color-light-gray: #dbdbdb;
   --color-slate-gray: #475467;
+  --color-light-smoke: rgba(0, 0, 0, 0.10);
 
   /* font sizes */
 

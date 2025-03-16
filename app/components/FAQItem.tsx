@@ -40,7 +40,7 @@ const FAQItem = (props: Props) => {
         </div>
       </div>
       <div
-        className={`max-w-[544px] text-sm sm:text-base text-slate-gray overflow-hidden transition-all duration-300 ${
+        className={`max-w-[544px] text-slate-gray overflow-hidden transition-all duration-300 ${
           isOpen ? "max-h-40 mt-2.5" : "max-h-0 mt-0"
         }`}
       >
