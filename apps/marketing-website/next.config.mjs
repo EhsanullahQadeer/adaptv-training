@@ -1,6 +1,22 @@
 /** @type {import('next').NextConfig} */
+
+import sharedWebpackConfig from "@workspace/svgr-config";
+
 const nextConfig = {
   transpilePackages: ["@workspace/ui"],
-}
+  webpack(config) {
+    return sharedWebpackConfig(config); 
+  },
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
+};
 
-export default nextConfig
+export default nextConfig;

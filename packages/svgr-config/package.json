@@ -1,0 +1,15 @@
+{
+  "name": "@workspace/svgr-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "PROPRIETARY",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@workspace/svgr-config": "file:"
+  },
+  "exports": {
+    ".": "./webpack.config.js"
+  }
+}

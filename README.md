@@ -12,7 +12,10 @@ pnpm dev
 To add components to your app, run the following command at the root of your `web` app:
 
 ```bash
-pnpm dlx shadcn@canary add button -c apps/web
+pnpm dlx shadcn@canary add button -c apps/appname
+
+pnpm dlx shadcn@canary add button -c packages/ui
+
 ```
 
 This will place the ui components in the `packages/ui/src/components` directory.
