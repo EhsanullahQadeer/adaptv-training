@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import PlusCircularIcon from "../../assets/icons/PlusCircularIcon";
-import MinusCircularIcon from "../../assets/icons/MinusCircularIcon";
+import PlusCircularIcon from "../assets/icons/PlusCircularIcon";
+import MinusCircularIcon from "../assets/icons/MinusCircularIcon";
 
 interface Props {
   faq: { question: string; answer: string };

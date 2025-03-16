@@ -1,8 +1,8 @@
 import React from "react";
-import platform_img_1 from "../../assets/images/platform-img-1.png";
-import platform_img_2 from "../../assets/images/platform-img-2.png";
-import ellipse_top from "../../assets/images/ellipse-top.png";
-import ellipse_bottom from "../../assets/images/ellipse-bottom.png";
+import platform_img_1 from "../assets/images/platform-img-1.png";
+import platform_img_2 from "../assets/images/platform-img-2.png";
+import ellipse_top from "../assets/images/ellipse-top.png";
+import ellipse_bottom from "../assets/images/ellipse-bottom.png";
 import Image from "next/image";
 
 const AccessToPlatformSection = () => {

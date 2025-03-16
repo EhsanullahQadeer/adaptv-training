@@ -4,7 +4,7 @@ import LearnSection from "./components/LearnSection";
 import about_hero_img from "../assets/images/about-hero-img.png";
 import FAQsAccesPlatformSection from "../components/FAQsAccesPlatformSection";
 
-export default function Home() {
+export default function Page() {
   return (
     <div className="mt-8 md:mt-[70px] bg-white">
       <div className="mx-4">
