@@ -35,13 +35,13 @@ const coachingFeatures = [
 const CoachingSection = () => {
   return (
     <div className="my-16 md:my-[120px]">
-      <h2>
+      <h3>
         Great coaching is more than just workouts—
         <span className="text-semi-transparent-black">
           it’s about connection, adaptability, and growth.
         </span>{" "}
         That’s what we stand for at Adaptv.
-      </h2>
+      </h3>
 
       <div className="mt-9 flex gap-5 flex-wrap">
         {coachingFeatures.map((feature, idx) => {
