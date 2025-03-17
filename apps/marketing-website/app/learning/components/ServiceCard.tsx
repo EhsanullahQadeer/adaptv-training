@@ -1,5 +1,5 @@
-import Timer from "@/app/assets/icons/Timer";
 import { Typography } from "@workspace/ui/components";
+import { TimerIcon } from "@workspace/ui/icons";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
 
@@ -18,9 +18,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, image, dotCo
       <span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: dotColor }}></span>
       <Typography as={"caption"} fontWeight="font-medium" sizeVariant="small" color="text-[#000000]" className="text-xs font-medium">{category}</Typography>
       </span>
-      <Typography as={"caption"} fontWeight="font-bold" sizeVariant="large" color="text-[#000000]" className="!text-left mb-2">{title}</Typography>
+      <Typography as={"caption"} fontWeight="font-bold" sizeVariant="large" color="text-[#000000]" className="!text-left block mb-2">{title}</Typography>
       <span className="flex items-center gap-1 mb-3">
-        <Timer/>
+        <TimerIcon/>
         <span className="text-[14px] font-semibold">45 min</span>
       </span>
       <div>

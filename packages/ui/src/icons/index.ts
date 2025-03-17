@@ -1,1 +1,15 @@
+export { default as AdptabilityIcon } from './AdptabilityIcon';
+export { default as ArticleIcon } from './ArticleIcon';
+export { default as BrainIcon } from './BrainIcon';
+export { default as CalenderIcon } from './CalenderIcon';
+export { default as FireIcon } from './FireIcon';
+export { default as FlameIcon } from './FlameIcon';
+export { default as GlobleIcon } from './GlobleIcon';
+export { default as GrowthIcon } from './GrowthIcon';
+export { default as MessageIcon } from './MessageIcon';
+export { default as MinusCircular } from './MinusCircular';
+export { default as PlusCircular } from './PlusCircular';
+export { default as RightArrow } from './RightArrow';
+export { default as StackIcon } from './StackIcon';
+export { default as TimerIcon } from './TimerIcon';
 export { default as WalletIcon } from './WalletIcon';

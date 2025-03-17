@@ -1,4 +1,3 @@
-import Rightarrow from "@/app/assets/icons/Rightarrow";
 import Image from "next/image";
 import video from "../../assets/images/video.png";
 import OverviewFAQ from "./components/OverviewFAQ";
@@ -6,6 +5,7 @@ import SuggestionCard from "./components/SuggestionCard";
 import { services } from "../page";
 import ServiceCard from "../components/ServiceCard";
 import { Typography } from "@workspace/ui/components";
+import { RightArrow } from "@workspace/ui/icons";
 
 export default function Home() {
 
@@ -17,7 +17,7 @@ export default function Home() {
             <Typography as={"h5"} sizeVariant="small" fontWeight="font-semibold" color="text-[#000000]">
               Learning
             </Typography>
-            <Rightarrow />
+            <RightArrow />
             <Typography as={"h5"} sizeVariant="small" fontWeight="font-semibold" color="text-gray-500" >
               Effective Communication in Coaching
             </Typography>
