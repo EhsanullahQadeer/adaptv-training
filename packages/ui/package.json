@@ -14,6 +14,7 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate-icons": "npx @svgr/cli --typescript --icon --out-dir src/icons icons",
+    "add-component": "npx tsx src/lib/add-and-update.ts",
     "build": "tsup"
   },
   "dependencies": {
