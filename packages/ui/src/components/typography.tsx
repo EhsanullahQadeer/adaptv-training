@@ -24,19 +24,19 @@ const typographyStyles: TypographyStyles = {
 	headings: {
 		h1: {
 			base: 'font-semibold leading-[100%]',
-			responsive: 'text-[50px] sm:text-[70px] tracking-[-2px] sm:tracking-[-2.8px]',
+			responsive: 'text-[50px] md:text-[70px] tracking-[-2px] md:tracking-[-2.8px]',
 			small: 'text-[50px] tracking-[-2px]',
 			large: 'text-[70px] tracking-[-2.8px]',
 		},
 		h2: {
 			base: 'font-medium',
-			responsive: 'text-[43px] sm:text-[60px] tracking-[-1.72px] sm:tracking-[-3px]',
+			responsive: 'text-[43px] md:text-[60px] tracking-[-1.72px] md:tracking-[-3px]',
 			small: 'text-[43px] tracking-[-1.72px]',
 			large: 'text-[60px] tracking-[-3px]',
 		},
 		h3: {
 			base: 'font-semibold leading-normal',
-			responsive: 'text-[26px] sm:text-[42px] tracking-[-1.04px] sm:tracking-[-1.68px]',
+			responsive: 'text-[26px] md:text-[42px] tracking-[-1.04px] md:tracking-[-1.68px]',
 			small: 'text-[26px] tracking-[-1.04px]',
 			large: 'text-[42px] tracking-[-1.68px]',
 		},
@@ -52,7 +52,7 @@ const typographyStyles: TypographyStyles = {
 	body: {
 		p: {
 			base: 'font-normal',
-			responsive: 'text-[18px] sm:text-[24px] tracking-[-0.18px] sm:tracking-[-0.24px]',
+			responsive: 'text-[18px] md:text-[24px] tracking-[-0.18px] md:tracking-[-0.24px]',
 			small: 'text-[18px] tracking-[-0.18px]',
 			large: 'text-[24px] tracking-[-0.24px]',
 		},
@@ -66,7 +66,7 @@ const typographyStyles: TypographyStyles = {
 	supportingText: {
 		caption: {
 			base: 'text-white text-center',
-			responsive: 'text-[12px] sm:text-[16px] tracking-[-0.12px] sm:tracking-[-0.16px]',
+			responsive: 'text-[12px] md:text-[16px] tracking-[-0.12px] md:tracking-[-0.16px]',
 			small: 'text-[12px] tracking-[-0.12px]',
 			large: 'text-[16px] tracking-[-0.16px]',
 		},
