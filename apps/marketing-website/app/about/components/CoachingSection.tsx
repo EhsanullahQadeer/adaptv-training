@@ -1,34 +1,30 @@
-import GlobeIcon from '../../assets/icons/GlobeIcon';
-import AdaptabilityIcon from '../../assets/icons/AdaptabilityIcon';
-import GrowthIcon from '../../assets/icons/GrowthIcon';
-import BrainIcon from '../../assets/icons/BrainIcon';
-import FlameIcon from '../../assets/icons/FlameIcon';
 import { Typography } from '@workspace/ui/components';
+import { AdptabilityIcon, BrainIcon, FlameIcon, GlobleIcon, GrowthIcon } from '@workspace/ui/icons';
 
 const coachingFeatures = [
 	{
 		title: 'Community',
-		icon: <GlobeIcon />,
+		icon: <GlobleIcon height={'100%'} width={'100%'} />,
 		desc: 'Ensuring that human connection stays at the hearth of fitness.',
 	},
 	{
 		title: 'Adaptability',
-		icon: <AdaptabilityIcon />,
+		icon: <AdptabilityIcon height={'100%'} width={'100%'} />,
 		desc: 'Empowering fitness pros and clients anytime, anywhere.',
 	},
 	{
 		title: 'Growth',
-		icon: <GrowthIcon />,
+		icon: <GrowthIcon height={'100%'} width={'100%'} />,
 		desc: 'Helping individuals grow while connecting coaches worldwide.',
 	},
 	{
 		title: 'Innovation',
-		icon: <BrainIcon />,
+		icon: <BrainIcon height={'100%'} width={'100%'} />,
 		desc: 'Continued improvement within the technology of the platform.',
 	},
 	{
 		title: 'Empowerment',
-		icon: <FlameIcon />,
+		icon: <FlameIcon height={'100%'} width={'100%'} />,
 		desc: 'Creating a safe space for growth, confidence, and top-tier coaching.',
 	},
 ];
@@ -57,9 +53,7 @@ const CoachingSection = () => {
 									{title}
 								</Typography>
 
-								<Typography as={'p_secondary'}>
-									{desc}
-								</Typography>
+								<Typography as={'p_secondary'}>{desc}</Typography>
 							</div>
 						</div>
 					);

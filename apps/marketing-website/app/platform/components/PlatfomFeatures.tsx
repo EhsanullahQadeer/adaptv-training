@@ -1,10 +1,4 @@
 'use client';
-import ArticleIcon from '@/app/assets/icons/ArticleIcon';
-import CalenderIcon from '@/app/assets/icons/CalenderIcon';
-import FireIcon from '@/app/assets/icons/FireIcon';
-import MessageIcon from '@/app/assets/icons/MessageIcon';
-import StackIcon from '@/app/assets/icons/StackIcon';
-import WalletIcon from '@/app/assets/icons/WalletIcon';
 import React, { useState } from 'react';
 import DashboardTabContent from './DashboardTabContent';
 import SessionsTabContent from './SessionsTabContent';
@@ -12,14 +6,15 @@ import ServicesTabContent from './ServicesTabContent';
 import RoutinesTabContent from './RoutinesTabContent';
 import MessagesTabContent from './MessagesTabContent';
 import { Typography } from '@workspace/ui/components';
+import { ArticleIcon, CalenderIcon, FireIcon, MessageIcon, StackIcon, WalletIcon } from '@workspace/ui/icons';
 
 const featureTabs = [
-	{ label: 'Dashboard', value: 'dashboard', icon: <FireIcon /> },
-	{ label: 'Sessions', value: 'sessions', icon: <CalenderIcon /> },
-	{ label: 'Services', value: 'services', icon: <StackIcon /> },
-	{ label: 'Routines', value: 'routines', icon: <ArticleIcon /> },
-	{ label: 'Messages', value: 'messages', icon: <MessageIcon /> },
-	{ label: 'Earnings', value: 'earnings', icon: <WalletIcon /> },
+	{ label: 'Dashboard', value: 'dashboard', icon: <FireIcon height={24} width={24} /> },
+	{ label: 'Sessions', value: 'sessions', icon: <CalenderIcon height={24} width={24} /> },
+	{ label: 'Services', value: 'services', icon: <StackIcon height={24} width={24} /> },
+	{ label: 'Routines', value: 'routines', icon: <ArticleIcon height={24} width={24} /> },
+	{ label: 'Messages', value: 'messages', icon: <MessageIcon height={24} width={24} /> },
+	{ label: 'Earnings', value: 'earnings', icon: <WalletIcon height={24} width={24} /> },
 ];
 
 const PlatfomFeatures = () => {
