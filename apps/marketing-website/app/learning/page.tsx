@@ -1,5 +1,6 @@
 import ServiceCard from "./components/ServiceCard";
 import Boy from "../assets/images/boy.png";
+import { Typography } from "@workspace/ui/components";
 
 export const services = [
   {
@@ -27,14 +28,14 @@ export default function Home() {
     <div className="mt-8 md:mt-[70px] bg-white">
       <div className="mx-4">
         <div className="max-w-[780px] mb-12 m-auto text-black text-center">
-          <h1 className="mb-2.5">Coaching Learning Resources</h1>
-          <p className="text-[18px] md:text-[24px] font-normal tracking-[-0.18px] md:tracking-[-0.24px] leading-[140%] md:leading-[30px]">
+          <Typography as={"h1"} className="mb-2.5">Coaching Learning Resources</Typography>
+          <Typography as={"h5"}>
             Master virtual training, grow your fitness business.
-          </p>
+          </Typography>
         </div>
 
         <div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
-          <div className="sm:w-[240px]"></div>
+          <div className="sm:w-[240px]"></div>  
           <div className="flex sm:justify-left justify-center sm:pl-4 gap-3 flex-wrap">
             {services.map((service, index) => (
               <ServiceCard

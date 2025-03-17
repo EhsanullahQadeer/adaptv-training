@@ -5,6 +5,7 @@ import OverviewFAQ from "./components/OverviewFAQ";
 import SuggestionCard from "./components/SuggestionCard";
 import { services } from "../page";
 import ServiceCard from "../components/ServiceCard";
+import { Typography } from "@workspace/ui/components";
 
 export default function Home() {
 
@@ -13,13 +14,13 @@ export default function Home() {
       <div className="mx-4">
         <div className="max-w-[1100px] mx-auto">
           <div className="sm:flex hidden items-center gap-0.5 mb-5">
-            <span className="text-[18px] text-[#000000] !font-semibold">
+            <Typography as={"h5"} sizeVariant="small" fontWeight="font-semibold" color="text-[#000000]">
               Learning
-            </span>
+            </Typography>
             <Rightarrow />
-            <span className="text-[18px] text-gray-500 !font-semibold">
+            <Typography as={"h5"} sizeVariant="small" fontWeight="font-semibold" color="text-gray-500" >
               Effective Communication in Coaching
-            </span>
+            </Typography>
           </div>
           <div>
             <Image src={video} alt="video" className="" />
@@ -29,8 +30,8 @@ export default function Home() {
             <OverviewFAQ/>
             </div>
             <div className="md:w-1/3 ">
-            <span className="text-2xl font-medium !my-5">Suggested learning</span>
-            <div className="sm:flex hidden flex-col gap-4 mt-4 w-full">
+            <Typography as={"h5"} className="mt-3">Suggested learning</Typography>
+            <div className="sm:flex hidden flex-col mt-5 gap-4 w-full">
 
             {services.map((service, index) => (
               <SuggestionCard
@@ -42,7 +43,7 @@ export default function Home() {
               />
             ))}
             </div>
-            <div className="sm:hidden gap-5 mt-4 flex flex-col justify-center items-center">
+            <div className="sm:hidden gap-5 mt-4 flex flex-wrap justify-center items-center">
             {services.map((service, index) => (
               <ServiceCard
                 key={index}
