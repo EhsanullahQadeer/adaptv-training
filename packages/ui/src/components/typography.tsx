@@ -1,30 +1,28 @@
 import { ReactNode, ElementType, CSSProperties, useMemo } from 'react';
 import { cn } from '../lib/utils';
 
-
 interface TypographyVariant {
-  base?: string;
-  responsive?: string;
-  small?: string;
-  large?: string;
+	base?: string;
+	responsive?: string;
+	small?: string;
+	large?: string;
 }
 
 interface TypographyCategory {
-  [key: string]: TypographyVariant;
+	[key: string]: TypographyVariant;
 }
 
 interface TypographyStyles {
-  headings: TypographyCategory;
-  body: TypographyCategory;
-  supportingText: TypographyCategory;
+	headings: TypographyCategory;
+	body: TypographyCategory;
+	supportingText: TypographyCategory;
 }
-
 
 const typographyStyles: TypographyStyles = {
 	headings: {
 		h1: {
 			base: 'font-semibold leading-[100%]',
-			responsive: 'text-[50px] md:text-[70px] tracking-[-2px] md:tracking-[-2.8px]',
+			responsive: 'text-[50px] md:text-[70px] tracking-[-2px] md:tracking-[-2.8px] leading-[100%]',
 			small: 'text-[50px] tracking-[-2px]',
 			large: 'text-[70px] tracking-[-2.8px]',
 		},
@@ -36,39 +34,54 @@ const typographyStyles: TypographyStyles = {
 		},
 		h3: {
 			base: 'font-semibold leading-normal',
-			responsive: 'text-[26px] md:text-[42px] tracking-[-1.04px] md:tracking-[-1.68px]',
+			responsive: 'text-[26px] md:text-[42px] tracking-[-1.04px] md:tracking-[-1.68px] leading-normal',
 			small: 'text-[26px] tracking-[-1.04px]',
 			large: 'text-[42px] tracking-[-1.68px]',
 		},
 		h4: {
-			base: 'text-xl font-medium',
+			base: 'text-xl font-medium leading-normal',
+			responsive: 'text-[20px] md:text-[28px] tracking-[-0.4px] md:tracking-[-0.56px] leading-normal',
 			small: 'text-[20px] tracking-[-0.4px]',
 			large: 'text-[28px] tracking-[-0.56px]',
 		},
 		h5: { base: 'text-lg font-medium', small: 'text-[18px]', large: 'text-[24px]' },
-		h6: { base: 'text-base font-medium', small: 'text-[16px]', large: 'text-[20px]' },
+		h6: { base: 'text-base font-medium', small: 'text-base', large: 'text-[20px]' },
 	},
 
 	body: {
 		p: {
 			base: 'font-normal',
-			responsive: 'text-[18px] md:text-[24px] tracking-[-0.18px] md:tracking-[-0.24px]',
-			small: 'text-[18px] tracking-[-0.18px]',
-			large: 'text-[24px] tracking-[-0.24px]',
+			responsive:
+				'text-[18px] md:text-[24px] tracking-[-0.18px] md:tracking-[-0.24px] leading-[24px] md:leading-[30px]',
+			small: 'text-[18px] tracking-[-0.18px] leading-[24px]',
+			large: 'text-[24px] tracking-[-0.24px] leading-[30px]',
 		},
 		p_secondary: {
 			base: 'font-normal text-[#475467]',
-			small: 'text-[16px] tracking-[-0.16px]',
-			large: 'text-[20px] tracking-[-0.2px]',
+			responsive: 'text-base md:text-[20px] tracking-[-0.16px] md:tracking-[-0.18px] leading-[132%]',
+			small: 'text-base tracking-[-0.16px]',
+			large: 'text-[20px] tracking-[-0.18px]',
+		},
+		span: {
+			base: 'font-medium leading-normal',
+			responsive: 'text-base md:text-[22px] tracking-[-0.16px] md:tracking-[-0.44px] leading-normal',
+			small: 'text-base tracking-[-0.16px]',
+			large: 'text-[22px] tracking-[-0.44px]',
+		},
+		span_secondary: {
+			base: 'font-normal tracking-[-0.16px] leading-[132%]',
+			responsive: 'text-[14px] md:text-base leading-[132%]',
+			small: 'text-[14px]',
+			large: 'text-base',
 		},
 	},
 
 	supportingText: {
 		caption: {
 			base: 'text-white text-center',
-			responsive: 'text-[12px] md:text-[16px] tracking-[-0.12px] md:tracking-[-0.16px]',
+			responsive: 'text-[12px] md:text-base tracking-[-0.12px] md:tracking-[-0.16px]',
 			small: 'text-[12px] tracking-[-0.12px]',
-			large: 'text-[16px] tracking-[-0.16px]',
+			large: 'text-base tracking-[-0.16px]',
 		},
 		blockquote: { base: 'border-l-4 border-gray-300 pl-4 italic' },
 		small: { base: 'text-sm text-gray-600' },
@@ -87,7 +100,7 @@ type FlattenedTypographyStyles = {
 
 const flatTypographyStyles: FlattenedTypographyStyles = Object.entries(typographyStyles).reduce(
 	(acc, [, styles]) => ({ ...acc, ...styles }),
-	{}
+	{},
 );
 
 const colorStyles = {
@@ -147,7 +160,7 @@ export function Typography({
 			(Object.keys(flatTypographyStyles) as TypographyVariants[]).includes(Component as TypographyVariants)
 				? (Component as TypographyVariants)
 				: undefined,
-		[Component]
+		[Component],
 	);
 
 	const computedClassName = useMemo(() => {
@@ -156,8 +169,8 @@ export function Typography({
 			sizeVariant === 'small'
 				? variantStyles?.small
 				: sizeVariant === 'large'
-				? variantStyles?.large
-				: variantStyles?.responsive;
+					? variantStyles?.large
+					: variantStyles?.responsive;
 
 		const colorClass = color && (colorStyles[color as keyof typeof colorStyles] || color);
 
@@ -174,7 +187,7 @@ export function Typography({
 			lineHeight,
 			letterSpacing,
 			fontFamily,
-			className
+			className,
 		);
 	}, [
 		asVariant,
