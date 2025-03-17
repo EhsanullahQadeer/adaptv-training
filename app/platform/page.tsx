@@ -5,8 +5,8 @@ import PlatfomFeatures from "./components/PlatfomFeatures";
 
 export default function Page() {
   return (
-    <div className="pt-8 md:pt-[70px] bg-snow-white">
-      <div className="mx-4">
+    <>
+      <div className="bg-snow-white pt-8 md:pt-[70px] px-4">
         <div className="max-w-[700px] m-auto text-black text-center">
           <h1 className="mb-2.5">Powerful Tools for Coaches</h1>
           <p className="heading-desc">
@@ -25,11 +25,13 @@ export default function Page() {
             alt="platform_tools_img"
           />
         </div>
+      </div>
 
-        <div className="bg-white max-w-[1100px] mx-auto">
+      <div className="bg-white px-4">
+        <div className="max-w-[1100px] mx-auto">
           <PlatfomFeatures />
         </div>
       </div>
-    </div>
+    </>
   );
 }
