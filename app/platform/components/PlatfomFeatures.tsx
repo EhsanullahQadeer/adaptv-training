@@ -10,6 +10,7 @@ import DashboardTabContent from "./DashboardTabContent";
 import SessionsTabContent from "./SessionsTabContent";
 import ServicesTabContent from "./ServicesTabContent";
 import RoutinesTabContent from "./RoutinesTabContent";
+import MessagesTabContent from "./MessagesTabContent";
 
 const featureTabs = [
   { label: "Dashboard", value: "dashboard", icon: <FireIcon /> },
@@ -45,12 +46,13 @@ const PlatfomFeatures = () => {
           );
         })}
       </div>
-
+      
       <div className="w-full">
         {activeTab === "dashboard" && <DashboardTabContent />}
         {activeTab === "sessions" && <SessionsTabContent />}
         {activeTab === "services" && <ServicesTabContent />}
         {activeTab === "routines" && <RoutinesTabContent />}
+        {activeTab === "messages" && <MessagesTabContent />}
       </div>
     </div>
   );
