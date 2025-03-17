@@ -109,7 +109,7 @@ type TypographyVariants = keyof typeof flatTypographyStyles;
 type TypographyProps = {
 	as?: ElementType;
 	className?: string;
-	children: ReactNode;
+	children?: ReactNode;
 	fontSize?: `text-${string}`;
 	fontWeight?: `font-${string}`;
 	lineHeight?: `leading-${string}`;
