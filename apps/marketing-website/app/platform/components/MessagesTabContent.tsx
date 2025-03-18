@@ -12,8 +12,9 @@ const sections = [
 		buttonText: 'Open Messages',
 		image: connectedClients,
 		reverse: true,
-		textSectionProps: 'max-w-[380px]',
-		leftSideWrapProps: 'self-end',
+		textSectionProps: 'max-w-[390px]',
+		leftSideWrapProps: 'self-end md:ml-[50px] max-w-[420px]',
+		rightSideWrapProps: 'md:mr-20 flex justify-end',
 	},
 	{
 		title: 'Real-time conversations',
@@ -22,6 +23,8 @@ const sections = [
 		image: realTimeConversations,
 		reverse: false,
 		textSectionProps: 'max-w-[380px]',
+		leftSideWrapProps: 'md:ml-[80px]',
+		rightSideWrapProps: 'md:mr-11 max-w-[446px]',
 	},
 ];
 

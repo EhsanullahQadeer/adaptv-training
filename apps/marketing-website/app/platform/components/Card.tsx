@@ -11,6 +11,7 @@ interface CardProps {
 	textSectionProps?: string;
 	imageSectionProps?: string;
 	leftSideWrapProps?: string;
+	rightSideWrapProps?: string;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -22,13 +23,10 @@ const Card: React.FC<CardProps> = ({
 	textSectionProps = '',
 	imageSectionProps = '',
 	leftSideWrapProps = '',
+	rightSideWrapProps = '',
 }) => {
 	return (
-		<div
-			className={`bg-pale-azure rounded-3xl w-full p-5 pt-8 flex items-center justify-between md:h-[450px] ${
-				reverse ? 'md:p-0 md:pr-20' : 'md:pl-20 md:p-0'
-			}`}
-		>
+		<div className={`bg-pale-azure rounded-3xl w-full p-5 pt-8 flex items-center justify-between md:h-[450px] md:p-0`}>
 			{/* Left content */}
 			<div className={`flex-1 ${leftSideWrapProps}`}>
 				{!reverse && (
@@ -56,7 +54,7 @@ const Card: React.FC<CardProps> = ({
 			</div>
 
 			{/* Right content */}
-			<div className="flex-1">
+			<div className={`flex-1 ${rightSideWrapProps}`}>
 				{reverse && (
 					<div className={textSectionProps}>
 						<Typography as={'h3'} className="mb-2.5">

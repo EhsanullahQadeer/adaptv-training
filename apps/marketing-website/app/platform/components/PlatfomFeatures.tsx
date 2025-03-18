@@ -7,6 +7,7 @@ import RoutinesTabContent from './RoutinesTabContent';
 import MessagesTabContent from './MessagesTabContent';
 import { Typography } from '@workspace/ui/components';
 import { ArticleIcon, CalenderIcon, FireIcon, MessageIcon, StackIcon, WalletIcon } from '@workspace/ui/icons';
+import EarningsTabContent from './EarningsTabContent';
 
 const featureTabs = [
 	{ label: 'Dashboard', value: 'dashboard', icon: <FireIcon height={24} width={24} /> },
@@ -55,6 +56,7 @@ const PlatfomFeatures = () => {
 				{activeTab === 'services' && <ServicesTabContent />}
 				{activeTab === 'routines' && <RoutinesTabContent />}
 				{activeTab === 'messages' && <MessagesTabContent />}
+				{activeTab === 'earnings' && <EarningsTabContent />}
 			</div>
 		</div>
 	);
