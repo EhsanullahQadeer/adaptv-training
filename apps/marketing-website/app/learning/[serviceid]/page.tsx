@@ -25,7 +25,7 @@ export default function Home() {
             </Typography>
           </div>
           <div>
-            <Image src={video} alt="video" className="" />
+            <Image width={1040} height={648} src={video} alt="video" className="w-full h-full" />
           </div>
           <div className="flex sm:flex-row gap-[20px] mt-7 flex-col">
             <div className="md:w-2/3 w-full">

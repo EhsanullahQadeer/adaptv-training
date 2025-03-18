@@ -13,8 +13,14 @@ interface ServiceCardProps {
 const SuggestionCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, dotColor }) => {
 	return (
 		<div className="flex gap-2">
-			<div className="  ">
-				<Image src={imageSrc} alt={title} className="rounded-md md:w-[104px] md:h-[79px] object-cover" />
+			<div>
+				<Image
+					width={300}
+					height={150}
+					src={imageSrc}
+					alt={title}
+					className="rounded-md md:w-[104px] md:h-[79px] object-cover"
+				/>
 			</div>
 
 			<div>

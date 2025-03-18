@@ -39,7 +39,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, do
 				<span className="text-[14px] font-semibold">45 min</span>
 			</span>
 			<div>
-				<Image src={imageSrc} alt={title} className="rounded-md w-full h-full object-cover" />
+				<Image width={1040} height={648} src={imageSrc} alt={title} className="rounded-md w-full h-full object-cover" />
 			</div>
 		</div>
 	);
