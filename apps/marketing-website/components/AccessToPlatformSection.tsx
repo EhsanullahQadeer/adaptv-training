@@ -42,12 +42,24 @@ const AccessToPlatformSection = () => {
 			</div>
 
 			<div className="absolute -right-18 lg:right-0 top-0 z-1 h-full">
-				<Image className="w-full h-full max-h-[572px] object-cover" src={platformImg2} alt="platform_img_2" />
+				<Image
+					width={556}
+					height={597}
+					className="w-full h-full max-h-[572px] object-cover"
+					src={platformImg2}
+					alt="platform_img_2"
+				/>
 				<div className="absolute inset-0 bg-gradient-to-r from-white via-white/100 2xl:via-white/80 to-transparent z-1"></div>
 			</div>
 
 			<div className="z-10">
-				<Image className="w-full h-full object-cover max-h-[118px] relative z-10" src={ellipseTop} alt="ellipse_top" />
+				<Image
+					width={1440}
+					height={125}
+					className="w-full h-full object-cover max-h-[118px] relative z-10"
+					src={ellipseTop}
+					alt="ellipse_top"
+				/>
 			</div>
 		</div>
 	);

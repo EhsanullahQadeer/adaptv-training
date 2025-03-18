@@ -1,11 +1,13 @@
 import Image from "next/image";
-import video from "../../assets/images/video.png";
 import OverviewFAQ from "./components/OverviewFAQ";
 import SuggestionCard from "./components/SuggestionCard";
 import { services } from "../page";
 import ServiceCard from "../components/ServiceCard";
 import { Typography } from "@workspace/ui/components";
 import { RightArrow } from "@workspace/ui/icons";
+import { imagesPaths } from "@/lib/public-assets-paths";
+
+const { video } = imagesPaths;
 
 export default function Home() {
 
@@ -38,7 +40,7 @@ export default function Home() {
                 key={index}
                 category={service.category}
                 title={service.title}
-                image={service.image}
+                imageSrc={service.imageSrc}
                 dotColor={service.dotColor} 
               />
             ))}
@@ -49,7 +51,7 @@ export default function Home() {
                 key={index}
                 category={service.category}
                 title={service.title}
-                image={service.image}
+                imageSrc={service.imageSrc}
                 dotColor={service.dotColor} // Passing the color prop
               />
             ))}

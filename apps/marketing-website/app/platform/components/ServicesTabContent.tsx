@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./Card";
-import customize_services_img from "../../assets/images/platform-features/services/customize-services.svg";
-import manage_services_img from "../../assets/images/platform-features/services/manage-services.svg";
+import { services } from "@/lib/public-assets-paths";
+
+const { customizeServices, manageServices } = services;
 
 const sections = [
   {
@@ -9,7 +10,7 @@ const sections = [
     description:
       "Offer 1-on-1 coaching for tailored progress or group classes to energize and motivate multiple clients.",
     buttonText: "Create a Service",
-    image: customize_services_img,
+    image: customizeServices,
     reverse: true,
     textSectionProps: "max-w-[420px]",
   },
@@ -18,7 +19,7 @@ const sections = [
     description:
       "Easily edit and update your coaching services—adjust pricing, difficulty, duration, and training type to match your expertise.",
     buttonText: "Create a Service",
-    image: manage_services_img,
+    image: manageServices,
     reverse: false,
     textSectionProps: "max-w-[380px]",
   },

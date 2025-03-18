@@ -1,9 +1,11 @@
 'use client';
 import React from 'react';
-import platform_tools_img from '../assets/images/platform-tools-img.svg';
 import Image from 'next/image';
 import PlatfomFeatures from './components/PlatfomFeatures';
 import { Typography } from '@workspace/ui/components';
+import { imagesPaths } from '@/lib/public-assets-paths';
+
+const { platformToolsImg } = imagesPaths;
 
 export default function Page() {
 	return (
@@ -21,7 +23,13 @@ export default function Page() {
 				</div>
 
 				<div className="max-sm:pt-8 pb-7 sm:pb-12 max-w-[1100px] max-h-[420px] mx-auto">
-					<Image className="w-full h-full object-cover" src={platform_tools_img} alt="platform_tools_img" />
+					<Image
+						width={1396}
+						height={460}
+						className="w-full h-full object-cover"
+						src={platformToolsImg}
+						alt="platform_tools_img"
+					/>
 				</div>
 			</div>
 

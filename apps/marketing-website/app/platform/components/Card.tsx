@@ -46,6 +46,8 @@ const Card: React.FC<CardProps> = ({
 				)}
 				{reverse && (
 					<Image
+						width={1000}
+						height={500}
 						className={`w-full h-full object-cover ${imageSectionProps}`}
 						src={image}
 						alt={title.replace(/\s+/g, '_').toLowerCase()}
@@ -70,6 +72,8 @@ const Card: React.FC<CardProps> = ({
 				)}
 				{!reverse && (
 					<Image
+						width={1000}
+						height={500}
 						className={`w-full h-full object-cover ${imageSectionProps}`}
 						src={image}
 						alt={title.replace(/\s+/g, '_').toLowerCase()}
