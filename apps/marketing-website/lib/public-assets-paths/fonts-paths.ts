@@ -8,3 +8,4 @@ const fontsPaths = {
 };
 
 export default fontsPaths;
+export const fonetika = fontsPaths.fonetika;

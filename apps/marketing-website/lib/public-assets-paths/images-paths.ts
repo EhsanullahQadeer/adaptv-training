@@ -38,3 +38,9 @@ const imagesPaths = {
 };
 
 export default imagesPaths;
+export const platformFeatures = imagesPaths.platformFeatures;
+export const dashboard = imagesPaths.platformFeatures.dashboard;
+export const messages = imagesPaths.platformFeatures.messages;
+export const routines = imagesPaths.platformFeatures.routines;
+export const services = imagesPaths.platformFeatures.services;
+export const sessions = imagesPaths.platformFeatures.sessions;
