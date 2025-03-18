@@ -14,7 +14,8 @@
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate-icons": "npx @svgr/cli --typescript --icon --out-dir src/icons icons",
-    "add-component": "npx tsx src/lib/add-and-update.ts",
+    "add-component": "tsx src/lib/scripts/add-and-update.ts",
+    "generate-public-paths": "tsx src/lib/scripts/generate-public-paths.ts",
     "build": "tsup"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "svgo": "^3.3.2",
     "tailwindcss": "^4",
     "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
     "typescript": "^5.7.3"
   }
 }

@@ -3,27 +3,27 @@ import '@/app/globals.css';
 import { Providers } from '@/components/providers';
 import { Metadata } from 'next';
 import localFont from "next/font/local";
-import "./globals.css";
+
 
 const fonetika = localFont({
 	src: [
 		{
-			path: '../public/fonts/Fonetika/Fonetika-Regular.otf',
+			path: '../public/assets/fonts/Fonetika/Fonetika-Regular.otf',
 			weight: '400',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/Fonetika/Fonetika-Medium.otf',
+			path: '../public/assets/fonts/Fonetika/Fonetika-Medium.otf',
 			weight: '500',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/Fonetika/Fonetika-SemiBold.otf',
+			path: '../public/assets/fonts/Fonetika/Fonetika-SemiBold.otf',
 			weight: '600',
 			style: 'normal',
 		},
 		{
-			path: '../public/fonts/Fonetika/Fonetika-Bold.otf',
+			path: '../public/assets/fonts/Fonetika/Fonetika-Bold.otf',
 			weight: '700',
 			style: 'normal',
 		},

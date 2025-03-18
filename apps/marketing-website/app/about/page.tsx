@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import CoachingSection from './components/CoachingSection';
 import LearnSection from './components/LearnSection';
-import about_hero_img from '../assets/images/about-hero-img.png';
-import FAQsAccesPlatformSection from '../components/FAQsAccesPlatformSection';
+import FAQsAccesPlatformSection from '../../components/FAQsAccesPlatformSection';
 import { Typography } from '@workspace/ui/components';
+import { imagesPaths } from '@/lib/public-assets-paths';
+
+const { aboutHeroImg } = imagesPaths;
 
 export default function Page() {
 	return (
@@ -19,7 +21,13 @@ export default function Page() {
 
 				<div className="max-w-[1100px] mx-auto">
 					<div className="mt-[42px] md:mt-[72px]">
-						<Image className="w-full h-full object-cover" src={about_hero_img} alt="about_hero_img" />
+						<Image
+							className="w-full h-full object-cover"
+							src={aboutHeroImg}
+							height={297}
+							width={1040}
+							alt="about_hero_img"
+						/>
 					</div>
 					<CoachingSection />
 				</div>

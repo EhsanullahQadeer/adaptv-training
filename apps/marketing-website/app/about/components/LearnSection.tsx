@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import training_img_1 from '../../assets/images/training-img-1.png';
-import training_img_2 from '../../assets/images/training-img-2.png';
 import { Typography } from '@workspace/ui/components';
+import { imagesPaths } from '@/lib/public-assets-paths';
+const { trainingImg1, trainingImg2 } = imagesPaths;
 
 const LearnSection = () => {
 	return (
@@ -17,19 +17,23 @@ const LearnSection = () => {
 								id: '01',
 								title: 'Our Mission',
 								text: 'We strive to empower fitness professionals and clients across the world with a platform to connect, learn, and grow through adaptable coaching experiences.',
-								image: training_img_1,
+								image: trainingImg1,
 								badgeColor: 'bg-ocean-glow',
 								reverse: true,
+								height: 1200,
+								width: 800,
 							},
 							{
 								id: '02',
 								title: 'Our Vision',
 								text: 'Ensuring that human connections stay at the heart of fitness in a world shaped by technology.',
-								image: training_img_2,
+								image: trainingImg2,
 								badgeColor: 'bg-orange-red',
 								reverse: false,
+								height: 510,
+								width: 510,
 							},
-						].map(({ id, title, text, image, badgeColor, reverse }, index) => (
+						].map(({ id, title, text, image, badgeColor, reverse, height, width }, index) => (
 							<div
 								key={index}
 								className={`flex flex-col ${reverse ? 'sm:flex-row-reverse' : 'sm:flex-row'} gap-0 sm:gap-4 md:gap-5`}
@@ -39,6 +43,8 @@ const LearnSection = () => {
 										className="w-full h-full object-cover rounded-t-2xl sm:rounded-3xl max-sm:h-[343px] aspect-square"
 										src={image}
 										alt={title}
+										height={height}
+										width={width}
 									/>
 								</div>
 								<div className="flex-1 bg-froasted-glass rounded-b-2xl sm:rounded-3xl text-white">

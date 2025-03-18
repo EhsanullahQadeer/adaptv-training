@@ -1,8 +1,7 @@
 'use client';
 import { useState } from 'react';
-import PlusCircularIcon from '../assets/icons/PlusCircularIcon';
-import MinusCircularIcon from '../assets/icons/MinusCircularIcon';
 import { Typography } from '@workspace/ui/components';
+import { MinusCircular, PlusCircular } from '@workspace/ui/icons';
 
 interface Props {
 	faq: { question: string; answer: string };
@@ -24,14 +23,14 @@ const FAQItem = (props: Props) => {
 							isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
 						}`}
 					>
-						<MinusCircularIcon />
+						<MinusCircular />
 					</div>
 					<div
 						className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
 							isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
 						}`}
 					>
-						<PlusCircularIcon />
+						<PlusCircular />
 					</div>
 				</div>
 			</div>

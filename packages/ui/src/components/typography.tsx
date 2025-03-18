@@ -1,4 +1,4 @@
-import { ReactNode, ElementType, CSSProperties, useMemo } from 'react';
+import React, { ReactNode, ElementType, CSSProperties, useMemo } from 'react';
 import { cn } from '../lib/utils';
 
 interface TypographyVariant {
@@ -120,7 +120,7 @@ const alignStyles = {
 type TypographyVariants = keyof typeof flatTypographyStyles;
 
 type TypographyProps = {
-	as?: ElementType;
+	as?: TypographyVariants | ElementType; 
 	className?: string;
 	children?: ReactNode;
 	fontSize?: `text-${string}`;
@@ -135,6 +135,12 @@ type TypographyProps = {
 	uppercase?: boolean;
 	truncate?: boolean;
 	maxLines?: 1 | 2 | 3 | 'none';
+};
+
+const tagMapping: Record<string, ElementType> = {
+	p_secondary: 'p',
+	span_secondary: 'span',
+	// Add more mappings as needed
 };
 
 export function Typography({
@@ -162,6 +168,14 @@ export function Typography({
 				: undefined,
 		[Component],
 	);
+
+	// Map non-standard tags to valid HTML tags
+	const mappedComponent = useMemo(() => {
+		if (typeof Component === 'string' && tagMapping[Component]) {
+			return tagMapping[Component];
+		}
+		return typeof Component === 'string' || typeof Component === 'function' ? Component : 'p'; // Ensure fallback to 'p'
+	}, [Component]);
 
 	const computedClassName = useMemo(() => {
 		const variantStyles = asVariant ? flatTypographyStyles[asVariant] : null;
@@ -205,9 +219,9 @@ export function Typography({
 		sizeVariant,
 	]);
 
-	return (
-		<Component className={computedClassName} style={style}>
-			{children}
-		</Component>
+	return React.createElement(
+		mappedComponent,
+		{ className: computedClassName, style },
+		children
 	);
 }

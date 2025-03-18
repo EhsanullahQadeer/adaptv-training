@@ -1,10 +1,10 @@
 import React from 'react';
-import platform_img_1 from '../assets/images/platform-img-1.png';
-import platform_img_2 from '../assets/images/platform-img-2.png';
-import ellipse_top from '../assets/images/ellipse-top.png';
-import ellipse_bottom from '../assets/images/ellipse-bottom.png';
+
 import Image from 'next/image';
 import { Typography } from '@workspace/ui/components';
+import { imagesPaths } from '@/lib/public-assets-paths';
+
+const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
 
 const AccessToPlatformSection = () => {
 	return (
@@ -12,8 +12,10 @@ const AccessToPlatformSection = () => {
 			<div className="z-10">
 				<Image
 					className="w-full h-full object-cover max-h-[118px] relative z-10"
-					src={ellipse_bottom}
+					src={ellipseBottom}
 					alt="ellipse_bottom"
+					width={1440}
+					height={127}
 				/>
 			</div>
 			<div className="mx-4 z-10 relative sm:my-16">
@@ -29,17 +31,23 @@ const AccessToPlatformSection = () => {
 				</div>
 			</div>
 			<div className="absolute -left-18 lg:left-0 top-0 z-1 h-full">
-				<Image className="w-full h-full max-h-[572px] object-cover" src={platform_img_1} alt="platform_img_1" />
+				<Image
+					className="w-full h-full max-h-[572px] object-cover"
+					height={597}
+					width={563}
+					src={platformImg1}
+					alt="platform_img_1"
+				/>
 				<div className="absolute inset-0 bg-gradient-to-l from-white via-white/100 2xl:via-white/80 to-transparent z-1"></div>
 			</div>
 
 			<div className="absolute -right-18 lg:right-0 top-0 z-1 h-full">
-				<Image className="w-full h-full max-h-[572px] object-cover" src={platform_img_2} alt="platform_img_2" />
+				<Image className="w-full h-full max-h-[572px] object-cover" src={platformImg2} alt="platform_img_2" />
 				<div className="absolute inset-0 bg-gradient-to-r from-white via-white/100 2xl:via-white/80 to-transparent z-1"></div>
 			</div>
 
 			<div className="z-10">
-				<Image className="w-full h-full object-cover max-h-[118px] relative z-10" src={ellipse_top} alt="ellipse_top" />
+				<Image className="w-full h-full object-cover max-h-[118px] relative z-10" src={ellipseTop} alt="ellipse_top" />
 			</div>
 		</div>
 	);
