@@ -28,7 +28,7 @@ const sections = [
 		title: 'Stay ahead with a clear training schedule',
 		description: 'View and manage all your upcoming coaching sessions so you’re always prepared for your clients.',
 		buttonText: 'View Upcoming Sessions',
-		image: reachGraphImg,
+		image: trainingScheduleImg,
 		reverse: false,
 		textSectionProps: 'max-w-[430px]',
 	},
@@ -45,7 +45,7 @@ const sections = [
 		description:
 			'Analyze profile activity, see where your clients come from, and track engagement to grow your audience.',
 		buttonText: 'Explore Your Insights',
-		image: trainingScheduleImg,
+		image: reachGraphImg,
 		reverse: false,
 		textSectionProps: 'max-w-[410px]',
 	},
