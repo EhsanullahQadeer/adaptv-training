@@ -1,6 +1,8 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
   "boy": "/assets/images/boy.png",
+  "collageFour": "/assets/images/collage-four.png",
+  "collageMobile": "/assets/images/collage-mobile.png",
   "ellipseBottom": "/assets/images/ellipse-bottom.png",
   "ellipseTop": "/assets/images/ellipse-top.png",
   "platformFeatures": {
@@ -32,6 +34,7 @@ const imagesPaths = {
   "platformImg1": "/assets/images/platform-img-1.png",
   "platformImg2": "/assets/images/platform-img-2.png",
   "platformToolsImg": "/assets/images/platform-tools-img.svg",
+  "tabImage": "/assets/images/tab-image.svg",
   "trainingImg1": "/assets/images/training-img-1.png",
   "trainingImg2": "/assets/images/training-img-2.png",
   "video": "/assets/images/video.png"
