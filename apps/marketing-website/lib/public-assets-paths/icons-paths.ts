@@ -8,8 +8,6 @@ const iconsPaths = {
   "globeIcon": "/assets/icons/GlobeIcon.tsx",
   "growthIcon": "/assets/icons/GrowthIcon.tsx",
   "messageIcon": "/assets/icons/MessageIcon.tsx",
-  "minusCircularIcon": "/assets/icons/MinusCircularIcon.tsx",
-  "plusCircularIcon": "/assets/icons/PlusCircularIcon.tsx",
   "rightarrow": "/assets/icons/Rightarrow.tsx",
   "stackIcon": "/assets/icons/StackIcon.tsx",
   "timer": "/assets/icons/Timer.tsx",
