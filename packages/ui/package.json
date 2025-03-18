@@ -16,6 +16,7 @@
     "generate-icons": "npx @svgr/cli --typescript --icon --out-dir src/icons icons",
     "add-component": "tsx src/lib/scripts/add-and-update.ts",
     "generate-public-paths": "tsx src/lib/scripts/generate-public-paths.ts",
+    "generate-routes": "tsx src/lib/scripts/generate-routes.ts",
     "build": "tsup"
   },
   "dependencies": {

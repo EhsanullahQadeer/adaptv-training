@@ -57,6 +57,19 @@ function convertKeysToCamelCase(obj: Record<string, string | object>): Record<st
     return result;
 }
 
+// Function to generate destructured exports for parent objects only
+function generateParentExports(obj: Record<string, string | object>, parentKey: string): string {
+    let parentExports = '';
+    for (const [key, value] of Object.entries(obj)) {
+        if (typeof value === 'object' && !Array.isArray(value)) {
+            // Explicitly cast value to Record<string, string | object> for recursive call
+            parentExports += `export const ${key} = ${parentKey}.${key};\n`;
+            parentExports += generateParentExports(value as Record<string, string | object>, `${parentKey}.${key}`);
+        }
+    }
+    return parentExports;
+}
+
 // Function to create a TypeScript file with exported paths
 function createExportFile(fileName: string, paths: { [key: string]: string | object }, outputDir: string) {
     const filePath = path.join(outputDir, `${fileName}-paths.ts`);
@@ -64,21 +77,28 @@ function createExportFile(fileName: string, paths: { [key: string]: string | obj
     // Normalize paths to use forward slashes and format keys
     const normalizedPaths = convertKeysToCamelCase(paths);
 
-    // Export as default
-    const content = `const ${fileName}Paths = ${JSON.stringify(normalizedPaths, null, 2)};\n\nexport default ${fileName}Paths;\n`;
+    // Generate parent exports for nested objects
+    const parentExports = generateParentExports(normalizedPaths, fileName + 'Paths');
+
+    // Export as default and include parent exports
+    const content = `const ${fileName}Paths = ${JSON.stringify(normalizedPaths, null, 2)};\n\nexport default ${fileName}Paths;\n${parentExports}`;
 
     fs.writeFileSync(filePath, content);
     console.log(`Generated: ${filePath}`);
 }
 
+
 // Function to create an index.ts file that re-exports all paths
-function createIndexFile(outputDir: string, assetTypes: string[]) {
+async function createIndexFile(outputDir: string, assetTypes: string[]) {
     const indexPath = path.join(outputDir, 'index.ts');
 
-    // Generate re-export statements
-    const reExports = assetTypes
-        .map((assetType) => `export { default as ${assetType}Paths } from './${assetType}-paths';`)
-        .join('\n');
+    let reExports = '';
+
+    for (const assetType of assetTypes) {
+        const assetFileName = `${assetType}-paths`;
+        reExports += `export { default as ${assetType}Paths } from './${assetFileName}';\n`;
+        reExports += `export * from './${assetFileName}';\n`;
+    }
 
     // Write the index.ts file
     fs.writeFileSync(indexPath, reExports);
