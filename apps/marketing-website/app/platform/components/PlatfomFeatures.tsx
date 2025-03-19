@@ -21,12 +21,12 @@ const featureTabs = [
 const PlatfomFeatures = () => {
 	const [activeTab, setActiveTab] = useState('dashboard');
 	return (
-		<div className="pt-20 pb-18 flex flex-col items-center gap-9">
+		<div className="pt-20 pb-18 flex flex-col items-center gap-9 overflow-hidden">
 			<Typography as={'h3'} align="center">
 				A Smarter way to train feature highlights
 			</Typography>
 
-			<div className="flex items-center justify-center border-b border-light-smoke">
+			<div className="flex items-center justify-center border-b border-light-smoke overflow-x-auto">
 				{featureTabs.map((tab, idx) => {
 					const { label, value, icon } = tab;
 					return (
