@@ -2,8 +2,7 @@ import '@workspace/ui/globals.css';
 import '@/app/globals.css';
 import { Providers } from '@/components/providers';
 import { Metadata } from 'next';
-import localFont from "next/font/local";
-
+import localFont from 'next/font/local';
 
 const fonetika = localFont({
 	src: [
@@ -42,8 +41,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
-			<body className={`${fonetika.variable} antialiased `}>
+		<html lang="en" suppressHydrationWarning className="h-full w-full">
+			<body className={`${fonetika.variable} antialiased h-full w-full  flex flex-col`}>
 				<Providers>{children}</Providers>
 			</body>
 		</html>
