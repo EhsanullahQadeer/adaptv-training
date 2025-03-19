@@ -45,14 +45,21 @@ const typographyStyles: TypographyStyles = {
 		h4: {
 			base: 'font-medium leading-normal',
 			responsive: 'text-[20px] md:text-[28px] tracking-[-0.4px] md:tracking-[-0.56px] leading-normal',
-			responsive_reverse: 'md:text-[20px] text-[28px] md:tracking-[-0.4px] tracking-[-0.56px]', // Added
+			responsive_reverse: 'md:text-[20px] text-[28px] md:tracking-[-0.4px] tracking-[-0.56px]', 
 			small: 'text-[20px] tracking-[-0.4px]',
 			large: 'text-[28px] tracking-[-0.56px]',
+		},
+		h4_2: {
+			base: 'font-medium leading-normal',
+			responsive: 'text-[20px] md:text-[32px] tracking-[-0.4px] md:tracking-[-0.56px] leading-normal',
+			responsive_reverse: 'md:text-[20px] text-[32px]  md:tracking-[-0.4px] tracking-[-0.56px]',
+			small: 'text-[20px] tracking-[-0.4px]',
+			large: 'text-[32px] tracking-[-0.56px]',
 		},
 		h5: {
 			base: 'text-lg font-medium',
 			responsive: 'text-[24px] md:text-[18px]',
-			responsive_reverse: 'md:text-[18px] text-[24px]', // Added
+			responsive_reverse: 'md:text-[18px] text-[24px]', 
 			small: 'text-[18px]',
 			large: 'text-[24px]',
 		},
@@ -172,6 +179,7 @@ const tagMapping: Record<string, ElementType> = {
 	p_secondary: 'p',
 	span_secondary: 'span',
 	h5_2: 'h5',
+	h4_2: 'h4',
 	// Add more mappings as needed
 };
 

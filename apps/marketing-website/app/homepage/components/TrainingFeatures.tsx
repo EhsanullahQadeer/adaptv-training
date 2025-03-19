@@ -43,7 +43,7 @@ const TrainingFeatures = () => {
         {tabData.map((tab) => (
           <div
             key={tab.id}
-            className={`w-full py-4 px-6 border-t-2 transition-all duration-300 ${
+            className={`w-full cursor-pointer py-8 px-4 border-t-2 transition-all duration-300 ${
               selectedTab === tab.id
                 ? "border-[#5271FF] bg-[#F2F4F8]"
                 : "border-[#E7E7E7]"

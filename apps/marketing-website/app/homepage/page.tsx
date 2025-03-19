@@ -6,8 +6,7 @@ import CoachingSection from '@/components/CoachingSection';
 import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 import TrainingFeatures from './components/TrainingFeatures';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
-import LearnSection from '../about/components/LearnSection';
-const { tabImage } = imagesPaths;
+const { tabImage, collageFour, collageMobile } = imagesPaths;
 
 const coachingFeatures = [
 	{
@@ -28,16 +27,31 @@ const coachingFeatures = [
 ];
 const page = () => {
 	return (
-		<div className="mt-8 flex justify-center items-center  md:mt-[70px] bg-white">
-			<div
-				style={{ backgroundPositionX: 'center', backgroundSize: 'contain ' }}
-				className="bg-[url(/assets/images/collage-mobile.png)] sm:bg-[url(/assets/images/collage-four.png)] m-auto bg-no-repeat  w-[1300px]"
-			>
-				<div className="md:mb-14 mb-7   max-w-[350px] md:max-w-[700px] m-auto text-black text-center">
+		<div className="mt-8 relative  md:mt-[70px] bg-white">
+			<Image
+				src={collageMobile}
+				alt="collage"
+				className="absolute top-0 z-0 sm:hidden object-cover "
+				width={1000}
+				height={416}
+			></Image>
+			<Image
+				src={collageFour}
+				alt="collage"
+				className="absolute z-0 left-1/2 top-0 transform -translate-x-1/2 object-cover sm:block hidden"
+				width={1300}
+				height={1000}
+			></Image>
+
+			<div className=" m-auto z-10 relative  ">
+				<div className="md:mb-14 mb-   max-w-[343px] md:max-w-[700px] m-auto text-black text-center">
 					<Typography as={'h1'} className="mb-2.5">
 						Build Your Coaching Business
 					</Typography>
 					<Typography as={'h5'}>Grow your coaching business, offer personalized training. </Typography>
+					<div className="mt-5 md:mt-6">
+						<button>Become a coach</button> {/* remaining button */}
+					</div>
 				</div>
 
 				<div className="max-w-[1100px]  mx-auto  gap-5">
@@ -58,11 +72,10 @@ const page = () => {
 						</Typography>
 						<TrainingFeatures />
 					</div>
-					<div>
-					<FAQsAccesPlatformSection />
-					</div>
+					<div></div>
 				</div>
 			</div>
+			<FAQsAccesPlatformSection />
 		</div>
 	);
 };
