@@ -46,6 +46,12 @@ const typographyStyles: TypographyStyles = {
 		},
 		h5: { base: 'text-lg font-medium', small: 'text-[18px]', large: 'text-[24px]' },
 		h6: { base: 'text-base font-medium', small: 'text-base', large: 'text-[20px]' },
+		h7: {
+			base: 'text-xl font-medium leading-normal',
+			responsive: 'text-[20px] md:text-[28px] tracking-[-0.4px] md:tracking-[-0.56px] leading-normal',
+			small: 'text-[20px] tracking-[-0.4px]',
+			large: 'text-[32px] tracking-[-0.56px]',
+		},
 	},
 
 	body: {

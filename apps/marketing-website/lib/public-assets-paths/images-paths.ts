@@ -1,10 +1,14 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
+  "blogFeature": "/assets/images/blog-feature.svg",
+  "blogSample": "/assets/images/blog-sample.svg",
   "boy": "/assets/images/boy.png",
   "collageFour": "/assets/images/collage-four.png",
   "collageMobile": "/assets/images/collage-mobile.png",
   "ellipseBottom": "/assets/images/ellipse-bottom.png",
   "ellipseTop": "/assets/images/ellipse-top.png",
+  "exerciseLibrary": "/assets/images/exercise-library.svg",
+  "exercisemobile": "/assets/images/exercisemobile.svg",
   "platformFeatures": {
     "dashboard": {
       "impactImg": "/assets/images/platform-features/dashboard/impact-img.svg",
@@ -39,7 +43,12 @@ const imagesPaths = {
   "platformImg1": "/assets/images/platform-img-1.png",
   "platformImg2": "/assets/images/platform-img-2.png",
   "platformToolsImg": "/assets/images/platform-tools-img.svg",
+  "smartfeature1": "/assets/images/smartfeature-1.svg",
+  "smartfeature2": "/assets/images/smartfeature-2.svg",
+  "smartfeature3": "/assets/images/smartfeature-3.svg",
   "tabImage": "/assets/images/tab-image.svg",
+  "tracking1": "/assets/images/tracking-1.svg",
+  "tracking2": "/assets/images/tracking-2.svg",
   "train1": "/assets/images/train-1.svg",
   "train2": "/assets/images/train-2.svg",
   "train3": "/assets/images/train-3.svg",
