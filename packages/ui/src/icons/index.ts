@@ -8,6 +8,7 @@ export { default as FireIcon } from './FireIcon';
 export { default as FlameIcon } from './FlameIcon';
 export { default as GlobleIcon } from './GlobleIcon';
 export { default as GrowthIcon } from './GrowthIcon';
+export { default as IconSlide } from './IconSlide';
 export { default as KingIcon } from './KingIcon';
 export { default as MessageIcon } from './MessageIcon';
 export { default as MinusCircular } from './MinusCircular';
