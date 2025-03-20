@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 
 const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
@@ -18,7 +18,7 @@ const AccessToPlatformSection = () => {
 					height={127}
 				/>
 			</div>
-			<div className="mx-4 z-10 relative sm:my-16">
+			<div className="mx-4 z-10 relative sm:my-4">
 				<div className="flex flex-col justify-center items-center max-w-[510px] mx-auto">
 					<Typography as={'h2'} align="center" className="mb-2.5">
 						Get early access to our platform
@@ -26,7 +26,9 @@ const AccessToPlatformSection = () => {
 					<Typography as={'p'}>Build your Client base before launch</Typography>
 
 					<div className="mt-5 md:mt-6">
-						<button>Become a coach</button> {/* remaining button */}
+						<Button onClick={() => {}} size="default" type="button">
+							Become a Coach
+						</Button>
 					</div>
 				</div>
 			</div>
