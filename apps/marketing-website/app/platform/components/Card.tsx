@@ -1,6 +1,6 @@
 import { Typography } from '@workspace/ui/components';
 import Image from 'next/image';
-import React from 'react';
+import { Button } from '@workspace/ui/components';
 
 interface CardProps {
 	title: string;
@@ -9,9 +9,9 @@ interface CardProps {
 	image: string;
 	reverse?: boolean;
 	textSectionProps?: string;
-	imageSectionProps?: string;
 	leftSideWrapProps?: string;
 	rightSideWrapProps?: string;
+	handleButton: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -21,12 +21,14 @@ const Card: React.FC<CardProps> = ({
 	image,
 	reverse = false,
 	textSectionProps = '',
-	imageSectionProps = '',
 	leftSideWrapProps = '',
 	rightSideWrapProps = '',
+	handleButton,
 }) => {
 	return (
-		<div className={`bg-pale-azure rounded-3xl w-full p-5 pt-8 flex items-center justify-between md:h-[450px] md:p-0`}>
+		<div
+			className={`bg-pale-azure rounded-2xl md:rounded-3xl w-full flex flex-col sm:flex-row sm:items-center justify-between md:h-[450px] gap-3`}
+		>
 			{/* Left content */}
 			<div className={`flex-1 ${leftSideWrapProps}`}>
 				{!reverse && (
@@ -38,7 +40,9 @@ const Card: React.FC<CardProps> = ({
 							{description}
 						</Typography>
 						<div className="mt-8">
-							<button>{buttonText}</button>
+							<Button onClick={handleButton} size="default" type="button">
+								{buttonText}
+							</Button>
 						</div>
 					</div>
 				)}
@@ -46,7 +50,7 @@ const Card: React.FC<CardProps> = ({
 					<Image
 						width={1000}
 						height={500}
-						className={`w-full h-full object-cover ${imageSectionProps}`}
+						className={`w-full h-full object-cover`}
 						src={image}
 						alt={title.replace(/\s+/g, '_').toLowerCase()}
 					/>
@@ -64,7 +68,9 @@ const Card: React.FC<CardProps> = ({
 							{description}
 						</Typography>
 						<div className="mt-8">
-							<button>{buttonText}</button>
+							<Button onClick={handleButton} size="default" type="button">
+								{buttonText}
+							</Button>
 						</div>
 					</div>
 				)}
@@ -72,7 +78,7 @@ const Card: React.FC<CardProps> = ({
 					<Image
 						width={1000}
 						height={500}
-						className={`w-full h-full object-cover ${imageSectionProps}`}
+						className={`w-full h-full object-cover`}
 						src={image}
 						alt={title.replace(/\s+/g, '_').toLowerCase()}
 					/>

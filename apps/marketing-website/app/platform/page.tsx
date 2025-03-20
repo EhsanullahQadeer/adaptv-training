@@ -34,7 +34,7 @@ export default function Page() {
 			</div>
 
 			<div className="bg-white px-4">
-				<div className="max-w-[1100px] mx-auto">
+				<div className="max-w-[1100px] mx-auto overflow-hidden">
 					<PlatfomFeatures />
 				</div>
 			</div>

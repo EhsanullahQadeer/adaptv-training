@@ -13,8 +13,8 @@ const sections = [
 		image: connectedClients,
 		reverse: true,
 		textSectionProps: 'max-w-[390px]',
-		leftSideWrapProps: 'self-end md:ml-[50px] max-w-[420px]',
-		rightSideWrapProps: 'md:mr-20 flex justify-end',
+		leftSideWrapProps: 'sm:self-end lg:ml-[50px] md:ml-6 sm:ml-5 mt-5 max-sm:mx-5 max-w-[303px] sm:max-w-[420px] max-sm:order-2',
+		rightSideWrapProps: 'lg:mr-20 md:mr-10 sm:mr-5 max-sm:mx-5 max-sm:mt-8 flex sm:justify-end max-sm:order-1',
 	},
 	{
 		title: 'Real-time conversations',
@@ -23,8 +23,8 @@ const sections = [
 		image: realTimeConversations,
 		reverse: false,
 		textSectionProps: 'max-w-[380px]',
-		leftSideWrapProps: 'md:ml-[80px]',
-		rightSideWrapProps: 'md:mr-11 max-w-[446px]',
+		leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
+		rightSideWrapProps: 'lg:mr-11 md:mr-6 sm:mr-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[446px]',
 	},
 ];
 
