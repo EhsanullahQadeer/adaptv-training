@@ -78,7 +78,8 @@ const ScrollableCategories: React.FC<ScrollableCategoriesProps> = ({ categories 
             className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-md border border-gray-400 cursor-pointer hover:bg-gray-100"
           >
             {category.color && (
-              <span className={`w-2 h-2 rounded-full bg-${category.color}`}></span>
+              <span     style={{ backgroundColor: category.color }} 
+              className={`w-2 h-2 rounded-full `}></span>
             )}
             <span className="text-sm font-medium">{category.name}</span>
           </div>

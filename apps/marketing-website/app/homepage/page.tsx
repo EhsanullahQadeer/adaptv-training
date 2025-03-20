@@ -6,6 +6,8 @@ import CoachingSection from '@/components/CoachingSection';
 import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 import TrainingFeatures from './components/TrainingFeatures';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
+import AdaptiveClient from '@/components/AdaptiveClient';
+import LearnGrow from './components/LearnGrow';
 const { tabImage, collageFour, collageMobile } = imagesPaths;
 
 const coachingFeatures = [
@@ -72,8 +74,13 @@ const page = () => {
 						</Typography>
 						<TrainingFeatures />
 					</div>
-					<div></div>
+				
 				</div>
+				<LearnGrow/>
+				<div className="max-w-[1100px]  mx-auto  gap-5">
+				<AdaptiveClient/>
+				</div>
+
 			</div>
 			<FAQsAccesPlatformSection />
 		</div>

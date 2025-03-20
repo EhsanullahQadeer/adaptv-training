@@ -9,6 +9,7 @@ const imagesPaths = {
   "ellipseTop": "/assets/images/ellipse-top.png",
   "exerciseLibrary": "/assets/images/exercise-library.svg",
   "exercisemobile": "/assets/images/exercisemobile.svg",
+  "gymBoy": "/assets/images/gym-boy.png",
   "platformFeatures": {
     "dashboard": {
       "impactImg": "/assets/images/platform-features/dashboard/impact-img.svg",
