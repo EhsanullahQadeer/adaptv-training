@@ -68,7 +68,7 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 								</FormItem>
 								<FormItem className="flex items-center space-x-3 space-y-0">
 									<FormControl>
-										<RadioGroupItem className="" value="mentions" />
+										<RadioGroupItem value="no" />
 									</FormControl>
 									<FormLabel className="font-normal">No</FormLabel>
 								</FormItem>

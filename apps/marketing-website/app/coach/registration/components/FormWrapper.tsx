@@ -26,6 +26,8 @@ const formSchema = z.object({
 	youtube: z.string().url().optional(),
 	purpose: z.string(),
 	biggestStruggle: z.string(),
+	interested: z.string(),
+	trainingStyle: z.string(),
 });
 
 // Define the steps
@@ -53,6 +55,8 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 			facebook: '',
 			youtube: '',
 			biggestStruggle: '',
+			interested: 'no',
+			trainingStyle: '',
 		},
 	});
 
@@ -82,7 +86,13 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 					{CurrentStep && <CurrentStep form={form} />}
 				</div>
 				<div className="flex justify-between">
-					{currentStep < totalSteps ? (
+					{/* <Button onClick={handleBack} variant="outline" type="button" size="lg">
+						Back
+					</Button>
+					<Button onClick={handleNext} size="lg" type="button">
+						Next
+					</Button> */}
+					{currentStep === 2 ? (
 						<Button onClick={handleBack} variant="outline" type="button" size="lg">
 							Back
 						</Button>
@@ -95,7 +105,11 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 						</Button>
 					) : (
 						currentStep == 2 && (
-							<Button size="lg" type="submit">
+							<Button
+								size="lg"
+								onClick={handleNext}
+								//  type="submit"
+							>
 								Submit
 							</Button>
 						)

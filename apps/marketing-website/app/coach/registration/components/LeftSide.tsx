@@ -6,10 +6,10 @@ import FormWrapper from './FormWrapper';
 const totalSteps = 3;
 
 const LeftSide = () => {
-	const [currentStep, setCurrentStep] = useState<number>(3);
+	const [currentStep, setCurrentStep] = useState<number>(1);
 
 	return (
-		<div className="flex-[58] px-[10%] flex  flex-col">
+		<div className="flex-[58] px-4 sm:px-[10%]  flex  flex-col">
 			<StepHead {...{ totalSteps, currentStep }} />
 			<FormWrapper {...{ totalSteps, currentStep, setCurrentStep }} />
 		</div>

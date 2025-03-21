@@ -5,8 +5,8 @@ import CertificateDialog from './Dialog/CertificateDialog';
 
 const CertificateField = () => {
 	return (
-		<div className="flex justify-between items-center mt-8 ">
-			<div>
+		<div className="flex flex-wrap justify-between items-center mt-8 gap-3">
+			<div className="min-w-[200px] flex-1">
 				<Typography className="mb-0.5" sizeVariant="large" as="h5">
 					Certification
 				</Typography>

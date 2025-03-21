@@ -5,7 +5,6 @@ import { MailIcon } from '@workspace/ui/icons';
 import PhoneNumberInput from '@workspace/ui/components/phonenumber-input';
 import CertificateField from './CertificateField';
 
-
 interface PersonalInfoStepProps {
 	form: UseFormReturn<CoachFormValues>;
 }
@@ -49,7 +48,7 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 						countrySelectorStyleProps={{
 							buttonClassName: '!px-2.5 !py-3 !h-10 !rounded-lg transition-all !border-none',
 						}}
-						name={field.name}
+						// name={field.name}
 						value={field.value || ''}
 						onChange={field.onChange}
 					/>
@@ -78,14 +77,14 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 			<Typography className="mb-5" sizeVariant="large" as="h5">
 				Account
 			</Typography>
-			<div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
-				{fields.map(({ name, label, component }) => (
+			<div className="grid  gap-3 grid-cols-2">
+				{fields.map(({ name, label, component }, index) => (
 					<FormField
 						key={name}
 						control={form.control}
 						name={name}
 						render={({ field }) => (
-							<FormItem>
+							<FormItem className={index < 2 ? ' col-span-1 ' : 'col-span-2 sm:col-span-1'}>
 								<FormLabel className="text-xs">{label}</FormLabel>
 								<FormControl>
 									<>{component(field)}</>
@@ -101,7 +100,7 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 			<Typography className="mt-8 mb-5" sizeVariant="large" as="h5">
 				Social Handles
 			</Typography>
-			<div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
+			<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
 				{socialFields.map(({ name, label, placeholder }) => (
 					<FormField
 						key={name}

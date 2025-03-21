@@ -29,8 +29,8 @@ const typographyStyles: TypographyStyles = {
 			large: 'text-[70px] tracking-[-2.8px]',
 		},
 		h2: {
-			base: 'font-medium',
-			responsive: 'text-[43px] md:text-[60px] tracking-[-1.72px] md:tracking-[-3px]',
+			base: 'font-medium leading-[100%]',
+			responsive: 'text-[43px] md:text-[60px] tracking-[-1.72px] md:tracking-[-3px] ',
 			responsive_reverse: 'md:text-[43px] text-[60px] md:tracking-[-1.72px] tracking-[-3px]', // Added
 			small: 'text-[43px] tracking-[-1.72px]',
 			large: 'text-[60px] tracking-[-3px]',
@@ -147,6 +147,7 @@ const colorStyles = {
 	primary: 'text-blue-600',
 	secondary: 'text-purple-600',
 	danger: 'text-red-600',
+	light:'text-white',
 };
 
 const alignStyles = {
@@ -232,8 +233,8 @@ export function Typography({
 		const colorClass = color && (colorStyles[color as keyof typeof colorStyles] || color);
 
 		return cn(
-			variantStyles?.base,
 			sizeClasses,
+			variantStyles?.base,
 			colorClass,
 			align && alignStyles[align],
 			uppercase && 'uppercase',

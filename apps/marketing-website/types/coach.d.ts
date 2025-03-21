@@ -13,6 +13,8 @@ declare global {
         purpose: string;
         biggestStruggle: string;
         interested: string;
+        trainingStyle: string;
+
 	};
 }
 
