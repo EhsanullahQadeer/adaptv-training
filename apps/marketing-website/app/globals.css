@@ -7,6 +7,10 @@
 	}
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+	display: none;
+}
+
 @theme {
 	/* font-families */
 	--font-fonetika: var(--font-fonetika), sans-serif;
