@@ -17,10 +17,10 @@ const items = Array.from({ length: 15 }, (_, index) => ({
 const LearnGrowSlider = () => {
   return (
     <div className="my-8">
-      <Carousel>
+      <Carousel >
         <CarouselContent className="-ml-4">
           {items.map((item) => (
-            <CarouselItem key={item.id} className="pl-4 relative w-[280px] h-[470px]">
+            <CarouselItem key={item.id} className="pl-4  relative basis-auto w-[280px] h-[470px]">
               <div className="relative w-full rounded-lg h-full">
                 {/* Image */}
                 <Image

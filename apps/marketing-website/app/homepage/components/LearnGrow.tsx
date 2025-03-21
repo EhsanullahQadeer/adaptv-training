@@ -6,7 +6,7 @@ const LearnGrow = () => {
 	return (
 		<div className="bg-black py-10">
 			<div className="max-w-[1100px] mx-auto">
-				<div className="w-[430px] mb-20 flex flex-col">
+				<div className="sm:w-[430px] mb-20 flex flex-col">
 					<Typography as={'h2'} color="text-white" className=" leading-[100%]">
 						Learn & Grow as a Coach
 					</Typography>
