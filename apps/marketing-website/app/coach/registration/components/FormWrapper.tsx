@@ -24,6 +24,8 @@ const formSchema = z.object({
 	linkedin: z.string().url().optional(),
 	facebook: z.string().url().optional(),
 	youtube: z.string().url().optional(),
+	purpose: z.string(),
+	biggestStruggle: z.string(),
 });
 
 // Define the steps
@@ -50,6 +52,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 			linkedin: '',
 			facebook: '',
 			youtube: '',
+			biggestStruggle: '',
 		},
 	});
 
@@ -73,27 +76,29 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col grow justify-between space-y-8 py-5.5">
-				{/* Render the current step component */}
-				{CurrentStep && <CurrentStep form={form} />}
-
-				{/* Navigation buttons */}
-				<div className="flex justify-between sticky bottom-2">
-					{currentStep > 1 ? (
+			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col flex-1 space-y-8 py-5.5 ">
+				<div className="overflow-auto flex flex-col flex-grow flex-shrink-0 basis-0">
+					{/* Render the current step component */}
+					{CurrentStep && <CurrentStep form={form} />}
+				</div>
+				<div className="flex justify-between">
+					{currentStep < totalSteps ? (
 						<Button onClick={handleBack} variant="outline" type="button" size="lg">
 							Back
 						</Button>
 					) : (
 						<div></div>
 					)}
-					{currentStep < totalSteps ? (
+					{currentStep == 1 ? (
 						<Button onClick={handleNext} size="lg" type="button">
 							Next
 						</Button>
 					) : (
-						<Button size="lg" type="submit">
-							Submit
-						</Button>
+						currentStep == 2 && (
+							<Button size="lg" type="submit">
+								Submit
+							</Button>
+						)
 					)}
 				</div>
 			</form>

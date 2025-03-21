@@ -1,7 +1,12 @@
+export { Badge } from './badge';
 export { Button } from './button';
+export { Dialog } from './dialog';
 export { Form } from './form';
 export { Input } from './input';
 export { Label } from './label';
-export { PhonenumberInput } from './phonenumber-input';
+export { default as PhonenumberInput } from './phonenumber-input';
+export { RadioGroup } from './radio-group';
 export { Separator } from './separator';
+export { Textarea } from './textarea';
 export { Typography } from './typography';
+export { Stepper } from './stepper';

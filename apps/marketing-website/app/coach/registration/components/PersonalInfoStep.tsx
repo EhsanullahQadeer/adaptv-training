@@ -5,30 +5,18 @@ import { MailIcon } from '@workspace/ui/icons';
 import PhoneNumberInput from '@workspace/ui/components/phonenumber-input';
 import CertificateField from './CertificateField';
 
-type FormValues = {
-	firstName: string;
-	lastName: string;
-	email: string;
-	phoneNumber?: string;
-	instagram?: string;
-	tiktok?: string;
-	x?: string;
-	linkedin?: string;
-	facebook?: string;
-	youtube?: string;
-};
 
 interface PersonalInfoStepProps {
-	form: UseFormReturn<FormValues>;
+	form: UseFormReturn<CoachFormValues>;
 }
 
 const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 	// Define the fields for the form
 	const fields: {
-		name: keyof FormValues;
+		name: keyof CoachFormValues;
 		label: string;
 		placeholder?: string;
-		component: (field: ControllerRenderProps<FormValues>) => JSX.Element;
+		component: (field: ControllerRenderProps<CoachFormValues>) => JSX.Element;
 	}[] = [
 		{
 			name: 'firstName',
@@ -72,7 +60,7 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 
 	//  social fields for the form
 	const socialFields: {
-		name: keyof FormValues;
+		name: keyof CoachFormValues;
 		label: string;
 		placeholder: string;
 	}[] = [
@@ -99,7 +87,9 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 						render={({ field }) => (
 							<FormItem>
 								<FormLabel className="text-xs">{label}</FormLabel>
-								<FormControl>{component(field)}</FormControl>
+								<FormControl>
+									<>{component(field)}</>
+								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
@@ -130,7 +120,7 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 				))}
 			</div>
 
-			<Separator/>
+			<Separator className="my-8" />
 
 			<CertificateField />
 		</div>
