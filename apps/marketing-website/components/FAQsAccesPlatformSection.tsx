@@ -11,7 +11,9 @@ const FAQsAccesPlatformSection = () => {
         </div>
       </div>
 
-      <AccessToPlatformSection />
+      <AccessToPlatformSection  title="Get early access to our platform"
+      subtitle="Build your Client base before launch"
+      buttonText="Become a coach" />
     </div>
   );
 };

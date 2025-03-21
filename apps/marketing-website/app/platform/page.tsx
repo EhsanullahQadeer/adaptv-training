@@ -2,8 +2,9 @@
 import React from 'react';
 import Image from 'next/image';
 import PlatfomFeatures from './components/PlatfomFeatures';
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
+import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 
 const { platformToolsImg } = imagesPaths;
 
@@ -18,7 +19,9 @@ export default function Page() {
 					<Typography as={'p'}>Manage clients, schedule sessions, and grow with ease.</Typography>
 
 					<div className="mt-5">
-						<button>Become a Coach</button> {/* remaining button */}
+						<Button onClick={() => {}} size="default" type="button">
+							Become a Coach
+						</Button>
 					</div>
 				</div>
 
@@ -33,10 +36,14 @@ export default function Page() {
 				</div>
 			</div>
 
-			<div className="bg-white px-4">
-				<div className="max-w-[1100px] mx-auto overflow-hidden">
-					<PlatfomFeatures />
+			<div className="bg-white">
+				<div className="px-4">
+					<div className="max-w-[1100px] mx-auto overflow-hidden">
+						<PlatfomFeatures />
+					</div>
 				</div>
+
+				<FAQsAccesPlatformSection />
 			</div>
 		</>
 	);
