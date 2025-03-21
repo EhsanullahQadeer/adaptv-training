@@ -1,10 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Typography } from "@workspace/ui/components";
-import { imagesPaths } from "@/lib/public-assets-paths";
-import React from 'react';
 
-import Image from 'next/image';
 import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 
@@ -38,7 +34,8 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({ title
           </Typography>
           <Typography as="p" className="text-center">{subtitle}</Typography>
           <div className="mt-5 md:mt-6">
-            <button>{buttonText}</button>
+          <Button size="default" type="button">
+          {buttonText}						</Button>
           </div>
         </div>
       </div>
@@ -54,42 +51,10 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({ title
         />
         <div className="absolute inset-0 bg-gradient-to-l from-white via-white/100 2xl:via-white/80 to-transparent z-1"></div>
       </div>
-const AccessToPlatformSection = () => {
-	return (
-		<div className="relative overflow-hidden">
-			<div className="z-10">
-				<Image
-					className="w-full h-full object-cover max-h-[118px] relative z-10"
-					src={ellipseBottom}
-					alt="ellipse_bottom"
-					width={1440}
-					height={127}
-				/>
-			</div>
-			<div className="mx-4 z-10 relative sm:my-4">
-				<div className="flex flex-col justify-center items-center max-w-[510px] mx-auto">
-					<Typography as={'h2'} align="center" className="mb-2.5">
-						Get early access to our platform
-					</Typography>
-					<Typography as={'p'}>Build your Client base before launch</Typography>
 
-					<div className="mt-5 md:mt-6">
-						<Button onClick={() => {}} size="default" type="button">
-							Become a Coach
-						</Button>
-					</div>
-				</div>
-			</div>
-			<div className="absolute -left-18 lg:left-0 top-0 z-1 h-full">
-				<Image
-					className="w-full h-full max-h-[572px] object-cover"
-					height={597}
-					width={563}
-					src={platformImg1}
-					alt="platform_img_1"
-				/>
-				<div className="absolute inset-0 bg-gradient-to-l from-white via-white/100 2xl:via-white/80 to-transparent z-1"></div>
-			</div>
+		
+			
+			
 
       {/* Right Image */}
       <div className="absolute -right-18 lg:right-0 top-0 z-1 h-full">
