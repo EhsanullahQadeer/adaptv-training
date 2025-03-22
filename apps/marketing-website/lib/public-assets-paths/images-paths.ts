@@ -1,9 +1,9 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
-  "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "adaptive1": "/assets/images/adaptive-1.svg",
   "adaptive2": "/assets/images/adaptive-2.svg",
   "adaptive3": "/assets/images/adaptive-3.svg",
+  "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "blogFeature": "/assets/images/blog-feature.svg",
   "blogSample": "/assets/images/blog-sample.svg",
   "boy": "/assets/images/boy.png",

@@ -5,6 +5,7 @@ import React from 'react';
 import MusclesSection from './components/MusclesSection';
 import TrainingStyleSection from './components/TrainingStyleSection';
 import DifficultySection from './components/DifficultySection';
+import EquipmentsSection from './components/EquipmentsSection';
 
 const page = () => {
 	const { libraryHeroBg } = imagesPaths;
@@ -28,7 +29,7 @@ const page = () => {
 							<div className="mt-6 w-full max-w-[500px] mx-auto max-sm:hidden">
 								<Input
 									placeholder="Find an excercise.."
-									className="bg-faint-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-pale-silver"
+									className="bg-faint-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-pale-silver shadow-[0px_24px_32px_0px_rgba(0, 0, 0, 0.04)]"
 									rightAdornment={
 										<Button
 											type="button"
@@ -48,7 +49,7 @@ const page = () => {
 					<div className="mt-8 w-full max-w-[500px] mx-auto">
 						<Input
 							placeholder="Find an excercise.."
-							className="bg-faint-white text-base tracking-[-0.08px] leading-[20px] h-[50px] pl-5 border-pale-silver text-white"
+							className="bg-faint-white text-base tracking-[-0.08px] leading-[20px] h-[50px] pl-5 border-pale-silver text-white shadow-[0px_24px_32px_0px_rgba(0, 0, 0, 0.04)]"
 						/>
 					</div>
 					<div className="mt-4 w-full max-w-[500px] mx-auto">
@@ -63,11 +64,12 @@ const page = () => {
 				</div>
 			</div>
 
-			<div className="mt-[70px] mb-[135px] mx-4">
-				<div className="max-w-[1100px] m-auto flex flex-col gap-[42px]">
+			<div className="mx-4">
+				<div className="mt-[70px] mb-[135px] max-w-[1100px] m-auto flex flex-col gap-[42px]">
 					<MusclesSection />
 					<TrainingStyleSection />
 					<DifficultySection />
+					<EquipmentsSection />
 				</div>
 			</div>
 		</>
