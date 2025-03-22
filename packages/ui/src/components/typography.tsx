@@ -29,8 +29,8 @@ const typographyStyles: TypographyStyles = {
 			large: 'text-[70px] tracking-[-2.8px]',
 		},
 		h2: {
-			base: 'font-medium',
-			responsive: 'text-[43px] md:text-[60px] tracking-[-1.72px] md:tracking-[-3px]',
+			base: 'font-medium leading-[100%]',
+			responsive: 'text-[43px] md:text-[60px] tracking-[-1.72px] md:tracking-[-3px] ',
 			responsive_reverse: 'md:text-[43px] text-[60px] md:tracking-[-1.72px] tracking-[-3px]', // Added
 			small: 'text-[43px] tracking-[-1.72px]',
 			large: 'text-[60px] tracking-[-3px]',
@@ -45,7 +45,7 @@ const typographyStyles: TypographyStyles = {
 		h4: {
 			base: 'font-medium leading-normal',
 			responsive: 'text-[20px] md:text-[28px] tracking-[-0.4px] md:tracking-[-0.56px] leading-normal',
-			responsive_reverse: 'md:text-[20px] text-[28px] md:tracking-[-0.4px] tracking-[-0.56px]', 
+			responsive_reverse: 'md:text-[20px] text-[28px] md:tracking-[-0.4px] tracking-[-0.56px]',
 			small: 'text-[20px] tracking-[-0.4px]',
 			large: 'text-[28px] tracking-[-0.56px]',
 		},
@@ -59,7 +59,7 @@ const typographyStyles: TypographyStyles = {
 		h5: {
 			base: 'text-lg font-medium',
 			responsive: 'text-[24px] md:text-[18px]',
-			responsive_reverse: 'md:text-[18px] text-[24px]', 
+			responsive_reverse: 'md:text-[18px] text-[24px]',
 			small: 'text-[18px]',
 			large: 'text-[24px]',
 		},
@@ -96,6 +96,13 @@ const typographyStyles: TypographyStyles = {
 			small: 'text-base tracking-[-0.16px]',
 			large: 'text-[20px] tracking-[-0.18px]',
 		},
+		p_caption: {
+			base: 'text-white',
+			responsive: 'text-[12px] md:text-base tracking-[-0.12px] md:tracking-[-0.16px]',
+			responsive_reverse: 'md:text-[12px] text-base md:tracking-[-0.12px] tracking-[-0.16px]', // Added
+			small: 'text-[12px] tracking-[-0.12px]',
+			large: 'text-base tracking-[-0.16px]',
+		},
 		span: {
 			base: 'font-medium leading-normal',
 			responsive: 'text-base md:text-[22px] tracking-[-0.16px] md:tracking-[-0.44px] leading-normal',
@@ -113,13 +120,6 @@ const typographyStyles: TypographyStyles = {
 	},
 
 	supportingText: {
-		caption: {
-			base: 'text-white text-center',
-			responsive: 'text-[12px] md:text-base tracking-[-0.12px] md:tracking-[-0.16px]',
-			responsive_reverse: 'md:text-[12px] text-base md:tracking-[-0.12px] tracking-[-0.16px]', // Added
-			small: 'text-[12px] tracking-[-0.12px]',
-			large: 'text-base tracking-[-0.16px]',
-		},
 		blockquote: { base: 'border-l-4 border-gray-300 pl-4 italic' },
 		small: { base: 'text-sm text-gray-600' },
 	},
@@ -147,6 +147,7 @@ const colorStyles = {
 	primary: 'text-blue-600',
 	secondary: 'text-purple-600',
 	danger: 'text-red-600',
+	light:'text-white',
 };
 
 const alignStyles = {
@@ -180,6 +181,7 @@ const tagMapping: Record<string, ElementType> = {
 	span_secondary: 'span',
 	h5_2: 'h5',
 	h4_2: 'h4',
+	p_caption: 'p',
 	// Add more mappings as needed
 };
 
@@ -231,8 +233,8 @@ export function Typography({
 		const colorClass = color && (colorStyles[color as keyof typeof colorStyles] || color);
 
 		return cn(
-			variantStyles?.base,
 			sizeClasses,
+			variantStyles?.base,
 			colorClass,
 			align && alignStyles[align],
 			uppercase && 'uppercase',

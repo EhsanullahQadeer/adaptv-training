@@ -1,5 +1,6 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
+  "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "adaptive1": "/assets/images/adaptive-1.svg",
   "adaptive2": "/assets/images/adaptive-2.svg",
   "adaptive3": "/assets/images/adaptive-3.svg",
@@ -16,6 +17,7 @@ const imagesPaths = {
   "exerciseLibrary": "/assets/images/exercise-library.svg",
   "exercisemobile": "/assets/images/exercisemobile.svg",
   "gymBoy": "/assets/images/gym-boy.png",
+  "mailSubmitted": "/assets/images/mail-submitted.svg",
   "platformFeatures": {
     "dashboard": {
       "impactImg": "/assets/images/platform-features/dashboard/impact-img.svg",
@@ -50,6 +52,7 @@ const imagesPaths = {
   "platformImg1": "/assets/images/platform-img-1.png",
   "platformImg2": "/assets/images/platform-img-2.png",
   "platformToolsImg": "/assets/images/platform-tools-img.svg",
+  "registrationRightBg": "/assets/images/registration-right-bg.svg",
   "smartfeature1": "/assets/images/smartfeature-1.svg",
   "smartfeature2": "/assets/images/smartfeature-2.svg",
   "smartfeature3": "/assets/images/smartfeature-3.svg",

@@ -31,6 +31,7 @@
 	--color-light-smoke: rgba(0, 0, 0, 0.1);
 	--color-muted-gray : #868686;
 	--color-green : #2FA33A;
+	--breakpoint-xs: 26.25rem;
 
 
 	/* font sizes */

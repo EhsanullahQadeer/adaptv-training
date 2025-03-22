@@ -16,6 +16,7 @@ export { default as MessageIcon } from './MessageIcon';
 export { default as MinusCircular } from './MinusCircular';
 export { default as PercentCircle } from './PercentCircle';
 export { default as PlusCircular } from './PlusCircular';
+export { default as PlusIcon } from './PlusIcon';
 export { default as RequestVerified } from './RequestVerified';
 export { default as RightArrow } from './RightArrow';
 export { default as StackIcon } from './StackIcon';
