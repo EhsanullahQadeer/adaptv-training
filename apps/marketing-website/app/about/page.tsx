@@ -61,8 +61,7 @@ export default function Page() {
 						features={coachingFeatures}
 						heading1="Great coaching is more than just workouts—"
 						heading2="it’s about connection, adaptability, and growth."
-						heading3="That’s what we stand for at Adaptv.
-"
+						heading3="That’s what we stand for at Adaptv."
 					/>
 				</div>
 			</div>

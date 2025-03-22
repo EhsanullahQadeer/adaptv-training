@@ -1,7 +1,7 @@
 import { Typography } from '@workspace/ui/components';
 
 import React from 'react';
-import CertificateDialog from './Dialog/CertificateDialog';
+// import CertificateDialog from './Dialog/CertificateDialog';
 
 const CertificateField = () => {
 	return (
@@ -15,7 +15,7 @@ const CertificateField = () => {
 				</Typography>
 			</div>
 			<div>
-				<CertificateDialog />
+				{/* <CertificateDialog /> */}
 			</div>
 		</div>
 	);

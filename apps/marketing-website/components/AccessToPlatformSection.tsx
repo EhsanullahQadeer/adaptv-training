@@ -36,8 +36,8 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({ title
 						{subtitle}
 					</Typography>
 					<div className="mt-5 md:mt-6">
-						<Button size="xl" type="button">
-							{buttonText}
+						<Button size="default" type="button">
+							{buttonText}{' '}
 						</Button>
 					</div>
 				</div>
