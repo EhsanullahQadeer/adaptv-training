@@ -1,45 +1,58 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
-import PlatfomFeatures from './components/PlatfomFeatures';
-import { Button, Typography } from '@workspace/ui/components';
-import { imagesPaths } from '@/lib/public-assets-paths';
+import React, { useState } from 'react';
+import PlatfomFeaturesTabs from '../../components/platform/PlatfomFeaturesTabs';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
+import AdaptiveClient from '@/components/AdaptiveClient';
+import { stepsData } from '@/components/data';
+import PlatformHeaderComponent from '@/components/platform/PlatformHeaderComponent';
+import { ArticleIcon, CalenderIcon, FireIcon, MessageIcon, StackIcon, WalletIcon } from '@workspace/ui/icons';
+import DashboardTabContent from './components/DashboardTabContent';
+import SessionsTabContent from './components/SessionsTabContent';
+import ServicesTabContent from './components/ServicesTabContent';
+import RoutinesTabContent from './components/RoutinesTabContent';
+import MessagesTabContent from './components/MessagesTabContent';
+import EarningsTabContent from './components/EarningsTabContent';
 
-const { platformToolsImg } = imagesPaths;
+const featureTabs = [
+	{ label: 'Dashboard', value: 'dashboard', icon: <FireIcon height={24} width={24} /> },
+	{ label: 'Sessions', value: 'sessions', icon: <CalenderIcon height={24} width={24} /> },
+	{ label: 'Services', value: 'services', icon: <StackIcon height={24} width={24} /> },
+	{ label: 'Routines', value: 'routines', icon: <ArticleIcon height={24} width={24} /> },
+	{ label: 'Messages', value: 'messages', icon: <MessageIcon height={24} width={24} /> },
+	{ label: 'Earnings', value: 'earnings', icon: <WalletIcon height={24} width={24} /> },
+];
 
 export default function Page() {
+	const [activeTab, setActiveTab] = useState('dashboard');
 	return (
 		<>
-			<div className="bg-snow-white pt-8 md:pt-[70px] px-4">
-				<div className="max-w-[700px] m-auto text-black text-center">
-					<Typography as={'h1'} className="mb-2.5">
-						Powerful Tools for Coaches
-					</Typography>
-					<Typography as={'p'}>Manage clients, schedule sessions, and grow with ease.</Typography>
-
-					<div className="mt-5">
-						<Button onClick={() => {}} size="default" type="button">
-							Become a Coach
-						</Button>
-					</div>
-				</div>
-
-				<div className="max-sm:pt-8 mb-7 sm:mb-12 max-w-[1100px] max-h-[420px] mx-auto">
-					<Image
-						width={1396}
-						height={460}
-						className="w-full h-full object-cover"
-						src={platformToolsImg}
-						alt="platform_tools_img"
-					/>
-				</div>
-			</div>
+			<PlatformHeaderComponent
+				{...{
+					title: 'Powerful Tools for Coaches',
+					subHeading: 'Manage clients, schedule sessions, and grow with ease.',
+					buttonText: 'Become a Coach',
+				}}
+			/>
 
 			<div className="bg-white">
 				<div className="px-4">
 					<div className="max-w-[1100px] mx-auto overflow-hidden">
-						<PlatfomFeatures />
+						<PlatfomFeaturesTabs
+							{...{ title: 'A Smarter way to train feature highlights', activeTab, setActiveTab, featureTabs }}
+						/>
+
+						<div className="mt-6 sm:mt-9 w-full">
+							{activeTab === 'dashboard' && <DashboardTabContent />}
+							{activeTab === 'sessions' && <SessionsTabContent />}
+							{activeTab === 'services' && <ServicesTabContent />}
+							{activeTab === 'routines' && <RoutinesTabContent />}
+							{activeTab === 'messages' && <MessagesTabContent />}
+							{activeTab === 'earnings' && <EarningsTabContent />}
+						</div>
+
+						<div className="mt-[66px] md:mt-[120px]">
+							<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
+						</div>
 					</div>
 				</div>
 

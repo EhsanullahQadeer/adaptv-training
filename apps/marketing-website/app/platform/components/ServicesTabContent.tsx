@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "../../../components/platform/Card";
 import { services } from "@/lib/public-assets-paths";
 
 const { customizeServices, manageServices } = services;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from '../../../components/platform/Card';
 import { messages } from '@/lib/public-assets-paths';
 
 const { connectedClients, realTimeConversations } = messages;
