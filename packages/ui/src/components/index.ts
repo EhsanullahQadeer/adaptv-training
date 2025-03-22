@@ -1,6 +1,6 @@
 export { Badge } from './badge';
 export { Button } from './button';
-export { Dialog } from './dialog';
+// export { Dialog } from './dialog';
 export { Form } from './form';
 export { Input } from './input';
 export { Label } from './label';

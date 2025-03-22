@@ -22,14 +22,18 @@
 	--color-semi-transparent-black: rgba(0, 0, 0, 0.5);
 	--color-white: #fff;
 	--color-snow-white: #fdfbfb;
+	--color-ash-gray: #EAEAEA;
 	--color-translucent-white: #ffffffb5;
 	--color-froasted-glass: rgba(255, 255, 255, 0.12);
+	--color-faint-white: rgba(255, 255, 255, 0.16);
 	--color-light-gray: #dbdbdb;
 	--color-soft-gray: #E8E8E8;
 	--color-dark-gray: #323232;
 	--color-slate-gray: #475467;
 	--color-light-smoke: rgba(0, 0, 0, 0.1);
+	--color-pale-silver: rgba(219, 219, 219, 0.10);
 	--color-muted-gray : #868686;
+	--color-charcoal-gray: #515151;
 	--color-green : #2FA33A;
 
 

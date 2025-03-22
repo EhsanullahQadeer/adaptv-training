@@ -25,7 +25,7 @@ export default function Page() {
 					</div>
 				</div>
 
-				<div className="max-sm:pt-8 pb-7 sm:pb-12 max-w-[1100px] max-h-[420px] mx-auto">
+				<div className="max-sm:pt-8 mb-7 sm:mb-12 max-w-[1100px] max-h-[420px] mx-auto">
 					<Image
 						width={1396}
 						height={460}

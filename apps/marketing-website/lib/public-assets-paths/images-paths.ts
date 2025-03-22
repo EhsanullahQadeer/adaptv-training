@@ -11,6 +11,7 @@ const imagesPaths = {
   "exerciseLibrary": "/assets/images/exercise-library.svg",
   "exercisemobile": "/assets/images/exercisemobile.svg",
   "gymBoy": "/assets/images/gym-boy.png",
+  "libraryHeroBg": "/assets/images/library-hero-bg.svg",
   "mailSubmitted": "/assets/images/mail-submitted.svg",
   "platformFeatures": {
     "dashboard": {
