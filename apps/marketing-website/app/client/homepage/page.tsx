@@ -1,4 +1,4 @@
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import React from 'react';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Image from 'next/image';
@@ -7,6 +7,8 @@ import { GlobleIcon, KingIcon, PercentCircle } from '@workspace/ui/icons';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import SmartFeatures from './components/SmartFeatures';
 import SmartTracking from './components/SmartTracking';
+import AdaptiveClient from '@/components/AdaptiveClient';
+import { clientsData } from '@/app/homepage/Data';
 const { exerciseLibrary, exercisemobile } = imagesPaths;
 
 const coachingFeatures = [
@@ -36,7 +38,8 @@ const page = () => {
 					</Typography>
 					<Typography as={'h5'}>Personalized training with top fitness pros—anytime, anywhere. </Typography>
 					<div className="mt-5 md:mt-6">
-						<button>Join the Waitlist</button> {/* remaining button */}
+					<Button size="default" type="button">
+					Join the Waitlist</Button>
 					</div>
 				</div>
 				<div className="flex items-center justify-center">
@@ -64,7 +67,7 @@ const page = () => {
 							Enhance workout with smart features{' '}
 						</Typography>
 						<SmartFeatures />
-						<div className="md:mt-28 mb-   max-w-[343px] md:max-w-[663px] m-auto text-black text-center">
+						<div className="md:mt-28    max-w-[343px] md:max-w-[663px] m-auto text-black text-center">
 							<Typography as={'h2'} color="text-white" className="mb-3.5">
 								Master Every Movement. Elevate Your Training.{' '}
 							</Typography>{' '}
@@ -72,20 +75,23 @@ const page = () => {
 								Explore a comprehensive library of exercises across different training styles.
 							</Typography>
 							<div className="mt-5 md:mt-6">
-								<button>Explore the Excercise Library</button>
+							<Button type='button' size="default" className='text-black bg-white text-[14px] font-semibold' >Explore the Excercise Library</Button>
+
 							</div>
 						</div>
 					</div>
 					<Image src={exerciseLibrary} alt="exercise library" className="w-full" width={1400} height={100}></Image>
 				</div>
 				<div className="max-w-[1100px]   mx-auto">
-					<Typography as={'h3'} color="text-white" className="flex mx-4 sm:mb-0 mb-6 justify-center items-center">
+					<Typography as={'h3'} color="text-black" className="flex mx-4 sm:mb-0 mt-20 mb-6 justify-center items-center">
 						Optimize your training with smart tracking
 					</Typography>
 					<div className="mx-4">
-						{' '}
+
 						<SmartTracking />
 					</div>
+					<AdaptiveClient steps={clientsData} />
+
 				</div>
 			</div>
 			<FAQsAccesPlatformSection />

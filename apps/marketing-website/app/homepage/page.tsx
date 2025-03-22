@@ -1,32 +1,35 @@
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import React from 'react';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Image from 'next/image';
 import CoachingSection from '@/components/CoachingSection';
-import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 import TrainingFeatures from './components/TrainingFeatures';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import AdaptiveClient from '@/components/AdaptiveClient';
 import LearnGrow from './components/LearnGrow';
+import {  stepsData } from './Data';
+import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 const { tabImage, collageFour, collageMobile } = imagesPaths;
 
-const coachingFeatures = [
-	{
-		title: 'Own your business',
-		icon: <RequestVerified height={'100%'} width={'100%'} />,
-		desc: 'Customize your services, set your own schedule, and more.',
-	},
-	{
-		title: 'Expand your reach',
-		icon: <GlobleIcon height={'100%'} width={'100%'} />,
-		desc: 'Connects you with Clients locally and globally.',
-	},
-	{
-		title: 'Built for coaches',
-		icon: <DimensionalBlock height={'100%'} width={'100%'} />,
-		desc: 'Effortless business growth for fitness professionals.',
-	},
+
+ const coachingFeatures = [
+    {
+        title: 'Own your business',
+        icon: <RequestVerified height={'100%'} width={'100%'} />,
+        desc: 'Customize your services, set your own schedule, and more.',
+    },
+    {
+        title: 'Expand your reach',
+        icon: <GlobleIcon height={'100%'} width={'100%'} />,
+        desc: 'Connects you with Clients locally and globally.',
+    },
+    {
+        title: 'Built for coaches',
+        icon:  <DimensionalBlock height={'100%'} width={'100%'} />,
+        desc: 'Effortless business growth for fitness professionals.',
+    },
 ];
+
 const page = () => {
 	return (
 		<div className="mt-8 relative  md:mt-[70px] bg-white">
@@ -52,7 +55,9 @@ const page = () => {
 					</Typography>
 					<Typography as={'h5'}>Grow your coaching business, offer personalized training. </Typography>
 					<div className="mt-5 md:mt-6">
-						<button>Become a coach</button> {/* remaining button */}
+					<Button size="default" type="button">
+					Become a coach						</Button>
+					
 					</div>
 				</div>
 
@@ -78,7 +83,7 @@ const page = () => {
 				</div>
 				<LearnGrow/>
 				<div className="max-w-[1100px]  mx-auto  gap-5">
-				<AdaptiveClient/>
+				<AdaptiveClient steps={stepsData} />
 				</div>
 
 			</div>

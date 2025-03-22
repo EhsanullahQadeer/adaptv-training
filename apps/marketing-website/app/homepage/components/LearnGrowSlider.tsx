@@ -6,7 +6,6 @@ import React from 'react';
 
 const { gymBoy } = imagesPaths;
 
-// Generate an array of 15 identical items
 const items = Array.from({ length: 15 }, (_, index) => ({
   id: index,
   name: "Johnny Bell",
@@ -22,7 +21,6 @@ const LearnGrowSlider = () => {
           {items.map((item) => (
             <CarouselItem key={item.id} className="pl-4  relative basis-auto w-[280px] h-[470px]">
               <div className="relative w-full rounded-lg h-full">
-                {/* Image */}
                 <Image
                   src={item.image}
                   layout="fill"

@@ -1,26 +1,48 @@
-import { Typography } from '@workspace/ui/components'
-import React from 'react'
-import ProfileSlider from './ProfileSlider'
+import { Typography } from '@workspace/ui/components';
+import React from 'react';
+import AdaptiveCards from './AdaptiveCards';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@workspace/ui/components/carousel';
 
-const AdaptiveClient = () => {
-  return (
-                        <div className="my-14 mx-4 ">
-                            <Typography as={'h3'} color="text-black" className="flex sm:mb-0 mb-8 justify-center items-center">
-                                A Smarter way to train feature highlights
-                            </Typography>
-                        <div className='flex'>
-                            <div className='w-[430px] flex flex-col'>
-                            <Typography as={'h2'} className=' leading-[100%]'>Personalize your Profile</Typography>
-                            <Typography as={"h6"}  color='text-[#475467]'>Set up your fitness preferences and goals to match with the right trainers.</Typography>
-                            </div>
-                            <div className="w-0.5 h-10 border-r border-dashed border-b">
-                            </div>
-
-
-                        </div>
-                        </div>
-      
-  )
+interface Step {
+  title: string;
+  description: string;
+  imageSrc: string;
+  stepNumber: number;
+  showButton?: boolean;
+  buttonText?: string;
 }
 
-export default AdaptiveClient
+interface AdaptiveClientProps {
+  steps: Step[];
+}
+
+const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps }) => {
+  return (
+    <div className="my-14 mx-4">
+      <Typography as={'h3'} color="text-black" className="flex mb-8 justify-center items-center">
+        How to become an Adaptv coach
+      </Typography>
+      
+      <Carousel className="lg:max-w-[1100px] max-w-[830px] mx-auto gap-5">
+        <CarouselContent>
+          {steps.map((step, index) => (
+            <CarouselItem key={index}>
+              <AdaptiveCards 
+                title={step.title} 
+                description={step.description} 
+                imageSrc={step.imageSrc} 
+                stepNumber={step.stepNumber} 
+                showButton={step.showButton} 
+                buttonText={step.buttonText} 
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
+  );
+};
+
+export default AdaptiveClient;
