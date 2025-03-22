@@ -42,7 +42,7 @@ const AdaptiveCards: React.FC<AdaptiveCardsProps> = ({
         <Typography as={'h6'} color='text-[#475467]'>{description}</Typography>
         {showButton && (
          <div className='mt-8 w-fit'>
-           <Button type='button' size="default" >
+           <Button type='button' size="xl" >
             {buttonText}
           </Button>
          </div>
