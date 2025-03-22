@@ -85,35 +85,34 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 					{/* Render the current step component */}
 					{CurrentStep && <CurrentStep form={form} />}
 				</div>
-				<div className="flex justify-between">
-					{/* <Button onClick={handleBack} variant="outline" type="button" size="lg">
-						Back
-					</Button>
-					<Button onClick={handleNext} size="lg" type="button">
-						Next
-					</Button> */}
-					{currentStep === 2 ? (
-						<Button onClick={handleBack} variant="outline" type="button" size="lg">
-							Back
-						</Button>
-					) : (
-						<div></div>
-					)}
-					{currentStep == 1 ? (
-						<Button onClick={handleNext} size="lg" type="button">
-							Next
-						</Button>
-					) : (
-						currentStep == 2 && (
-							<Button
-								size="lg"
-								onClick={handleNext}
-								//  type="submit"
-							>
-								Submit
+				<div className="flex justify-between gap-3">
+					<div className="flex-1">
+						{currentStep === 2 ? (
+							<Button className="w-full xs:w-auto" onClick={handleBack} variant="outline" type="button" size="lg">
+								Back
 							</Button>
-						)
-					)}
+						) : (
+							<div></div>
+						)}
+					</div>
+					<div className="flex-1 flex justify-end">
+						{currentStep == 1 ? (
+							<Button className="w-full xs:w-auto" onClick={handleNext} size="lg" type="button">
+								Next
+							</Button>
+						) : (
+							currentStep == 2 && (
+								<Button
+									size="lg"
+									onClick={handleNext}
+									//  type="submit"
+									className="w-full xs:w-auto"
+								>
+									Submit
+								</Button>
+							)
+						)}
+					</div>
 				</div>
 			</form>
 		</Form>

@@ -1,5 +1,5 @@
 import { imagesPaths } from '@/lib/public-assets-paths';
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import { BrainIcon, FlameIcon, RequestVerified, StairsIcon, UploadIcon, ZigzagIcon } from '@workspace/ui/icons';
 import Image from 'next/image';
 import React from 'react';
@@ -94,9 +94,9 @@ const SmartTracking = () => {
               </div>
             ))}
           </div>
-          <button className='mt-4 '>
+          <Button type='button' size="default" className='mt-4 '>
             {card.button.text}
-          </button>
+          </Button>
           </div>
         </div>
       ))}
