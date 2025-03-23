@@ -49,10 +49,9 @@ export default function Page() {
 							{activeTab === 'messages' && <MessagesTabContent />}
 							{activeTab === 'earnings' && <EarningsTabContent />}
 						</div>
-
-						<div className="mt-[66px] md:mt-[120px]">
-							<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
-						</div>
+					</div>
+					<div className="mt-[66px] md:mt-[120px]">
+						<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
 					</div>
 				</div>
 

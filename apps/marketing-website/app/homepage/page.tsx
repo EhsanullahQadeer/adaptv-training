@@ -31,7 +31,7 @@ const coachingFeatures = [
 
 const page = () => {
 	return (
-		<div className="mt-8 relative  md:mt-[70px] bg-white">
+		<div className="mt-8 relative md:mt-[70px] bg-white">
 			<Image
 				src={collageMobile}
 				alt="collage"
@@ -47,8 +47,8 @@ const page = () => {
 				height={1000}
 			></Image>
 
-			<div className=" m-auto z-10 relative  ">
-				<div className="md:mb-14 mb-   max-w-[343px] md:max-w-[700px] m-auto text-black text-center">
+			<div className="m-auto z-10 relative">
+				<div className="md:mb-14 max-w-[343px] md:max-w-[700px] m-auto text-black text-center">
 					<Typography as={'h1'} className="mb-2.5">
 						Build Your Coaching Business
 					</Typography>
@@ -60,30 +60,30 @@ const page = () => {
 					</div>
 				</div>
 
-				<div className="max-w-[1100px]  mx-auto  gap-5">
-					<div className="mb-14">
-						<Image src={tabImage} alt="tab-image" width={1070} height={666} />
-					</div>
-					<div className="my-14 mx-4">
-						<CoachingSection
-							features={coachingFeatures}
-							heading1="Coaching isn’t just about training—"
-							heading2="it’s about building connections and changing lives."
-							heading3=" Maximize your impact with these exclusive benefits."
-						/>
-					</div>
-					<div className="my-14 mx-4 ">
-						<Typography as={'h3'} color="text-black" className="flex sm:mb-0 mb-6 justify-center items-center">
-							A Smarter way to train feature highlights
-						</Typography>
-						<TrainingFeatures />
+				<div className="mx-4">
+					<div className="max-w-[1100px] mx-auto gap-5">
+						<div className="mb-14">
+							<Image src={tabImage} alt="tab-image" width={1070} height={666} />
+						</div>
+						<div className="my-14">
+							<CoachingSection
+								features={coachingFeatures}
+								heading1="Coaching isn’t just about training—"
+								heading2="it’s about building connections and changing lives."
+								heading3=" Maximize your impact with these exclusive benefits."
+							/>
+						</div>
+						<div className="my-14">
+							<Typography as={'h3'} color="text-black" className="flex sm:mb-0 mb-6 justify-center items-center">
+								A Smarter way to train feature highlights
+							</Typography>
+							<TrainingFeatures />
+						</div>
 					</div>
 				</div>
 				<LearnGrow />
-				<div className="mx-4 mt-16 md:mt-[120px]">
-					<div className="max-w-[1100px] mx-auto overflow-hidden">
-						<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
-					</div>
+				<div className="mx-4 mt-[66px] md:mt-[120px]">
+					<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
 				</div>
 			</div>
 			<FAQsAccesPlatformSection />

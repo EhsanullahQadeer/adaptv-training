@@ -25,12 +25,12 @@ interface AdaptiveClientProps {
 
 const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps, title }) => {
 	return (
-		<div>
-			<Typography as={'h3'} color="text-black" className="flex mb-8 justify-center items-center">
+		<div className="max-w-[1100px] mx-auto gap-5">
+			<Typography as={'h3'} align="center" className="mb-8">
 				{title}
 			</Typography>
-
-			<Carousel className="lg:max-w-[1100px] max-w-[830px] mx-auto gap-5">
+			{/* max-w-[830px] */}
+			<Carousel className="">
 				<CarouselContent>
 					{steps.map((step, index) => (
 						<CarouselItem key={index}>

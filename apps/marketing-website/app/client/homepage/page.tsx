@@ -31,16 +31,13 @@ const coachingFeatures = [
 const page = () => {
 	return (
 		<div className="mt-8 relative  md:mt-[70px] bg-white">
-			<div className=" m-auto z-10 relative  ">
-				<div className="md:mb-14 mb-   max-w-[343px] md:max-w-[663px] m-auto text-black text-center">
+			<div className="m-auto z-10 relative">
+				<div className="md:mb-14 max-w-[343px] md:max-w-[663px] m-auto text-black text-center">
 					<Typography as={'h1'} className="mb-2.5">
 						Find Your Coach. Train Anywhere.{' '}
 					</Typography>
 					<Typography as={'h5'}>Personalized training with top fitness pros—anytime, anywhere. </Typography>
 					<div className="mt-5 md:mt-6">
-						<Button size="default" type="button">
-							Join the Waitlist
-						</Button>
 						<Button size="default" type="button">
 							Join the Waitlist
 						</Button>
@@ -55,8 +52,8 @@ const page = () => {
 						height={100}
 					></Image>
 				</div>
-				<div className="max-w-[1100px]  mx-auto  gap-5">
-					<div className="my-14 mx-4">
+				<div className="my-14 mx-4">
+					<div className="max-w-[1100px] mx-auto gap-5">
 						<CoachingSection
 							features={coachingFeatures}
 							heading1="Coaching isn’t just about training—"
@@ -87,13 +84,16 @@ const page = () => {
 					</div>
 					<Image src={exerciseLibrary} alt="exercise library" className="w-full" width={1400} height={100}></Image>
 				</div>
-				<div className="max-w-[1100px] mx-auto pt-30">
-					<Typography as={'h3'} color="text-black" className="flex mx-4 sm:mb-0 mb-6 justify-center items-center">
-						Optimize your training with smart tracking
-					</Typography>
-					<div className="mx-4 mt-9">
-						<SmartTracking />
+				<div className="mx-4">
+					<div className="max-w-[1100px] mx-auto pt-30">
+						<Typography as={'h3'} color="text-black" className="sm:mb-0 mb-6">
+							Optimize your training with smart tracking
+						</Typography>
+						<div className="mt-9">
+							<SmartTracking />
+						</div>
 					</div>
+
 					<div className="mt-16 md:mt-[120px]">
 						<AdaptiveClient steps={clientsData} title="How to become an Adaptv Client" />
 					</div>

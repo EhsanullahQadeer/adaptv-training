@@ -1,15 +1,22 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
-  "adaptive1": "/assets/images/adaptive-1.svg",
-  "adaptive2": "/assets/images/adaptive-2.svg",
-  "adaptive3": "/assets/images/adaptive-3.svg",
   "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "blogFeature": "/assets/images/blog-feature.svg",
   "blogSample": "/assets/images/blog-sample.svg",
   "boy": "/assets/images/boy.png",
-  "client1": "/assets/images/client-1.svg",
-  "client2": "/assets/images/client-2.svg",
-  "client3": "/assets/images/client-3.svg",
+  "carousel": {
+    "clientCarousel": {
+      "createAccountImg": "/assets/images/carousel/client-carousel/create-account-img.svg",
+      "profileImg": "/assets/images/carousel/client-carousel/profile-img.svg",
+      "startTrainingImg": "/assets/images/carousel/client-carousel/start-training-img.svg"
+    },
+    "coachCarousel": {
+      "applyOnlineImg": "/assets/images/carousel/coach-carousel/apply-online-img.svg",
+      "profileSetupImg": "/assets/images/carousel/coach-carousel/profile-setup-img.svg",
+      "startCoachingImg": "/assets/images/carousel/coach-carousel/start-coaching-img.svg",
+      "verificationInterviewImg": "/assets/images/carousel/coach-carousel/verification-interview-img.svg"
+    }
+  },
   "collageFour": "/assets/images/collage-four.png",
   "collageMobile": "/assets/images/collage-mobile.png",
   "ellipseBottom": "/assets/images/ellipse-bottom.png",
@@ -93,6 +100,9 @@ const imagesPaths = {
 };
 
 export default imagesPaths;
+export const carousel = imagesPaths.carousel;
+export const clientCarousel = imagesPaths.carousel.clientCarousel;
+export const coachCarousel = imagesPaths.carousel.coachCarousel;
 export const platformFeatures = imagesPaths.platformFeatures;
 export const client = imagesPaths.platformFeatures.client;
 export const classes = imagesPaths.platformFeatures.client.classes;
