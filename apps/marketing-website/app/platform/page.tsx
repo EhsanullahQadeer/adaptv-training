@@ -14,12 +14,12 @@ import MessagesTabContent from './components/MessagesTabContent';
 import EarningsTabContent from './components/EarningsTabContent';
 
 const featureTabs = [
-	{ label: 'Dashboard', value: 'dashboard', icon: <FireIcon height={24} width={24} /> },
-	{ label: 'Sessions', value: 'sessions', icon: <CalenderIcon height={24} width={24} /> },
-	{ label: 'Services', value: 'services', icon: <StackIcon height={24} width={24} /> },
-	{ label: 'Routines', value: 'routines', icon: <ArticleIcon height={24} width={24} /> },
-	{ label: 'Messages', value: 'messages', icon: <MessageIcon height={24} width={24} /> },
-	{ label: 'Earnings', value: 'earnings', icon: <WalletIcon height={24} width={24} /> },
+	{ label: 'Dashboard', value: 'dashboard', icon: FireIcon },
+	{ label: 'Sessions', value: 'sessions', icon: CalenderIcon },
+	{ label: 'Services', value: 'services', icon: StackIcon },
+	{ label: 'Routines', value: 'routines', icon: ArticleIcon },
+	{ label: 'Messages', value: 'messages', icon: MessageIcon },
+	{ label: 'Earnings', value: 'earnings', icon: WalletIcon },
 ];
 
 export default function Page() {

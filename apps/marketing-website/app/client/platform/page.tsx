@@ -8,13 +8,16 @@ import PlatfomFeaturesTabs from '@/components/platform/PlatfomFeaturesTabs';
 import { FireIcon, MessageIcon, UserIcon, UserSearchIcon, UsersIcon } from '@workspace/ui/icons';
 import SessionTabContent from './components/SessionTabContent';
 import TrainersTabContent from './components/TrainersTabContent';
+import ClassesTabContent from './components/ClassesTabContent';
+import ClientMessagesTabContent from './components/ClientMessagesTabContent';
+import ProfileTabContent from './components/ProfileTabContent';
 
 const featureTabs = [
-	{ label: 'Session', value: 'session', icon: <FireIcon height={24} width={24} /> },
-	{ label: 'Trainers', value: 'trainers', icon: <UserSearchIcon height={24} width={24} /> },
-	{ label: 'Classes', value: 'classes', icon: <UsersIcon height={24} width={24} /> },
-	{ label: 'Messages', value: 'messages', icon: <MessageIcon height={24} width={24} /> },
-	{ label: 'Profile', value: 'profile', icon: <UserIcon height={24} width={24} /> },
+	{ label: 'Session', value: 'session', icon: FireIcon },
+	{ label: 'Trainers', value: 'trainers', icon: UserSearchIcon },
+	{ label: 'Classes', value: 'classes', icon: UsersIcon },
+	{ label: 'Messages', value: 'messages', icon: MessageIcon },
+	{ label: 'Profile', value: 'profile', icon: UserIcon },
 ];
 
 export default function Page() {
@@ -39,9 +42,9 @@ export default function Page() {
 						<div className="mt-6 sm:mt-9 w-full">
 							{activeTab === 'session' && <SessionTabContent />}
 							{activeTab === 'trainers' && <TrainersTabContent />}
-							{/* {activeTab === 'classes' && <ServicesTabContent />} */}
-							{/* {activeTab === 'messages' && <RoutinesTabContent />} */}
-							{/* {activeTab === 'profile' && <MessagesTabContent />} */}
+							{activeTab === 'classes' && <ClassesTabContent />}
+							{activeTab === 'messages' && <ClientMessagesTabContent />}
+							{activeTab === 'profile' && <ProfileTabContent />}
 						</div>
 
 						<div className="mt-[66px] md:mt-[120px]">
