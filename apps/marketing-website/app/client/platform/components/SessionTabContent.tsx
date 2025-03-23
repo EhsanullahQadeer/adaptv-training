@@ -34,7 +34,7 @@ const sections = [
 		reverse: false,
 		textSectionProps: 'max-w-[430px]',
 		leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
-		rightSideWrapProps: 'my-5 max-sm:self-end max-sm:ml-5 max-sm:max-w-[323px]',
+		rightSideWrapProps: 'lg:mr-[50px] md:mr-6 sm:mr-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[454px]',
 	},
 ];
 

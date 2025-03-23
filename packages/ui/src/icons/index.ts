@@ -26,5 +26,8 @@ export { default as StackIcon } from './StackIcon';
 export { default as StairsIcon } from './StairsIcon';
 export { default as TimerIcon } from './TimerIcon';
 export { default as UploadIcon } from './UploadIcon';
+export { default as UserIcon } from './UserIcon';
+export { default as UserSearchIcon } from './UserSearchIcon';
+export { default as UsersIcon } from './UsersIcon';
 export { default as WalletIcon } from './WalletIcon';
 export { default as ZigzagIcon } from './ZigzagIcon';
