@@ -1,4 +1,5 @@
 export { default as AdptabilityIcon } from './AdptabilityIcon';
+export { default as ArrowDown } from './ArrowDown';
 export { default as ArrowIcon } from './ArrowIcon';
 export { default as ArticleIcon } from './ArticleIcon';
 export { default as BarbellIcon } from './BarbellIcon';
