@@ -67,9 +67,9 @@ const SmartTracking = () => {
   return (
     <div className='flex sm:flex-row flex-col gap-6'>
       {trainingCards.map((card, index) => (
-        <div key={index} className='mt-10 rounded-lg bg-pale-azure  '>
+        <div key={index} className='rounded-lg bg-pale-azure  '>
           <Image src={card.image} alt='image tracking' className='rounded-t-lg' width={1000} height={1000} />
-          <div className='p-7'>
+          <div className='p-8'>
           <Typography as='h5' sizeVariant='small' color='text-semi-transparent-black'>
             {card.step}
           </Typography>
@@ -94,7 +94,7 @@ const SmartTracking = () => {
               </div>
             ))}
           </div>
-          <Button type='button' size="default" className='mt-4 '>
+          <Button type='button' size="xl" className='mt-4 '>
             {card.button.text}
           </Button>
           </div>

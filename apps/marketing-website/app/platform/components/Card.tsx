@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> = ({
 							{description}
 						</Typography>
 						<div className="mt-8">
-							<Button onClick={handleButton} size="default" type="button">
+							<Button onClick={handleButton} size="xl" type="button">
 								{buttonText}
 							</Button>
 						</div>
@@ -68,7 +68,7 @@ const Card: React.FC<CardProps> = ({
 							{description}
 						</Typography>
 						<div className="mt-8">
-							<Button onClick={handleButton} size="default" type="button">
+							<Button onClick={handleButton} size="xl" type="button">
 								{buttonText}
 							</Button>
 						</div>
