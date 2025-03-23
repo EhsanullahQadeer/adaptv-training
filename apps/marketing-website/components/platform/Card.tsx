@@ -11,7 +11,7 @@ interface CardProps {
 	textSectionProps?: string;
 	leftSideWrapProps?: string;
 	rightSideWrapProps?: string;
-	handleButton: () => void;
+	handleButton?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({

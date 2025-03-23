@@ -20,13 +20,14 @@ interface Step {
 
 interface AdaptiveClientProps {
 	steps: Step[];
+	title: string;
 }
 
-const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps }) => {
+const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps, title }) => {
 	return (
-		<div className="my-30 mx-4">
-			<Typography as={'h3'} color="text-black" className="flex mb-9 justify-center items-center">
-				How to become an Adaptv coach
+		<div>
+			<Typography as={'h3'} color="text-black" className="flex mb-8 justify-center items-center">
+				{title}
 			</Typography>
 
 			<Carousel className="lg:max-w-[1100px] max-w-[830px] mx-auto gap-5">

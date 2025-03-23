@@ -8,7 +8,7 @@ import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import SmartFeatures from './components/SmartFeatures';
 import SmartTracking from './components/SmartTracking';
 import AdaptiveClient from '@/components/AdaptiveClient';
-import { clientsData } from '@/app/homepage/Data';
+import { clientsData } from '@/components/data';
 const { exerciseLibrary, exercisemobile } = imagesPaths;
 
 const coachingFeatures = [
@@ -38,6 +38,9 @@ const page = () => {
 					</Typography>
 					<Typography as={'h5'}>Personalized training with top fitness pros—anytime, anywhere. </Typography>
 					<div className="mt-5 md:mt-6">
+						<Button size="default" type="button">
+							Join the Waitlist
+						</Button>
 						<Button size="default" type="button">
 							Join the Waitlist
 						</Button>
@@ -91,7 +94,9 @@ const page = () => {
 					<div className="mx-4 mt-9">
 						<SmartTracking />
 					</div>
-					<AdaptiveClient steps={clientsData} />
+					<div className="mt-16 md:mt-[120px]">
+						<AdaptiveClient steps={clientsData} title="How to become an Adaptv Client" />
+					</div>
 				</div>
 			</div>
 			<FAQsAccesPlatformSection />

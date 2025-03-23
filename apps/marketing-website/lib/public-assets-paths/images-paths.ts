@@ -1,9 +1,9 @@
 const imagesPaths = {
   "aboutHeroImg": "/assets/images/about-hero-img.png",
-  "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "adaptive1": "/assets/images/adaptive-1.svg",
   "adaptive2": "/assets/images/adaptive-2.svg",
   "adaptive3": "/assets/images/adaptive-3.svg",
+  "adaptvLogo": "/assets/images/adaptv-logo.svg",
   "blogFeature": "/assets/images/blog-feature.svg",
   "blogSample": "/assets/images/blog-sample.svg",
   "boy": "/assets/images/boy.png",
@@ -20,34 +20,58 @@ const imagesPaths = {
   "libraryHeroBg": "/assets/images/library-hero-bg.svg",
   "mailSubmitted": "/assets/images/mail-submitted.svg",
   "platformFeatures": {
-    "dashboard": {
-      "impactImg": "/assets/images/platform-features/dashboard/impact-img.svg",
-      "manageCoachingImg": "/assets/images/platform-features/dashboard/manage-coaching-img.svg",
-      "reachGraphImg": "/assets/images/platform-features/dashboard/reach-graph-img.svg",
-      "revenueImg": "/assets/images/platform-features/dashboard/revenue-img.svg",
-      "trainingScheduleImg": "/assets/images/platform-features/dashboard/training-schedule-img.svg"
+    "client": {
+      "classes": {
+        "browseClassImg": "/assets/images/platform-features/client/classes/browse-class-img.svg",
+        "findClassImg": "/assets/images/platform-features/client/classes/find-class-img.svg"
+      },
+      "clientMessages": {
+        "startChattingImg": "/assets/images/platform-features/client/client-messages/start-chatting-img.svg",
+        "viewMsgsImg": "/assets/images/platform-features/client/client-messages/view-msgs-img.svg"
+      },
+      "profile": {
+        "profileImg": "/assets/images/platform-features/client/profile/profile-img.svg"
+      },
+      "session": {
+        "achievementsImg": "/assets/images/platform-features/client/session/achievements-img.svg",
+        "sessionCalender": "/assets/images/platform-features/client/session/session-calender.svg",
+        "sessionJoinImg": "/assets/images/platform-features/client/session/session-join-img.svg"
+      },
+      "trainers": {
+        "searchCoachImg": "/assets/images/platform-features/client/trainers/search-coach-img.svg",
+        "topTrainersImg": "/assets/images/platform-features/client/trainers/top-trainers-img.svg"
+      }
     },
-    "earnings": {
-      "analyzeEarnings": "/assets/images/platform-features/earnings/analyze-earnings.svg",
-      "paymentHistory": "/assets/images/platform-features/earnings/payment-history.svg",
-      "paymentStatus": "/assets/images/platform-features/earnings/payment-status.svg"
-    },
-    "messages": {
-      "connectedClients": "/assets/images/platform-features/messages/connected-clients.svg",
-      "realTimeConversations": "/assets/images/platform-features/messages/real-time-conversations.svg"
-    },
-    "routines": {
-      "customWorkouts": "/assets/images/platform-features/routines/custom-workouts.svg",
-      "trainingPlans": "/assets/images/platform-features/routines/training-plans.svg"
-    },
-    "services": {
-      "customizeServices": "/assets/images/platform-features/services/customize-services.svg",
-      "manageServices": "/assets/images/platform-features/services/manage-services.svg"
-    },
-    "sessions": {
-      "manageSessions": "/assets/images/platform-features/sessions/manage-sessions.svg",
-      "sessionCalender": "/assets/images/platform-features/sessions/session-calender.svg",
-      "trackProgress": "/assets/images/platform-features/sessions/track-progress.svg"
+    "coach": {
+      "dashboard": {
+        "impactImg": "/assets/images/platform-features/coach/dashboard/impact-img.svg",
+        "manageCoachingImg": "/assets/images/platform-features/coach/dashboard/manage-coaching-img.svg",
+        "reachGraphImg": "/assets/images/platform-features/coach/dashboard/reach-graph-img.svg",
+        "revenueImg": "/assets/images/platform-features/coach/dashboard/revenue-img.svg",
+        "trainingScheduleImg": "/assets/images/platform-features/coach/dashboard/training-schedule-img.svg"
+      },
+      "earnings": {
+        "analyzeEarnings": "/assets/images/platform-features/coach/earnings/analyze-earnings.svg",
+        "paymentHistory": "/assets/images/platform-features/coach/earnings/payment-history.svg",
+        "paymentStatus": "/assets/images/platform-features/coach/earnings/payment-status.svg"
+      },
+      "messages": {
+        "connectedClients": "/assets/images/platform-features/coach/messages/connected-clients.svg",
+        "realTimeConversations": "/assets/images/platform-features/coach/messages/real-time-conversations.svg"
+      },
+      "routines": {
+        "customWorkouts": "/assets/images/platform-features/coach/routines/custom-workouts.svg",
+        "trainingPlans": "/assets/images/platform-features/coach/routines/training-plans.svg"
+      },
+      "services": {
+        "customizeServices": "/assets/images/platform-features/coach/services/customize-services.svg",
+        "manageServices": "/assets/images/platform-features/coach/services/manage-services.svg"
+      },
+      "sessions": {
+        "manageSessions": "/assets/images/platform-features/coach/sessions/manage-sessions.svg",
+        "sessionCalender": "/assets/images/platform-features/coach/sessions/session-calender.svg",
+        "trackProgress": "/assets/images/platform-features/coach/sessions/track-progress.svg"
+      }
     }
   },
   "platformImg1": "/assets/images/platform-img-1.png",
@@ -70,9 +94,16 @@ const imagesPaths = {
 
 export default imagesPaths;
 export const platformFeatures = imagesPaths.platformFeatures;
-export const dashboard = imagesPaths.platformFeatures.dashboard;
-export const earnings = imagesPaths.platformFeatures.earnings;
-export const messages = imagesPaths.platformFeatures.messages;
-export const routines = imagesPaths.platformFeatures.routines;
-export const services = imagesPaths.platformFeatures.services;
-export const sessions = imagesPaths.platformFeatures.sessions;
+export const client = imagesPaths.platformFeatures.client;
+export const classes = imagesPaths.platformFeatures.client.classes;
+export const clientMessages = imagesPaths.platformFeatures.client.clientMessages;
+export const profile = imagesPaths.platformFeatures.client.profile;
+export const session = imagesPaths.platformFeatures.client.session;
+export const trainers = imagesPaths.platformFeatures.client.trainers;
+export const coach = imagesPaths.platformFeatures.coach;
+export const dashboard = imagesPaths.platformFeatures.coach.dashboard;
+export const earnings = imagesPaths.platformFeatures.coach.earnings;
+export const messages = imagesPaths.platformFeatures.coach.messages;
+export const routines = imagesPaths.platformFeatures.coach.routines;
+export const services = imagesPaths.platformFeatures.coach.services;
+export const sessions = imagesPaths.platformFeatures.coach.sessions;

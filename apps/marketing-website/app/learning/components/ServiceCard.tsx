@@ -12,7 +12,7 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, dotColor }) => {
 	return (
-		<div className="bg-[#F5F5F5] sm:w-[260px] w-[343px] rounded-xl p-[14px]">
+		<div className="bg-whisper-gray sm:w-[260px] w-[343px] rounded-xl p-[14px]">
 			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
 				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: dotColor }}></span>
 				<Typography

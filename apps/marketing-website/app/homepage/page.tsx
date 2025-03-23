@@ -7,7 +7,7 @@ import TrainingFeatures from './components/TrainingFeatures';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import AdaptiveClient from '@/components/AdaptiveClient';
 import LearnGrow from './components/LearnGrow';
-import { stepsData } from './Data';
+import { stepsData } from '../../components/data';
 import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 const { tabImage, collageFour, collageMobile } = imagesPaths;
 
@@ -55,7 +55,7 @@ const page = () => {
 					<Typography as={'h5'}>Grow your coaching business, offer personalized training. </Typography>
 					<div className="mt-5 md:mt-6">
 						<Button size="default" type="button">
-							Become a coach
+							Become a coach{' '}
 						</Button>
 					</div>
 				</div>
@@ -80,8 +80,10 @@ const page = () => {
 					</div>
 				</div>
 				<LearnGrow />
-				<div className="max-w-[1100px]  mx-auto  gap-5">
-					<AdaptiveClient steps={stepsData} />
+				<div className="mx-4 mt-16 md:mt-[120px]">
+					<div className="max-w-[1100px] mx-auto overflow-hidden">
+						<AdaptiveClient steps={stepsData} title="How to become an Adaptv coach" />
+					</div>
 				</div>
 			</div>
 			<FAQsAccesPlatformSection />
