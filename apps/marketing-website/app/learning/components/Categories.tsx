@@ -31,28 +31,36 @@ const options = [
 const Categories = () => {
 	return (
 		<div>
-			<Combobox
-				rotateIcon
-				icon={<ArrowDown />}
-				buttonClassName="w-full rounded-[10px] justify-between"
-				{...{ options }}
-			/>
-			{/* <div className="px-2.5 py-3 border rounded-[10px] flex justify-between items-center">
-				<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
-					All Resource
-				</Typography>
-				<CountChip />
+			 {/* Small screen */}
+			<div className="block lg:hidden">
+				<Combobox
+					rotateIcon
+					icon={<ArrowDown />}
+					buttonClassName="w-full rounded-[10px] justify-between"
+					placeholder="All Resource"
+					{...{ options }}
+				/>
 			</div>
 
-			<div className="flex gap-3.5 cursor-pointer items-center py-3 px-2.5">
-				<div className="flex gap-2 items-center">
-					<div style={{ backgroundColor: '#9A38A6' }} className="h-[9px] w-[9px] rounded-full" />
+			{/* Large screen */}
+			<div className="hidden lg:block">
+				<div className="px-2.5 py-3 border rounded-[10px] flex justify-between items-center">
 					<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
-						Coaching Techniques
+						All Resource
 					</Typography>
+					<CountChip />
 				</div>
-				<CountChip />
-			</div> */}
+
+				<div className="flex gap-3.5 cursor-pointer items-center py-3 px-2.5">
+					<div className="flex gap-2 items-center">
+						<div style={{ backgroundColor: '#9A38A6' }} className="h-[9px] w-[9px] rounded-full" />
+						<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
+							Coaching Techniques
+						</Typography>
+					</div>
+					<CountChip />
+				</div>
+			</div>
 		</div>
 	);
 };

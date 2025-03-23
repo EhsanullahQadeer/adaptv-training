@@ -1,6 +1,7 @@
 export { Badge } from './badge';
 export { Button } from './button';
 export { Carousel } from './carousel';
+export { Combobox } from './combobox';
 export { Command } from './command';
 export { Dialog } from './dialog';
 export { Form } from './form';
@@ -9,6 +10,7 @@ export { Label } from './label';
 export { PhonenumberInput } from './phonenumber-input';
 export { Popover } from './popover';
 export { RadioGroup } from './radio-group';
+export { Select } from './select';
 export { Separator } from './separator';
 export { Stepper } from './stepper';
 export { Textarea } from './textarea';

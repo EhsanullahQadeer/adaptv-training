@@ -26,7 +26,7 @@ export function Combobox({
 	noOptionsMessage = 'No options found.',
 	onSelect,
 	buttonClassName = 'w-[200px] justify-between',
-	icon, // Use ReactNode directly
+	icon = <ChevronsUpDown/>, // Use ReactNode directly
 	rotateIcon = true, // Default to true
 	popoverContentProps, // Destructure the new prop
 	popoverClassName, // Destructure the new prop
