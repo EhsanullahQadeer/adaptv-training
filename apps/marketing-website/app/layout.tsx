@@ -3,6 +3,7 @@ import '@/app/globals.css';
 import { Providers } from '@/components/providers';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Header from '@/components/Header';
 
 const fonetika = localFont({
 	src: [
@@ -42,8 +43,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" suppressHydrationWarning className="h-full w-full">
-			<body className={`${fonetika.variable} antialiased h-full w-full  flex flex-col`}>
-				<Providers>{children}</Providers>
+			<body className={`${fonetika.variable} antialiased h-full w-full flex flex-col`}>
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);
