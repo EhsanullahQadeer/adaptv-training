@@ -1,6 +1,7 @@
 import ServiceCard from './components/ServiceCard';
 import { Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
+import Categories from './components/Categories';
 
 const { boy } = imagesPaths;
 export const services = [
@@ -36,8 +37,10 @@ export default function Home() {
 				</div>
 
 				<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
-					<div className="sm:w-[240px]"></div>
-					<div className="flex sm:justify-left justify-center sm:pl-4 gap-3 flex-wrap">
+					<div className="sm:w-[260px] pr-5 border-r border-light-gray">
+						<Categories />
+					</div>
+					<div className="flex sm:justify-left justify-center  gap-3 flex-wrap">
 						{services.map((service, index) => (
 							<ServiceCard
 								key={index}
