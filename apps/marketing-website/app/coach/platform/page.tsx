@@ -1,6 +1,5 @@
 'use client';
 import React, { useState } from 'react';
-import PlatfomFeaturesTabs from '../../components/platform/PlatfomFeaturesTabs';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import AdaptiveClient from '@/components/AdaptiveClient';
 import { stepsData } from '@/components/data';
@@ -12,6 +11,7 @@ import ServicesTabContent from './components/ServicesTabContent';
 import RoutinesTabContent from './components/RoutinesTabContent';
 import MessagesTabContent from './components/MessagesTabContent';
 import EarningsTabContent from './components/EarningsTabContent';
+import PlatfomFeaturesTabs from '@/components/platform/PlatfomFeaturesTabs';
 
 const featureTabs = [
 	{ label: 'Dashboard', value: 'dashboard', icon: FireIcon },

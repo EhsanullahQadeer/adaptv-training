@@ -1,10 +1,15 @@
 import Image from 'next/image';
-import CoachingSection from '../../components/CoachingSection';
-import LearnSection from './components/LearnSection';
-import FAQsAccesPlatformSection from '../../components/FAQsAccesPlatformSection';
 import { Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import { AdptabilityIcon, BrainIcon, FlameIcon, GlobleIcon, GrowthIcon } from '@workspace/ui/icons';
+import CoachingSection from '../CoachingSection';
+import LearnSection from './LearnSection';
+import FAQsAccesPlatformSection from '../FAQsAccesPlatformSection';
+
+interface Props {
+	pageHeading: string;
+	headingMaxWidth?: string;
+}
 
 const coachingFeatures = [
 	{
@@ -36,13 +41,14 @@ const coachingFeatures = [
 
 const { aboutHeroImg } = imagesPaths;
 
-export default function Page() {
+const AboutPageView = (props: Props) => {
+	const { pageHeading, headingMaxWidth } = props;
 	return (
 		<div className="pt-8 md:pt-[70px] bg-white">
 			<div className="mx-4">
-				<div className="max-w-[700px] m-auto text-black text-center">
+				<div className={`${headingMaxWidth ? headingMaxWidth : 'max-w-[700px]'} m-auto text-black text-center`}>
 					<Typography as="h1" className="mb-2.5">
-						Empowering Coaches. Transforming Fitness.
+						{pageHeading}
 					</Typography>
 					<Typography as={'p'}>We connect fitness professionals and Clients worldwide</Typography>
 				</div>
@@ -70,4 +76,6 @@ export default function Page() {
 			<FAQsAccesPlatformSection />
 		</div>
 	);
-}
+};
+
+export default AboutPageView;

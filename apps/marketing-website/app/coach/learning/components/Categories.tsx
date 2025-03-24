@@ -1,6 +1,5 @@
 import React from 'react';
-import { categories } from './Data';
-import { Input, Typography } from '@workspace/ui/components';
+import { Typography } from '@workspace/ui/components';
 import CountChip from './CountChip';
 import { Combobox } from '@workspace/ui/components/combobox';
 import ArrowDown from '@workspace/ui/icons/ArrowDown'; // Import the default export directly

@@ -64,20 +64,26 @@ const page = () => {
 								Public
 							</Typography>
 							{populars.map((popular, index) => (
-								<Typography as={'h6'} sizeVariant="small" className="py-4 border-b w-full border-[#00000029]">
+								<Typography
+									key={index}
+									as={'h6'}
+									sizeVariant="small"
+									className="py-4 border-b w-full border-[#00000029]"
+								>
 									{popular}
 								</Typography>
 							))}
 						</div>
 					</div>
 				</div>
-				</div>
+			</div>
 
-				<AccessToPlatformSection
-					title="Your best workout awaits"
-					subtitle="Discover classes and trainers tailored to your fitness goals."
-					buttonText="Start Training"
-				/>
+			<AccessToPlatformSection
+				title="Your best workout awaits"
+				subtitle="Discover classes and trainers tailored to your fitness goals."
+				buttonText="Start Training"
+				textMaxWidth="max-w-[740px]"
+			/>
 		</div>
 	);
 };

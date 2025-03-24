@@ -10,9 +10,15 @@ interface AccessToPlatformSectionProps {
 	title: string;
 	subtitle: string;
 	buttonText: string;
+	textMaxWidth?: string;
 }
 
-const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({ title, subtitle, buttonText }) => {
+const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
+	title,
+	subtitle,
+	buttonText,
+	textMaxWidth,
+}) => {
 	return (
 		<div className="relative overflow-hidden">
 			{/* Bottom Ellipse */}
@@ -28,7 +34,9 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({ title
 
 			{/* Center Content */}
 			<div className="mx-4 z-10 relative sm:my-16">
-				<div className="flex flex-col justify-center  items-center max-w-[510px] mx-auto">
+				<div
+					className={`flex flex-col justify-center  items-center ${textMaxWidth ? textMaxWidth : 'max-w-[510px]'} mx-auto`}
+				>
 					<Typography as="h2" align="center" className="mb-2.5">
 						{title}
 					</Typography>

@@ -7,8 +7,8 @@ import TrainingFeatures from './components/TrainingFeatures';
 import FAQsAccesPlatformSection from '@/components/FAQsAccesPlatformSection';
 import AdaptiveClient from '@/components/AdaptiveClient';
 import LearnGrow from './components/LearnGrow';
-import { stepsData } from '../../components/data';
 import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
+import { stepsData } from '@/components/data';
 const { tabImage, collageFour, collageMobile } = imagesPaths;
 
 const coachingFeatures = [

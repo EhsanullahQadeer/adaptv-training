@@ -4,6 +4,7 @@ import { Providers } from '@/components/providers';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const fonetika = localFont({
 	src: [
@@ -47,6 +48,7 @@ export default function RootLayout({
 				<Providers>
 					<Header />
 					{children}
+					<Footer />
 				</Providers>
 			</body>
 		</html>

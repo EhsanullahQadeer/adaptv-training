@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../../components/platform/Card';
+import Card from '@/components/platform/Card';
 import { dashboard } from '@/lib/public-assets-paths';
 
 const { impactImg, manageCoachingImg, reachGraphImg, revenueImg, trainingScheduleImg } = dashboard;

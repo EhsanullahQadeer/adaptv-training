@@ -9,7 +9,7 @@ import { imagesPaths } from "@/lib/public-assets-paths";
 
 const { video } = imagesPaths;
 
-export default function Home() {
+export default function Page() {
 
   return (
     <div className="mt-8 md:mt-[70px] bg-white">

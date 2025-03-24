@@ -2,127 +2,119 @@
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import { CancelIcon, MenuIcon } from '@workspace/ui/icons';
+import { usePathname, useRouter } from 'next/navigation';
+import { CancelIcon, FireIcon, MenuIcon, UserClientIcon } from '@workspace/ui/icons';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import { Button } from '@workspace/ui/components';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@workspace/ui/components/select';
 
-const menuItems = [
-	{ label: 'About', link: '/about' },
-	{ label: 'Platform', link: '/platform' },
-	{ label: 'Learning', link: '/learning' },
-];
-
-const sectionIdsToHide: string[] = ['earning-path-sec'];
+const sectionIdsToHide = ['earning-path-sec'];
 const hiddenRoutes = ['/install'];
-
 const { adaptvLogoBlack } = imagesPaths;
 
-const Header = () => {
+const Header = ({ bgColor }: { bgColor?: string }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [shadowOpacity, setShadowOpacity] = useState(0);
 	const [hideHeader, setHideHeader] = useState(false);
 	const [lastScrollY, setLastScrollY] = useState(0);
-	const [isDisableSection, setIsDisableSection] = useState(false);
 	const pathname = usePathname();
-	const searchParams = useSearchParams();
-	const queryString = searchParams.toString();
+	const router = useRouter();
 
-	const fullPath = `${pathname}${queryString ? '?' : ''}${queryString}`;
+	const isClientRoute = pathname.includes('/client');
+	const menuItems = isClientRoute
+		? [
+				{ label: 'About', link: '/client/about' },
+				{ label: 'Platform', link: '/client/platform' },
+				{ label: 'Exercise Library', link: '/client/exercise-library' },
+				{ label: 'Blog', link: '/client/blog' },
+			]
+		: [
+				{ label: 'About', link: '/coach/about' },
+				{ label: 'Platform', link: '/coach/platform' },
+				{ label: 'Learning', link: '/coach/learning' },
+			];
+	const buttonText = isClientRoute ? 'Join the Waitlist' : 'Become a Coach';
+	const [selectedRole, setSelectedRole] = useState(isClientRoute ? 'client' : 'for-coach');
 
 	const toggleMenu = () => setMenuOpen((prev) => !prev);
 
 	const handleResize = () => {
-		if (typeof window !== 'undefined') {
-			if (window.innerWidth >= 640) {
-				setMenuOpen(false);
-			}
-		}
+		if (window.innerWidth >= 640) setMenuOpen(false);
 	};
 
 	const handleScroll = useCallback(() => {
 		const currentScrollY = window.scrollY;
-		const scrollUpThreshold = 50; // Threshold to consider scroll as "up"
-
-		if (currentScrollY > lastScrollY && currentScrollY > 100) {
-			setHideHeader(true); // Scroll down: hide header
-		} else if (currentScrollY < lastScrollY && currentScrollY > scrollUpThreshold && !isDisableSection) {
-			setHideHeader(false); // Scroll up: show header
-		}
-
-		// Update the last scroll position
+		setHideHeader(currentScrollY > lastScrollY && currentScrollY > 100);
 		setLastScrollY(currentScrollY);
+		setShadowOpacity(Math.min(currentScrollY / 2000, 0.6));
+	}, [lastScrollY]);
 
-		const opacity = Math.min(window.scrollY / 2000, 0.6);
-		setShadowOpacity(opacity);
-	}, [isDisableSection, lastScrollY]);
+	const handleRoleChange = (value: string) => {
+		setSelectedRole(value);
+		router.push(value === 'client' ? '/client' : '/coach');
+	};
 
 	useEffect(() => {
 		window.addEventListener('resize', handleResize);
-		setTimeout(() => {
-			window.addEventListener('scroll', handleScroll);
-		});
-
+		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('scroll', handleScroll);
 		};
-	}, [handleScroll, lastScrollY, pathname]);
+	}, [handleScroll]);
 
 	useEffect(() => {
-		setHideHeader(false);
-		setLastScrollY(0);
-		setShadowOpacity(0);
-		setIsDisableSection(false);
 		const observer = new IntersectionObserver(
 			(entries) => {
 				const isVisible = entries.some((entry) => entry.isIntersecting);
-				setIsDisableSection(isVisible);
 				setHideHeader(isVisible);
 			},
-			{
-				threshold: 0.8,
-			},
+			{ threshold: 0.8 },
 		);
-
-		// Observe specified sections
 		sectionIdsToHide.forEach((id) => {
 			const section = document.getElementById(id);
 			if (section) observer.observe(section);
 		});
-		return () => {
-			observer.disconnect();
-		};
-	}, [pathname]);
+		return () => observer.disconnect();
+	}, []);
 
 	useEffect(() => {
 		document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
-		return () => {
-			document.body.style.overflow = 'auto';
-		};
 	}, [menuOpen]);
 
-	if (hiddenRoutes.includes(pathname)) {
-		return null;
-	}
+	if (hiddenRoutes.includes(pathname)) return null;
 
 	return (
 		<header
 			style={{
 				boxShadow: `0 8px 16px rgba(0, 0, 0, ${shadowOpacity})`,
+				backgroundColor: bgColor || 'transparent',
 			}}
-			className={`sticky top-0 z-[999] transition-all duration-500 ${
-				hideHeader ? '-translate-y-full' : 'translate-y-0'
-			}`}
+			className={`sticky top-0 z-[99] transition-all duration-500 ${hideHeader ? '-translate-y-full' : 'translate-y-0'}`}
 		>
 			<div className="mx-4">
 				<div className="mx-auto max-w-[1100px] flex justify-between items-center py-4 md:text-base text-sm">
 					<div className="flex items-center gap-3">
-						<Link href="/" className="w-[168px] h-7">
+						<Link href={pathname.includes('/client') ? '/client' : '/coach'} className="w-[168px] h-7">
 							<Image width={193} height={32} className="w-full h-full object-cover" src={adaptvLogoBlack} alt="logo" />
 						</Link>
-
-						<div className="max-sm:hidden">for coach</div>
+						<div className="max-sm:hidden">
+							<Select value={selectedRole} onValueChange={handleRoleChange}>
+								<SelectTrigger className="rounded-full">
+									<SelectValue placeholder="Select role" />
+								</SelectTrigger>
+								<SelectContent className="text-black rounded-md">
+									<SelectItem value="for-coach">
+										<FireIcon fill="black" />
+										<span>For Coach</span>
+									</SelectItem>
+									<SelectItem value="client">
+										<UserClientIcon className="text-black" />
+										<span>Client</span>
+									</SelectItem>
+								</SelectContent>
+							</Select>
+						</div>
 					</div>
 
 					<div
@@ -135,29 +127,49 @@ const Header = () => {
 					<div className="flex items-center gap-6">
 						<nav
 							className={`${
-								menuOpen ? 'max-h-[320px] pb-4' : 'max-h-0 pb-0'
-							} transition-all duration-500 ease-in-out flex md:flex-row flex-col md:relative absolute left-0 top-full w-full md:w-auto z-50 bg-charcoal-mist-gradient md:bg-transparent md:backdrop-blur-0 backdrop-blur-[60px] overflow-hidden md:overflow-visible md:pb-0 md:items-center md:gap-4 md:px-0 px-5`}
+								menuOpen ? 'max-h-[360px] pb-4' : 'max-h-0 pb-0'
+							} transition-all duration-500 ease-in-out flex md:flex-row flex-col md:relative absolute left-0 top-full w-full md:w-auto z-[99] bg-charcoal-mist-gradient md:bg-transparent md:backdrop-blur-0 backdrop-blur-[60px] overflow-hidden md:overflow-visible md:pb-0 md:items-center md:gap-4 md:px-0 px-5`}
 						>
-							{menuItems.map((item, idx) => {
-								const { label, link } = item;
-								const isLastItem = menuItems.length === idx + 1;
-								return (
-									<Link
-										key={label}
-										href={`/${link}`}
-										onClick={() => setMenuOpen(false)}
-										className={`text-sm font-semibold leading-[16px] tracking-[-0.07px] md:border-none border-translucent-white md:py-0 py-4 md:px-0 px-2.5 max-md:text-white hover:text-ocean-glow transition ${
-											(fullPath.includes(`/${link}`) && link) || link === pathname ? 'text-ocean-glow' : 'text-black'
-										} ${isLastItem ? 'border-none' : 'border-b'}`}
-									>
-										{label}
-									</Link>
-								);
-							})}
+							{menuItems.map(({ label, link }) => (
+								<Link
+									key={label}
+									href={link}
+									onClick={() => setMenuOpen(false)}
+									className={`text-sm font-semibold leading-[16px] tracking-[-0.07px] md:py-0 py-4 md:px-0 px-2.5 max-md:text-black hover:text-ocean-glow transition ${
+										pathname.includes(link) ? 'text-ocean-glow' : 'text-black'
+									}`}
+								>
+									{label}
+								</Link>
+							))}
+
+							<div className="sm:hidden mt-4">
+								<Select value={selectedRole} onValueChange={handleRoleChange}>
+									<SelectTrigger className="rounded-md w-full bg-white shadow-md !h-12">
+										<SelectValue placeholder="Select role" />
+									</SelectTrigger>
+									<SelectContent className="text-black rounded-md">
+										<SelectItem value="for-coach">
+											<FireIcon fill="black" />
+											<span>For Coach</span>
+										</SelectItem>
+										<SelectItem value="client">
+											<UserClientIcon className="text-black" />
+											<span>Client</span>
+										</SelectItem>
+									</SelectContent>
+								</Select>
+							</div>
+
+							<div className="sm:hidden mt-4">
+								<Button size="xl" className="w-full">
+									{buttonText}
+								</Button>
+							</div>
 						</nav>
 
 						<div className="max-sm:hidden">
-							<Button>Become a coach</Button>
+							<Button>{buttonText}</Button>
 						</div>
 
 						<button className="md:hidden flex cursor-pointer w-6 h-6 relative" onClick={toggleMenu}>

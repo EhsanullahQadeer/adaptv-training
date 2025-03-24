@@ -21,11 +21,11 @@ export const services = [
 		category: 'Yoga & Flexibility',
 		title: 'Achieve Mind-Body Balance with Yoga',
 		imageSrc: boy,
-		dotColor: '#28A745', // Example color
+		dotColor: '#28A745',
 	},
 ];
 
-export default function Home() {
+export default function Page() {
 	return (
 		<div className="mt-8 md:mt-[70px] bg-white">
 			<div className="mx-4">
@@ -47,7 +47,7 @@ export default function Home() {
 								category={service.category}
 								title={service.title}
 								imageSrc={service.imageSrc}
-								dotColor={service.dotColor} // Passing the color prop
+								dotColor={service.dotColor}
 							/>
 						))}
 					</div>

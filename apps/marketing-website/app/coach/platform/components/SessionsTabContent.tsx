@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../../../components/platform/Card';
 import { sessions } from '@/lib/public-assets-paths';
+import Card from '@/components/platform/Card';
 
 const { manageSessions, sessionCalender, trackProgress } = sessions;
 

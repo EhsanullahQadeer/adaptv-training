@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../../components/platform/Card';
+import Card from '@/components/platform/Card';
 import { earnings } from '@/lib/public-assets-paths';
 
 const { paymentStatus, analyzeEarnings, paymentHistory } = earnings;
