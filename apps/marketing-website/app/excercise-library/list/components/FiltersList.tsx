@@ -42,7 +42,7 @@ export const services = [
 const FiltersList = () => {
 	return (
 		<div className="flex">
-			<div className="max-sm:hidden max-w-[240px] pr-5 flex-1 border-r border-light-gray">
+			<div className="max-sm:hidden max-w-[260px] pr-5 flex-1 border-r border-light-gray">
 				<Filters />
 			</div>
 

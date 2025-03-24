@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Test from './Test';
 
 const Filters = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+	return (
+		<div>
+			<Test />
+		</div>
+	);
+};
 
-export default Filters
+export default Filters;
