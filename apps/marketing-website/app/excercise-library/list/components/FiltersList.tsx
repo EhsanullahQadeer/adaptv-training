@@ -1,6 +1,7 @@
 import React from 'react';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import LibraryCard from './LibraryCard';
+import Filters from './Filters';
 
 const { boy } = imagesPaths;
 export const services = [
@@ -18,7 +19,7 @@ export const services = [
 		imageSrc: boy,
 		dotColor: '#3388FF',
 		targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
-        equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
+		equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
 	},
 	{
 		category: 'Yoga & Flexibility',
@@ -41,7 +42,9 @@ export const services = [
 const FiltersList = () => {
 	return (
 		<div className="flex">
-			<div className="max-sm:hidden max-w-[240px] pr-5 flex-1 border-r border-light-gray"></div>
+			<div className="max-sm:hidden max-w-[240px] pr-5 flex-1 border-r border-light-gray">
+				<Filters />
+			</div>
 
 			<div className="flex-1 w-full sm:pl-5 flex flex-wrap gap-3">
 				{services.map((service, index) => (
