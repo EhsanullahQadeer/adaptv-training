@@ -1,12 +1,16 @@
 // Auto-generated routes
 export const pagesRoutes = {
-  "blogSlug": "/blog/:slug*",
-  "docsSlug": "/docs/:slug?",
-  "home": "/",
-  "about": "/about",
-  "blog": "/blog",
-  "homepage": "/homepage",
-  "learning": "/learning",
-  "learningServiceid": "/learning/:serviceid",
-  "platform": "/platform"
+  "clientAbout": "/client/about",
+  "clientBlog": "/client/blog",
+  "clientExerciseLibraryList": "/client/exercise-library/list",
+  "clientExerciseLibrary": "/client/exercise-library",
+  "client": "/client",
+  "clientPlatform": "/client/platform",
+  "coachAbout": "/coach/about",
+  "coachLearning": "/coach/learning",
+  "coachLearningServiceid": "/coach/learning/:serviceid",
+  "coach": "/coach",
+  "coachPlatform": "/coach/platform",
+  "coachRegistration": "/coach/registration",
+  "page.tsx": "/page.tsx"
 };

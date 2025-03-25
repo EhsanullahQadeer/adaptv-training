@@ -13,6 +13,7 @@
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "@workspace/svgr-config": "workspace:*",
+    "@workspace/api-handler": "workspace:*",
     "prettier": "^3.5.1",
     "turbo": "^2.4.4",
     "typescript": "5.7.3"

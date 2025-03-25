@@ -9,6 +9,9 @@
       ],
       "@workspace/ui/*": [
         "../../packages/ui/src/*"
+      ],
+      "@workspace/api-handler/*": [
+        "../../packages/api-handler/src/*"
       ]
     },
     "plugins": [
