@@ -33,7 +33,7 @@ const page = () => {
 					<div className="w-full max-sm:hidden">
 						<Input
 							placeholder="Find an excercise.."
-							className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-[0px_24px_32px_0px_rgba(0, 0, 0, 0.04)]"
+							className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-light"
 							rightAdornment={
 								<Button
 									type="button"
@@ -49,7 +49,7 @@ const page = () => {
 					<div className="w-full sm:hidden">
 						<Input
 							placeholder="Find an excercise.."
-							className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[50px] pl-5 border-light-gray rounded-xl shadow-[0px_24px_32px_0px_rgba(0, 0, 0, 0.04)]"
+							className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[50px] pl-5 border-light-gray rounded-xl shadow-light"
 						/>
 						<div className="mt-4 w-full">
 							<Button

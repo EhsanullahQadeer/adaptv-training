@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Button } from '@workspace/ui/components';
 import { CancelIcon, MenuIcon } from '@workspace/ui/icons';
-import { determineBgColor, handleRoleChange } from '../lib/utils/headerUtils';
 import Logo from './Logo';
-import RoleSelector from './header/RoleSelector';
+import RoleSelector from './RoleSelector';
 import NavBar from './NavBar';
+import { determineBgColor, handleRoleChange } from '@/lib/utils/headerUtils';
 
 const sectionIdsToHide: string[] = [];
 const hiddenRoutes: string[] = [];
@@ -140,7 +140,7 @@ const Header = () => {
 						</div>
 
 						<button
-							className={`md:hidden flex cursor-pointer w-6 h-6 relative ${isDarkBg ? 'text-white' : 'text-black'}`}
+							className={`flex cursor-pointer w-6 h-6 relative ${isDarkBg ? 'text-white' : 'text-black'} ${showLoginButton ? 'lg:hidden' : 'md:hidden'}`}
 							onClick={toggleMenu}
 						>
 							<div

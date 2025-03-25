@@ -3,7 +3,7 @@ import '@/app/globals.css';
 import { Providers } from '@/components/providers';
 import { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Header from '@/components/Header';
+import Header from '@/components/header/Header';
 import Footer from '@/components/Footer';
 
 const fonetika = localFont({
