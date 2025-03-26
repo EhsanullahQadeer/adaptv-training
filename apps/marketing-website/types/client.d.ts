@@ -6,7 +6,7 @@ declare global {
 		updatedAt: string;
 	}
 
-	interface MuscleGraphic {
+	interface AssetGraphic {
 		createdAt: string;
 		updatedAt: string;
 		alt: string;
@@ -25,10 +25,18 @@ declare global {
 		createdAt: string;
 		updatedAt: string;
 		muscleName: string;
-		muscleGraphic: MuscleGraphic;
+		muscleGraphic: AssetGraphic;
 		muscleLabelColor: string;
 		id: string;
 	}
+
+	type MovementEquipment = {
+		createdAt: string;
+		updatedAt: string;
+		equipmentName: string;
+		equipmentGraphic: AssetGraphic;
+		id: string;
+	};
 }
 
 export {};

@@ -105,7 +105,7 @@ const typographyStyles: TypographyStyles = {
 		},
 		span: {
 			base: 'font-medium leading-normal',
-			responsive: 'text-base md:text-[22px] tracking-[-0.16px] md:tracking-[-0.44px] leading-normal',
+			responsive: 'max-md:text-base md:text-[22px] tracking-[-0.16px] md:tracking-[-0.44px] leading-normal',
 			responsive_reverse: 'md:text-base text-[22px] md:tracking-[-0.16px] tracking-[-0.44px]', // Added
 			small: 'text-base tracking-[-0.16px]',
 			large: 'text-[22px] tracking-[-0.44px]',

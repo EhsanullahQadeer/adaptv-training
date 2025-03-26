@@ -3,6 +3,7 @@
 import sharedWebpackConfig from "@workspace/svgr-config";
 
 const nextConfig = {
+  reactStrictMode: false,
   transpilePackages: ["@workspace/ui"],
   webpack(config) {
     return sharedWebpackConfig(config); 

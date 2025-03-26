@@ -65,7 +65,7 @@ const page = () => {
 			</div>
 
 			<div className="mx-4">
-				<div className="mt-[70px] mb-[135px] max-w-[1100px] m-auto flex flex-col gap-[42px]">
+				<div className="max-md:my-8 md:mt-[70px] md:mb-[135px] max-w-[1100px] m-auto flex flex-col gap-[42px]">
 					<MusclesSection />
 					<TrainingStyleSection />
 					<DifficultySection />

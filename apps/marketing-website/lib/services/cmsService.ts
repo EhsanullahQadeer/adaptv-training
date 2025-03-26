@@ -17,7 +17,7 @@ const getCoachLearningResourceCategories = () => get('/coach-learning-resource-c
 const getCoachLearningResourcePosts = () => get('/coach-learning-resource-posts');
 const getMuscles = () => get('/muscles');
 const getMovementTrainingStyles = () => get('/movement-training-styles');
-const getMovementEquipment = () => get('/collections/movement-equipment');
+const getMovementEquipment = () => get('/movement-equipment');
 const getMovements = () => get('/collections/movements');
 const getExerciseLibraryHomepage = () => get('/globals/movement-library-homepage');
 const getClientBlogSubscribers = () => get('/collections/client-blog-subscribers');

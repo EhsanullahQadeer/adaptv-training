@@ -2,6 +2,7 @@ import ServiceCard from './components/ServiceCard';
 import { Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Categories from './components/Categories';
+import { getCoachLearningResourceCategories, getCoachLearningResourcePosts } from '@/lib/services/cmsService';
 
 const { boy } = imagesPaths;
 export const services = [
@@ -25,7 +26,13 @@ export const services = [
 	},
 ];
 
-export default function Page() {
+const page = async () => {
+	const learningCategoriesApiResponse = await getCoachLearningResourceCategories();
+
+	const learningPostsApiResponse = await getCoachLearningResourcePosts();
+
+	const categoriesArr = learningCategoriesApiResponse.docs;
+
 	return (
 		<div className="mt-8 md:mt-[70px] bg-white">
 			<div className="mx-4">
@@ -38,7 +45,7 @@ export default function Page() {
 
 				<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
 					<div className="sm:w-[260px] pr-5 border-r border-light-gray">
-						<Categories />
+						<Categories {...{ categoriesArr }} />
 					</div>
 					<div className="flex sm:justify-left justify-center  gap-3 flex-wrap">
 						{services.map((service, index) => (
@@ -55,4 +62,6 @@ export default function Page() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default page;
