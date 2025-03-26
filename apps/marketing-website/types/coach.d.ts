@@ -30,7 +30,6 @@ declare global {
 		interestedInAthleteProgram: boolean;
 	}
 
-	}
 	interface certificationOptions {
 		companyName: string;
 		companyImage: {
@@ -52,7 +51,7 @@ declare global {
 		createdAt: string;
 		updatedAt: string;
 		globalType: string;
-		certificationOptions: certificationOptions[]
+		certificationOptions: certificationOptions[];
 		certificationOptions: certificationOptions;
 		id: string;
 	}
@@ -106,5 +105,4 @@ declare global {
 		nextPage: number | null;
 	};
 }
-
 export {};
