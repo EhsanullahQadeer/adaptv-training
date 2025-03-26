@@ -1,16 +1,18 @@
 import React from 'react';
-import { movementTrainingStyles } from './data';
 import { Typography } from '@workspace/ui/components';
+import { getMovementTrainingStyles } from '@/lib/services/cmsService';
 
-const TrainingStyleSection = () => {
-	const trainingStylesArr = movementTrainingStyles.docs;
+const TrainingStyleSection = async () => {
+	const trainingStylesApiResponse = await getMovementTrainingStyles();
+	const trainingStylesArr = trainingStylesApiResponse?.docs;
+
 	return (
 		<div className="flex flex-col gap-6">
 			<Typography as={'h4'} className="tracking-[-0.8px] md:tracking-[-1.12px]">
 				Browse by Muscle
 			</Typography>
 			<div className="flex flex-wrap gap-3">
-				{trainingStylesArr.map((train) => {
+				{trainingStylesArr.map((train: TrainingStyles) => {
 					const { trainingStyleName, id } = train;
 
 					return (
