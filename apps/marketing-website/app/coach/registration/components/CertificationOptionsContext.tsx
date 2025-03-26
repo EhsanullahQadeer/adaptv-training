@@ -1,13 +1,14 @@
+'use client';
 import React, { createContext, ReactNode, useContext } from 'react';
 
-export const CertificationOptionsContext = createContext<string[]>([]);
+export const CertificationOptionsContext = createContext<certificationOptions[] | undefined>(undefined);
 
 export const CertificationOptionsProvider = ({
 	children,
 	certificationOptions,
 }: {
 	children: ReactNode;
-	certificationOptions: string[];
+	certificationOptions: certificationOptions[];
 }) => {
 	return (
 		<CertificationOptionsContext.Provider value={certificationOptions}>

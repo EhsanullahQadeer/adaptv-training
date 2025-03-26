@@ -39,6 +39,7 @@
 	--chart-4: hsl(43 74% 66%);
 	--chart-5: hsl(27 87% 67%);
 	--chart-6: hsla(229, 100%, 66%, 1);
+	--chart-7: hsla(0, 0%, 73%, 1);
 	--radius: 0.5rem;
 	--button-radius: 6.25rem;
 }
@@ -99,6 +100,7 @@
 	--color-chart-4: var(--chart-4);
 	--color-chart-5: var(--chart-5);
 	--color-chart-6: var(--chart-6);
+	--color-chart-7: var(--chart-7);
 	--color-pale-gray: var(--pale-gray);
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);

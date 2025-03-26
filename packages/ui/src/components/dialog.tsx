@@ -49,8 +49,9 @@ function DialogOverlay({
 function DialogContent({
   className,
   children,
+  showCloseButton = true, // New prop with default value
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Content>) {
+}: React.ComponentProps<typeof DialogPrimitive.Content> & { showCloseButton?: boolean }) {
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay />
@@ -63,10 +64,12 @@ function DialogContent({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
-          <XIcon />
-          <span className="sr-only">Close</span>
-        </DialogPrimitive.Close>
+        {showCloseButton && ( // Conditionally render the close button
+          <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+            <XIcon />
+            <span className="sr-only">Close</span>
+          </DialogPrimitive.Close>
+        )}
       </DialogPrimitive.Content>
     </DialogPortal>
   )
@@ -121,6 +124,13 @@ function DialogDescription({
   )
 }
 
+const dismiss = () => {
+  const openDialogElement = document.querySelector('[data-state="open"]') as HTMLDivElement;
+  if (openDialogElement) {
+    openDialogElement.click();
+  }
+};
+
 export {
   Dialog,
   DialogClose,
@@ -132,4 +142,5 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  dismiss, // Export dismiss function
 }

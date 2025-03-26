@@ -18,6 +18,8 @@ interface ComboboxProps {
 	rotateIcon?: boolean; // New prop to control icon rotation
 	popoverContentProps?: React.ComponentProps<typeof PopoverContent>; // New prop for PopoverContent
 	popoverClassName?: string; // New prop for PopoverContent className
+	value?: string; // New prop for controlled value
+	onValueChange?: (value: string) => void; // New callback for value change
 }
 
 export function Combobox({
@@ -30,15 +32,23 @@ export function Combobox({
 	rotateIcon = true, // Default to true
 	popoverContentProps, // Destructure the new prop
 	popoverClassName, // Destructure the new prop
+	value: controlledValue, // Destructure the new controlled value prop
+	onValueChange, // Destructure the new callback
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false);
-	const [value, setValue] = React.useState('');
+	const [internalValue, setInternalValue] = React.useState(''); // Internal state for uncontrolled usage
+
+	const isControlled = controlledValue !== undefined; // Determine if the component is controlled
+	const value = isControlled ? controlledValue : internalValue; // Use controlled or internal value
 
 	const handleSelect = (currentValue: string) => {
 		const newValue = currentValue === value ? '' : currentValue;
-		setValue(newValue);
+		if (!isControlled) {
+			setInternalValue(newValue); // Update internal state if uncontrolled
+		}
+		onValueChange?.(newValue); // Notify parent of value change
+		onSelect?.(newValue); // Call the existing onSelect callback
 		setOpen(false);
-		onSelect?.(newValue);
 	};
 
 	return (
