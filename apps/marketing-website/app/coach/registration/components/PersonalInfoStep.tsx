@@ -9,7 +9,7 @@ interface PersonalInfoStepProps {
 	form: UseFormReturn<CoachFormValues>;
 }
 
-const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
+const PersonalInfoStep = ({ form, addCertification }: PersonalInfoStepProps & { addCertification: (cert: { id: string; name: string; company: string }) => void }) => {
 	// Define the fields for the form
 	const fields: {
 		name: keyof CoachFormValues;
@@ -121,7 +121,10 @@ const PersonalInfoStep = ({ form }: PersonalInfoStepProps) => {
 
 			<Separator className="my-8" />
 
-			<CertificateField />
+			<CertificateField
+				certifications={form.watch('certification')|| []}
+				addCertification={addCertification}
+			/>
 		</div>
 	);
 };

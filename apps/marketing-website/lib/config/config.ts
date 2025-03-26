@@ -1,1 +1,1 @@
-export const CMS_BASE_PATH = "https://adaptvcms.com/"
+export const CMS_BASE_PATH = "https://adaptvcms.com"

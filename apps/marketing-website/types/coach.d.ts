@@ -1,20 +1,35 @@
 declare global {
-	interface CoachFormValues {
-		firstName: string;
-		lastName: string;
-		email: string;
-		phoneNumber?: string;
+	interface SocialLinks {
 		instagram?: string;
 		tiktok?: string;
 		x?: string;
 		linkedin?: string;
 		facebook?: string;
 		youtube?: string;
+	}
+
+	interface Certification {
+		id: string;
+		name: string;
+		company: string;
+	}
+
+	interface CoachFormValues {
+		firstName: string;
+		lastName: string;
+		email: string;
+		phoneNumber?: string;
+		socialLinks?: SocialLinks;
 		purpose: string;
 		biggestStruggle: string;
 		interested: string;
 		trainingStyle: string;
-	};
+		whyBecomeCoach: string;
+		trainingStyles: string[];
+		certification?: Certification[];
+		interestedInAthleteProgram: boolean;
+	}
+
 	interface certificationOptions {
 		companyName: string;
 		companyImage: {
@@ -36,7 +51,7 @@ declare global {
 		createdAt: string;
 		updatedAt: string;
 		globalType: string;
-		certificationOptions: certificationOptions
+		certificationOptions: certificationOptions[]
 		id: string;
 	}
 }

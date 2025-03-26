@@ -26,10 +26,20 @@ const buttonVariants = cva(
 				xl: 'h-12.5 rounded-button-lg px-6 py-4 has-[>svg]:px-4',
 				icon: 'size-9',
 			},
+			color: {
+				default: '',
+				primary: 'bg-primary text-primary-foreground',
+				secondary: 'bg-secondary text-secondary-foreground',
+				destructive: 'bg-destructive text-white',
+				success: 'bg-success text-success-foreground',
+				warning: 'bg-warning text-warning-foreground',
+				transLight: 'bg-transparent border border-chart-7 text-primary hover:bg-chart-7/90',
+			},
 		},
 		defaultVariants: {
 			variant: 'default',
 			size: 'default',
+			color: 'default',
 		},
 	},
 );
@@ -38,6 +48,7 @@ function Button({
 	className,
 	variant,
 	size,
+	color,
 	asChild = false,
 	...props
 }: React.ComponentProps<'button'> &
@@ -46,7 +57,7 @@ function Button({
 	}) {
 	const Comp = asChild ? Slot : 'button';
 
-	return <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props} />;
+	return <Comp data-slot="button" className={cn(buttonVariants({ variant, size, color, className }))} {...props} />;
 }
 
 export { Button, buttonVariants };

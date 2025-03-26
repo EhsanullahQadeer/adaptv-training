@@ -28,6 +28,15 @@ const formSchema = z.object({
 	biggestStruggle: z.string(),
 	interested: z.string(),
 	trainingStyle: z.string(),
+	certification: z
+		.array(
+			z.object({
+				id: z.string(),
+				name: z.string().min(1, { message: 'Certification Name is required.' }),
+				company: z.string().min(1, { message: 'Company is required.' }),
+			})
+		)
+		.optional(),
 });
 
 // Define the steps
@@ -57,12 +66,19 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 			biggestStruggle: '',
 			interested: 'no',
 			trainingStyle: '',
+			certification: [],
 		},
 	});
-
+	
 	// Handle form submission
 	const onSubmit = (values: z.infer<typeof formSchema>) => {
 		console.log('Form values:', values);
+	};
+
+	// Function to add a certification
+	const addCertification = (certification: Certification) => {
+		const updatedCertifications = [...(form.getValues('certification') || []), certification];
+		form.setValue('certification', updatedCertifications);
 	};
 
 	// Get the current step component
@@ -83,7 +99,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col flex-1 space-y-8 py-5.5 ">
 				<div className="overflow-auto flex flex-col flex-grow flex-shrink-0 basis-0">
 					{/* Render the current step component */}
-					{CurrentStep && <CurrentStep form={form} />}
+					{CurrentStep && <CurrentStep form={form} addCertification={addCertification} />}
 				</div>
 				<div className="flex justify-between gap-3">
 					<div className="flex-1">
