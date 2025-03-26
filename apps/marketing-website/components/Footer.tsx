@@ -6,9 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { usePathname } from 'next/navigation';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
 
 const { adaptvLogoBlack } = imagesPaths;
-
+const { coachRegistration } = pagesRoutes;
+const hiddenRoutes: string[] = [coachRegistration];
 const socialLinks = [
 	{ icon: InstagramIcon, link: '' },
 	{ icon: FacebookIcon, link: '' },
@@ -19,6 +21,10 @@ const socialLinks = [
 
 const Footer = () => {
 	const pathname = usePathname();
+
+	if (hiddenRoutes.includes(pathname)) {
+		return null; // Hide footer for specific routes
+	}
 
 	return (
 		<footer className="mx-4 py-[60px]">

@@ -7,9 +7,21 @@ import Logo from './Logo';
 import RoleSelector from './RoleSelector';
 import NavBar from './NavBar';
 import { determineBgColor, handleRoleChange } from '@/lib/utils/headerUtils';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
+const {
+	client,
+	clientAbout,
+	clientPlatform,
+	clientExerciseLibrary,
+	clientBlog,
+	coachAbout,
+	coachPlatform,
+	coachLearning,
+	coachRegistration,
+} = pagesRoutes;
 
 const sectionIdsToHide: string[] = [];
-const hiddenRoutes: string[] = [];
+const hiddenRoutes: string[] = [coachRegistration];
 
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -21,25 +33,25 @@ const Header = () => {
 	const router = useRouter();
 
 	const headerBgColor = determineBgColor(pathname);
-	const isClientRoute = pathname.includes('/client');
+	const isClientRoute = pathname.includes(client);
 	const menuItems = isClientRoute
 		? [
-				{ label: 'About', link: '/client/about' },
-				{ label: 'Platform', link: '/client/platform' },
-				{ label: 'Exercise Library', link: '/client/exercise-library' },
-				{ label: 'Blog', link: '/client/blog' },
+				{ label: 'About', link: clientAbout },
+				{ label: 'Platform', link: clientPlatform },
+				{ label: 'Exercise Library', link: clientExerciseLibrary },
+				{ label: 'Blog', link: clientBlog },
 			]
 		: [
-				{ label: 'About', link: '/coach/about' },
-				{ label: 'Platform', link: '/coach/platform' },
-				{ label: 'Learning', link: '/coach/learning' },
+				{ label: 'About', link: coachAbout },
+				{ label: 'Platform', link: coachPlatform },
+				{ label: 'Learning', link: coachLearning },
 			];
 	const buttonText = isClientRoute
-		? pathname === '/client/exercise-library'
+		? pathname === clientExerciseLibrary
 			? 'Start Training'
 			: 'Join the Waitlist'
 		: 'Become a Coach';
-	const showLoginButton = pathname === '/client/exercise-library';
+	const showLoginButton = pathname === clientExerciseLibrary;
 	const [selectedRole, setSelectedRole] = useState(isClientRoute ? 'client' : 'for-coach');
 
 	const toggleMenu = () => setMenuOpen((prev) => !prev);

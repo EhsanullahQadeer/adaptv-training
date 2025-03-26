@@ -1,63 +1,12 @@
 import { apiCmsClient } from '../utils/apiClient';
-const { get, post } = apiCmsClient;
+const { get: originalGet, post } = apiCmsClient;
 
-export const fetchCoachHomepage = async () => {
-  return (await getCoachHomepage()).data;
+// Wrapper for the `get` function to automatically extract the `data` field
+const get = async (url: string) => {
+  const response = await originalGet(url);
+  return response?.data;
 };
 
-export const fetchCoachFAQs = async () => {
-  return (await getCoachFAQs()).data;
-};
-
-export const fetchClientFAQs = async () => {
-  return (await getClientFAQs()).data;
-};
-
-export const fetchSiteConfiguration = async () => {
-  return (await getSiteConfiguration()).data;
-};
-
-export const fetchCoachLearningResources = async () => {
-  const categories = await getCoachLearningResourceCategories();
-  const posts = await getCoachLearningResourcePosts();
-  return { categories: categories.data, posts: posts.data };
-};
-
-export const fetchMovements = async () => {
-  const muscles = await getMuscles();
-  const trainingStyles = await getMovementTrainingStyles();
-  const equipment = await getMovementEquipment();
-  const movements = await getMovements();
-  return {
-    muscles: muscles.data,
-    trainingStyles: trainingStyles.data,
-    equipment: equipment.data,
-    movements: movements.data,
-  };
-};
-
-export const fetchExerciseLibraryHomepage = async () => {
-  return (await getExerciseLibraryHomepage()).data;
-};
-
-export const fetchClientBlog = async () => {
-  const subscribers = await getClientBlogSubscribers();
-  const categories = await getClientBlogCategories();
-  const posts = await getClientBlogPosts();
-  return {
-    subscribers: subscribers.data,
-    categories: categories.data,
-    posts: posts.data,
-  };
-};
-
-export const submitCoachApplication = async (data: any) => {
-  return (await postCoachApplication(data)).data;
-};
-
-export const submitClientWaitlist = async (data: any) => {
-  return (await postClientWaitlist(data)).data;
-};
 
 // Helper functions for API calls
 const getCoachHomepage = () => get('/globals/coach-homepage');
@@ -74,5 +23,27 @@ const getExerciseLibraryHomepage = () => get('/globals/movement-library-homepage
 const getClientBlogSubscribers = () => get('/collections/client-blog-subscribers');
 const getClientBlogCategories = () => get('/collections/client-blog-categories');
 const getClientBlogPosts = () => get('/collections/client-blog-posts');
-const postCoachApplication = (data: any) => post('/collections/coach-application', data);
-const postClientWaitlist = (data: any) => post('/collections/client-waitlist', data);
+const postCoachApplication = (data: any) => () => post('/collections/coach-application', data);
+const postClientWaitlist = (data: any) => () => post('/collections/client-waitlist', data);
+const getCoachApplicationConfig = async (): Promise<CoachApplicationConfig> => get('/globals/coach-application-config');
+
+// Export all helper functions
+export {
+  getCoachHomepage,
+  getCoachFAQs,
+  getClientFAQs,
+  getSiteConfiguration,
+  getCoachLearningResourceCategories,
+  getCoachLearningResourcePosts,
+  getMuscles,
+  getMovementTrainingStyles,
+  getMovementEquipment,
+  getMovements,
+  getExerciseLibraryHomepage,
+  getClientBlogSubscribers,
+  getClientBlogCategories,
+  getClientBlogPosts,
+  postCoachApplication,
+  postClientWaitlist,
+  getCoachApplicationConfig,
+};

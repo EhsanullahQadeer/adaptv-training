@@ -1,9 +1,13 @@
+import React from 'react';
 import { Button, Dialog, Input, Label } from '@workspace/ui/components';
 import { DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@workspace/ui/components/dialog';
 import { PlusIcon } from '@workspace/ui/icons';
-import React from 'react';
+import { useCertificationOptions } from '../CertificationOptionsContext';
 
 const CertificateDialog = () => {
+	const certificationOptions = useCertificationOptions();
+	console.log('certificationOptions: ', certificationOptions);
+
 	return (
 		<div>
 			<Dialog>
@@ -24,6 +28,16 @@ const CertificateDialog = () => {
 						</div>
 						<div className="flex flex-col gap-2">
 							<Label htmlFor="username">Username</Label>
+						</div>
+						<div className="flex flex-col gap-2">
+							<Label htmlFor="certification">Select Certification</Label>
+							<select id="certification" className="col-span-3">
+								{certificationOptions.map((option, index) => (
+									<option key={index} value={option}>
+										{option}
+									</option>
+								))}
+							</select>
 						</div>
 					</div>
 					<DialogFooter className="!justify-between !flex-row flex-wrap gap-3">
