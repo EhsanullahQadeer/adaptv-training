@@ -6,7 +6,7 @@ import { createRetryInterceptor } from './interceptors/retry';
 import { createLoggingInterceptor } from './interceptors/logging';
 import { makeRequest } from './utils/request';
 
-export const createApiInstance = (config: ApiConfig): ExtendedAxiosInstance & ApiMethods => {
+export const createApiInstance = (config: ApiConfig): ExtendedAxiosInstance  => {
   // Create base instance
   const instance = axios.create({
     baseURL: config.baseURL || process.env.API_BASE_URL,

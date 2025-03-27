@@ -5,6 +5,7 @@ import CertificateDialog from './Dialog/CertificateDialog';
 import { useCertificationOptions } from './CertificationOptionsContext';
 import Image from 'next/image';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
+import { Certification } from '@/types/coach';
 
 const CertificateField = ({
 	certifications,

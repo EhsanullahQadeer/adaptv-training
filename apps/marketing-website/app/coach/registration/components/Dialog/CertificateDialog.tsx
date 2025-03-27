@@ -18,6 +18,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from '@workspace/ui/components/form';
+import { Certification } from '@/types/coach';
 
 const formSchema = z.object({
 	name: z.string().min(1, { message: 'Certification Name is required.' }),
@@ -102,7 +103,7 @@ const CertificateDialog = ({
 													const isDisabled = certifications.some((cert) => cert.id === id);
 
 													return (
-														<SelectItem key={_key} value={JSON.stringify({ id, companyName })} disabled={isDisabled}>
+														<SelectItem key={_key} value={JSON.stringify({ id, companyName: companyName.toLowerCase() })} disabled={isDisabled}>
 															<Image
 																className="h-6 w-6 object-cover"
 																height={height}

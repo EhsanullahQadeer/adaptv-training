@@ -8,20 +8,7 @@ declare module '@/types/client' {
     updatedAt: string;
   }
 
-  export interface AssetGraphic {
-    createdAt: string;
-    updatedAt: string;
-    alt: string;
-    _key: string;
-    filename: string;
-    mimeType: string;
-    filesize: number;
-    width: number;
-    height: number;
-    id: string;
-    url: string;
-    thumbnailURL: string | null;
-  }
+
 
   export interface Muscle {
     createdAt: string;

@@ -1,3 +1,4 @@
+import { CoachFormValues } from '@/types/coach';
 import { Badge, RadioGroup, Textarea } from '@workspace/ui/components';
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@workspace/ui/components/form';
 import { RadioGroupItem } from '@workspace/ui/components/radio-group';
@@ -96,7 +97,7 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 						</FormLabel>
 						<FormControl>
 							<div className="flex gap-4 py-2 flex-wrap">
-								{['1-1-live-virtual-coachinggg', 'online-program-based-coaching'].map((option) => (
+								{['1-1-live-virtual-coaching', 'online-program-based-coaching'].map((option) => (
 									<Badge
 										key={option}
 										variant={field.value.includes(option) ? 'default' : 'outline'}

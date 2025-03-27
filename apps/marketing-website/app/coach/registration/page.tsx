@@ -10,7 +10,6 @@ const { registrationRightBg, adaptvLogo } = imagesPaths;
 
 const page = async () => {
 	const { certificationOptions } = await getCoachApplicationConfig();
-
 	return (
 		<CertificationOptionsProvider {...{ certificationOptions }}>
 			<div className="flex flex-1 ">

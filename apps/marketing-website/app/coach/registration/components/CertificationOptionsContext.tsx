@@ -14,7 +14,6 @@ export const CertificationOptionsProvider = ({
 }: {
 	children: ReactNode;
 	certificationOptions: CertificationOptions[];
-	trainingStyles: TrainingStyle[];
 }) => {
 	return (
 		<CertificationOptionsContext.Provider value={{ certificationOptions }}>

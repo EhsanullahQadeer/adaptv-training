@@ -6,6 +6,7 @@ import PersonalInfoStep, { personalInfoSchema } from './PersonalInfoStep';
 import QuestionnaireStep, { questionnaireSchema } from './QuestionnaireStep';
 import ConfirmationStep from './ConfirmationStep';
 import { submitCoachApplication } from '@/lib/services/apiService';
+import { Certification } from '@/types/coach';
 
 const stepSchemas = [personalInfoSchema, questionnaireSchema];
 const steps = [PersonalInfoStep, QuestionnaireStep, ConfirmationStep];

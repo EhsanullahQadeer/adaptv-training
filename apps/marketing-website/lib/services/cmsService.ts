@@ -19,27 +19,9 @@ const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blo
 const getClientBlogCategories = () => apiCmsClient.get('/collections/client-blog-categories');
 const getClientBlogPosts = () => apiCmsClient.get('/collections/client-blog-posts');
 
-const postCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<ApiErrorResponse>> => {
-  const response = await apiCmsClient.post<ApiErrorResponse>('/coach-application', data, { extractData: false } as ApiConfig);
-  return {
-    data: response.data,
-    status: response.status,
-    headers: Object.fromEntries(
-      Object.entries(response.headers).filter(([_, v]) => v !== undefined)
-    ) as Record<string, string>,
-  };
-};
+const postCoachApplication = async (data: CoachFormValues) => apiCmsClient.post<ApiErrorResponse, false>('/coach-application', data, { extractData: false });
 
-const postClientWaitlist = async (data: any): Promise<ApiResponse<ApiErrorResponse>> => {
-  const response = await apiCmsClient.post<ApiErrorResponse>('/collections/client-waitlist', data, { extractData: false } as ApiConfig);
-  return {
-    data: response.data,
-    status: response.status,
-    headers: Object.fromEntries(
-      Object.entries(response.headers).filter(([_, v]) => v !== undefined)
-    ) as Record<string, string>,
-  };
-};
+const postClientWaitlist = async (data: any) => apiCmsClient.post<ApiErrorResponse, false>('/collections/client-waitlist', data, { extractData: false });
 
 const getCoachApplicationConfig = () => apiCmsClient.get<ExtendedCoachApplicationConfig>('/globals/coach-application-config');
 

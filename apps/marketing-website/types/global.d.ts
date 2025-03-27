@@ -43,4 +43,19 @@ declare global {
 		prevPage: number | null;
 		nextPage: number | null;
 	}
+
+	export interface AssetGraphic {
+		createdAt: string;
+		updatedAt: string;
+		alt: string;
+		_key: string;
+		filename: string;
+		mimeType: string;
+		filesize: number;
+		width: number;
+		height: number;
+		id: string;
+		url: string;
+		thumbnailURL: string | null;
+	  }
 }
