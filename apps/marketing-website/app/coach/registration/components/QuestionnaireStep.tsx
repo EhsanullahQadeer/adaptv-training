@@ -5,6 +5,7 @@ import { RadioGroupItem } from '@workspace/ui/components/radio-group';
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
+import { getStringValue } from './FormWrapper';
 
 interface PersonalInfoStepProps {
 	form: UseFormReturn<CoachFormValues>;
@@ -54,6 +55,7 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 									maxLength={300}
 									{...field}
 									onChange={field.onChange}
+                  value={getStringValue(field.value)} 
 								/>
 							</FormControl>
 							<FormMessage />

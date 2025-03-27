@@ -13,6 +13,8 @@ import { toast } from '@workspace/ui/components/sonner';
 const stepSchemas = [personalInfoSchema, questionnaireSchema];
 const steps = [PersonalInfoStep, QuestionnaireStep, ConfirmationStep];
 
+export const getStringValue = (value: unknown) => (typeof value === "string" ? value : "");
+
 interface IProps {
 	totalSteps: number;
 	currentStep: number;
@@ -24,27 +26,29 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 		.slice(0, currentStep) // Merge all schemas up to current step
 		.reduce((acc, schema) => acc.merge(schema), z.object({}));
 
-	const form = useForm<z.infer<typeof combinedSchema>>({
+	const defaultValues = {
+		firstName: '',
+		lastName: '',
+		email: '',
+		phoneNumber: '',
+		instagram: '',
+		tiktok: '',
+		x: '',
+		linkedin: '',
+		facebook: '',
+		youtube: '',
+		whyBecomeCoach: '',
+		biggestStruggle: '',
+		interestedInAthleteProgram: 'false',
+		trainingStyles: [],
+		certification: [] as Certification[],
+	};
+
+	const form = useForm<any>({
 		resolver: zodResolver(currentSchema),
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
-		defaultValues: {
-			firstName: '',
-			lastName: '',
-			email: '',
-			phoneNumber: '',
-			instagram: '',
-			tiktok: '',
-			x: '',
-			linkedin: '',
-			facebook: '',
-			youtube: '',
-			whyBecomeCoach: '',
-			biggestStruggle: '',
-			interestedInAthleteProgram: 'false',
-			trainingStyles: [],
-			certification: [],
-		},
+		defaultValues: defaultValues
 	});
 
 	// Handle form submission
@@ -70,7 +74,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 
 	// Function to add a certification
 	const addCertification = (certification: Certification) => {
-		const currentCertifications = form.getValues('certification') || [];
+		const currentCertifications = form.getValues("certification") as Certification[] || [];
 		form.setValue('certification', [...currentCertifications, certification]);
 	};
 

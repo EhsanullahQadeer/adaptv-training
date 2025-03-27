@@ -20,8 +20,13 @@ declare module '@/types/coach' {
 		firstName: string;
 		lastName: string;
 		email: string;
-		phoneNumber?: string;
-		socialLinks?: SocialLinks;
+		phoneNumber: string;
+		instagram?: SocialLinks;
+		x?: SocialLinks;
+		tiktok?: SocialLinks;
+		linkedin?: SocialLinks;
+		facebook?: SocialLinks;
+		youtube?: SocialLinks;
 		biggestStruggle: string;
 		whyBecomeCoach: string;
 		trainingStyles: string[];

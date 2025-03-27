@@ -1,15 +1,8 @@
-import { PhoneInput, PhoneInputProps, PhoneInputRefType } from 'react-international-phone';
-import 'react-international-phone/style.css';
-import React from 'react';
+import { PhoneInput, PhoneInputProps } from "react-international-phone";
+import "react-international-phone/style.css";
 
-
-
-const PhoneNumberInput = React.forwardRef<PhoneInputRefType, PhoneInputProps>(
-	({ defaultCountry = 'us', value, onChange, ...rest }, ref) => {
-		return <PhoneInput ref={ref} defaultCountry={defaultCountry} value={value} onChange={onChange} {...rest} />;
-	},
-);
-
-PhoneNumberInput.displayName = 'PhoneNumberInput';
+const PhoneNumberInput = (props: PhoneInputProps) => {
+  return <PhoneInput {...props} />;
+};
 
 export default PhoneNumberInput;

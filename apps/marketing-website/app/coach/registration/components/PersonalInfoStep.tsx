@@ -6,6 +6,8 @@ import PhoneNumberInput from '@workspace/ui/components/phonenumber-input';
 import CertificateField from './CertificateField';
 import { z } from 'zod';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { CoachFormValues } from '@/types/coach';
+import { getStringValue } from './FormWrapper';
 
 const phoneSchema = z
 	.string()
@@ -50,51 +52,51 @@ const PersonalInfoStep = ({
 	addCertification,
 }: PersonalInfoStepProps & { addCertification: (cert: { id: string; name: string; company: string }) => void }) => {
 	// Define the fields for the form
-	const fields: {
-		name: keyof CoachFormValues;
-		label: string;
-		placeholder?: string;
-		component: (field: ControllerRenderProps<CoachFormValues>) => JSX.Element;
-	}[] = [
-		{
-			name: 'firstName',
-			label: 'First Name',
-			placeholder: 'John',
-			component: (field) => <Input placeholder="John" {...field} />,
-		},
-		{
-			name: 'lastName',
-			label: 'Last Name',
-			placeholder: 'Doe',
-			component: (field) => <Input placeholder="Doe" {...field} />,
-		},
-		{
-			name: 'email',
-			label: 'Email',
-			placeholder: 'email@example.com',
-			component: (field) => (
-				<Input leftAdornment={<MailIcon />} type="email" placeholder="email@example.com" {...field} />
-			),
-		},
-		{
-			name: 'phoneNumber',
-			label: 'Phone Number',
-			component: (field) => (
-				<div className="group flex border border-gray-300 rounded-lg focus-within:border-ring transition-all">
-					<PhoneNumberInput
-						className="flex-1"
-						inputClassName="!w-full !border-none !h-10 !rounded-lg"
-						countrySelectorStyleProps={{
-							buttonClassName: '!px-2.5 !py-3 !h-10 !rounded-lg transition-all !border-none',
-						}}
-						// name={field.name}
-						value={field.value || ''}
-						onChange={field.onChange}
-					/>
-				</div>
-			),
-		},
-	];
+ 
+
+  const fields: {
+    name: keyof CoachFormValues;
+    label: string;
+    placeholder?: string;
+    component: (field: ControllerRenderProps<CoachFormValues>) => JSX.Element;
+  }[] = [
+    {
+      name: "firstName",
+      label: "First Name",
+      placeholder: "John",
+      component: (field) => <Input placeholder="John" {...field} value={getStringValue(field.value)} />,
+    },
+    {
+      name: "lastName",
+      label: "Last Name",
+      placeholder: "Doe",
+      component: (field) => <Input placeholder="Doe" {...field} value={getStringValue(field.value)} />,
+    },
+    {
+      name: "email",
+      label: "Email",
+      placeholder: "email@example.com",
+      component: (field) => (
+        <Input leftAdornment={<MailIcon />} type="email" placeholder="email@example.com" {...field} value={getStringValue(field.value)} />
+      ),
+    },
+    {
+      name: "phoneNumber",
+      label: "Phone Number",
+      component: (field) => (
+        <div className="group flex border border-gray-300 rounded-lg focus-within:border-ring transition-all">
+          <PhoneNumberInput
+            className="flex-1"
+            inputClassName="!w-full !border-none !h-10 !rounded-lg"
+            countrySelectorStyleProps={{ buttonClassName: "!px-2.5 !py-3 !h-10 !rounded-lg transition-all !border-none" }}
+            value={getStringValue(field.value)}
+            onChange={field.onChange}
+          />
+        </div>
+      ),
+    },
+  ];
+  
 
 	//  social fields for the form
 	const socialFields: {
@@ -149,7 +151,7 @@ const PersonalInfoStep = ({
 							<FormItem>
 								<FormLabel className="text-xs">{label}</FormLabel>
 								<FormControl>
-									<Input placeholder={placeholder} {...field} />
+									<Input placeholder={placeholder} {...field} value={getStringValue(field.value)}  />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
