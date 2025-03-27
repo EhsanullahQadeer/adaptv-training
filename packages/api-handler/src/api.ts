@@ -1,120 +1,47 @@
-import axios, {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  AxiosHeaders,
-  InternalAxiosRequestConfig,
-} from 'axios';
-import { getRequestKey, getPendingRequest } from './utils/deduplication';
-import { standardizeError } from './utils/errorHandler';
-import { generateRequestId, logRequest } from './utils/tracing';
+import axios, { AxiosResponse } from 'axios';
+import { ApiConfig, ApiMethods } from './types/api';
+import { ExtendedAxiosInstance, ExtendedAxiosRequestConfig } from './types/axios';
+import { createAuthInterceptor } from './interceptors/auth';
+import { createRetryInterceptor } from './interceptors/retry';
+import { createLoggingInterceptor } from './interceptors/logging';
+import { makeRequest } from './utils/request';
 
-export interface ApiConfig extends AxiosRequestConfig {
-  getAuthToken?: () => Promise<string | null>;
-  authHeaderFormat?: (token: string) => string;
-  onRequest?: (request: InternalAxiosRequestConfig) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>;
-  onResponse?: (response: AxiosResponse) => AxiosResponse | Promise<AxiosResponse>;
-  onError?: (error: any) => any;
-  retryCount?: number;
-  retryDelay?: number;
-}
-
-export const createApiInstance = (config: ApiConfig): AxiosInstance => {
+export const createApiInstance = (config: ApiConfig): ExtendedAxiosInstance & ApiMethods => {
+  // Create base instance
   const instance = axios.create({
     baseURL: config.baseURL || process.env.API_BASE_URL,
+    timeout: config.timeout || Number(process.env.API_TIMEOUT) || 30000,
+    extractData: config.extractData ?? true,
     ...config,
-  });
+  }) as ExtendedAxiosInstance;
 
-  // Request Interceptor
-  instance.interceptors.request.use(
-    async (request) => {
-      const requestId = generateRequestId();
-      logRequest(requestId, 'Request started', { url: request.url });
+  // Add interceptors
+  const loggingInterceptor = createLoggingInterceptor();
+  const authInterceptor = createAuthInterceptor(config);
+  const retryInterceptor = createRetryInterceptor(config);
 
-      if (!request.url) {
-        throw new Error('Request URL is undefined.');
-      }
+  instance.interceptors.request.use(loggingInterceptor);
+  if (authInterceptor) {
+    instance.interceptors.request.use(authInterceptor);
+  }
+  if (retryInterceptor) {
+    instance.interceptors.response.use((response: AxiosResponse) => response, retryInterceptor);
+  }
 
-      if (config.getAuthToken) {
-        const token = await config.getAuthToken();
-        if (token) {
-          const authHeader = config.authHeaderFormat
-            ? config.authHeaderFormat(token)
-            : `Bearer ${token}`;
-          request.headers = new AxiosHeaders({
-            ...request.headers?.toJSON(),
-            Authorization: authHeader,
-          });
-        }
-      }
+  // Create API methods
+  const methods: ApiMethods = {
+    get: <T>(url: string, config?: ExtendedAxiosRequestConfig) => 
+      makeRequest<T>(instance, 'get', url, undefined, config),
+    post: <T>(url: string, data?: any, config?: ExtendedAxiosRequestConfig) => 
+      makeRequest<T>(instance, 'post', url, data, config),
+    put: <T>(url: string, data?: any, config?: ExtendedAxiosRequestConfig) => 
+      makeRequest<T>(instance, 'put', url, data, config),
+    delete: <T>(url: string, config?: ExtendedAxiosRequestConfig) => 
+      makeRequest<T>(instance, 'delete', url, undefined, config),
+  };
 
-      if (config.onRequest) {
-        request = await config.onRequest(request as InternalAxiosRequestConfig);
-      }
-
-      const requestKey = getRequestKey(request);
-      const pendingRequest = getPendingRequest(requestKey);
-      if (pendingRequest) {
-        return pendingRequest;
-      }
-
-      return request as any;
-    },
-    (error) => config.onError ? config.onError(error) : Promise.reject(error)
-  );
-
-  // Response Interceptor
-  instance.interceptors.response.use(
-    async (response) => {
-      if (!response.config || !response.config.url) {
-        throw new Error('Response config or URL is undefined.');
-      }
-      if (config.onResponse) {
-        response = await config.onResponse(response);
-      }
-      return response;
-    },
-    async (error) => {
-      // const standardizedError = standardizeError(error);
-      console.error(error.message);
-
-      if (config.onError) {
-        return config.onError(error);
-      }
-      // return Promise.reject(standardizedError);
-      return Promise.reject(error);
-    }
-  );
-
-  return instance;
+  return Object.assign(instance, methods);
 };
 
-// Generic CRUD methods
-export const apiGet = async <T>(instance: AxiosInstance, url: string, config?: AxiosRequestConfig): Promise<T> => {
-  const response = await instance.get<T>(url, config);
-  return response.data;
-};
-
-export const apiPost = async <T>(instance: AxiosInstance, url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-  const response = await instance.post<T>(url, data, config);
-  return response.data;
-};
-
-export const apiPut = async <T>(instance: AxiosInstance, url: string, data?: any, config?: AxiosRequestConfig): Promise<T> => {
-  const response = await instance.put<T>(url, data, config);
-  return response.data;
-};
-
-export const apiDelete = async <T>(instance: AxiosInstance, url: string, config?: AxiosRequestConfig): Promise<T> => {
-  const response = await instance.delete<T>(url, config);
-  return response.data;
-};
-
-// Export Axios types
-export type {
-  AxiosInstance,
-  AxiosResponse,
-  AxiosHeaders,
-  InternalAxiosRequestConfig,
-  AxiosRequestConfig,
-} from 'axios';
+export * from './types/api';
+export * from './types/axios';

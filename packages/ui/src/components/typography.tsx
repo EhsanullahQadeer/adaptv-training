@@ -1,4 +1,5 @@
 import React, { ReactNode, ElementType, CSSProperties, useMemo } from 'react';
+import type { JSX } from 'react'; // Added import for JSX namespace
 import { cn } from '../lib/utils';
 
 interface TypographyVariant {
@@ -201,7 +202,7 @@ export function Typography({
 	fontFamily,
 	style,
 	sizeVariant = 'responsive',
-}: TypographyProps) {
+}: TypographyProps): JSX.Element {
 	const asVariant = useMemo(
 		() =>
 			typeof Component === 'string' &&

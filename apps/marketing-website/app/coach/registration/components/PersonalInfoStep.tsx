@@ -4,12 +4,51 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@works
 import { MailIcon } from '@workspace/ui/icons';
 import PhoneNumberInput from '@workspace/ui/components/phonenumber-input';
 import CertificateField from './CertificateField';
+import { z } from 'zod';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+
+const phoneSchema = z
+	.string()
+	.nonempty({ message: 'Phone number is required.' })
+	.refine(
+		(value) => {
+			const phoneNumber = parsePhoneNumberFromString(value);
+			return phoneNumber ? phoneNumber.isValid() : false;
+		},
+		{ message: 'Invalid phone number format.' },
+	);
+
+export const personalInfoSchema = z.object({
+	firstName: z.string().nonempty({ message: 'First name is required.' }),
+	lastName: z.string().nonempty({ message: 'Last name is required.' }),
+	email: z.string().email({ message: 'Invalid email address.' }),
+	phoneNumber: phoneSchema,
+	certification: z
+		.array(
+			z.object({
+				id: z.string().nonempty({ message: 'ID is required.' }),
+				name: z.string().nonempty({ message: 'Certification Name is required.' }),
+				company: z.string().nonempty({ message: 'Company is required.' }),
+			}),
+		)
+		.optional(),
+
+	instagram: z.string().url().or(z.literal('')).optional(),
+	tiktok: z.string().url().or(z.literal('')).optional(),
+	x: z.string().url().or(z.literal('')).optional(),
+	linkedin: z.string().url().or(z.literal('')).optional(),
+	facebook: z.string().url().or(z.literal('')).optional(),
+	youtube: z.string().url().or(z.literal('')).optional(),
+});
 
 interface PersonalInfoStepProps {
 	form: UseFormReturn<CoachFormValues>;
 }
 
-const PersonalInfoStep = ({ form, addCertification }: PersonalInfoStepProps & { addCertification: (cert: { id: string; name: string; company: string }) => void }) => {
+const PersonalInfoStep = ({
+	form,
+	addCertification,
+}: PersonalInfoStepProps & { addCertification: (cert: { id: string; name: string; company: string }) => void }) => {
 	// Define the fields for the form
 	const fields: {
 		name: keyof CoachFormValues;
@@ -121,10 +160,7 @@ const PersonalInfoStep = ({ form, addCertification }: PersonalInfoStepProps & { 
 
 			<Separator className="my-8" />
 
-			<CertificateField
-				certifications={form.watch('certification')|| []}
-				addCertification={addCertification}
-			/>
+			<CertificateField certifications={form.watch('certification') || []} addCertification={addCertification} />
 		</div>
 	);
 };

@@ -3,7 +3,7 @@ import LeftSide from './components/LeftSide';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import { Typography } from '@workspace/ui/components';
 import Image from 'next/image';
-import { getCoachApplicationConfig } from '@/lib/services/cmsService';
+import { getCoachApplicationConfig, getMovementTrainingStyles } from '@/lib/services/cmsService';
 import { CertificationOptionsProvider } from './components/CertificationOptionsContext';
 
 const { registrationRightBg, adaptvLogo } = imagesPaths;
@@ -12,7 +12,7 @@ const page = async () => {
 	const { certificationOptions } = await getCoachApplicationConfig();
 
 	return (
-		<CertificationOptionsProvider certificationOptions={certificationOptions}>
+		<CertificationOptionsProvider {...{ certificationOptions }}>
 			<div className="flex flex-1 ">
 				<LeftSide />
 

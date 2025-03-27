@@ -1,17 +1,22 @@
 'use client';
 import React, { createContext, ReactNode, useContext } from 'react';
 
-export const CertificationOptionsContext = createContext<certificationOptions[] | undefined>(undefined);
+interface CertificationOptionsContextType {
+	certificationOptions: CertificationOptions[];
+}
+
+const CertificationOptionsContext = createContext<CertificationOptionsContextType | undefined>(undefined);
 
 export const CertificationOptionsProvider = ({
 	children,
 	certificationOptions,
 }: {
 	children: ReactNode;
-	certificationOptions: certificationOptions[];
+	certificationOptions: CertificationOptions[];
+	trainingStyles: TrainingStyle[];
 }) => {
 	return (
-		<CertificationOptionsContext.Provider value={certificationOptions}>
+		<CertificationOptionsContext.Provider value={{ certificationOptions }}>
 			{children}
 		</CertificationOptionsContext.Provider>
 	);

@@ -47,7 +47,7 @@ const CertificateDialog = ({
 		dismiss();
 	};
 
-	const certificationOptions = useCertificationOptions();
+	const { certificationOptions } = useCertificationOptions();
 
 	return (
 		<div>

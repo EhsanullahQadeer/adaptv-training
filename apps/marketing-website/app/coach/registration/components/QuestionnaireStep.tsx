@@ -3,13 +3,15 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@works
 import { RadioGroupItem } from '@workspace/ui/components/radio-group';
 import React from 'react';
 import { UseFormReturn } from 'react-hook-form';
+import { z } from 'zod';
+
 interface PersonalInfoStepProps {
 	form: UseFormReturn<CoachFormValues>;
 }
 
 const fields: { name: keyof CoachFormValues; label: string; placeholder: string }[] = [
 	{
-		name: 'purpose',
+		name: 'whyBecomeCoach',
 		label: 'Why do you want to become an AdaptvTraining Coach?',
 		placeholder:
 			'Example: I am passionate about helping others reach their full potential, both physically and mentally.',
@@ -22,11 +24,17 @@ const fields: { name: keyof CoachFormValues; label: string; placeholder: string 
 	},
 ];
 
+export const questionnaireSchema = z.object({
+	whyBecomeCoach: z.string().nonempty({ message: 'Purpose is required.' }),
+	biggestStruggle: z.string().nonempty({ message: 'Biggest struggle is required.' }),
+	interestedInAthleteProgram: z
+		.enum(['true', 'false'], { message: 'Selection is required.' })
+		.transform((val) => val === 'true'), // Convert "true" to `true` and "false" to `false`
 
+	trainingStyles: z.array(z.string()).nonempty({ message: 'At least one training style is required.' }),
+});
 
 const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
-
-	
 	return (
 		<div className="flex flex-col gap-5">
 			{fields.map(({ name, label, placeholder }) => (
@@ -54,21 +62,21 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 			))}
 			<FormField
 				control={form.control}
-				name="interested"
+				name="interestedInAthleteProgram"
 				render={({ field }) => (
 					<FormItem>
 						<FormLabel>Are you interested in becoming an AdaptvTraining Athlete? </FormLabel>
 						<FormControl>
-							<RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="flex gap-4 py-2">
+							<RadioGroup onValueChange={field.onChange} defaultValue={String(field.value)} className="flex gap-4 py-2">
 								<FormItem className="flex items-center space-x-3 space-y-0">
 									<FormControl>
-										<RadioGroupItem value="yes" />
+										<RadioGroupItem value="true" />
 									</FormControl>
 									<FormLabel className="font-normal">Yes</FormLabel>
 								</FormItem>
 								<FormItem className="flex items-center space-x-3 space-y-0">
 									<FormControl>
-										<RadioGroupItem value="no" />
+										<RadioGroupItem value="false" />
 									</FormControl>
 									<FormLabel className="font-normal">No</FormLabel>
 								</FormItem>
@@ -80,7 +88,7 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 			/>
 			<FormField
 				control={form.control}
-				name="trainingStyle"
+				name="trainingStyles"
 				render={({ field }) => (
 					<FormItem>
 						<FormLabel>
@@ -88,17 +96,18 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 						</FormLabel>
 						<FormControl>
 							<div className="flex gap-4 py-2 flex-wrap">
-								{[
-									'Online Program-Based Coaching',
-									'1-1 Live Virtual Coaching',
-									'In-Person Training',
-									'Virtual Group Classes',
-								].map((option) => (
+								{['1-1-live-virtual-coachinggg', 'online-program-based-coaching'].map((option) => (
 									<Badge
 										key={option}
-										variant={field.value === option ? 'default' : 'outline'}
+										variant={field.value.includes(option) ? 'default' : 'outline'}
 										className="p-1 cursor-pointer"
-										onClick={() => field.onChange(option)}
+										onClick={() =>
+											field.onChange(
+												field.value.includes(option)
+													? field.value.filter((item) => item !== option)
+													: [...field.value, option],
+											)
+										}
 									>
 										{option}
 									</Badge>

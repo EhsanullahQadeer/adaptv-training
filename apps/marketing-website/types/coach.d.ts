@@ -20,17 +20,14 @@ declare global {
 		email: string;
 		phoneNumber?: string;
 		socialLinks?: SocialLinks;
-		purpose: string;
 		biggestStruggle: string;
-		interested: string;
-		trainingStyle: string;
 		whyBecomeCoach: string;
 		trainingStyles: string[];
 		certification?: Certification[];
 		interestedInAthleteProgram: boolean;
 	}
 
-	interface certificationOptions {
+	interface CertificationOptions {
 		companyName: string;
 		companyImage: {
 			createdAt: string;
@@ -51,7 +48,7 @@ declare global {
 		createdAt: string;
 		updatedAt: string;
 		globalType: string;
-		certificationOptions: certificationOptions[]
+		certificationOptions: CertificationOptions[]
 		id: string;
 	}
 }
