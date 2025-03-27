@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Header from '@/components/header/Header';
 import Footer from '@/components/Footer';
+import { Toaster } from '@workspace/ui/components';
 
 const fonetika = localFont({
 	src: [
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<Header />
 					{children}
 					<Footer />
+					<Toaster position='top-left' />
 				</Providers>
 			</body>
 		</html>

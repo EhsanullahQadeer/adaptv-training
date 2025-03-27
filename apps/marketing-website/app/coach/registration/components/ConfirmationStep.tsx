@@ -1,7 +1,9 @@
 import { imagesPaths } from '@/lib/public-assets-paths';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
 import { Button, Typography } from '@workspace/ui/components';
 import Stepper from '@workspace/ui/components/stepper';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const steps = [
@@ -30,7 +32,9 @@ const ConfirmationStep = () => {
 				<Stepper wrapperClassName="mt-3 justify-center" currentStep={currentStep} steps={steps} />
 			</div>
 			<div>
-				<Button className="w-[251px] sm:w-auto">Back to home</Button>
+				<Link href={pagesRoutes.coach}>
+					<Button type='button' className="w-[251px] sm:w-auto">Back to home</Button>
+				</Link>
 			</div>
 		</div>
 	);
