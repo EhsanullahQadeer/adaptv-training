@@ -24,13 +24,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" suppressHydrationWarning className="h-full w-full">
+		<html lang="en" suppressHydrationWarning className="min-h-full w-full">
 			<body className={`${fonetika.variable} antialiased h-full w-full flex flex-col`}>
 				<Providers>
 					<Header />
 					{children}
 					<Footer />
-					<Toaster position='top-left' />
+					<Toaster position="top-left" />
 				</Providers>
 			</body>
 		</html>

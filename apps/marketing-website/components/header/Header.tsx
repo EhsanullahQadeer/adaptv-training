@@ -36,21 +36,22 @@ const Header = () => {
 	const isClientRoute = pathname.includes(client);
 	const menuItems = isClientRoute
 		? [
-				{ label: 'About', link: clientAbout },
-				{ label: 'Platform', link: clientPlatform },
-				{ label: 'Exercise Library', link: clientExerciseLibrary },
-				{ label: 'Blog', link: clientBlog },
-			]
+			{ label: 'About', link: clientAbout },
+			{ label: 'Platform', link: clientPlatform },
+			{ label: 'Exercise Library', link: clientExerciseLibrary },
+			{ label: 'Blog', link: clientBlog },
+		]
 		: [
-				{ label: 'About', link: coachAbout },
-				{ label: 'Platform', link: coachPlatform },
-				{ label: 'Learning', link: coachLearning },
-			];
+			{ label: 'About', link: coachAbout },
+			{ label: 'Platform', link: coachPlatform },
+			{ label: 'Learning', link: coachLearning },
+		];
 	const buttonText = isClientRoute
 		? pathname === clientExerciseLibrary
 			? 'Start Training'
 			: 'Join the Waitlist'
 		: 'Become a Coach';
+
 	const showLoginButton = pathname === clientExerciseLibrary;
 	const [selectedRole, setSelectedRole] = useState(isClientRoute ? 'client' : 'for-coach');
 
@@ -62,7 +63,8 @@ const Header = () => {
 
 	const handleScroll = useCallback(() => {
 		const currentScrollY = window.scrollY;
-		setHideHeader(currentScrollY > lastScrollY && currentScrollY > 100);
+		const isHide = currentScrollY > lastScrollY && currentScrollY > 100;
+		setHideHeader(isHide);
 		setLastScrollY(currentScrollY);
 		setShadowOpacity(Math.min(currentScrollY / 2000, 0.6));
 	}, [lastScrollY]);
@@ -127,9 +129,8 @@ const Header = () => {
 					</div>
 
 					<div
-						className={`fixed top-20 inset-0 bg-black bg-opacity-50 transition-all duration-500 ${
-							menuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
-						}`}
+						className={`fixed top-20 inset-0 bg-black bg-opacity-50 transition-all duration-500 ${menuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+							}`}
 						onClick={() => setMenuOpen(false)}
 					></div>
 
@@ -156,16 +157,14 @@ const Header = () => {
 							onClick={toggleMenu}
 						>
 							<div
-								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-									menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-								}`}
+								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+									}`}
 							>
 								<CancelIcon height={24} width={24} />
 							</div>
 							<div
-								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-									menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-								}`}
+								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+									}`}
 							>
 								<MenuIcon height={24} width={24} />
 							</div>
