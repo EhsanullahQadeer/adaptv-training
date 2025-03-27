@@ -18,6 +18,9 @@ const nextConfig = {
       },
     },
   },
+  images: {
+    domains: ["adaptvcms.com"],
+  },
 };
 
 export default nextConfig;

@@ -31,36 +31,37 @@ const page = async () => {
 
 	const learningPostsApiResponse = await getCoachLearningResourcePosts();
 
+	console.log('learningPostsApiResponse', learningPostsApiResponse);
+
 	const categoriesArr = learningCategoriesApiResponse.docs;
+	const learningPostsArr = learningPostsApiResponse.docs;
 
 	return (
-		<div className="mt-8 md:mt-[70px] bg-white">
-			<div className="mx-4">
-				<div className="max-w-[780px] mb-12 m-auto text-black text-center">
-					<Typography as={'h1'} className="mb-2.5">
-						Coaching Learning Resources
-					</Typography>
-					<Typography as={'h5'}>Master virtual training, grow your fitness business.</Typography>
+		<>
+			<div className="pt-8 md:pt-[70px] bg-snow-white">
+				<div className="mx-4">
+					<div className="max-w-[780px] mb-12 md:mb-[60px] m-auto text-black text-center">
+						<Typography as={'h1'} className="mb-2.5">
+							Coaching Learning Resources
+						</Typography>
+						<Typography as={'h5'}>Master virtual training, grow your fitness business.</Typography>
+					</div>
 				</div>
 
-				<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
-					<div className="sm:w-[260px] pr-5 border-r border-light-gray">
-						<Categories {...{ categoriesArr }} />
-					</div>
-					<div className="flex sm:justify-left justify-center  gap-3 flex-wrap">
-						{services.map((service, index) => (
-							<ServiceCard
-								key={index}
-								category={service.category}
-								title={service.title}
-								imageSrc={service.imageSrc}
-								dotColor={service.dotColor}
-							/>
-						))}
+				<div className="pt-6 md:pt-[60px] px-4 bg-white">
+					<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
+						<div className="sm:max-w-[260px] pr-5 flex-1 border-r border-light-gray">
+							<Categories {...{ categoriesArr }} />
+						</div>
+						<div className="flex-1 w-full flex flex-wrap gap-3">
+							{learningPostsArr.map((post, index: number) => (
+								<ServiceCard key={index} {...{ post }} />
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
