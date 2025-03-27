@@ -1,4 +1,4 @@
-declare module "@/types/coach" {
+declare module '@/types/coach' {
 	import type { PaginatedResponse } from '@/types/pagination';
 
 	export interface SocialLinks {
@@ -29,8 +29,6 @@ declare module "@/types/coach" {
 		interestedInAthleteProgram: boolean;
 	}
 
-
-
 	export interface CertificationOptions {
 		companyName: string;
 		companyImage: AssetGraphic;
@@ -41,7 +39,7 @@ declare module "@/types/coach" {
 		createdAt: string;
 		updatedAt: string;
 		globalType: string;
-		certificationOptions: CertificationOptions[]
+		certificationOptions: CertificationOptions[];
 		id: string;
 	}
 
@@ -79,16 +77,6 @@ declare module "@/types/coach" {
 		};
 	}
 
-	export interface TrainingStyle {
-		id: string;
-		name: string;
-		description?: string;
-	}
-
-	export interface MovementTrainingStylesResponse {
-		styles: TrainingStyle[];
-	}
-
 	export interface ExtendedCoachApplicationConfig {
 		createdAt: string;
 		updatedAt: string;
@@ -100,4 +88,4 @@ declare module "@/types/coach" {
 	export type CoachLearningResourcePostsResponse = PaginatedResponse<CoachLearningResourcePost>;
 }
 
-export { };
+export {};

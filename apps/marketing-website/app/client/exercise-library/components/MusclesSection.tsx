@@ -14,7 +14,7 @@ const MusclesSection = async () => {
 				Browse by Muscle
 			</Typography>
 			<div className="flex flex-wrap gap-x-4 md:gap-x-5 gap-y-7 md:gap-y-9">
-				{muscleArr.map((muscle: Muscle) => {
+				{muscleArr.map((muscle) => {
 					const { muscleName, muscleGraphic, id, muscleLabelColor } = muscle;
 					const { url, alt, width, height } = muscleGraphic;
 					return (

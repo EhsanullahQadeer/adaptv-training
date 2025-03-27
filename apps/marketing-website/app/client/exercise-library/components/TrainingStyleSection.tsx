@@ -12,7 +12,7 @@ const TrainingStyleSection = async () => {
 				Browse by Muscle
 			</Typography>
 			<div className="flex flex-wrap gap-3">
-				{trainingStylesArr.map((train: TrainingStyles) => {
+				{trainingStylesArr.map((train) => {
 					const { trainingStyleName, id } = train;
 
 					return (
