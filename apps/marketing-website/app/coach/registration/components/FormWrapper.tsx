@@ -5,7 +5,7 @@ import { Button, Form } from '@workspace/ui/components';
 import PersonalInfoStep, { personalInfoSchema } from './PersonalInfoStep';
 import QuestionnaireStep, { questionnaireSchema } from './QuestionnaireStep';
 import ConfirmationStep from './ConfirmationStep';
-import { apiPostCoachApplication } from '@/lib/services/apiService';
+import { submitCoachApplication } from '@/lib/services/apiService';
 
 const stepSchemas = [personalInfoSchema, questionnaireSchema];
 const steps = [PersonalInfoStep, QuestionnaireStep, ConfirmationStep];
@@ -52,7 +52,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 		} else {
 			try {
 				console.log('Final submission:', values);
-				const response = await apiPostCoachApplication(values);
+				const response = await submitCoachApplication(values);
 				console.log('response: ', response);
 			} catch (error) {
 				console.log('error: ', error);

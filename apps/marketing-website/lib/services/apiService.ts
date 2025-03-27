@@ -4,7 +4,7 @@ import type { CoachFormValues } from '@/types/coach';
 
 // API functions
 const submitCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<any>> => {
-  return apiClient.post('/api/coach-application', data);
+  return apiClient.post('/coach-application', data);
 };
 
 // Export all helper functions
