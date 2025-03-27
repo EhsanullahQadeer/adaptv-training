@@ -7,7 +7,6 @@ import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 const MusclesSection = async () => {
 	const musclesApiResponse = await getMuscles();
 	const muscleArr = musclesApiResponse?.docs;
-	console.log('muscleArr', muscleArr);
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -20,7 +19,10 @@ const MusclesSection = async () => {
 					const { url, alt, width, height } = muscleGraphic;
 					return (
 						<div key={id} className="flex gap-3.5 items-center w-[163px] md:w-[245px]">
-							<div style={{ backgroundColor: muscleLabelColor }} className={`w-[55px] h-[55px] p-2.5 rounded-full flex-1`}>
+							<div
+								style={{ backgroundColor: muscleLabelColor }}
+								className={`w-12 h-12 md:w-[55px] md:h-[55px] p-1.5 md:p-2.5 rounded-full flex items-center justify-center shrink-0`}
+							>
 								<Image
 									width={width}
 									height={height}

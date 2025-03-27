@@ -37,7 +37,7 @@ const getCoachLearningResourceCategories = () => apiCmsClient.get('/coach-learni
 const getCoachLearningResourcePosts = () => apiCmsClient.get('/coach-learning-resource-posts');
 const getMuscles = () => apiCmsClient.get('/muscles');
 const getMovementTrainingStyles = () => apiCmsClient.get<MovementTrainingStylesResponse>('/movement-training-styles');
-const getMovementEquipment = () => apiCmsClient.get('/collections/movement-equipment');
+const getMovementEquipment = () => apiCmsClient.get('/movement-equipment');
 const getMovements = () => apiCmsClient.get('/collections/movements');
 const getExerciseLibraryHomepage = () => apiCmsClient.get('/globals/movement-library-homepage');
 const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blog-subscribers');

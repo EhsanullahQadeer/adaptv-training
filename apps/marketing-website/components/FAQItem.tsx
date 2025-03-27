@@ -4,7 +4,7 @@ import { Typography } from '@workspace/ui/components';
 import { MinusCircular, PlusCircular } from '@workspace/ui/icons';
 
 interface Props {
-	faq: { question: string; answer: string };
+	faq: FAQItem;
 }
 
 const FAQItem = (props: Props) => {
@@ -15,7 +15,7 @@ const FAQItem = (props: Props) => {
 	return (
 		<div onClick={() => setIsOpen(!isOpen)} className="p-4 md:p-6 rounded-[14px] bg-pale-azure cursor-pointer">
 			<div className="flex justify-between items-center gap-8">
-				<Typography as={'span'}>{question}</Typography>
+				<Typography color='text-black' as={'span'}>{question}</Typography>
 
 				<div className="w-6 h-6 relative text-lightLime">
 					<div
@@ -23,23 +23,25 @@ const FAQItem = (props: Props) => {
 							isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
 						}`}
 					>
-						<MinusCircular />
+						<MinusCircular height={24} width={24} />
 					</div>
 					<div
 						className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
 							isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
 						}`}
 					>
-						<PlusCircular />
+						<PlusCircular height={24} width={24} />
 					</div>
 				</div>
 			</div>
 			<div
-				className={`max-w-[544px] text-slate-gray overflow-hidden transition-all duration-300 ${
+				className={`max-w-[544px] overflow-hidden transition-all duration-300 ${
 					isOpen ? 'max-h-40 mt-2.5' : 'max-h-0 mt-0'
 				}`}
 			>
-				<Typography as={'span_secondary'}>{answer}</Typography>
+				<Typography color="text-slate-gray" as={'span_secondary'}>
+					{answer}
+				</Typography>
 			</div>
 		</div>
 	);

@@ -49,8 +49,58 @@ declare global {
 		updatedAt: string;
 		globalType: string;
 		certificationOptions: CertificationOptions[]
+		certificationOptions: certificationOptions[];
+		certificationOptions: certificationOptions;
 		id: string;
 	}
-}
 
-export { };
+	interface ExpertPhoto {
+		createdAt: string;
+		updatedAt: string;
+		alt: string;
+		_key: string;
+		filename: string;
+		mimeType: string;
+		filesize: number;
+		width: number;
+		height: number;
+		id: string;
+		url: string;
+		thumbnailURL: string | null;
+	}
+
+	interface Expert {
+		expertName: string;
+		expertDescription: string;
+		expertPhoto: ExpertPhoto;
+		id: string;
+	}
+
+	interface CoachHomepageExperts {
+		createdAt: string;
+		updatedAt: string;
+		globalType: string;
+		experts: Expert[];
+	}
+
+	type LearningPostCategory = {
+		createdAt: string;
+		updatedAt: string;
+		categoryName: string;
+		id: string;
+	};
+
+	type LearningResourcePostsCategories = {
+		docs: CategoryDoc[];
+		totalDocs: number;
+		limit: number;
+		totalPages: number;
+		page: number;
+		pagingCounter: number;
+		hasPrevPage: boolean;
+		hasNextPage: boolean;
+		prevPage: number | null;
+		nextPage: number | null;
+	};
+}
+export {};

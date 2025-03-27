@@ -1,18 +1,21 @@
 import { Typography } from '@workspace/ui/components';
 import React from 'react';
-import { movementEquipments } from './data';
 import Image from 'next/image';
+import { getMovementEquipment } from '@/lib/services/cmsService';
+import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 
-const EquipmentsSection = () => {
-	const equipmentsArr = movementEquipments.docs;
+const EquipmentsSection = async () => {
+	const movementEquipmentsApiResponse = await getMovementEquipment();
+	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
+
 	return (
 		<div className="flex flex-col gap-6">
 			<Typography as={'h4'} className="tracking-[-0.8px] md:tracking-[-1.12px]">
 				Browse by Equipment
 			</Typography>
 			<div className="flex gap-3 sm:flex-wrap flex-nowrap overflow-x-auto scrollbar-hide">
-				{equipmentsArr.map((equipment) => {
-					const { equipmentName, equipmentGraphic, id, exercisesCount } = equipment;
+				{movementEquipmentsArr.map((equipment: MovementEquipment) => {
+					const { equipmentName, equipmentGraphic, id } = equipment;
 					const { url, alt, width, height } = equipmentGraphic;
 					return (
 						<div
@@ -26,7 +29,7 @@ const EquipmentsSection = () => {
 								<Image
 									width={width}
 									height={height}
-									src={url}
+									src={cmsAssetsUrl(url)}
 									alt={alt}
 									className="w-full h-full object-cover rounded-[10px]"
 								/>
@@ -41,7 +44,7 @@ const EquipmentsSection = () => {
 									sizeVariant="small"
 									className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap"
 								>
-									{exercisesCount} Excercise
+									44 Excercise
 								</Typography>
 							</div>
 						</div>

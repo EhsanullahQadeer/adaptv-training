@@ -35,7 +35,12 @@ const faqsArr = [
 	},
 ];
 
-const FAQsSection = () => {
+interface IProps {
+	FAQsArr?: FAQItem[];
+}
+
+const FAQsSection = (props: IProps) => {
+	const { FAQsArr } = props;
 	return (
 		<div>
 			<Typography as={'h3'} align="center">
@@ -43,9 +48,9 @@ const FAQsSection = () => {
 			</Typography>
 
 			<div className="flex flex-col gap-4 mt-8 md:mt-9">
-				{faqsArr.map((faq, idx) => {
+				{FAQsArr?.map((faq, idx) => {
 					return (
-						<div key={faq.question + idx}>
+						<div key={faq.id + idx}>
 							<FAQItem {...{ faq }} />
 						</div>
 					);

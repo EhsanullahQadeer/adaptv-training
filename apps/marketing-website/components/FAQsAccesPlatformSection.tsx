@@ -3,8 +3,10 @@ import React from 'react';
 import FAQsSection from './FAQsSection';
 import AccessToPlatformSection from './AccessToPlatformSection';
 import { usePathname } from 'next/navigation';
+import { useAppContext } from '@/lib/context/AppContext';
 
 const FAQsAccesPlatformSection = () => {
+	const { globalFAQsData } = useAppContext();
 	const pathname = usePathname();
 	const isClientRoute = pathname.includes('/client');
 
@@ -22,11 +24,13 @@ const FAQsAccesPlatformSection = () => {
 				textMaxWidth: 'max-w-[510px]',
 			};
 
+	console.log('globalFAQsData', globalFAQsData);
+
 	return (
 		<div>
 			<div className="mx-4 mt-[66px] md:mt-[120px] max-sm:mb-[66px]">
 				<div className="max-w-[1100px] mx-auto">
-					<FAQsSection />
+					<FAQsSection {...{ FAQsArr: globalFAQsData?.faq }} />
 				</div>
 			</div>
 

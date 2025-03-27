@@ -60,7 +60,7 @@ const LearnGrow = () => {
 				Meet the experts already on Adaptv
 			</Typography>
 
-			<div className=" my-8 gap-5">
+			<div className="my-8 gap-5">
 				<LearnGrowSlider></LearnGrowSlider>
 			</div>
 		</div>
