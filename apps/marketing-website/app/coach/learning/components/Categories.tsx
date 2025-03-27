@@ -42,7 +42,7 @@ const Categories = (props: IProps) => {
 	return (
 		<div>
 			{/* Small screen */}
-			<div className="block lg:hidden">
+			<div className="block sm:hidden">
 				<Combobox
 					rotateIcon
 					icon={<ArrowDown />}
@@ -53,7 +53,7 @@ const Categories = (props: IProps) => {
 			</div>
 
 			{/* Large screen */}
-			<div className="hidden lg:block">
+			<div className="hidden sm:block">
 				<div className="px-2.5 py-3 border rounded-[10px] flex justify-between items-center">
 					<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
 						{selectedCategory ? selectedCategory.categoryName : 'All Resource'}

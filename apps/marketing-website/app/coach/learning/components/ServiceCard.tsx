@@ -1,20 +1,25 @@
+import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import { Typography } from '@workspace/ui/components';
 import { TimerIcon } from '@workspace/ui/icons';
 import Image from 'next/image';
 import React from 'react';
 
 interface ServiceCardProps {
-	category: string;
-	title: string;
-	imageSrc: string;
-	dotColor?: string;
+	post: any;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, dotColor }) => {
+const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => {
+	const { post } = props;
+	const { category, id, title, learningContentMediaType, learningContentImageMedia } = post;
+
+	const { categoryName } = category;
+
+	const { alt, url, height, width } = learningContentImageMedia || {};
+
 	return (
-		<div className="bg-whisper-gray sm:w-[260px] w-[343px] rounded-xl p-[14px]">
+		<div className="flex-1 bg-whisper-gray min-w-[252px] max-h-[367px] sm:max-h-[288px] rounded-xl p-3.5">
 			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
-				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: dotColor }}></span>
+				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: '#FF5733' }}></span>
 				<Typography
 					as={'caption'}
 					fontWeight="font-medium"
@@ -22,7 +27,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, do
 					color="text-[#000000]"
 					className="text-xs font-medium"
 				>
-					{category}
+					{categoryName}
 				</Typography>
 			</span>
 			<Typography
@@ -39,7 +44,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ category, title, imageSrc, do
 				<span className="text-[14px] font-semibold">45 min</span>
 			</span>
 			<div>
-				<Image width={1040} height={648} src={imageSrc} alt={title} className="rounded-md w-full h-full object-cover" />
+				{learningContentMediaType === 'image' ? (
+					<Image
+						width={width}
+						height={height}
+						src={cmsAssetsUrl(url)}
+						alt={alt}
+						className="rounded-md w-full h-full object-cover"
+					/>
+				) : (
+					<></>
+				)}
 			</div>
 		</div>
 	);
