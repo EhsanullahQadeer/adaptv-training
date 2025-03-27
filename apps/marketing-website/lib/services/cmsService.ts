@@ -1,32 +1,7 @@
 import { apiCmsClient } from '../utils/apiClient';
 import type { ApiResponse, ApiConfig } from '@workspace/api-handler/api';
-
-// API Response types
-interface ApiErrorResponse {
-  errors?: Record<string, string[]>;
-  message?: string;
-}
-
-interface CoachFormValues {
-  name: string;
-  email: string;
-  // Add other form fields as needed
-}
-
-interface MovementTrainingStylesResponse {
-  // Add your movement training styles type here
-  styles: Array<{
-    id: string;
-    name: string;
-    description?: string;
-  }>;
-}
-
-interface CoachApplicationConfig {
-  // Add your config type here
-  enabled: boolean;
-  maxApplications?: number;
-}
+import type { CoachFormValues, MovementTrainingStylesResponse, ExtendedCoachApplicationConfig } from '@/types/coach';
+import type { ApiErrorResponse } from '@/types/api';
 
 // Helper functions for API calls with proper typing
 const getCoachHomepage = () => apiCmsClient.get('/globals/coach-homepage');
@@ -43,6 +18,7 @@ const getExerciseLibraryHomepage = () => apiCmsClient.get('/globals/movement-lib
 const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blog-subscribers');
 const getClientBlogCategories = () => apiCmsClient.get('/collections/client-blog-categories');
 const getClientBlogPosts = () => apiCmsClient.get('/collections/client-blog-posts');
+
 const postCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<ApiErrorResponse>> => {
   const response = await apiCmsClient.post<ApiErrorResponse>('/coach-application', data, { extractData: false } as ApiConfig);
   return {
@@ -53,6 +29,7 @@ const postCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<
     ) as Record<string, string>,
   };
 };
+
 const postClientWaitlist = async (data: any): Promise<ApiResponse<ApiErrorResponse>> => {
   const response = await apiCmsClient.post<ApiErrorResponse>('/collections/client-waitlist', data, { extractData: false } as ApiConfig);
   return {
@@ -63,7 +40,8 @@ const postClientWaitlist = async (data: any): Promise<ApiResponse<ApiErrorRespon
     ) as Record<string, string>,
   };
 };
-const getCoachApplicationConfig = () => apiCmsClient.get<CoachApplicationConfig>('/globals/coach-application-config');
+
+const getCoachApplicationConfig = () => apiCmsClient.get<ExtendedCoachApplicationConfig>('/globals/coach-application-config');
 
 // Export all helper functions
 export {
@@ -84,9 +62,7 @@ export {
   postCoachApplication,
   postClientWaitlist,
   getCoachApplicationConfig,
-  // Export types
-  type CoachFormValues,
-  type ApiErrorResponse,
-  type MovementTrainingStylesResponse,
-  type CoachApplicationConfig,
 };
+
+// Re-export types for convenience
+export type { CoachFormValues } from '@/types/coach';

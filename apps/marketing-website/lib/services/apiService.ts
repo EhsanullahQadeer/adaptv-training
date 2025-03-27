@@ -1,10 +1,13 @@
 import { apiClient } from '../utils/apiClient';
-const { post } = apiClient;
+import type { ApiResponse } from '@workspace/api-handler/api';
+import type { CoachFormValues } from '@/types/coach';
 
-
-const apiPostCoachApplication = (data: CoachFormValues): Promise<any> => post('/coach-application', data);
+// API functions
+const submitCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<any>> => {
+  return apiClient.post('/api/coach-application', data);
+};
 
 // Export all helper functions
 export {
-    apiPostCoachApplication
+  submitCoachApplication,
 };

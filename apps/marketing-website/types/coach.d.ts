@@ -1,4 +1,4 @@
-declare global {
+declare module "@/types/coach" {
 	interface SocialLinks {
 		instagram?: string;
 		tiktok?: string;
@@ -44,13 +44,12 @@ declare global {
 			thumbnailURL: string | null;
 		};
 	}
+
 	interface CoachApplicationConfig {
 		createdAt: string;
 		updatedAt: string;
 		globalType: string;
 		certificationOptions: CertificationOptions[]
-		certificationOptions: certificationOptions[];
-		certificationOptions: certificationOptions;
 		id: string;
 	}
 
@@ -102,5 +101,45 @@ declare global {
 		prevPage: number | null;
 		nextPage: number | null;
 	};
+
+	export interface CoachFormValues {
+		name: string;
+		email: string;
+		phone: string;
+		location: string;
+		experience: string;
+		certification: string[];
+		referral: string;
+		message: string;
+	}
+
+	export interface MovementTrainingStylesResponse {
+		styles: Array<{
+			id: string;
+			name: string;
+			description?: string;
+		}>;
+	}
+
+	export interface ExtendedCoachApplicationConfig {
+		enabled: boolean;
+		maxApplications?: number;
+	}
+
+	export {
+		SocialLinks,
+		Certification,
+		CoachFormValues,
+		CertificationOptions,
+		CoachApplicationConfig,
+		ExpertPhoto,
+		Expert,
+		CoachHomepageExperts,
+		LearningPostCategory,
+		LearningResourcePostsCategories,
+		MovementTrainingStylesResponse,
+		ExtendedCoachApplicationConfig,
+	}
 }
+
 export {};
