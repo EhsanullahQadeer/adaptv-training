@@ -14,7 +14,7 @@ const EquipmentsSection = async () => {
 				Browse by Equipment
 			</Typography>
 			<div className="flex gap-3 sm:flex-wrap flex-nowrap overflow-x-auto scrollbar-hide">
-				{movementEquipmentsArr.map((equipment: MovementEquipment) => {
+				{movementEquipmentsArr.map((equipment) => {
 					const { equipmentName, equipmentGraphic, id } = equipment;
 					const { url, alt, width, height } = equipmentGraphic;
 					return (

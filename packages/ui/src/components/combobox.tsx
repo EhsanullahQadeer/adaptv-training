@@ -28,7 +28,7 @@ export function Combobox({
 	noOptionsMessage = 'No options found.',
 	onSelect,
 	buttonClassName = 'w-[200px] justify-between',
-	icon = <ChevronsUpDown/>, // Use ReactNode directly
+	icon = <ChevronsUpDown />, // Use ReactNode directly
 	rotateIcon = true, // Default to true
 	popoverContentProps, // Destructure the new prop
 	popoverClassName, // Destructure the new prop
@@ -52,15 +52,21 @@ export function Combobox({
 	};
 
 	return (
-		<Popover  open={open} onOpenChange={setOpen}>
+		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
-				<Button variant="outline" role="combobox" aria-expanded={open} className={cn(buttonClassName)}>
+				<Button
+					variant="outline"
+					color="transLight"
+					role="combobox"
+					aria-expanded={open}
+					className={cn(buttonClassName)}
+				>
 					{value ? options.find((option) => option.value === value)?.label : placeholder}
 					{icon && (
 						<span
 							className={cn(
-								"ml-2 h-4 w-4 shrink-0 opacity-50 transition-transform",
-								rotateIcon && open ? "rotate-180" : "rotate-0" // Rotate icon if enabled
+								'ml-2 h-4 w-4 shrink-0 opacity-50 transition-transform',
+								rotateIcon && open ? 'rotate-180' : 'rotate-0', // Rotate icon if enabled
 							)}
 						>
 							{icon}
@@ -68,7 +74,9 @@ export function Combobox({
 					)}
 				</Button>
 			</PopoverTrigger>
-			<PopoverContent  className={cn("w-[200px] p-0", popoverClassName)} {...popoverContentProps}> {/* Apply the new className prop */}
+			<PopoverContent className={cn('w-[200px] p-0', popoverClassName)} {...popoverContentProps}>
+				{' '}
+				{/* Apply the new className prop */}
 				<Command>
 					<CommandInput className="border-none" placeholder={`Search...`} />
 					<CommandList>
