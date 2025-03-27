@@ -1,4 +1,5 @@
 'use client';
+import { CertificationOptions } from '@/types/coach';
 import React, { createContext, ReactNode, useContext } from 'react';
 
 interface CertificationOptionsContextType {

@@ -1,145 +1,97 @@
 declare module "@/types/coach" {
-	interface SocialLinks {
-		instagram?: string;
-		tiktok?: string;
-		x?: string;
-		linkedin?: string;
-		facebook?: string;
-		youtube?: string;
-	}
+  import type { PaginatedResponse } from '@/types/pagination';
 
-	interface Certification {
-		id: string;
-		name: string;
-		company: string;
-	}
+  export interface SocialLinks {
+    instagram?: string;
+    tiktok?: string;
+    x?: string;
+    linkedin?: string;
+    facebook?: string;
+    youtube?: string;
+  }
 
-	interface CoachFormValues {
-		firstName: string;
-		lastName: string;
-		email: string;
-		phoneNumber?: string;
-		socialLinks?: SocialLinks;
-		biggestStruggle: string;
-		whyBecomeCoach: string;
-		trainingStyles: string[];
-		certification?: Certification[];
-		interestedInAthleteProgram: boolean;
-	}
+  export interface Certification {
+    id: string;
+    name: string;
+    company: string;
+  }
 
-	interface CertificationOptions {
-		companyName: string;
-		companyImage: {
-			createdAt: string;
-			updatedAt: string;
-			alt: string;
-			_key: string;
-			filename: string;
-			mimeType: string;
-			filesize: number;
-			width: number;
-			height: number;
-			id: string;
-			url: string;
-			thumbnailURL: string | null;
-		};
-	}
+  export interface CoachFormValues {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber?: string;
+    socialLinks?: SocialLinks;
+    biggestStruggle: string;
+    whyBecomeCoach: string;
+    trainingStyles: string[];
+    certification: Certification[];
+    interestedInAthleteProgram: boolean;
+  }
 
-	interface CoachApplicationConfig {
-		createdAt: string;
-		updatedAt: string;
-		globalType: string;
-		certificationOptions: CertificationOptions[]
-		id: string;
-	}
+  export interface CertificationOptions {
+    name: string;
+    id: string;
+  }
 
-	interface ExpertPhoto {
-		createdAt: string;
-		updatedAt: string;
-		alt: string;
-		_key: string;
-		filename: string;
-		mimeType: string;
-		filesize: number;
-		width: number;
-		height: number;
-		id: string;
-		url: string;
-		thumbnailURL: string | null;
-	}
+  export interface CoachApplicationConfig {
+    createdAt: string;
+    updatedAt: string;
+    globalType: string;
+    certificationOptions: CertificationOptions[]
+    id: string;
+  }
 
-	interface Expert {
-		expertName: string;
-		expertDescription: string;
-		expertPhoto: ExpertPhoto;
-		id: string;
-	}
+  export interface CoachHomepage {
+    createdAt: string;
+    updatedAt: string;
+    globalType: string;
+    heroTitle: string;
+    heroDescription: string;
+    heroImage: {
+      url: string;
+      thumbnailURL: string | null;
+    };
+    id: string;
+  }
 
-	interface CoachHomepageExperts {
-		createdAt: string;
-		updatedAt: string;
-		globalType: string;
-		experts: Expert[];
-	}
+  export interface CoachLearningResourceCategory {
+    name: string;
+    description: string | null;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+  }
 
-	type LearningPostCategory = {
-		createdAt: string;
-		updatedAt: string;
-		categoryName: string;
-		id: string;
-	};
+  export interface CoachLearningResourcePost {
+    title: string;
+    content: string;
+    category: CoachLearningResourceCategory;
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    thumbnailImage: {
+      url: string;
+      thumbnailURL: string | null;
+    };
+  }
 
-	type LearningResourcePostsCategories = {
-		docs: CategoryDoc[];
-		totalDocs: number;
-		limit: number;
-		totalPages: number;
-		page: number;
-		pagingCounter: number;
-		hasPrevPage: boolean;
-		hasNextPage: boolean;
-		prevPage: number | null;
-		nextPage: number | null;
-	};
+  export interface TrainingStyle {
+    id: string;
+    name: string;
+    description?: string;
+  }
 
-	export interface CoachFormValues {
-		name: string;
-		email: string;
-		phone: string;
-		location: string;
-		experience: string;
-		certification: string[];
-		referral: string;
-		message: string;
-	}
+  export interface MovementTrainingStylesResponse {
+    styles: TrainingStyle[];
+  }
 
-	export interface MovementTrainingStylesResponse {
-		styles: Array<{
-			id: string;
-			name: string;
-			description?: string;
-		}>;
-	}
+  export interface ExtendedCoachApplicationConfig {
+    enabled: boolean;
+    maxApplications?: number;
+  }
 
-	export interface ExtendedCoachApplicationConfig {
-		enabled: boolean;
-		maxApplications?: number;
-	}
-
-	export {
-		SocialLinks,
-		Certification,
-		CoachFormValues,
-		CertificationOptions,
-		CoachApplicationConfig,
-		ExpertPhoto,
-		Expert,
-		CoachHomepageExperts,
-		LearningPostCategory,
-		LearningResourcePostsCategories,
-		MovementTrainingStylesResponse,
-		ExtendedCoachApplicationConfig,
-	}
+  export type CoachLearningResourcePostsResponse = PaginatedResponse<CoachLearningResourcePost>;
 }
 
 export {};

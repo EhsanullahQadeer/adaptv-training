@@ -18,7 +18,7 @@ declare global {
 		faq: FAQItem[];
 		id: string;
 	}
-}
+
 
 
 

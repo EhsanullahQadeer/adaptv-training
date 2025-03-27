@@ -7,7 +7,7 @@ const CoachLayout = async ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<FAQsProvider data={coachFAQsResponse}>
-			<div>{children}</div>
+			{children}
 		</FAQsProvider>
 	);
 };
