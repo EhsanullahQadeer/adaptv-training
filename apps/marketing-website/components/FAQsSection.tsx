@@ -4,65 +4,74 @@ import type { FAQItem as FAQItemType } from '@/types/faq';
 import { Typography } from '@workspace/ui/components';
 
 const faqsArr: FAQItemType[] = [
-  {
-    question: 'How do I become a coach on AdaptvTraining?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '1'
-  },
-  {
-    question: 'What kind of support will I receive as a coach?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '2'
-  },
-  {
-    question: 'Do I need special certifications to join?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '3'
-  },
-  {
-    question: 'How do I set my rates and create training programs?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '4'
-  },
-  {
-    question: 'Can I coach both online and in-person Clients?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '5'
-  },
-  {
-    question: 'What tools does the platform provide to manage my business?',
-    answer:
-      'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
-    id: '6'
-  },
+	{
+		question: 'How do I become a coach on AdaptvTraining?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '1',
+	},
+	{
+		question: 'What kind of support will I receive as a coach?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '2',
+	},
+	{
+		question: 'Do I need special certifications to join?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '3',
+	},
+	{
+		question: 'How do I set my rates and create training programs?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '4',
+	},
+	{
+		question: 'Can I coach both online and in-person Clients?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '5',
+	},
+	{
+		question: 'What tools does the platform provide to manage my business?',
+		answer:
+			'Yes, you can try us for free for 30 days. If you want, we’ll provide you with a free, personalized 30-minute onboarding call to get you up and running as soon as possible.',
+		id: '6',
+	},
 ];
 
 interface Props {
-  FAQsArr?: FAQItemType[];
+	FAQsArr?: FAQItemType[];
+	isBlogPage?: boolean;
 }
 
 const FAQsSection = (props: Props) => {
-  const { FAQsArr } = props;
-  return (
-    <div>
-      <Typography as={'h3'} align="center">
-        Got questions? we’ve got answers
-      </Typography>
+	const { FAQsArr, isBlogPage = false } = props;
+	return (
+		<div>
+			<Typography
+				as={'h3'}
+				align={isBlogPage ? 'left' : 'center'}
+				className={
+					isBlogPage
+						? 'text-[24px] md:text-[20px] tracking-[-0.1px] md:tracking-[-0.18px] leading-[28px] md:leading-[26px]'
+						: ''
+				}
+			>
+				{isBlogPage ? 'Frequently asked question' : 'Got questions? we’ve got answers'}
+			</Typography>
 
-      <div className="flex flex-col gap-4 mt-8 md:mt-9">
-        {(FAQsArr || faqsArr).map((faq) => (
-          <div key={faq.id}>
-            <FAQItem key={faq.id} {...{ faq }} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+			<div className={`flex flex-col gap-4 ${isBlogPage ? 'mt-4 md:mt-2.5' : 'mt-8 md:mt-9'}`}>
+				{(FAQsArr || faqsArr).map((faq) => (
+					<div key={faq.id}>
+						<FAQItem key={faq.id} {...{ faq, isBlogPage }} />
+					</div>
+				))}
+			</div>
+		</div>
+	);
 };
 
 export default FAQsSection;

@@ -1,30 +1,7 @@
 import ServiceCard from './components/ServiceCard';
 import { Typography } from '@workspace/ui/components';
-import { imagesPaths } from '@/lib/public-assets-paths';
 import Categories from './components/Categories';
 import { getCoachLearningResourceCategories, getCoachLearningResourcePosts } from '@/lib/services/cmsService';
-
-const { boy } = imagesPaths;
-export const services = [
-	{
-		category: 'Strength Training',
-		title: 'Structuring the Perfect Training Session',
-		imageSrc: boy,
-		dotColor: '#FF5733',
-	},
-	{
-		category: 'Cardio Fitness',
-		title: 'Boost Your Endurance with HIIT Workouts',
-		imageSrc: boy,
-		dotColor: '#3388FF',
-	},
-	{
-		category: 'Yoga & Flexibility',
-		title: 'Achieve Mind-Body Balance with Yoga',
-		imageSrc: boy,
-		dotColor: '#28A745',
-	},
-];
 
 const page = async () => {
 	const learningCategoriesApiResponse = await getCoachLearningResourceCategories();
@@ -32,6 +9,8 @@ const page = async () => {
 	const learningPostsApiResponse = await getCoachLearningResourcePosts();
 
 	console.log('learningPostsApiResponse', learningPostsApiResponse);
+
+	console.log('learningCategoriesApiResponse', learningCategoriesApiResponse);
 
 	const categoriesArr = learningCategoriesApiResponse.docs;
 	const learningPostsArr = learningPostsApiResponse.docs;
@@ -50,7 +29,7 @@ const page = async () => {
 
 				<div className="pt-6 md:pt-[60px] px-4 bg-white">
 					<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
-						<div className="sm:max-w-[260px] pr-5 flex-1 border-r border-light-gray">
+						<div className="sm:max-w-[260px] sm:pr-5 flex-1 sm:border-r border-light-gray">
 							<Categories {...{ categoriesArr }} />
 						</div>
 						<div className="flex-1 w-full flex flex-wrap gap-3">

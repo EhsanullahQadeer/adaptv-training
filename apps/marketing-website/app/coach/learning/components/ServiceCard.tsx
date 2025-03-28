@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import { Typography } from '@workspace/ui/components';
 import { TimerIcon } from '@workspace/ui/icons';
@@ -8,7 +10,8 @@ interface ServiceCardProps {
 	post: any;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => {
+const ServiceCard: React.FC<ServiceCardProps> = (props) => {
+	const router = useRouter();
 	const { post } = props;
 	const { category, id, title, learningContentMediaType, learningContentImageMedia } = post;
 
@@ -16,15 +19,21 @@ const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => {
 
 	const { alt, url, height, width } = learningContentImageMedia || {};
 
+	const handlePostSelect = () => {
+		router.push(`/coach/learning/${id}`);
+	};
+
 	return (
-		<div className="flex-1 bg-whisper-gray min-w-[252px] max-h-[367px] sm:max-h-[288px] rounded-xl p-3.5">
+		<div
+			onClick={handlePostSelect}
+			className="flex-1 bg-whisper-gray min-w-[252px] max-h-[367px] sm:max-h-[288px] rounded-xl p-3.5 cursor-pointer"
+		>
 			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
 				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: '#FF5733' }}></span>
 				<Typography
 					as={'caption'}
 					fontWeight="font-medium"
 					sizeVariant="small"
-					color="text-[#000000]"
 					className="text-xs font-medium"
 				>
 					{categoryName}

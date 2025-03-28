@@ -62,8 +62,7 @@ declare module '@/types/coach' {
 	}
 
 	export interface CoachLearningResourceCategory {
-		name: string;
-		description: string | null;
+		categoryName: string;
 		id: string;
 		createdAt: string;
 		updatedAt: string;
@@ -91,6 +90,7 @@ declare module '@/types/coach' {
 	}
 
 	export type CoachLearningResourcePostsResponse = PaginatedResponse<CoachLearningResourcePost>;
+	export type CoachLearningResourceCategoriesResponse = PaginatedResponse<CoachLearningResourceCategory>;
 }
 
 export {};
