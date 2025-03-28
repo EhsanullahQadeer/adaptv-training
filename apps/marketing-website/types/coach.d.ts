@@ -61,17 +61,10 @@ declare module '@/types/coach' {
 		id: string;
 	}
 
-	export interface CoachLearningResourceCategory {
-		categoryName: string;
-		id: string;
-		createdAt: string;
-		updatedAt: string;
-	}
-
 	export interface CoachLearningResourcePost {
 		title: string;
 		content: string;
-		category: CoachLearningResourceCategory;
+		category: BlogCategory;
 		id: string;
 		createdAt: string;
 		updatedAt: string;
@@ -90,7 +83,7 @@ declare module '@/types/coach' {
 	}
 
 	export type CoachLearningResourcePostsResponse = PaginatedResponse<CoachLearningResourcePost>;
-	export type CoachLearningResourceCategoriesResponse = PaginatedResponse<CoachLearningResourceCategory>;
+	export type CoachLearningResourceCategoriesResponse = PaginatedResponse<BlogCategory>;
 }
 
 export {};

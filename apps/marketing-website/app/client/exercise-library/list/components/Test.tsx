@@ -17,7 +17,7 @@ function Test() {
 	const [selectedFrameworks, setSelectedFrameworks] = useState<string[]>(['react', 'angular']);
 
 	return (
-		<div className="p-4 max-w-xl">
+		<div className="w-full">
 			<MultiSelect
 				options={frameworksList}
 				onValueChange={setSelectedFrameworks}

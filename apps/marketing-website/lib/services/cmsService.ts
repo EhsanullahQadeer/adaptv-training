@@ -6,7 +6,12 @@ import type {
 	ExtendedCoachApplicationConfig,
 } from '@/types/coach';
 import type { ApiErrorResponse } from '@/types/api';
-import { MovementEquipmentResponse, MovementTrainingStylesResponse, MusclesResponse } from '@/types/client';
+import {
+	ClientBlogCategoriesResponse,
+	MovementEquipmentResponse,
+	MovementTrainingStylesResponse,
+	MusclesResponse,
+} from '@/types/client';
 
 // Helper functions for API calls with proper typing
 const getCoachHomepage = () => apiCmsClient.get('/globals/coach-homepage');
@@ -23,8 +28,9 @@ const getMovementEquipment = () => apiCmsClient.get<MovementEquipmentResponse>('
 const getMovements = () => apiCmsClient.get('/collections/movements');
 const getExerciseLibraryHomepage = () => apiCmsClient.get('/globals/movement-library-homepage');
 const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blog-subscribers');
-const getClientBlogCategories = () => apiCmsClient.get('/collections/client-blog-categories');
-const getClientBlogPosts = () => apiCmsClient.get('/collections/client-blog-posts');
+const getClientBlogCategories = () => apiCmsClient.get<ClientBlogCategoriesResponse>('/client-blog-categories');
+const getClientBlogPosts = () => apiCmsClient.get('/client-blog-posts');
+const getClientSingleBlogPost = (id: string) => apiCmsClient.get(`/client-blog-posts/${id}`);
 
 const postCoachApplication = async (data: CoachFormValues) =>
 	apiCmsClient.post<ApiErrorResponse, false>('/coach-application', data, { extractData: false });
@@ -52,6 +58,7 @@ export {
 	getClientBlogSubscribers,
 	getClientBlogCategories,
 	getClientBlogPosts,
+	getClientSingleBlogPost,
 	postCoachApplication,
 	postClientWaitlist,
 	getCoachApplicationConfig,

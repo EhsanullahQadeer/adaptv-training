@@ -4,17 +4,27 @@ import { ArrowIcon } from '@workspace/ui/icons';
 import Image from 'next/image';
 import React from 'react';
 import ScrollableCategories from './components/ScrollableCategories';
-import { blogs, categories, populars } from './Data';
+import { populars } from './Data';
 import BlogCard from './components/BlogCard';
 import AccessToPlatformSection from '@/components/AccessToPlatformSection';
+import { getClientBlogCategories, getClientBlogPosts } from '@/lib/services/cmsService';
 const { blogFeature } = imagesPaths;
 
-const page = () => {
+const page = async () => {
+	const blogCategoriesApiResponse = await getClientBlogCategories();
+	const clientBlogPostsApiResponse = await getClientBlogPosts();
+
+	console.log('blogCategoriesApiResponse', blogCategoriesApiResponse);
+	console.log('clientBlogPostsApiResponse', clientBlogPostsApiResponse);
+
+	const categoriesArr = blogCategoriesApiResponse.docs;
+	const blogPostsArr = clientBlogPostsApiResponse.docs;
+
 	return (
 		<>
 			<div className="pt-8 md:pt-[70px] bg-snow-white">
 				<div className="mx-4">
-					<div className="max-w-[1100px] mx-auto">
+					<div className="max-w-[1100px] mx-auto overflow-hidden">
 						<div className="mb-12 m-auto text-black text-center">
 							<Typography as={'h1'} className="mb-2.5">
 								Fitness and Wellness Stories
@@ -47,28 +57,31 @@ const page = () => {
 
 						<Typography as={'h4'}>Featured</Typography>
 						<div className="mt-5 w-fit flex lg:flex-row mx-auto flex-col border border-light-gray rounded-lg mb-10">
-							<Image
-								src={blogFeature}
-								alt="image tracking"
-								className="rounded-t-lg lg:rounded-l-lg"
-								width={1000}
-								height={1000}
-							/>
-							<div className="p-[24px] flex justify-between flex-col">
+							<div className="flex-1 w-full max-h-[420px] overflow-hidden">
+								<Image
+									src={blogFeature}
+									alt="image tracking"
+									className="rounded-t-lg lg:rounded-l-lg w-full h-full object-cover"
+									width={1000}
+									height={1000}
+								/>
+							</div>
+
+							<div className="flex-1 lg:max-w-[40%] p-[24px] flex justify-between flex-col">
 								<div className="flex flex-col lg:w-auto md:w-[790px]">
 									<span className="px-[6px] py-[3px] text-[10px] rounded-lg bg-[#9A38A6] w-fit text-white font-bold">
 										Training & Workouts
 									</span>
 
-									<Typography className="md:my-2 my-1" as={'h7'} color="text-black">
+									<Typography className="md:my-2 my-1" as={'h4_2'} color="text-black">
 										Maximize Your Workouts: How Smart Tech Enhances Training
 									</Typography>
-									<Typography color="text-[#515151]" className="">
+									<Typography color="text-[#515151]">
 										Learn how to effectively assess a client’s fitness level, mobility, and health history to create a
 										personalized training plan. Understand key assessment techniques like movement screening
 									</Typography>
 								</div>
-								<div className=" mt-auto  flex gap-1.5 items-center ">
+								<div className="flex gap-1.5 items-center mt-8">
 									<span className="text-[14px] font-semibold">Read more</span>
 									<ArrowIcon />
 								</div>
@@ -80,17 +93,17 @@ const page = () => {
 				<div className="bg-white">
 					<div className="px-4">
 						<div className="max-w-[1100px] mx-auto overflow-hidden">
-							<ScrollableCategories categories={categories} />
-							<div className="flex md:flex-row flex-col gap-5">
-								<div className="md:grid h-fit flex flex-wrap md:grid-cols-3 gap-3 ">
-									{blogs.map((blog, index) => (
-										<BlogCard key={index} {...blog} />
+							<ScrollableCategories {...{ categoriesArr }} />
+							<div className="mt-4 flex lg:flex-row flex-col gap-5">
+								<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-5 h-fit">
+									{blogPostsArr.map((blog, index: number) => (
+										<BlogCard key={index} {...{ blog }} />
 									))}
 								</div>
-								<div className=" text-left md:w-[250px]">
+								<div className="text-left lg:w-[240px]">
 									<Typography
 										color="text-black"
-										className="border-b py-4 border-black sm:text-2xl text-lg font-semibold "
+										className="border-b pb-4 border-black sm:text-2xl text-lg font-semibold"
 									>
 										Public
 									</Typography>

@@ -2,6 +2,7 @@ import React from 'react';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import LibraryCard from './LibraryCard';
 import Filters from './Filters';
+import { MovementEquipment, Muscle, TrainingStyles } from '@/types/client';
 
 const { boy } = imagesPaths;
 export const services = [
@@ -39,14 +40,21 @@ export const services = [
 	},
 ];
 
-const FiltersList = () => {
+interface Props {
+	muscleArr: Muscle[];
+	trainingStylesArr: TrainingStyles[];
+	movementEquipmentsArr: MovementEquipment[];
+}
+
+const FiltersList = (props: Props) => {
+	const { muscleArr, trainingStylesArr, movementEquipmentsArr } = props;
 	return (
-		<div className="flex">
-			<div className="max-sm:hidden max-w-[260px] pr-5 flex-1 border-r border-light-gray">
-				<Filters />
+		<div className="flex gap-5">
+			<div className="max-md:hidden md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
+				<Filters {...{ muscleArr, trainingStylesArr, movementEquipmentsArr }} />
 			</div>
 
-			<div className="flex-1 w-full sm:pl-5 flex flex-wrap gap-3">
+			<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-3 h-fit">
 				{services.map((service, index) => (
 					<LibraryCard key={index} {...{ ...service }} />
 				))}

@@ -28,11 +28,11 @@ const page = async () => {
 				</div>
 
 				<div className="pt-6 md:pt-[60px] px-4 bg-white">
-					<div className="max-w-[1100px] mx-auto flex sm:flex-row flex-col gap-5">
-						<div className="sm:max-w-[260px] sm:pr-5 flex-1 sm:border-r border-light-gray">
+					<div className="max-w-[1100px] mx-auto flex md:flex-row flex-col gap-5">
+						<div className="md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
 							<Categories {...{ categoriesArr }} />
 						</div>
-						<div className="flex-1 w-full flex flex-wrap gap-3">
+						<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-3 h-fit">
 							{learningPostsArr.map((post, index: number) => (
 								<ServiceCard key={index} {...{ post }} />
 							))}

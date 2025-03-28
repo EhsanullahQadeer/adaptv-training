@@ -26,33 +26,22 @@ const ServiceCard: React.FC<ServiceCardProps> = (props) => {
 	return (
 		<div
 			onClick={handlePostSelect}
-			className="flex-1 bg-whisper-gray min-w-[252px] max-h-[367px] sm:max-h-[288px] rounded-xl p-3.5 cursor-pointer"
+			className="flex-1 bg-whisper-gray max-h-[367px] sm:max-h-[288px] rounded-xl p-3.5 cursor-pointer overflow-hidden"
 		>
-			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
+			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-soft-gray flex gap-1 rounded-md">
 				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: '#FF5733' }}></span>
-				<Typography
-					as={'caption'}
-					fontWeight="font-medium"
-					sizeVariant="small"
-					className="text-xs font-medium"
-				>
+				<Typography as={'caption'} fontWeight="font-medium" sizeVariant="small" className="text-xs font-medium">
 					{categoryName}
 				</Typography>
 			</span>
-			<Typography
-				as={'caption'}
-				fontWeight="font-bold"
-				sizeVariant="large"
-				color="text-[#000000]"
-				className="!text-left block mb-2"
-			>
+			<Typography as={'caption'} fontWeight="font-bold" sizeVariant="large" className="!text-left block mb-2 line-clamp-2">
 				{title}
 			</Typography>
 			<span className="flex items-center gap-1 mb-3">
 				<TimerIcon />
 				<span className="text-[14px] font-semibold">45 min</span>
 			</span>
-			<div>
+			<div className="overflow-hidden max-h-[192px] sm:max-h-[140px] rounded-md">
 				{learningContentMediaType === 'image' ? (
 					<Image
 						width={width}

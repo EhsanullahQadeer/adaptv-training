@@ -1,34 +1,30 @@
-import { Button, Input, Typography } from '@workspace/ui/components';
-import { RightArrow, SearchIcon } from '@workspace/ui/icons';
+import { Button, Input } from '@workspace/ui/components';
+import { SearchIcon } from '@workspace/ui/icons';
 import React from 'react';
 import FiltersList from './components/FiltersList';
+import { getMovementEquipment, getMovementTrainingStyles, getMuscles } from '@/lib/services/cmsService';
+import Breadcrumbs from '@/components/Breedcrumbs';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
 
-const page = () => {
+const page = async () => {
+	const musclesApiResponse = await getMuscles();
+	const trainingStylesApiResponse = await getMovementTrainingStyles();
+	const movementEquipmentsApiResponse = await getMovementEquipment();
+	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
+	const trainingStylesArr = trainingStylesApiResponse?.docs;
+	const muscleArr = musclesApiResponse?.docs;
+
+	const { clientExerciseLibrary } = pagesRoutes;
+	const breadcrumbs = [
+		{ label: 'Excercise Library', href: clientExerciseLibrary },
+		{ label: 'Result', href: `/client/exercise-library/list` },
+	];
+
 	return (
 		<>
 			<div className="bg-snow-white pt-8 md:pt-[34px] px-4">
 				<div className="mb-[42px] sm:mb-8 max-w-[1100px] mx-auto">
-					<div className="flex items-center gap-0.5 mb-6">
-						<Typography
-							as={'p_secondary'}
-							sizeVariant="small"
-							fontWeight="font-semibold"
-							color="text-black"
-							className="tracking-[-0.08px] leading-[24px]"
-						>
-							Excercise Library
-						</Typography>
-						<RightArrow height={20} width={20} />
-						<Typography
-							as={'p_secondary'}
-							sizeVariant="small"
-							fontWeight="font-semibold"
-							color="text-semi-transparent-black"
-							className="tracking-[-0.08px] leading-[24px]"
-						>
-							Result
-						</Typography>
-					</div>
+					<Breadcrumbs {...{ items: breadcrumbs }} />
 
 					<div className="w-full max-sm:hidden">
 						<Input
@@ -67,7 +63,7 @@ const page = () => {
 			<div className="bg-white">
 				<div className="my-8 px-4">
 					<div className="max-w-[1100px] mx-auto overflow-hidden">
-						<FiltersList />
+						<FiltersList {...{ muscleArr, trainingStylesArr, movementEquipmentsArr }} />
 					</div>
 				</div>
 			</div>

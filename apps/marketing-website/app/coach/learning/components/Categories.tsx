@@ -4,17 +4,16 @@ import { Typography } from '@workspace/ui/components';
 import CountChip from './CountChip';
 import { Combobox } from '@workspace/ui/components/combobox';
 import ArrowDown from '@workspace/ui/icons/ArrowDown';
-import { CoachLearningResourceCategory } from '@/types/coach';
 
 interface IProps {
-	categoriesArr: CoachLearningResourceCategory[];
+	categoriesArr: BlogCategory[];
 }
 
 const Categories = (props: IProps) => {
 	const { categoriesArr } = props;
-	const [selectedCategory, setSelectedCategory] = useState<CoachLearningResourceCategory | null>(null);
+	const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
 
-	const handleCategorySelection = (category: CoachLearningResourceCategory) => {
+	const handleCategorySelection = (category: BlogCategory) => {
 		setSelectedCategory(category);
 	};
 
@@ -27,7 +26,7 @@ const Categories = (props: IProps) => {
 	return (
 		<div>
 			{/* Small screen */}
-			<div className="block sm:hidden">
+			<div className="block md:hidden">
 				<Combobox
 					rotateIcon
 					icon={<ArrowDown />}
@@ -43,7 +42,7 @@ const Categories = (props: IProps) => {
 			</div>
 
 			{/* Large screen */}
-			<div className="hidden sm:block">
+			<div className="hidden md:block">
 				<div className="px-2.5 py-3 border rounded-[10px] flex justify-between items-center">
 					<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
 						{selectedCategory ? selectedCategory.categoryName : 'All Resource'}

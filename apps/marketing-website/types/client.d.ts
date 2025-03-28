@@ -28,4 +28,5 @@ declare module '@/types/client' {
 	export type MusclesResponse = PaginatedResponse<Muscle>;
 	export type MovementEquipmentResponse = PaginatedResponse<MovementEquipment>;
 	export type MovementTrainingStylesResponse = PaginatedResponse<TrainingStyles>;
+	export type ClientBlogCategoriesResponse = PaginatedResponse<BlogCategory>;
 }

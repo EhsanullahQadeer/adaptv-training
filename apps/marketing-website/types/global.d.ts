@@ -19,4 +19,11 @@ declare global {
 		url: string;
 		thumbnailURL: string | null;
 	}
+
+	export interface BlogCategory {
+		categoryName: string;
+		id: string;
+		createdAt: string;
+		updatedAt: string;
+	}
 }

@@ -48,7 +48,7 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 	};
 
 	return (
-		<div className="flex-1 bg-whisper-gray min-w-[252px] max-h-[367px] sm:max-h-[380px] rounded-xl p-3.5">
+		<div className="flex-1 bg-whisper-gray max-h-[367px] sm:max-h-[380px] rounded-xl p-3.5 cursor-pointer overflow-hidden">
 			<div className="mb-3 flex items-center gap-1">
 				<div className="bg-soft-gray py-1 px-1.5 rounded-md w-max">
 					<Typography
@@ -72,7 +72,7 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 				as={'p_caption'}
 				fontWeight="font-bold"
 				sizeVariant="large"
-				className="tracking-[-0.08px] leading-[22px]"
+				className="tracking-[-0.08px] leading-[22px] line-clamp-2"
 			>
 				{title}
 			</Typography>
@@ -88,7 +88,7 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 					<div>{renderListWithLimit(equipmentsRequired)}</div>
 				</div>
 			</div>
-			<div className="mt-3.5 max-h-[197px] sm:max-h-[140px]">
+			<div className="mt-3.5 max-h-[197px] sm:max-h-[140px] overflow-hidden rounded-md">
 				<Image
 					width={1040}
 					height={648}

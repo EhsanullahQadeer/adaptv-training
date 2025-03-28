@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-
-import { Button, Typography } from '@workspace/ui/components';
+import { Button, Input, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 
 const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
@@ -9,8 +8,9 @@ const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
 interface AccessToPlatformSectionProps {
 	title: string;
 	subtitle: string;
-	buttonText: string;
+	buttonText?: string;
 	textMaxWidth?: string;
+	inputRequired?: boolean;
 }
 
 const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
@@ -18,6 +18,7 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 	subtitle,
 	buttonText,
 	textMaxWidth,
+	inputRequired = false,
 }) => {
 	return (
 		<div className="relative overflow-hidden">
@@ -44,9 +45,27 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 						{subtitle}
 					</Typography>
 					<div className="mt-5 md:mt-6">
-						<Button size="xl" type="button">
-							{buttonText}
-						</Button>
+						{inputRequired ? (
+							<div className="w-[500px]">
+								<Input
+									placeholder="Your email address"
+									className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-light"
+									rightAdornment={
+										<Button
+											type="button"
+											size={'xl'}
+											className="tracking-[-0.07px] leading-[18px] font-semibold py-4 !pl-5 !pr-6 flex items-center gap-1.5 h-auto"
+										>
+											Subscribe
+										</Button>
+									}
+								/>
+							</div>
+						) : (
+							<Button size="xl" type="button">
+								{buttonText}
+							</Button>
+						)}
 					</div>
 				</div>
 			</div>
