@@ -66,7 +66,7 @@ const typographyStyles: TypographyStyles = {
 		},
 		h5_2: {
 			base: 'font-medium',
-			responsive: '[20px] md:text-text-[24px]',
+			responsive: 'text-[20px] md:text-text-[24px]',
 			responsive_reverse: 'md:text-[20px] text-[24px]', // Added
 			small: 'text-[20px]',
 			large: 'text-[24px]',

@@ -40,6 +40,8 @@
 	--color-charcoal-gray: #515151;
 	--color-dim-gray: #676767;
 	--color-green : #2FA33A;
+	--color-forest-green: #228C36;
+	--color-vibrant-yellow: #FFC300;
 
 	/* breakpoints */
 	--breakpoint-xs: 26.25rem;

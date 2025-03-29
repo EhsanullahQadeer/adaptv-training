@@ -2,7 +2,7 @@ import { Button, Input } from '@workspace/ui/components';
 import { SearchIcon } from '@workspace/ui/icons';
 import React from 'react';
 import FiltersList from './components/FiltersList';
-import { getMovementEquipment, getMovementTrainingStyles, getMuscles } from '@/lib/services/cmsService';
+import { getMovementEquipment, getMovements, getMovementTrainingStyles, getMuscles } from '@/lib/services/cmsService';
 import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
@@ -10,14 +10,19 @@ const page = async () => {
 	const musclesApiResponse = await getMuscles();
 	const trainingStylesApiResponse = await getMovementTrainingStyles();
 	const movementEquipmentsApiResponse = await getMovementEquipment();
-	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
-	const trainingStylesArr = trainingStylesApiResponse?.docs;
-	const muscleArr = musclesApiResponse?.docs;
+	const movementsPostApiResponse = await getMovements();
 
-	const { clientExerciseLibrary } = pagesRoutes;
+	const muscleArr = musclesApiResponse?.docs;
+	const trainingStylesArr = trainingStylesApiResponse?.docs;
+	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
+	const movementsPostsArr = movementsPostApiResponse?.docs;
+
+	console.log('movementsPostsArr', movementsPostsArr);
+
+	const { clientExerciseLibrary, clientExerciseLibraryList } = pagesRoutes;
 	const breadcrumbs = [
 		{ label: 'Excercise Library', href: clientExerciseLibrary },
-		{ label: 'Result', href: `/client/exercise-library/list` },
+		{ label: 'Result', href: clientExerciseLibraryList },
 	];
 
 	return (
@@ -63,7 +68,7 @@ const page = async () => {
 			<div className="bg-white">
 				<div className="my-8 px-4">
 					<div className="max-w-[1100px] mx-auto overflow-hidden">
-						<FiltersList {...{ muscleArr, trainingStylesArr, movementEquipmentsArr }} />
+						<FiltersList {...{ muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr }} />
 					</div>
 				</div>
 			</div>

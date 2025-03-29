@@ -25,7 +25,8 @@ const getCoachLearningPost = (id: string) => apiCmsClient.get(`/coach-learning-r
 const getMuscles = () => apiCmsClient.get<MusclesResponse>('/muscles');
 const getMovementTrainingStyles = () => apiCmsClient.get<MovementTrainingStylesResponse>('/movement-training-styles');
 const getMovementEquipment = () => apiCmsClient.get<MovementEquipmentResponse>('/movement-equipment');
-const getMovements = () => apiCmsClient.get('/collections/movements');
+const getMovements = () => apiCmsClient.get('/movements');
+const getSingleMovement = (id: string) => apiCmsClient.get(`/movements/${id}`);
 const getExerciseLibraryHomepage = () => apiCmsClient.get('/globals/movement-library-homepage');
 const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blog-subscribers');
 const getClientBlogCategories = () => apiCmsClient.get<ClientBlogCategoriesResponse>('/client-blog-categories');
@@ -54,6 +55,7 @@ export {
 	getMovementTrainingStyles,
 	getMovementEquipment,
 	getMovements,
+	getSingleMovement,
 	getExerciseLibraryHomepage,
 	getClientBlogSubscribers,
 	getClientBlogCategories,

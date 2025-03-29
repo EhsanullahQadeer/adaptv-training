@@ -44,10 +44,11 @@ interface Props {
 	muscleArr: Muscle[];
 	trainingStylesArr: TrainingStyles[];
 	movementEquipmentsArr: MovementEquipment[];
+	movementsPostsArr: any[];
 }
 
 const FiltersList = (props: Props) => {
-	const { muscleArr, trainingStylesArr, movementEquipmentsArr } = props;
+	const { muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr } = props;
 	return (
 		<div className="flex gap-5">
 			<div className="max-md:hidden md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
@@ -55,8 +56,8 @@ const FiltersList = (props: Props) => {
 			</div>
 
 			<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-3 h-fit">
-				{services.map((service, index) => (
-					<LibraryCard key={index} {...{ ...service }} />
+				{movementsPostsArr.map((movement, index: number) => (
+					<LibraryCard key={index} {...{ movement }} />
 				))}
 			</div>
 		</div>

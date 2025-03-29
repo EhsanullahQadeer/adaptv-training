@@ -18,10 +18,6 @@ const BlogCard = (props: BlogProps) => {
 
 	const { alt, url, height, width } = learningContentImageMedia || {};
 
-	// const handlePostSelect = () => {
-	// 	router.push(`/coach/learning/${id}`);
-	// };
-
 	return (
 		<Link href={`/client/blog/${id}`}>
 			<div className="max-h-[302px] md:max-h-[336px] flex flex-col border border-light-gray rounded-lg">
