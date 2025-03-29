@@ -8,6 +8,7 @@ export { default as CalenderIcon } from './CalenderIcon';
 export { default as CancelIcon } from './CancelIcon';
 export { default as CopyIcon } from './CopyIcon';
 export { default as DifficultyLevelIcon } from './DifficultyLevelIcon';
+export { default as DifficultyLevelLgIcon } from './DifficultyLevelLgIcon';
 export { default as DimensionalBlock } from './DimensionalBlock';
 export { default as FacebookIcon } from './FacebookIcon';
 export { default as FireIcon } from './FireIcon';

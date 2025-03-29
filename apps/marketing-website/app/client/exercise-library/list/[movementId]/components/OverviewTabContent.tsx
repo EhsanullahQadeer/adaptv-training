@@ -1,5 +1,5 @@
 import FAQsSection from '@/components/FAQsSection';
-import { Muscle } from '@/types/client';
+import { Movement, Muscle } from '@/types/client';
 import { Typography } from '@workspace/ui/components';
 import { BarbellIcon, DifficultyLevelIcon, MuscleIcon, TrainingStyleIcon } from '@workspace/ui/icons';
 import { FC } from 'react';
@@ -23,7 +23,7 @@ const TrainingInfoCard: FC<TrainingInfoCardProps> = ({ icon: Icon, bgColor, text
 				as="p_caption"
 				sizeVariant="small"
 				fontWeight="font-medium"
-				className="tracking-[-0.06px] leading-[16px] whitespace-nowrap line-clamp-1"
+				className="tracking-[-0.06px] leading-[16px] whitespace-nowrap line-clamp-1 capitalize"
 			>
 				{title}
 			</Typography>
@@ -31,7 +31,7 @@ const TrainingInfoCard: FC<TrainingInfoCardProps> = ({ icon: Icon, bgColor, text
 		<Typography
 			as="h5_2"
 			fontWeight="font-semibold"
-			className="leading-[26px] md:leading-[30px] tracking-[-0.1px] md:tracking-[-0.12px] w-full truncate"
+			className="leading-[26px] md:leading-[30px] tracking-[-0.1px] md:tracking-[-0.12px] w-full truncate capitalize"
 		>
 			{value}
 		</Typography>
@@ -39,13 +39,13 @@ const TrainingInfoCard: FC<TrainingInfoCardProps> = ({ icon: Icon, bgColor, text
 );
 
 interface Props {
-	movement: any;
+	movement: Movement;
 }
 
 const OverviewTabContent = (props: Props) => {
 	const { movement } = props;
 
-	const { movementName, faqs, primaryMuscleFocus, equipment, trainingStyle, progressionMovements } = movement;
+	const { movementName, faqs, primaryMuscleFocus, equipment, trainingStyle, progressionMovements, difficulty } = movement;
 
 	const { equipmentName } = equipment;
 	const { trainingStyleName } = trainingStyle;
@@ -93,7 +93,7 @@ const OverviewTabContent = (props: Props) => {
 					bgColor="bg-vibrant-yellow"
 					textColor="text-black"
 					title="Difficulty"
-					value="Intermediate"
+					value={difficulty}
 				/>
 				<TrainingInfoCard
 					icon={BarbellIcon}

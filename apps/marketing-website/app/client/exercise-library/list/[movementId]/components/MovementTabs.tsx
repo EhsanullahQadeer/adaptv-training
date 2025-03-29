@@ -4,9 +4,10 @@ import { useState } from 'react';
 import FAQsSection from '@/components/FAQsSection';
 import OverviewTabContent from './OverviewTabContent';
 import ProgressionMovements from './ProgressionMovements';
+import { Movement } from '@/types/client';
 
 interface Props {
-	movement: any;
+	movement: Movement;
 }
 
 const MovementTabs = (props: Props) => {
@@ -28,7 +29,7 @@ const MovementTabs = (props: Props) => {
 				</span>
 				{progressionMovements ? (
 					<span
-						className={`flex-1 cursor-pointer py-[14px] text-center font-semibold text-black px-[16px] border-b-2 ${
+						className={`max-md:hidden flex-1 cursor-pointer py-[14px] text-center font-semibold text-black px-[16px] border-b-2 ${
 							selectedTab === 'progression' ? 'border-black ' : 'border-transparent '
 						}`}
 						onClick={() => setSelectedTab('progression')}
@@ -53,7 +54,7 @@ const MovementTabs = (props: Props) => {
 			</div>
 			<div className="mt-6 md:mt-8">
 				{selectedTab === 'overview' && <OverviewTabContent {...{ movement }} />}
-				{selectedTab === 'progression' && <ProgressionMovements {...{ progressionMovements }} />}
+				{selectedTab === 'progression' && progressionMovements && <ProgressionMovements {...{ progressionMovements }} />}
 				{selectedTab === 'faq' && <FAQsSection {...{ isBlogPage: true, FAQsArr: faqs }} />}
 			</div>
 		</div>

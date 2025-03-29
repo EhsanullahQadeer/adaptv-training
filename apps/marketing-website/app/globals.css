@@ -17,6 +17,7 @@
 	/* colors */
 	--color-ocean-glow: #5271ff;
 	--color-orange-red: #f6643f;
+	--color-vermilion: #DB3700;
 	--color-pale-azure: #f2f4f8;
 	--color-black: #000;
 	--color-semi-transparent-black: rgba(0, 0, 0, 0.5);
@@ -42,6 +43,7 @@
 	--color-green : #2FA33A;
 	--color-forest-green: #228C36;
 	--color-vibrant-yellow: #FFC300;
+	--color-golden-rod: #DBA200;
 
 	/* breakpoints */
 	--breakpoint-xs: 26.25rem;

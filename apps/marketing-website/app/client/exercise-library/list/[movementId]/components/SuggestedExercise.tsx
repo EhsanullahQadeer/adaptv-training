@@ -1,16 +1,16 @@
-import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
-import { Movement, Muscle } from '@/types/client';
 import { Typography } from '@workspace/ui/components';
 import { BarbellIcon, DifficultyLevelLgIcon, MuscleIcon } from '@workspace/ui/icons';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
+import { Movement, Muscle } from '@/types/client';
+import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 
-interface LibraryCardProps {
+interface SuggestedExerciseProps {
 	movement: Movement;
 }
 
-const LibraryCard: React.FC<LibraryCardProps> = (props) => {
+const SuggestedExercise: React.FC<SuggestedExerciseProps> = (props) => {
 	const { movement } = props;
 
 	const {
@@ -33,6 +33,7 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 		difficulty === 'beginner' ? 'text-green' : difficulty === 'intermediate' ? 'text-golden-rod' : 'text-vermilion';
 
 	const { alt = '', url = '', height, width } = movementImageMedia || {};
+
 	const {
 		alt: thumbnailAlt = '',
 		url: thumbnailUrl = '',
@@ -81,47 +82,8 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 
 	return (
 		<Link href={`/client/exercise-library/list/${id}`}>
-			<div className="flex-1 bg-whisper-gray h-full max-h-[367px] sm:max-h-[380px] rounded-xl p-3.5 cursor-pointer overflow-hidden flex flex-col gap-3.5 justify-between">
-				<div>
-					<div className="mb-3 flex items-center gap-1">
-						<div className="bg-soft-gray py-1 px-1.5 rounded-md w-max">
-							<Typography
-								as={'p_caption'}
-								fontWeight="font-medium"
-								sizeVariant="small"
-								className="leading-[16px] tracking-[-0.06px]"
-							>
-								{trainingStyleName}
-							</Typography>
-						</div>
-
-						<div className={`py-1.5 px-2 bg-soft-gray rounded-md flex flex-col gap-[1.5px] w-7 ${difficultyColor}`}>
-							<DifficultyLevelLgIcon width={12} height={12} />
-						</div>
-					</div>
-
-					<Typography
-						as={'p_caption'}
-						fontWeight="font-bold"
-						sizeVariant="large"
-						className="tracking-[-0.08px] leading-[22px] line-clamp-2"
-					>
-						{movementName}
-					</Typography>
-
-					<div className="mt-2 flex flex-col gap-1">
-						<div className="flex gap-1 items-center">
-							<MuscleIcon />
-							<div>{renderListWithLimit(primaryMusclesArr)}</div>
-						</div>
-
-						<div className="flex gap-1 items-center">
-							<BarbellIcon />
-							<div>{equipmentName}</div>
-						</div>
-					</div>
-				</div>
-				<div className="max-h-[197px] sm:max-h-[140px] overflow-hidden rounded-md">
+			<div className="flex gap-3 cursor-pointer">
+				<div className="max-w-[102px]">
 					<Image
 						width={isMovementMediaImage ? width : thumbnailWidth}
 						height={isMovementMediaImage ? height : thumbnailHeight}
@@ -130,9 +92,48 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 						className="rounded-md w-full h-full object-cover aspect-video"
 					/>
 				</div>
+
+				<div className="flex-1">
+					<div className="flex gap-1 mb-1">
+						<span className="px-1.5 w-fit items-center py-1 bg-soft-gray rounded-md">
+							<Typography
+								as={'p_caption'}
+								fontWeight="font-medium"
+								sizeVariant="small"
+								className="leading-[16px] tracking-[-0.06px]"
+							>
+								{trainingStyleName}
+							</Typography>
+						</span>
+
+						<div className={`py-1.5 px-2 bg-soft-gray rounded-md flex flex-col gap-[1.5px] w-7 ${difficultyColor}`}>
+							<DifficultyLevelLgIcon width={12} height={12} />
+						</div>
+					</div>
+
+					<Typography
+						as={'p_caption'}
+						sizeVariant="large"
+						fontWeight="font-semibold"
+						className="overflow-hidden line-clamp-1 leading-[22px] tracking-[-0.08px]"
+					>
+						{movementName}
+					</Typography>
+
+					<div className="flex items-center gap-1.5 flex-wrap">
+						<div className="flex gap-1 items-center ">
+							<MuscleIcon />
+							<div>{renderListWithLimit(primaryMusclesArr)}</div>
+						</div>
+						<div className="flex gap-1 items-center">
+							<BarbellIcon />
+							<div>{equipmentName}</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</Link>
 	);
 };
 
-export default LibraryCard;
+export default SuggestedExercise;

@@ -20,7 +20,7 @@ const LearnGrowSlider = async () => {
 						const { url, alt } = expertPhoto;
 
 						return (
-							<CarouselItem key={id} className="pl-4  relative basis-auto w-[280px] h-[470px]">
+							<CarouselItem key={id} className="pl-4 relative basis-auto w-[280px] h-[470px]">
 								<div className="relative w-full rounded-lg h-full">
 									<Image
 										src={cmsAssetsUrl(url)}

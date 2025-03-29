@@ -1,50 +1,13 @@
 import React from 'react';
-import { imagesPaths } from '@/lib/public-assets-paths';
 import LibraryCard from './LibraryCard';
 import Filters from './Filters';
-import { MovementEquipment, Muscle, TrainingStyles } from '@/types/client';
-
-const { boy } = imagesPaths;
-export const services = [
-	{
-		category: 'Strength Training',
-		title: 'Structuring the Perfect Training Session',
-		imageSrc: boy,
-		dotColor: '#FF5733',
-		targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
-		equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
-	},
-	{
-		category: 'Cardio Fitness',
-		title: 'Boost Your Endurance with HIIT Workouts',
-		imageSrc: boy,
-		dotColor: '#3388FF',
-		targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
-		equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
-	},
-	{
-		category: 'Yoga & Flexibility',
-		title: 'Achieve Mind-Body Balance with Yoga',
-		imageSrc: boy,
-		dotColor: '#28A745',
-		targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
-		equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
-	},
-	{
-		category: 'Yoga & Flexibility',
-		title: 'Achieve Mind-Body Balance with Yoga',
-		imageSrc: boy,
-		dotColor: '#28A745',
-		targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
-		equipmentsRequired: ['Dumbbells', 'Bench', 'Exercise Mat', 'Foam Roller'],
-	},
-];
+import { Movement, MovementEquipment, Muscle, TrainingStyles } from '@/types/client';
 
 interface Props {
 	muscleArr: Muscle[];
 	trainingStylesArr: TrainingStyles[];
 	movementEquipmentsArr: MovementEquipment[];
-	movementsPostsArr: any[];
+	movementsPostsArr: Movement[];
 }
 
 const FiltersList = (props: Props) => {
@@ -55,7 +18,7 @@ const FiltersList = (props: Props) => {
 				<Filters {...{ muscleArr, trainingStylesArr, movementEquipmentsArr }} />
 			</div>
 
-			<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-3 h-fit">
+			<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-4 md:gap-3 h-fit">
 				{movementsPostsArr.map((movement, index: number) => (
 					<LibraryCard key={index} {...{ movement }} />
 				))}
