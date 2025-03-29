@@ -3,11 +3,22 @@
 import sharedWebpackConfig from "@workspace/svgr-config";
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/client',
+        permanent: true, 
+      },
+    ];
+  },
   reactStrictMode: false,
   transpilePackages: ["@workspace/ui"],
+
   webpack(config) {
     return sharedWebpackConfig(config); 
   },
+
   experimental: {
     turbo: {
       rules: {
@@ -18,6 +29,7 @@ const nextConfig = {
       },
     },
   },
+  
   images: {
     domains: ["adaptvcms.com"],
   },
