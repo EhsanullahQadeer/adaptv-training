@@ -117,7 +117,14 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 
 						<div className="flex gap-1 items-center">
 							<BarbellIcon />
-							<div>{equipmentName}</div>
+							<Typography
+								as={'span_secondary'}
+								fontWeight="font-semibold"
+								sizeVariant="small"
+								className="tracking-[-0.07px] leading-[18px]"
+							>
+								{equipmentName}
+							</Typography>
 						</div>
 					</div>
 				</div>

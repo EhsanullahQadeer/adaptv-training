@@ -106,7 +106,7 @@ const OverviewTabContent = (props: Props) => {
 
 			<div className="mt-4 md:mt-8">learning content body will be here...</div>
 
-			{progressionMovements ? (
+			{progressionMovements?.length ? (
 				<div className="mt-6 md:mt-8">
 					<ProgressionMovements {...{ progressionMovements }} />
 				</div>

@@ -62,7 +62,7 @@ const page = async ({ params }: PageProps) => {
 						<div className="lg:w-2/3 w-full">
 							<MovementTabs {...{ movement: movementPostApiResponse }} />
 						</div>
-						{suggestedMovements ? (
+						{suggestedMovements?.length ? (
 							<div className="lg:w-1/3">
 								<Typography as={'h5'}>Suggested excercise</Typography>
 								<div className="lg:flex hidden flex-col mt-5 gap-4 w-full">

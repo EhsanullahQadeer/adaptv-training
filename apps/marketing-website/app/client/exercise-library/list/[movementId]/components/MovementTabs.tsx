@@ -27,7 +27,7 @@ const MovementTabs = (props: Props) => {
 				>
 					Overview
 				</span>
-				{progressionMovements ? (
+				{progressionMovements?.length ? (
 					<span
 						className={`max-md:hidden flex-1 cursor-pointer py-[14px] text-center font-semibold text-black px-[16px] border-b-2 ${
 							selectedTab === 'progression' ? 'border-black ' : 'border-transparent '
