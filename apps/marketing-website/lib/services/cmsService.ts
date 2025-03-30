@@ -1,5 +1,4 @@
 import { apiCmsClient } from '../utils/apiClient';
-import type { ApiResponse, ApiConfig } from '@workspace/api-handler/api';
 import type {
 	CoachFormValues,
 	CoachLearningResourceCategoriesResponse,
@@ -13,6 +12,7 @@ import {
 	MovementsResponse,
 	MovementTrainingStylesResponse,
 	MusclesResponse,
+	ISubscribeClientBlog,
 } from '@/types/client';
 
 // Helper functions for API calls with proper typing
@@ -45,6 +45,9 @@ const postClientWaitlist = async (data: any) =>
 const getCoachApplicationConfig = () =>
 	apiCmsClient.get<ExtendedCoachApplicationConfig>('/globals/coach-application-config');
 
+const SubscribeClientBlog = (data: ISubscribeClientBlog) =>
+	apiCmsClient.post('/client-blog-subscribers', data, { extractData: false });
+
 // Export all helper functions
 export {
 	getCoachHomepage,
@@ -68,6 +71,7 @@ export {
 	postCoachApplication,
 	postClientWaitlist,
 	getCoachApplicationConfig,
+	SubscribeClientBlog,
 };
 
 // Re-export types for convenience

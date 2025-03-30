@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" suppressHydrationWarning className="min-h-full w-full">
-			<body className={`${fonetika.variable} antialiased h-full w-full flex flex-col`}>
+		<html lang="en" suppressHydrationWarning className="flex flex-col min-h-full">
+			<body className={`${fonetika.variable} antialiased flex-1  flex flex-col`}>
 				<Providers>
 					<Header />
 					{children}

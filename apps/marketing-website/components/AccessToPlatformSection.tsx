@@ -1,7 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, Input, Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
+import Subscribe from './Subscribe';
 
 const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
 
@@ -47,7 +48,7 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 					<div className="mt-5 md:mt-6">
 						{inputRequired ? (
 							<div className="w-[500px]">
-								<Input
+								{/* <Input
 									placeholder="Your email address"
 									className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-light"
 									rightAdornment={
@@ -59,7 +60,8 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 											Subscribe
 										</Button>
 									}
-								/>
+								/> */}
+								<Subscribe></Subscribe>
 							</div>
 						) : (
 							<Button size="xl" type="button">

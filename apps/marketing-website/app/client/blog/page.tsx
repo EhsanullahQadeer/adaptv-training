@@ -1,19 +1,18 @@
-import { Button, Input, Typography } from '@workspace/ui/components';
+import { Typography } from '@workspace/ui/components';
 import React from 'react';
 import ScrollableCategories from './components/ScrollableCategories';
 import BlogCard from './components/BlogCard';
 import AccessToPlatformSection from '@/components/AccessToPlatformSection';
 import { getClientBlogCategories, getClientBlogPosts, getFeaturedClientBlog } from '@/lib/services/cmsService';
 import FeaturedBlogPost from './components/FeaturedBlogPost';
+import Subscribe from '@/components/Subscribe';
 
 const page = async () => {
-	const blogCategoriesApiResponse = await getClientBlogCategories();
-	const clientBlogPostsApiResponse = await getClientBlogPosts();
-	const clientFeaturedBlogApiResponse = await getFeaturedClientBlog();
-
-	console.log('blogCategoriesApiResponse', blogCategoriesApiResponse);
-	console.log('clientBlogPostsApiResponse', clientBlogPostsApiResponse);
-	console.log('clientFeaturedBlogApiResponse', clientFeaturedBlogApiResponse);
+	const [blogCategoriesApiResponse, clientBlogPostsApiResponse, clientFeaturedBlogApiResponse] = await Promise.all([
+		getClientBlogCategories(),
+		getClientBlogPosts(),
+		getFeaturedClientBlog(),
+	]);
 
 	const categoriesArr = blogCategoriesApiResponse.docs;
 	const blogPostsArr = clientBlogPostsApiResponse.docs;
@@ -32,26 +31,7 @@ const page = async () => {
 								Expert insights, practical tips, and the latest trends to help you stay informed{' '}
 							</Typography>
 
-							<div className="mt-6 mx-auto max-w-[728px] border border-pale-silver flex flex-col sm:flex-row items-center w-full rounded-xl bg-white shadow-light">
-								<Input
-									placeholder="Your name"
-									className="flex-1 border-none bg-transparent focus:ring-0 text-base px-4 max-sm:pt-6 max-sm:pb-4 h-[60px] sm:h-[70px] rounded-none rounded-l-xl shadow-none"
-								/>
-								<span className="h-px sm:h-6 w-[94%] sm:w-px bg-light-gray"></span>
-								<Input
-									placeholder="Your email address"
-									className="flex-1 border-none bg-transparent focus:ring-0 text-base px-4 max-sm:pt-4 max-sm:pb-6 h-[60px] sm:h-[70px] rounded-none shadow-none"
-								/>
-								<Button size="xl" className="m-2.5 max-sm:hidden">
-									Subscribe
-								</Button>
-							</div>
-
-							<div className="sm:hidden mt-4">
-								<Button size="xl" className="w-full">
-									Subscribe
-								</Button>
-							</div>
+							<Subscribe></Subscribe>
 						</div>
 
 						{featuredBlogPost ? <FeaturedBlogPost {...{ blog: featuredBlogPost }} /> : <></>}

@@ -14,17 +14,8 @@ interface PageProps {
 
 const page = async ({ params }: PageProps) => {
 	const { blogId } = params;
-	console.log('params id', blogId);
 
 	const blogPostApiResponse = await getClientSingleBlogPost(blogId);
-
-	console.log('blogPostApiResponse', blogPostApiResponse);
-
-	// const { category, title, id, learningContentMediaType, learningContentImageMedia } = blogPostApiResponse;
-
-	// const { categoryName } = category;
-
-	// const { alt, url, height, width } = learningContentImageMedia || {};
 
 	const { category, id, title, learningContentMediaType, learningContentImageMedia, learningContentVideoMedia } =
 		blogPostApiResponse;

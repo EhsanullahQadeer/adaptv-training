@@ -1,2 +1,5 @@
 // Auto-generated routes
-export const apiRoutes = {};
+export const apiRoutes = {
+  "ClientSubscribeBlog": "/client/subscribe-blog",
+  "CoachApplication": "/coach-application"
+};

@@ -47,6 +47,11 @@ declare module '@/types/client' {
 		movementDescription: any;
 	}
 
+	export interface ISubscribeClientBlog {
+		name: string;
+		email: string;
+	}
+
 	export type MusclesResponse = PaginatedResponse<Muscle>;
 	export type MovementEquipmentResponse = PaginatedResponse<MovementEquipment>;
 	export type MovementTrainingStylesResponse = PaginatedResponse<TrainingStyles>;

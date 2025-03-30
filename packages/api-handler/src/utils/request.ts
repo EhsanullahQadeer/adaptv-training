@@ -2,12 +2,9 @@ import { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import { ApiResponse } from '../types/api';
 import { ExtendedAxiosInstance, ExtendedAxiosRequestConfig } from '../types/axios';
 import { logError } from './logger';
+import { ApiErrorResponse } from '../types';
 
-interface ApiErrorResponse {
-  error?: string;
-  message?: string;
-  [key: string]: any;
-}
+
 
 export const transformResponse = <T>(response: AxiosResponse<T>, extractData?: boolean): T | ApiResponse<T> => {
   if (extractData) {
