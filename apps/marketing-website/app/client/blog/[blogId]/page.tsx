@@ -20,7 +20,14 @@ const page = async ({ params }: PageProps) => {
 
 	console.log('blogPostApiResponse', blogPostApiResponse);
 
-	const { category, title, id, learningContentMediaType, learningContentImageMedia } = blogPostApiResponse;
+	// const { category, title, id, learningContentMediaType, learningContentImageMedia } = blogPostApiResponse;
+
+	// const { categoryName } = category;
+
+	// const { alt, url, height, width } = learningContentImageMedia || {};
+
+	const { category, id, title, learningContentMediaType, learningContentImageMedia, learningContentVideoMedia } =
+		blogPostApiResponse;
 
 	const { categoryName } = category;
 
@@ -60,9 +67,15 @@ const page = async ({ params }: PageProps) => {
 								alt={alt}
 								className="rounded-xl w-full h-full object-cover"
 							/>
-						) : (
-							<></>
-						)}
+						) : learningContentVideoMedia ? (
+							<iframe
+								className="w-full h-[648px] rounded-xl"
+								src={learningContentVideoMedia.replace('youtu.be/', 'www.youtube.com/embed/').split('?')[0]}
+								title="Movement Video"
+								frameBorder="0"
+								allowFullScreen
+							/>
+						) : null}
 					</div>
 
 					<div className="mt-6 md:mt-12 mb-6 md:mb-12">leaning content comes here</div>

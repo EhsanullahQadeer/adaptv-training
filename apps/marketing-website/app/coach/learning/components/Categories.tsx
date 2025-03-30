@@ -17,7 +17,6 @@ const Categories = (props: IProps) => {
 		setSelectedCategory(category);
 	};
 
-	// Convert categories into options format for Combobox
 	const categoryOptions = categoriesArr.map((category) => ({
 		value: category.id.toString(),
 		label: category.categoryName,
@@ -51,7 +50,7 @@ const Categories = (props: IProps) => {
 				</div>
 
 				{categoriesArr.map((category) => {
-					const { categoryName, id } = category;
+					const { categoryName, id, labelColor } = category;
 					return (
 						<div
 							onClick={() => handleCategorySelection(category)}
@@ -61,7 +60,7 @@ const Categories = (props: IProps) => {
 							}`}
 						>
 							<div className="flex gap-2 items-center">
-								<div style={{ backgroundColor: '#9A38A6' }} className="h-[9px] w-[9px] rounded-full" />
+								<div style={{ backgroundColor: labelColor }} className="h-[9px] w-[9px] rounded-full" />
 								<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption" color="text-dim-gray">
 									{categoryName}
 								</Typography>

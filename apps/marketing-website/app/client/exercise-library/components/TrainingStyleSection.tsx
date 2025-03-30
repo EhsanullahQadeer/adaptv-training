@@ -1,10 +1,14 @@
 import React from 'react';
 import { Typography } from '@workspace/ui/components';
 import { getMovementTrainingStyles } from '@/lib/services/cmsService';
+import Link from 'next/link';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
 
 const TrainingStyleSection = async () => {
 	const trainingStylesApiResponse = await getMovementTrainingStyles();
 	const trainingStylesArr = trainingStylesApiResponse?.docs;
+
+	const { clientExerciseLibraryList } = pagesRoutes;
 
 	return (
 		<div className="flex flex-col gap-6">
@@ -16,18 +20,20 @@ const TrainingStyleSection = async () => {
 					const { trainingStyleName, id } = train;
 
 					return (
-						<div
-							key={id}
-							className="flex gap-3.5 items-center px-4 py-3 md:px-5 md:py-4 rounded-full border border-ash-gray bg-white shadow-[0px_1px_2px_0px_rgba(0, 0, 0, 0.05)] max-sm:h-8"
-						>
-							<Typography
-								as="p_secondary"
-								sizeVariant="small"
-								className="tracking-[-0.08px] md:tracking-[-0.1px] leading-[20px] md:leading-[24px] font-normal md:font-medium"
+						<Link key={id} href={clientExerciseLibraryList}>
+							<div
+								key={id}
+								className="flex gap-3.5 items-center px-4 py-3 md:px-5 md:py-4 rounded-full border border-ash-gray bg-white shadow-[0px_1px_2px_0px_rgba(0, 0, 0, 0.05)] max-sm:h-8"
 							>
-								{trainingStyleName}
-							</Typography>
-						</div>
+								<Typography
+									as="p_secondary"
+									sizeVariant="small"
+									className="tracking-[-0.08px] md:tracking-[-0.1px] leading-[20px] md:leading-[24px] font-normal md:font-medium"
+								>
+									{trainingStyleName}
+								</Typography>
+							</div>
+						</Link>
 					);
 				})}
 			</div>

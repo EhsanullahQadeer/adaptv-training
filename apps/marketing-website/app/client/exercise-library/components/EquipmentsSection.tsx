@@ -3,11 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 import { getMovementEquipment } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
+import Link from 'next/link';
+import { pagesRoutes } from '@/lib/routes/pages-routes';
 
 const EquipmentsSection = async () => {
 	const movementEquipmentsApiResponse = await getMovementEquipment();
 	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
 
+	const { clientExerciseLibraryList } = pagesRoutes;
 	return (
 		<div className="flex flex-col gap-6">
 			<Typography as={'h4'} className="tracking-[-0.8px] md:tracking-[-1.12px]">
@@ -18,36 +21,43 @@ const EquipmentsSection = async () => {
 					const { equipmentName, equipmentGraphic, id } = equipment;
 					const { url, alt, width, height } = equipmentGraphic;
 					return (
-						<div
+						<Link
 							key={id}
-							className="p-4 md:p-5 flex flex-col gap-4 md:gap-6 rounded-xl bg-white border border-light-gray sm:max-w-[256px] max-sm:w-[200px] w-full"
+							href={clientExerciseLibraryList}
+							className="p-4 md:p-5 rounded-xl bg-white border border-light-gray sm:max-w-[256px] max-sm:w-[200px] w-full"
 						>
-							<div
-								style={{ height: height, width: width }}
-								className={`rounded-[10px] border-[0.75px] border-light-gray max-md:!h-12 max-md:!w-12`}
-							>
-								<Image
-									width={width}
-									height={height}
-									src={cmsAssetsUrl(url)}
-									alt={alt}
-									className="w-full h-full object-cover rounded-[10px]"
-								/>
-							</div>
-
-							<div className="flex flex-col gap-0.5 md:gap-1.5">
-								<Typography as="h4" sizeVariant="small" className="tracking-[-0.1px] leading-[24px] whitespace-nowrap">
-									{equipmentName}
-								</Typography>
-								<Typography
-									as="p"
-									sizeVariant="small"
-									className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap"
+							<div key={id} className="flex flex-col gap-4 md:gap-6">
+								<div
+									style={{ height: height, width: width }}
+									className={`rounded-[10px] border-[0.75px] border-light-gray max-md:!h-12 max-md:!w-12`}
 								>
-									44 Excercise
-								</Typography>
+									<Image
+										width={width}
+										height={height}
+										src={cmsAssetsUrl(url)}
+										alt={alt}
+										className="w-full h-full object-cover rounded-[10px]"
+									/>
+								</div>
+
+								<div className="flex flex-col gap-0.5 md:gap-1.5">
+									<Typography
+										as="h4"
+										sizeVariant="small"
+										className="tracking-[-0.1px] leading-[24px] whitespace-nowrap"
+									>
+										{equipmentName}
+									</Typography>
+									<Typography
+										as="p"
+										sizeVariant="small"
+										className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap"
+									>
+										44 Excercise
+									</Typography>
+								</div>
 							</div>
-						</div>
+						</Link>
 					);
 				})}
 			</div>

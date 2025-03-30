@@ -34,6 +34,7 @@ const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blo
 const getClientBlogCategories = () => apiCmsClient.get<ClientBlogCategoriesResponse>('/client-blog-categories');
 const getClientBlogPosts = () => apiCmsClient.get('/client-blog-posts');
 const getClientSingleBlogPost = (id: string) => apiCmsClient.get(`/client-blog-posts/${id}`);
+const getFeaturedClientBlog = () => apiCmsClient.get('/globals/client-blog-featured-config');
 
 const postCoachApplication = async (data: CoachFormValues) =>
 	apiCmsClient.post<ApiErrorResponse, false>('/coach-application', data, { extractData: false });
@@ -63,6 +64,7 @@ export {
 	getClientBlogCategories,
 	getClientBlogPosts,
 	getClientSingleBlogPost,
+	getFeaturedClientBlog,
 	postCoachApplication,
 	postClientWaitlist,
 	getCoachApplicationConfig,

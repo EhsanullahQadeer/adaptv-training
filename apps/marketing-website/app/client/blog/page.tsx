@@ -1,24 +1,23 @@
-import { imagesPaths } from '@/lib/public-assets-paths';
 import { Button, Input, Typography } from '@workspace/ui/components';
-import { ArrowIcon } from '@workspace/ui/icons';
-import Image from 'next/image';
 import React from 'react';
 import ScrollableCategories from './components/ScrollableCategories';
-import { populars } from './Data';
 import BlogCard from './components/BlogCard';
 import AccessToPlatformSection from '@/components/AccessToPlatformSection';
-import { getClientBlogCategories, getClientBlogPosts } from '@/lib/services/cmsService';
-const { blogFeature } = imagesPaths;
+import { getClientBlogCategories, getClientBlogPosts, getFeaturedClientBlog } from '@/lib/services/cmsService';
+import FeaturedBlogPost from './components/FeaturedBlogPost';
 
 const page = async () => {
 	const blogCategoriesApiResponse = await getClientBlogCategories();
 	const clientBlogPostsApiResponse = await getClientBlogPosts();
+	const clientFeaturedBlogApiResponse = await getFeaturedClientBlog();
 
 	console.log('blogCategoriesApiResponse', blogCategoriesApiResponse);
 	console.log('clientBlogPostsApiResponse', clientBlogPostsApiResponse);
+	console.log('clientFeaturedBlogApiResponse', clientFeaturedBlogApiResponse);
 
 	const categoriesArr = blogCategoriesApiResponse.docs;
 	const blogPostsArr = clientBlogPostsApiResponse.docs;
+	const featuredBlogPost = clientFeaturedBlogApiResponse.featuredPost;
 
 	return (
 		<>
@@ -55,38 +54,7 @@ const page = async () => {
 							</div>
 						</div>
 
-						<Typography as={'h4'}>Featured</Typography>
-						<div className="mt-5 w-fit flex lg:flex-row mx-auto flex-col border border-light-gray rounded-lg mb-10">
-							<div className="flex-1 w-full max-h-[420px] overflow-hidden">
-								<Image
-									src={blogFeature}
-									alt="image tracking"
-									className="rounded-t-lg lg:rounded-l-lg w-full h-full object-cover"
-									width={1000}
-									height={1000}
-								/>
-							</div>
-
-							<div className="flex-1 lg:max-w-[40%] p-[24px] flex justify-between flex-col">
-								<div className="flex flex-col lg:w-auto md:w-[790px]">
-									<span className="px-[6px] py-[3px] text-[10px] rounded-lg bg-[#9A38A6] w-fit text-white font-bold">
-										Training & Workouts
-									</span>
-
-									<Typography className="md:my-2 my-1" as={'h4_2'} color="text-black">
-										Maximize Your Workouts: How Smart Tech Enhances Training
-									</Typography>
-									<Typography color="text-[#515151]">
-										Learn how to effectively assess a client’s fitness level, mobility, and health history to create a
-										personalized training plan. Understand key assessment techniques like movement screening
-									</Typography>
-								</div>
-								<div className="flex gap-1.5 items-center mt-8">
-									<span className="text-[14px] font-semibold">Read more</span>
-									<ArrowIcon />
-								</div>
-							</div>
-						</div>
+						{featuredBlogPost ? <FeaturedBlogPost {...{ blog: featuredBlogPost }} /> : <></>}
 					</div>
 				</div>
 
@@ -94,28 +62,10 @@ const page = async () => {
 					<div className="px-4">
 						<div className="max-w-[1100px] mx-auto overflow-hidden">
 							<ScrollableCategories {...{ categoriesArr }} />
-							<div className="mt-4 flex lg:flex-row flex-col gap-5">
+							<div className="mt-4">
 								<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-x-3 gap-y-5 h-fit">
 									{blogPostsArr.map((blog, index: number) => (
 										<BlogCard key={index} {...{ blog }} />
-									))}
-								</div>
-								<div className="text-left lg:w-[240px]">
-									<Typography
-										color="text-black"
-										className="border-b pb-4 border-black sm:text-2xl text-lg font-semibold"
-									>
-										Public
-									</Typography>
-									{populars.map((popular, index) => (
-										<Typography
-											key={index}
-											as={'h6'}
-											sizeVariant="small"
-											className="py-4 border-b w-full border-[#00000029]"
-										>
-											{popular}
-										</Typography>
 									))}
 								</div>
 							</div>

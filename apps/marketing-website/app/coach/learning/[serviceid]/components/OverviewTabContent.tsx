@@ -4,17 +4,18 @@ import { Typography } from '@workspace/ui/components';
 import React from 'react';
 
 interface Props {
-	categoryName: string;
+	category: BlogCategory;
 	title: string;
 	faq?: FAQItem[];
 }
 
 const OverviewTabContent = (props: Props) => {
-	const { categoryName, title, faq } = props;
+	const { category, title, faq } = props;
+	const { categoryName, labelColor } = category;
 	return (
 		<div>
 			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
-				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: '#FF5733' }}></span>
+				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: labelColor }}></span>
 				<Typography as={'caption'} fontWeight="font-medium" sizeVariant="small" className="text-xs font-medium">
 					{categoryName}
 				</Typography>
@@ -32,9 +33,11 @@ const OverviewTabContent = (props: Props) => {
 
 			<div className="mt-4 md:mt-8">learning content body will be here...</div>
 
-			<div className="mt-6 md:mt-8">
-				<FAQsSection {...{ isBlogPage: true, FAQsArr: faq }} />
-			</div>
+			{faq && faq.length && (
+				<div className="mt-6 md:mt-8">
+					<FAQsSection {...{ isBlogPage: true, FAQsArr: faq }} />
+				</div>
+			)}
 		</div>
 	);
 };

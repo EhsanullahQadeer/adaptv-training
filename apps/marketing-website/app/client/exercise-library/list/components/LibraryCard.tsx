@@ -40,7 +40,7 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 		width: thumbnailWidth,
 	} = movementVideoThumbnail || {};
 
-	const isMovementMediaImage = movementMediaType === 'image';
+	const isMediaImage = movementMediaType === 'image';
 
 	const primaryMusclesArr = primaryMuscleFocus.map((muscle: Muscle) => {
 		const { muscleName } = muscle;
@@ -130,10 +130,10 @@ const LibraryCard: React.FC<LibraryCardProps> = (props) => {
 				</div>
 				<div className="max-h-[197px] sm:max-h-[140px] overflow-hidden rounded-md">
 					<Image
-						width={isMovementMediaImage ? width : thumbnailWidth}
-						height={isMovementMediaImage ? height : thumbnailHeight}
-						src={cmsAssetsUrl(isMovementMediaImage ? url : thumbnailUrl)}
-						alt={isMovementMediaImage ? alt : thumbnailAlt}
+						width={isMediaImage ? width : thumbnailWidth}
+						height={isMediaImage ? height : thumbnailHeight}
+						src={cmsAssetsUrl(isMediaImage ? url : thumbnailUrl)}
+						alt={isMediaImage ? alt : thumbnailAlt}
 						className="rounded-md w-full h-full object-cover aspect-video"
 					/>
 				</div>

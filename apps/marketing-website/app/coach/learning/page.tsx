@@ -10,8 +10,6 @@ const page = async () => {
 
 	console.log('learningPostsApiResponse', learningPostsApiResponse);
 
-	console.log('learningCategoriesApiResponse', learningCategoriesApiResponse);
-
 	const categoriesArr = learningCategoriesApiResponse.docs;
 	const learningPostsArr = learningPostsApiResponse.docs;
 
@@ -27,7 +25,7 @@ const page = async () => {
 					</div>
 				</div>
 
-				<div className="pt-6 md:pt-[60px] px-4 bg-white">
+				<div className="pt-6 md:pt-[60px] pb-6 px-4 bg-white">
 					<div className="max-w-[1100px] mx-auto flex md:flex-row flex-col gap-5">
 						<div className="md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
 							<Categories {...{ categoriesArr }} />
