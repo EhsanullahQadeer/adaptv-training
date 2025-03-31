@@ -14,6 +14,7 @@ import {
 	MusclesResponse,
 	ISubscribeClientBlog,
 } from '@/types/client';
+import { ICoachLearningResourcePosts } from '@/types/learning';
 
 // Helper functions for API calls with proper typing
 const getCoachHomepage = () => apiCmsClient.get('/globals/coach-homepage');
@@ -22,7 +23,7 @@ const getClientFAQs = () => apiCmsClient.get('/globals/client-faqs-section');
 const getSiteConfiguration = () => apiCmsClient.get('/globals/site-configuration');
 const getCoachLearningResourceCategories = () =>
 	apiCmsClient.get<CoachLearningResourceCategoriesResponse>('/coach-learning-resource-categories');
-const getCoachLearningResourcePosts = () => apiCmsClient.get('/coach-learning-resource-posts');
+const getCoachLearningResourcePosts = () => apiCmsClient.get<ICoachLearningResourcePosts>('/coach-learning-resource-posts');
 const getCoachLearningPost = (id: string) => apiCmsClient.get(`/coach-learning-resource-posts/${id}`);
 const getMuscles = () => apiCmsClient.get<MusclesResponse>('/muscles');
 const getMovementTrainingStyles = () => apiCmsClient.get<MovementTrainingStylesResponse>('/movement-training-styles');

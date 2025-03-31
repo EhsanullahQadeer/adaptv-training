@@ -12,6 +12,18 @@ const page = async () => {
 
 	const categoriesArr = learningCategoriesApiResponse.docs;
 	const learningPostsArr = learningPostsApiResponse.docs;
+	// Group by category and count occurrences
+	const categoryCounts = learningPostsApiResponse.docs.reduce(
+		(acc, post) => {
+			const categoryName = post.category.categoryName;
+			if (!acc[categoryName]) {
+				acc[categoryName] = 0;
+			}
+			acc[categoryName]++;
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
 
 	return (
 		<>
@@ -28,7 +40,7 @@ const page = async () => {
 				<div className="pt-6 md:pt-[60px] pb-6 px-4 bg-white">
 					<div className="max-w-[1100px] mx-auto flex md:flex-row flex-col gap-5">
 						<div className="md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
-							<Categories {...{ categoriesArr }} />
+							<Categories {...{ categoriesArr, categoryCounts }} />
 						</div>
 						<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-3 h-fit">
 							{learningPostsArr.map((post, index: number) => (

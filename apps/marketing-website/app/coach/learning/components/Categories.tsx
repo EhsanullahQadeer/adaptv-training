@@ -7,11 +7,13 @@ import ArrowDown from '@workspace/ui/icons/ArrowDown';
 
 interface IProps {
 	categoriesArr: BlogCategory[];
+	categoryCounts: Record<string, number>;
 }
 
 const Categories = (props: IProps) => {
-	const { categoriesArr } = props;
+	const { categoriesArr, categoryCounts } = props;
 	const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
+	const totalResources = Object.values(categoryCounts).reduce((sum, count) => sum + count, 0);
 
 	const handleCategorySelection = (category: BlogCategory) => {
 		setSelectedCategory(category);
@@ -46,7 +48,10 @@ const Categories = (props: IProps) => {
 					<Typography fontWeight="font-semibold" sizeVariant="large" as="p_caption">
 						{selectedCategory ? selectedCategory.categoryName : 'All Resource'}
 					</Typography>
-					<CountChip />
+
+					<CountChip
+						count={selectedCategory?.categoryName ? categoryCounts[selectedCategory.categoryName] || 0 : totalResources}
+					/>
 				</div>
 
 				{categoriesArr.map((category) => {
@@ -65,7 +70,7 @@ const Categories = (props: IProps) => {
 									{categoryName}
 								</Typography>
 							</div>
-							<CountChip />
+							<CountChip count={categoryCounts[categoryName] || 0} />
 						</div>
 					);
 				})}

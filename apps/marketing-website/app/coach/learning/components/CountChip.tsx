@@ -1,7 +1,7 @@
 import { Typography } from '@workspace/ui/components';
 import React from 'react';
 
-const CountChip = () => {
+const CountChip = ({ count }: { count: number }) => {
 	return (
 		<Typography
 			color="text-dim-gray"
@@ -9,7 +9,7 @@ const CountChip = () => {
 			sizeVariant="small"
 			as="p_caption"
 		>
-			68
+			{count}
 		</Typography>
 	);
 };

@@ -13,7 +13,7 @@ const TrainingStyleSection = async () => {
 	return (
 		<div className="flex flex-col gap-6">
 			<Typography as={'h4'} className="tracking-[-0.8px] md:tracking-[-1.12px]">
-				Browse by Muscle
+			Browse by Training Style
 			</Typography>
 			<div className="flex flex-wrap gap-3">
 				{trainingStylesArr.map((train) => {
