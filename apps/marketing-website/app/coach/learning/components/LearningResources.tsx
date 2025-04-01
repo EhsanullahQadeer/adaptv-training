@@ -2,8 +2,8 @@
 
 import { CoachPost } from '@/types/learning';
 import React, { useEffect, useState } from 'react';
-import Categories from './components/Categories';
-import ServiceCard from './components/ServiceCard';
+import Categories from './Categories';
+import ServiceCard from './ServiceCard';
 import getCoachLearningResourcePostsByServerAction from '@/lib/server-actions/learning-actions';
 
 interface LearningResourcesProps {

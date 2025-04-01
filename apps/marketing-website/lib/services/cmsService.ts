@@ -29,7 +29,6 @@ const getCoachLearningResourcePosts = (category?: string) => {
 	const query = {
 		limit: 1000,
 		page: 1,
-		sort: '-category',
 		where: category ? { category: { equals: category } } : undefined,
 	};
 
@@ -47,7 +46,20 @@ const getSingleMovement = (id: string) => apiCmsClient.get<Movement>(`/movements
 const getExerciseLibraryHomepage = () => apiCmsClient.get('/globals/movement-library-homepage');
 const getClientBlogSubscribers = () => apiCmsClient.get('/collections/client-blog-subscribers');
 const getClientBlogCategories = () => apiCmsClient.get<ClientBlogCategoriesResponse>('/client-blog-categories');
-const getClientBlogPosts = () => apiCmsClient.get('/client-blog-posts');
+// const getClientBlogPosts = () => apiCmsClient.get('/client-blog-posts');
+
+const getClientBlogPosts = (category?: string) => {
+	const query = {
+		limit: 1000,
+		page: 1,
+		where: category ? { category: { equals: category } } : undefined,
+	};
+
+	return apiCmsClient.get(
+		`/client-blog-posts?${qs.stringify(query, { encode: false })}`,
+	);
+};
+
 const getClientSingleBlogPost = (id: string) => apiCmsClient.get(`/client-blog-posts/${id}`);
 const getFeaturedClientBlog = () => apiCmsClient.get('/globals/client-blog-featured-config');
 

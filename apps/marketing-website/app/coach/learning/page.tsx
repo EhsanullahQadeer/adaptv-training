@@ -1,5 +1,5 @@
 import { getCoachLearningResourceCategories, getCoachLearningResourcePosts } from '@/lib/services/cmsService';
-import LearningResources from './LearningResources';
+import LearningResources from './components/LearningResources';
 
 const page = async () => {
 	const learningCategoriesApiResponse = await getCoachLearningResourceCategories();
