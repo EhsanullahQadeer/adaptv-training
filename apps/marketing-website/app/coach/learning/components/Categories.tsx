@@ -8,17 +8,19 @@ import ArrowDown from '@workspace/ui/icons/ArrowDown';
 interface IProps {
 	categoriesArr: BlogCategory[];
 	categoryCounts: Record<string, number>;
+	onCategorySelect: (category: BlogCategory | null) => void;
 }
 
-const Categories = (props: IProps) => {
-	const { categoriesArr, categoryCounts } = props;
+const Categories = ({ categoriesArr, categoryCounts, onCategorySelect }: IProps) => {
 	const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
 	const totalResources = Object.values(categoryCounts).reduce((sum, count) => sum + count, 0);
 
 	const handleCategorySelection = (category: BlogCategory) => {
 		setSelectedCategory(category);
+		onCategorySelect(category);
 	};
 
+	
 	const categoryOptions = categoriesArr.map((category) => ({
 		value: category.id.toString(),
 		label: category.categoryName,
@@ -26,7 +28,6 @@ const Categories = (props: IProps) => {
 
 	return (
 		<div>
-			{/* Small screen */}
 			<div className="block md:hidden">
 				<Combobox
 					rotateIcon

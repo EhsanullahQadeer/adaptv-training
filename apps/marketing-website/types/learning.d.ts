@@ -49,7 +49,7 @@ declare module '@/types/learning' {
 		id: string;
 	}
 
-	interface Doc {
+	interface CoachPost {
 		createdAt: string;
 		updatedAt: string;
 		title: string;
@@ -66,7 +66,7 @@ declare module '@/types/learning' {
 	}
 
 	interface ICoachLearningResourcePosts {
-		docs: Doc[];
+		docs: CoachPost[];
 		totalDocs: number;
 		limit: number;
 		totalPages: number;

@@ -15,6 +15,7 @@ import {
 	ISubscribeClientBlog,
 } from '@/types/client';
 import { ICoachLearningResourcePosts } from '@/types/learning';
+import * as qs from 'qs-esm';
 
 // Helper functions for API calls with proper typing
 const getCoachHomepage = () => apiCmsClient.get('/globals/coach-homepage');
@@ -23,7 +24,20 @@ const getClientFAQs = () => apiCmsClient.get('/globals/client-faqs-section');
 const getSiteConfiguration = () => apiCmsClient.get('/globals/site-configuration');
 const getCoachLearningResourceCategories = () =>
 	apiCmsClient.get<CoachLearningResourceCategoriesResponse>('/coach-learning-resource-categories');
-const getCoachLearningResourcePosts = () => apiCmsClient.get<ICoachLearningResourcePosts>('/coach-learning-resource-posts');
+
+const getCoachLearningResourcePosts = (category?: string) => {
+	const query = {
+		limit: 1000,
+		page: 1,
+		sort: '-category',
+		where: category ? { category: { equals: category } } : undefined,
+	};
+
+	return apiCmsClient.get<ICoachLearningResourcePosts>(
+		`/coach-learning-resource-posts?${qs.stringify(query, { encode: false })}`,
+	);
+};
+
 const getCoachLearningPost = (id: string) => apiCmsClient.get(`/coach-learning-resource-posts/${id}`);
 const getMuscles = () => apiCmsClient.get<MusclesResponse>('/muscles');
 const getMovementTrainingStyles = () => apiCmsClient.get<MovementTrainingStylesResponse>('/movement-training-styles');
