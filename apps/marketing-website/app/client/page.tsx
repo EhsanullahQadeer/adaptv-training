@@ -9,6 +9,8 @@ import SmartFeatures from './components/SmartFeatures';
 import SmartTracking from './components/SmartTracking';
 import AdaptiveClient from '@/components/AdaptiveClient';
 import { clientsData } from '@/components/data';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
+import WaitingListDialog from '@/components/modals/WaitListDialog';
 const { exerciseLibrary, exercisemobile } = imagesPaths;
 
 const coachingFeatures = [
@@ -38,9 +40,15 @@ const page = () => {
 					</Typography>
 					<Typography as={'h5'}>Personalized training with top fitness pros—anytime, anywhere. </Typography>
 					<div className="mt-5 md:mt-6">
-						<Button size="default" type="button">
-							Join the Waitlist
-						</Button>
+						<WaitingListDialog
+							triggerButton={
+								<DialogTrigger asChild>
+									<Button size="default" type="button">
+										Join the Waitlist
+									</Button>
+								</DialogTrigger>
+							}
+						/>
 					</div>
 				</div>
 				<div className="flex items-center justify-center">

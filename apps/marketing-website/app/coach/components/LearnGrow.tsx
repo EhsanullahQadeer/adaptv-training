@@ -18,9 +18,9 @@ const LearnGrow = () => {
 		{ name: 'Bodyweight Workouts', variant: 'dim' },
 		{ name: 'Rehabilitation and Recovery Exercises', variant: 'dim' },
 		{ name: 'Prenatal or Postnatal Fitness', variant: 'dim' },
-		{ name: 'Business Growth', variant: 'info' },
-		{ name: 'Strength Training', variant: 'dim' },
-		{ name: 'CrossFit', variant: 'dim' },
+		// { name: 'Business Growth', variant: 'info' },
+		// { name: 'Strength Training', variant: 'dim' },
+		// { name: 'CrossFit', variant: 'dim' },
 	];
 
 	return (
