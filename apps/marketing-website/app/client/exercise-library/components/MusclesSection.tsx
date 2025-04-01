@@ -5,9 +5,27 @@ import { getMuscles } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
+import { MovementsResponse } from '@/types/client';
+interface MusclesSectionProps {
+	movements: MovementsResponse;
+}
 
-const MusclesSection = async () => {
+const MusclesSection = async ({ movements }: MusclesSectionProps) => {
 	const musclesApiResponse = await getMuscles();
+
+	const primaryMuscleCounts = movements.docs.reduce(
+		(acc, movement) => {
+			movement.primaryMuscleFocus?.forEach((muscle) => {
+				if (muscle?.muscleName) {
+					const musleName = muscle.muscleName.toLowerCase();
+					acc[musleName] = (acc[musleName] || 0) + 1;
+				}
+			});
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
+
 	const muscleArr = musclesApiResponse?.docs;
 
 	const { clientExerciseLibraryList } = pagesRoutes;
@@ -22,7 +40,7 @@ const MusclesSection = async () => {
 					const { muscleName, muscleGraphic, id, muscleLabelColor } = muscle;
 					const { url, alt, width, height } = muscleGraphic;
 					return (
-						<Link key={id} href={clientExerciseLibraryList}>
+						<Link key={id} href={{ pathname: clientExerciseLibraryList, query: { "primary-muscle": muscle.id } }}>
 							<div className="flex gap-3.5 items-center w-[163px] md:w-[245px]">
 								<div
 									style={{ backgroundColor: muscleLabelColor }}
@@ -46,7 +64,7 @@ const MusclesSection = async () => {
 										sizeVariant="small"
 										className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap"
 									>
-										44 Excercise
+										{primaryMuscleCounts[muscleName.toLowerCase()] || 0} Excercise
 									</Typography>
 								</div>
 							</div>

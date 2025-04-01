@@ -6,9 +6,12 @@ import MusclesSection from './components/MusclesSection';
 import TrainingStyleSection from './components/TrainingStyleSection';
 import DifficultySection from './components/DifficultySection';
 import EquipmentsSection from './components/EquipmentsSection';
+import { getMovements } from '@/lib/services/cmsService';
 
-const page = () => {
+const page = async () => {
 	const { libraryHeroBg } = imagesPaths;
+
+	const movements = await getMovements();
 
 	return (
 		<>
@@ -66,10 +69,10 @@ const page = () => {
 
 			<div className="mx-4">
 				<div className="max-md:my-8 md:mt-[70px] md:mb-[135px] max-w-[1100px] m-auto flex flex-col gap-[42px]">
-					<MusclesSection />
-					<TrainingStyleSection />
-					<DifficultySection />
-					<EquipmentsSection />
+					<MusclesSection movements={movements} />
+					<TrainingStyleSection  />
+					<DifficultySection  movements={movements} />
+					<EquipmentsSection movements={movements} />
 				</div>
 			</div>
 		</>

@@ -6,18 +6,38 @@ import { getMovementEquipment, getMovements, getMovementTrainingStyles, getMuscl
 import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
-const page = async () => {
-	const musclesApiResponse = await getMuscles();
-	const trainingStylesApiResponse = await getMovementTrainingStyles();
-	const movementEquipmentsApiResponse = await getMovementEquipment();
-	const movementsPostApiResponse = await getMovements();
+const Page = async (params: Promise<{ searchParams: Promise<Record<string, string | undefined>> }>) => {
+	const { searchParams } = await params;
+	const searchObj = await searchParams;
+	const trainingStyle = searchObj['training-style'];
+	const primaryMuscleFocus = searchObj['primary-muscle'];
+	const equipment = searchObj['equipment'];
+	const difficultyLevel = searchObj['difficulty-level'];
+
+	const defaultSelectedFilters = {
+		...(primaryMuscleFocus && { primaryMuscleFocus: [primaryMuscleFocus] }),
+		...(trainingStyle && { trainingStyle: [trainingStyle] }),
+		...(equipment && { equipment: [equipment] }),
+		...(difficultyLevel && { difficulty: difficultyLevel }),
+	};
+
+	const [musclesApiResponse, trainingStylesApiResponse, movementEquipmentsApiResponse, movementsPostApiResponse] =
+		await Promise.all([
+			getMuscles(),
+			getMovementTrainingStyles(),
+			getMovementEquipment(),
+			getMovements({
+				trainingStyle: trainingStyle ? [trainingStyle] : undefined,
+				primaryMuscleFocus: primaryMuscleFocus ? [primaryMuscleFocus] : undefined,
+				equipment: equipment ? [equipment] : undefined,
+				difficultyLevel,
+			}),
+		]);
 
 	const muscleArr = musclesApiResponse?.docs;
 	const trainingStylesArr = trainingStylesApiResponse?.docs;
 	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
 	const movementsPostsArr = movementsPostApiResponse?.docs;
-
-	console.log('movementsPostsArr', movementsPostsArr);
 
 	const { clientExerciseLibrary, clientExerciseLibraryList } = pagesRoutes;
 	const breadcrumbs = [
@@ -68,7 +88,9 @@ const page = async () => {
 			<div className="bg-white">
 				<div className="my-8 px-4">
 					<div className="max-w-[1100px] mx-auto overflow-hidden">
-						<FiltersList {...{ muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr }} />
+						<FiltersList
+							{...{ muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr, defaultSelectedFilters }}
+						/>
 					</div>
 				</div>
 			</div>
@@ -76,4 +98,4 @@ const page = async () => {
 	);
 };
 
-export default page;
+export default Page;

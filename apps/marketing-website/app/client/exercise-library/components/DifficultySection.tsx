@@ -1,18 +1,34 @@
 import { iconsPaths } from '@/lib/public-assets-paths';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
+import { MovementsResponse } from '@/types/client';
 import { Typography } from '@workspace/ui/components';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-const DifficultySection = () => {
+interface DifficultySectionProps {
+	movements: MovementsResponse;
+}
+
+const DifficultySection = ({ movements }: DifficultySectionProps) => {
 	const { weightBeginner, weightIntermediate, weightAdvance } = iconsPaths;
 
 	const difficultyLevelsArr = [
-		{ id: 1, difficultyLevel: 'Beginner', exercisesCount: 37, icon: weightBeginner },
-		{ id: 2, difficultyLevel: 'Intermediate', exercisesCount: 58, icon: weightIntermediate },
-		{ id: 3, difficultyLevel: 'Advance', exercisesCount: 85, icon: weightAdvance },
+		{ id: 1, difficultyLevel: 'Beginner', icon: weightBeginner },
+		{ id: 2, difficultyLevel: 'Intermediate', icon: weightIntermediate },
+		{ id: 3, difficultyLevel: 'Advance', icon: weightAdvance },
 	];
+
+	const difficultyCounts = movements.docs.reduce(
+		(acc, movement) => {
+			const difficulty = movement.difficulty?.toLowerCase();
+			if (difficulty) {
+				acc[difficulty] = (acc[difficulty] || 0) + 1;
+			}
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
 
 	const { clientExerciseLibraryList } = pagesRoutes;
 	return (
@@ -22,10 +38,13 @@ const DifficultySection = () => {
 			</Typography>
 			<div className="flex gap-3 w-full overflow-x-auto scrollbar-hide">
 				{difficultyLevelsArr.map((level) => {
-					const { difficultyLevel, exercisesCount, icon, id } = level;
+					const { difficultyLevel, icon, id } = level;
 
 					return (
-						<Link key={id} href={clientExerciseLibraryList}>
+						<Link
+							key={id}
+							href={{ pathname: clientExerciseLibraryList, query: { 'difficulty-level': difficultyLevel.toLowerCase() } }}
+						>
 							<div
 								key={id}
 								className="flex flex-col items-center p-5 md:px-[100px] md:py-5 rounded-xl border border-light-gray bg-white flex-1"
@@ -50,7 +69,7 @@ const DifficultySection = () => {
 									as="p"
 									className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap text-sm md:text-base"
 								>
-									{exercisesCount} Excercise
+									{difficultyCounts[difficultyLevel.toLowerCase()] || 0} Excercise
 								</Typography>
 							</div>
 						</Link>

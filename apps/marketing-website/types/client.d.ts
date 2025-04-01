@@ -41,7 +41,6 @@ declare module '@/types/client' {
 		trainingStyle: TrainingStyles;
 		primaryMuscleFocus: Muscle[];
 		secondaryMuscleFocus: Muscle[];
-		equipment: MovementEquipment;
 		progressionMovements?: Movement[];
 		suggestedMovements?: Movement[];
 		movementDescription: any;

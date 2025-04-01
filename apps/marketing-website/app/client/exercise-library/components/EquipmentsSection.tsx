@@ -5,10 +5,24 @@ import { getMovementEquipment } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
-
-const EquipmentsSection = async () => {
+import { MovementsResponse } from '@/types/client';
+interface EquipmentsSectionProps {
+	movements: MovementsResponse;
+}
+const EquipmentsSection = async ({ movements }: EquipmentsSectionProps) => {
 	const movementEquipmentsApiResponse = await getMovementEquipment();
 	const movementEquipmentsArr = movementEquipmentsApiResponse?.docs;
+
+	const equipmentCounts = movements.docs.reduce(
+		(acc, movement) => {
+			const equipment = movement.equipment?.equipmentName.toLowerCase();
+			if (equipment) {
+				acc[equipment] = (acc[equipment] || 0) + 1;
+			}
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
 
 	const { clientExerciseLibraryList } = pagesRoutes;
 	return (
@@ -23,7 +37,7 @@ const EquipmentsSection = async () => {
 					return (
 						<Link
 							key={id}
-							href={clientExerciseLibraryList}
+							href={{ pathname: clientExerciseLibraryList, query: { equipment: id } }}
 							className="p-4 md:p-5 rounded-xl bg-white border border-light-gray sm:max-w-[256px] max-sm:w-[200px] w-full"
 						>
 							<div key={id} className="flex flex-col gap-4 md:gap-6">
@@ -53,7 +67,7 @@ const EquipmentsSection = async () => {
 										sizeVariant="small"
 										className="tracking-[-0.09px] leading-[20px] text-charcoal-gray whitespace-nowrap"
 									>
-										44 Excercise
+										{equipmentCounts[equipmentName.toLowerCase()] || 0} Excercise
 									</Typography>
 								</div>
 							</div>

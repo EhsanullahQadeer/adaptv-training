@@ -7,6 +7,14 @@ interface Props {
 	muscleArr: Muscle[];
 	trainingStylesArr: TrainingStyles[];
 	movementEquipmentsArr: MovementEquipment[];
+	defaultSelectedFilters?: {
+		primaryMuscleFocus?: string[];
+		secondaryMuscleFocus?: string[];
+		trainingStyle?: string[];
+		equipment?: string[];
+		difficulty?: string;
+	};
+	onFilterChange: (newFilters: any) => void;
 }
 
 const difficulties = [
@@ -15,14 +23,26 @@ const difficulties = [
 	{ label: 'Difficult', value: 'difficult' },
 ];
 
-const Filters: React.FC<Props> = ({ muscleArr, trainingStylesArr, movementEquipmentsArr }) => {
+const Filters: React.FC<Props> = ({
+	muscleArr,
+	trainingStylesArr,
+	movementEquipmentsArr,
+	defaultSelectedFilters = {},
+	onFilterChange,
+}) => {
 	const [selectedFilters, setSelectedFilters] = useState({
-		primaryMuscle: [] as string[],
-		secondaryMuscle: [] as string[],
-		trainingStyle: [] as string[],
-		equipment: [] as string[],
+		primaryMuscleFocus: defaultSelectedFilters?.primaryMuscleFocus ? defaultSelectedFilters.primaryMuscleFocus : ([] as string[]),
+		secondaryMuscleFocus: defaultSelectedFilters?.secondaryMuscleFocus
+			? defaultSelectedFilters.secondaryMuscleFocus
+			: ([] as string[]),
+		trainingStyle: defaultSelectedFilters?.trainingStyle ? defaultSelectedFilters.trainingStyle : ([] as string[]),
+		equipment: defaultSelectedFilters?.equipment ? defaultSelectedFilters.equipment : ([] as string[]),
 	});
-	const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+	// const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
+
+	const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(
+		defaultSelectedFilters?.difficulty ? defaultSelectedFilters.difficulty : null,
+	);
 
 	const muscleOptions = useMemo(
 		() => muscleArr.map(({ id, muscleName }) => ({ value: id.toString(), label: muscleName })),
@@ -48,7 +68,13 @@ const Filters: React.FC<Props> = ({ muscleArr, trainingStylesArr, movementEquipm
 	);
 
 	const handleFilterChange = (key: keyof typeof selectedFilters) => (value: string[]) => {
+		const updatedFilters = { ...selectedFilters, [key]: value };
 		setSelectedFilters((prev) => ({ ...prev, [key]: value }));
+		onFilterChange(updatedFilters);
+	};
+	const handleDifficultyChange = (difficulty: string) => {
+		setSelectedDifficulty(difficulty);
+		onFilterChange({ ...selectedFilters, difficultyLevel: difficulty });
 	};
 
 	const renderMultiSelect = (
@@ -76,8 +102,8 @@ const Filters: React.FC<Props> = ({ muscleArr, trainingStylesArr, movementEquipm
 
 	return (
 		<div className="w-full flex flex-col gap-5">
-			{renderMultiSelect('Primary Muscle', 'primaryMuscle', muscleOptions, 'Select Primary Muscles')}
-			{renderMultiSelect('Secondary Muscle', 'secondaryMuscle', muscleOptions, 'Select Secondary Muscles')}
+			{renderMultiSelect('Primary Muscle', 'primaryMuscleFocus', muscleOptions, 'Select Primary Muscles')}
+			{renderMultiSelect('Secondary Muscle', 'secondaryMuscleFocus', muscleOptions, 'Select Secondary Muscles')}
 			{renderMultiSelect('Training Style', 'trainingStyle', trainingStyleOptions, 'Select Training Styles')}
 			<div>
 				<Typography
@@ -96,7 +122,7 @@ const Filters: React.FC<Props> = ({ muscleArr, trainingStylesArr, movementEquipm
 								key={value}
 								className={`w-full flex items-center justify-between px-4 py-2 border rounded-lg transition-all
               ${selectedDifficulty === value ? 'border-black' : 'border-soft-gray'}`}
-								onClick={() => setSelectedDifficulty(value)}
+								onClick={() => handleDifficultyChange(value)}
 							>
 								{label}
 								<span

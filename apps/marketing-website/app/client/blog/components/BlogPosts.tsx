@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import BlogCard from './BlogCard';
-import getClientBlogPostsByServerAction from '@/lib/server-actions/client-blog-actions';
+import { getClientBlogPostsByServerAction } from '@/lib/server-actions/client-blog-actions';
 import ScrollableCategories from './ScrollableCategories';
 
 interface IProps {
