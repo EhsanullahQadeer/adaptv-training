@@ -1,3 +1,4 @@
+import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import { Button, Typography } from '@workspace/ui/components';
 import Image from 'next/image';
@@ -22,9 +23,13 @@ const PlatformHeaderComponent = (props: Props) => {
 				<Typography as={'p'}>{subHeading}</Typography>
 
 				<div className="mt-5">
-					<Button onClick={() => {}} size="default" type="button">
-						{buttonText}
-					</Button>
+					{buttonText.toLowerCase() === 'become a coach' ? (
+						<BecomeACoachButton></BecomeACoachButton>
+					) : (
+						<Button onClick={() => {}} size="default" type="button">
+							{buttonText}
+						</Button>
+					)}
 				</div>
 			</div>
 

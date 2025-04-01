@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Subscribe from './Subscribe';
+import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
 
 const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
 
@@ -64,9 +65,15 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 								<Subscribe></Subscribe>
 							</div>
 						) : (
-							<Button size="xl" type="button">
-								{buttonText}
-							</Button>
+							<>
+								{buttonText?.toLowerCase() === 'become a coach' ? (
+									<BecomeACoachButton></BecomeACoachButton>
+								) : (
+									<Button size="xl" type="button">
+										{buttonText}
+									</Button>
+								)}
+							</>
 						)}
 					</div>
 				</div>

@@ -27,4 +27,12 @@ declare global {
 		updatedAt: string;
 		labelColor?: string;
 	}
+	interface ISiteConfig {
+		id: number;
+		acceptCoachApplications: boolean;
+		waitlistMode: boolean;
+		globalType: string;
+		updatedAt: Date;
+		createdAt: Date;
+	}
 }

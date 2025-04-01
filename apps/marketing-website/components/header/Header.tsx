@@ -8,6 +8,7 @@ import RoleSelector from './RoleSelector';
 import NavBar from './NavBar';
 import { determineBgColor, handleRoleChange } from '@/lib/utils/headerUtils';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
+import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
 const {
 	client,
 	clientAbout,
@@ -36,16 +37,16 @@ const Header = () => {
 	const isClientRoute = pathname.includes(client);
 	const menuItems = isClientRoute
 		? [
-			{ label: 'About', link: clientAbout },
-			{ label: 'Platform', link: clientPlatform },
-			{ label: 'Exercise Library', link: clientExerciseLibrary },
-			{ label: 'Blog', link: clientBlog },
-		]
+				{ label: 'About', link: clientAbout },
+				{ label: 'Platform', link: clientPlatform },
+				{ label: 'Exercise Library', link: clientExerciseLibrary },
+				{ label: 'Blog', link: clientBlog },
+			]
 		: [
-			{ label: 'About', link: coachAbout },
-			{ label: 'Platform', link: coachPlatform },
-			{ label: 'Learning', link: coachLearning },
-		];
+				{ label: 'About', link: coachAbout },
+				{ label: 'Platform', link: coachPlatform },
+				{ label: 'Learning', link: coachLearning },
+			];
 	const buttonText = isClientRoute
 		? pathname === clientExerciseLibrary
 			? 'Start Training'
@@ -129,8 +130,9 @@ const Header = () => {
 					</div>
 
 					<div
-						className={`fixed top-20 inset-0 bg-black bg-opacity-50 transition-all duration-500 ${menuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
-							}`}
+						className={`fixed top-20 inset-0 bg-black bg-opacity-50 transition-all duration-500 ${
+							menuOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
+						}`}
 						onClick={() => setMenuOpen(false)}
 					></div>
 
@@ -149,7 +151,11 @@ const Header = () => {
 
 						<div className="max-sm:hidden flex gap-2">
 							{showLoginButton ? <Button variant="outline">Login</Button> : <></>}
-							<Button variant={isDarkBg ? 'light' : 'default'}>{buttonText}</Button>
+							{buttonText.toLowerCase() === 'become a coach' ? (
+								<BecomeACoachButton></BecomeACoachButton>
+							) : (
+								<Button variant={isDarkBg ? 'light' : 'default'}>{buttonText}</Button>
+							)}
 						</div>
 
 						<button
@@ -157,14 +163,16 @@ const Header = () => {
 							onClick={toggleMenu}
 						>
 							<div
-								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-									}`}
+								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+									menuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+								}`}
 							>
 								<CancelIcon height={24} width={24} />
 							</div>
 							<div
-								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-									}`}
+								className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+									menuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+								}`}
 							>
 								<MenuIcon height={24} width={24} />
 							</div>

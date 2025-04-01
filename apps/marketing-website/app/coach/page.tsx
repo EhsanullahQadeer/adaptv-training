@@ -9,6 +9,7 @@ import AdaptiveClient from '@/components/AdaptiveClient';
 import LearnGrow from './components/LearnGrow';
 import { DimensionalBlock, GlobleIcon, RequestVerified } from '@workspace/ui/icons';
 import { stepsData } from '@/components/data';
+import BecomeACoachButton from './components/BecomeACoachButton';
 const { tabImage, collageFour, collageMobile } = imagesPaths;
 
 const coachingFeatures = [
@@ -54,9 +55,7 @@ const page = () => {
 					</Typography>
 					<Typography as={'h5'}>Grow your coaching business, offer personalized training. </Typography>
 					<div className="mt-5 md:mt-6">
-						<Button size="default" type="button">
-							Become a coach{' '}
-						</Button>
+						<BecomeACoachButton></BecomeACoachButton>
 					</div>
 				</div>
 

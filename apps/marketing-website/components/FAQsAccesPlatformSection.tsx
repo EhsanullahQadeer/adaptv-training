@@ -23,9 +23,6 @@ const FAQsAccesPlatformSection = () => {
 				buttonText: 'Become a coach',
 				textMaxWidth: 'max-w-[510px]',
 			};
-
-	console.log('globalFAQsData', globalFAQsData);
-
 	return (
 		<div>
 			<div className="mx-4 mt-[66px] md:mt-[120px] max-sm:mb-[66px]">

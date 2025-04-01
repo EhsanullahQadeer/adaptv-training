@@ -2,6 +2,7 @@ import { Typography } from '@workspace/ui/components';
 import Image from 'next/image';
 import React from 'react';
 import { Button } from '@workspace/ui/components/button';
+import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
 
 interface AdaptiveCardsProps {
 	title: string;
@@ -42,9 +43,13 @@ const AdaptiveCards: React.FC<AdaptiveCardsProps> = ({
 				</Typography>
 				{showButton && (
 					<div className="mt-8 w-fit">
-						<Button type="button" size="xl">
-							{buttonText}
-						</Button>
+						{buttonText.toLowerCase() === 'become a coach' ? (
+							<BecomeACoachButton></BecomeACoachButton>
+						) : (
+							<Button type="button" size="xl">
+								{buttonText}
+							</Button>
+						)}
 					</div>
 				)}
 			</div>

@@ -1,6 +1,7 @@
 import { Button } from '@workspace/ui/components';
 import Link from 'next/link';
 import RoleSelector from './RoleSelector';
+import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
 
 interface IProps {
 	menuItems: { label: string; link: string }[];
@@ -66,9 +67,14 @@ const NavBar = ({
 				) : (
 					<></>
 				)}
-				<Button size="xl" className="w-full" variant={isDarkBg ? 'light' : 'default'}>
-					{buttonText}
-				</Button>
+
+				{buttonText.toLowerCase() === 'become a coach' ? (
+					<BecomeACoachButton></BecomeACoachButton>
+				) : (
+					<Button size="xl" className="w-full" variant={isDarkBg ? 'light' : 'default'}>
+						{buttonText}
+					</Button>
+				)}
 			</div>
 		</nav>
 	);

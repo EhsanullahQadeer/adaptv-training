@@ -21,7 +21,7 @@ import * as qs from 'qs-esm';
 const getCoachHomepage = () => apiCmsClient.get('/globals/coach-homepage');
 const getCoachFAQs = () => apiCmsClient.get('/globals/coach-faqs-section');
 const getClientFAQs = () => apiCmsClient.get('/globals/client-faqs-section');
-const getSiteConfiguration = () => apiCmsClient.get('/globals/site-configuration');
+const getSiteConfiguration = () => apiCmsClient.get<ISiteConfig>('/globals/site-configuration');
 const getCoachLearningResourceCategories = () =>
 	apiCmsClient.get<CoachLearningResourceCategoriesResponse>('/coach-learning-resource-categories');
 

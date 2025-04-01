@@ -1,5 +1,4 @@
 declare module '@/types/learning' {
-    
 	interface Category {
 		createdAt: string;
 		updatedAt: string;
