@@ -13,7 +13,7 @@ import { toast } from '@workspace/ui/components/sonner';
 const stepSchemas = [personalInfoSchema, questionnaireSchema];
 const steps = [PersonalInfoStep, QuestionnaireStep, ConfirmationStep];
 
-export const getStringValue = (value: unknown) => (typeof value === "string" ? value : "");
+export const getStringValue = (value: unknown) => (typeof value === 'string' ? value : '');
 
 interface IProps {
 	totalSteps: number;
@@ -48,7 +48,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 		resolver: zodResolver(currentSchema),
 		mode: 'onBlur',
 		reValidateMode: 'onChange',
-		defaultValues: defaultValues
+		defaultValues: defaultValues,
 	});
 
 	// Handle form submission
@@ -74,8 +74,15 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 
 	// Function to add a certification
 	const addCertification = (certification: Certification) => {
-		const currentCertifications = form.getValues("certification") as Certification[] || [];
+		const currentCertifications = (form.getValues('certification') as Certification[]) || [];
 		form.setValue('certification', [...currentCertifications, certification]);
+	};
+	// Function to remove a certification
+	const removeCertification = (certificationId: string) => {
+		const currentCertifications = (form.getValues('certification') as Certification[]) || [];
+
+		const updatedCertifications = currentCertifications.filter((cert) => cert.id !== certificationId);
+		form.setValue('certification', updatedCertifications);
 	};
 
 	return (
@@ -83,7 +90,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 			<form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col flex-1 space-y-8 py-5.5">
 				<div className="overflow-auto flex flex-col flex-grow flex-shrink-0 basis-0">
 					{/* Render the current step component */}
-					{CurrentStep && <CurrentStep {...{ addCertification, form }} />}
+					{CurrentStep && <CurrentStep {...{ addCertification, removeCertification, form }} />}
 				</div>
 				<div className="flex justify-between gap-3">
 					<div className="flex-1">
@@ -100,9 +107,9 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 							</Button>
 						)}
 					</div>
-					{currentStep !== totalSteps &&
+					{currentStep !== totalSteps && (
 						<div className="flex-1 flex justify-end">
-							<Button className="w-full xs:w-auto" size="lg" type="submit" >
+							<Button className="w-full xs:w-auto" size="lg" type="submit">
 								{currentStep === 1 ? 'Next' : 'Submit'}
 								{form.formState.isSubmitting && (
 									<span className="ml-2">
@@ -110,7 +117,8 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 									</span>
 								)}
 							</Button>
-						</div>}
+						</div>
+					)}
 				</div>
 			</form>
 		</Form>

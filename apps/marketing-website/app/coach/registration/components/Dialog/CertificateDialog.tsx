@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { Button, Dialog, Input, Select } from '@workspace/ui/components';
 import {
 	DialogClose,
@@ -28,10 +28,18 @@ const formSchema = z.object({
 const CertificateDialog = ({
 	addCertification,
 	certifications,
+	mode = 'new',
+	viewCertification,
+	triggerButton,
 }: {
 	addCertification: (cert: Certification) => void;
 	certifications: Certification[];
+	mode?: 'new' | 'view';
+	viewCertification?: Certification;
+	triggerButton?: ReactNode;
 }) => {
+	const [isDialogOpen, setIsDialogOpen] = useState(false);
+
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -40,57 +48,121 @@ const CertificateDialog = ({
 		},
 	});
 
+	useEffect(() => {
+		if (viewCertification && mode === 'view') {
+			form.reset(viewCertification);
+		}
+	}, [form, mode, viewCertification]);
+
 	const onSubmit = (values: z.infer<typeof formSchema>) => {
-		const { id, companyName } = JSON.parse(values.company);
-		const obj = { id, company: companyName, name: values.name };
-		addCertification(obj);
-		form.reset();
+		if (mode === 'new') {
+			const { id, companyName } = JSON.parse(values.company);
+			const obj = { id, company: companyName, name: values.name };
+			addCertification(obj);
+			form.reset();
+		}
 		dismiss();
 	};
 
 	const { certificationOptions } = useCertificationOptions();
 
 	return (
-		<div>
-			<Dialog>
+		<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+			{mode === 'new' && (
 				<DialogTrigger asChild>
 					<Button type="button" size="sm">
 						<PlusIcon />
 						Add certification
 					</Button>
 				</DialogTrigger>
-				<DialogContent showCloseButton={false} className="sm:max-w-[540px]">
-					<DialogHeader>
-						<DialogTitle>Certification</DialogTitle>
-					</DialogHeader>
-					<Form {...form}>
-						<form
-							onSubmit={(e) => {
-								e.stopPropagation(); // Prevent parent form submission
-								form.handleSubmit(onSubmit)(e);
-							}}
-							className="grid gap-4 py-4"
-						>
-							<FormField
-								control={form.control}
-								name="name"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Certification Name</FormLabel>
-										<FormControl>
-											<Input id="name" placeholder="Example: Personal Trainer" className="col-span-3" {...field} />
-										</FormControl>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
-							<FormField
-								control={form.control}
-								name="company"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel>Company</FormLabel>
+			)}
 
+			{triggerButton && <>{triggerButton}</>}
+
+			<DialogContent showCloseButton={true} className="sm:max-w-[540px]">
+				<DialogHeader>
+					<DialogTitle>{mode === 'view' ? 'View Certification' : 'Certification'}</DialogTitle>
+				</DialogHeader>
+
+				<Form {...form}>
+					<form
+						onSubmit={(e) => {
+							e.stopPropagation();
+							form.handleSubmit(onSubmit)(e);
+						}}
+						className="grid gap-4 py-4"
+					>
+						<FormField
+							control={form.control}
+							name="name"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Certification Name</FormLabel>
+									<FormControl>
+										<Input
+											id="name"
+											placeholder="Example: Personal Trainer"
+											className="col-span-3"
+											{...field}
+											disabled={mode === 'view'} // Disable in view mode
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						{/* <FormField
+							control={form.control}
+							name="company"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Company</FormLabel>
+									<Select
+										onValueChange={(value) => field.onChange(value)}
+										value={field.value}
+										disabled={mode === 'view'} // Disable in view mode
+									>
+										<FormControl>
+											<SelectTrigger className="w-full">
+												<SelectValue placeholder="Choose" />
+											</SelectTrigger>
+										</FormControl>
+										<SelectContent>
+											{certificationOptions.map(({ companyImage, companyName }) => {
+												const { url, height, width, alt, _key, id } = companyImage;
+												const isDisabled = certifications.some((cert) => cert.id === id);
+												return (
+													<SelectItem
+														key={_key}
+														value={JSON.stringify({ id, companyName: companyName.toLowerCase() })}
+														disabled={isDisabled}
+													>
+														<Image
+															className="h-6 w-6 object-cover"
+															height={height}
+															width={width}
+															src={cmsAssetsUrl(url)}
+															alt={alt}
+														/>
+														{companyName}
+													</SelectItem>
+												);
+											})}
+										</SelectContent>
+									</Select>
+									<FormMessage />
+								</FormItem>
+							)}
+						/> */}
+						<FormField
+							control={form.control}
+							name="company"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Company</FormLabel>
+									{mode === 'view' ? (
+										<div className="py-2 px-3 border rounded-md bg-gray-100">{field.value}</div>
+									) : (
 										<Select onValueChange={(value) => field.onChange(value)} value={field.value}>
 											<FormControl>
 												<SelectTrigger className="w-full">
@@ -101,9 +173,12 @@ const CertificateDialog = ({
 												{certificationOptions.map(({ companyImage, companyName }) => {
 													const { url, height, width, alt, _key, id } = companyImage;
 													const isDisabled = certifications.some((cert) => cert.id === id);
-
 													return (
-														<SelectItem key={_key} value={JSON.stringify({ id, companyName: companyName.toLowerCase() })} disabled={isDisabled}>
+														<SelectItem
+															key={_key}
+															value={JSON.stringify({ id, companyName: companyName.toLowerCase() })}
+															disabled={isDisabled}
+														>
 															<Image
 																className="h-6 w-6 object-cover"
 																height={height}
@@ -117,10 +192,14 @@ const CertificateDialog = ({
 												})}
 											</SelectContent>
 										</Select>
-										<FormMessage />
-									</FormItem>
-								)}
-							/>
+									)}
+
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						{mode === 'new' && (
 							<DialogFooter className="!justify-between !flex-row flex-wrap gap-3">
 								<DialogClose>
 									<Button
@@ -137,11 +216,11 @@ const CertificateDialog = ({
 									Add Certification
 								</Button>
 							</DialogFooter>
-						</form>
-					</Form>
-				</DialogContent>
-			</Dialog>
-		</div>
+						)}
+					</form>
+				</Form>
+			</DialogContent>
+		</Dialog>
 	);
 };
 

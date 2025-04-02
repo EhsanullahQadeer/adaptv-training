@@ -1,4 +1,4 @@
-import { Typography } from '@workspace/ui/components';
+import { Button, Typography } from '@workspace/ui/components';
 
 import React from 'react';
 import CertificateDialog from './Dialog/CertificateDialog';
@@ -6,15 +6,19 @@ import { useCertificationOptions } from './CertificationOptionsContext';
 import Image from 'next/image';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import { Certification } from '@/types/coach';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
 
 const CertificateField = ({
 	certifications,
 	addCertification,
+	removeCertification,
 }: {
 	certifications: Certification[];
 	addCertification: (cert: Certification) => void;
+	removeCertification: (certificationId: string) => void;
 }) => {
 	const { certificationOptions } = useCertificationOptions();
+
 	return (
 		<div className="flex flex-col gap-4 mt-8">
 			<div className="flex flex-wrap justify-between items-center gap-3">
@@ -45,7 +49,8 @@ const CertificateField = ({
 					});
 
 					return (
-						<div key={id} className="flex items-center gap-4 border border-input p-3 rounded-xl">
+						<div key={id} className="flex items-center gap-4 border border-input p-3 rounded-xl relative">
+							{/* Image Section */}
 							<div>
 								<div className="rounded-lg h-15 w-15 border border-input">
 									<Image
@@ -57,6 +62,8 @@ const CertificateField = ({
 									/>
 								</div>
 							</div>
+
+							{/* Certification Info */}
 							<div className="space-y-1.5">
 								<Typography sizeVariant="small" as="h6">
 									{name}
@@ -66,22 +73,36 @@ const CertificateField = ({
 										{company}
 									</Typography>
 									<div className="flex items-center">
-										<span className="h-1 w-1 mx-1 rounded-full  bg-chart-7 inline-block" />
+										<span className="h-1 w-1 mx-1 rounded-full bg-chart-7 inline-block" />
 										<Typography color="text-charcoal-gray" sizeVariant="small" as="span_secondary">
 											{formattedDate}
 										</Typography>
 									</div>
 								</div>
 
-								<Typography
-									className="underline underline-offset-1  block cursor-pointer"
-									fontWeight="font-semibold"
-									sizeVariant="small"
-									as="span_secondary"
-								>
-									View Certification
-								</Typography>
+								{/* View Certification Dialog */}
+								<CertificateDialog
+									addCertification={addCertification}
+									certifications={certifications}
+									mode="view"
+									viewCertification={{ company, id, name }}
+									triggerButton={
+										<DialogTrigger asChild>
+											<span className="underline underline-offset-1 block cursor-pointer font-semibold text-sm">
+												View Certification
+											</span>
+										</DialogTrigger>
+									}
+								/>
 							</div>
+							<span
+								onClick={() => removeCertification(id)}
+								className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 
+               hover:text-red-500 cursor-pointer"
+								aria-label="Remove Certification"
+							>
+								&times;
+							</span>
 						</div>
 					);
 				})}

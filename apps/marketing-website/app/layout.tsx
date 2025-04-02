@@ -11,10 +11,10 @@ import { getSiteConfiguration } from '@/lib/services/cmsService';
 
 const fonetika = localFont({
 	src: [
-		{ path: '../public/assets/fonts/Fonetika/Fonetika-Regular.otf', weight: '400', style: 'normal' },
-		{ path: '../public/assets/fonts/Fonetika/Fonetika-Medium.otf', weight: '500', style: 'normal' },
-		{ path: '../public/assets/fonts/Fonetika/Fonetika-SemiBold.otf', weight: '600', style: 'normal' },
-		{ path: '../public/assets/fonts/Fonetika/Fonetika-Bold.otf', weight: '700', style: 'normal' },
+		{ path: '../public/assets/fonts/Fonetika/FonetikaUnlicensedTrial-Regular.woff2', weight: '400', style: 'normal' },
+		{ path: '../public/assets/fonts/Fonetika/FonetikaUnlicensedTrial-Medium.woff2', weight: '500', style: 'normal' },
+		{ path: '../public/assets/fonts/Fonetika/FonetikaUnlicensedTrial-SemiBold.woff2', weight: '600', style: 'normal' },
+		{ path: '../public/assets/fonts/Fonetika/FonetikaUnlicensedTrial-Bold.woff2', weight: '700', style: 'normal' },
 	],
 	variable: '--font-fonetika',
 });

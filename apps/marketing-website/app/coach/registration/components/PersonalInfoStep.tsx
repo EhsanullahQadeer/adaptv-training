@@ -50,53 +50,62 @@ interface PersonalInfoStepProps {
 const PersonalInfoStep = ({
 	form,
 	addCertification,
-}: PersonalInfoStepProps & { addCertification: (cert: { id: string; name: string; company: string }) => void }) => {
-	// Define the fields for the form
- 
-
-  const fields: {
-    name: keyof CoachFormValues;
-    label: string;
-    placeholder?: string;
-    component: (field: ControllerRenderProps<CoachFormValues>) => JSX.Element;
-  }[] = [
-    {
-      name: "firstName",
-      label: "First Name",
-      placeholder: "John",
-      component: (field) => <Input placeholder="John" {...field} value={getStringValue(field.value)} />,
-    },
-    {
-      name: "lastName",
-      label: "Last Name",
-      placeholder: "Doe",
-      component: (field) => <Input placeholder="Doe" {...field} value={getStringValue(field.value)} />,
-    },
-    {
-      name: "email",
-      label: "Email",
-      placeholder: "email@example.com",
-      component: (field) => (
-        <Input leftAdornment={<MailIcon />} type="email" placeholder="email@example.com" {...field} value={getStringValue(field.value)} />
-      ),
-    },
-    {
-      name: "phoneNumber",
-      label: "Phone Number",
-      component: (field) => (
-        <div className="group flex border border-gray-300 rounded-lg focus-within:border-ring transition-all">
-          <PhoneNumberInput
-            className="flex-1"
-            inputClassName="!w-full !border-none !h-10 !rounded-lg"
-            countrySelectorStyleProps={{ buttonClassName: "!px-2.5 !py-3 !h-10 !rounded-lg transition-all !border-none" }}
-            value={getStringValue(field.value)}
-            onChange={field.onChange}
-          />
-        </div>
-      ),
-    },
-  ];
-  
+	removeCertification,
+}: PersonalInfoStepProps & {
+	addCertification: (cert: { id: string; name: string; company: string }) => void;
+	removeCertification: (certificationId: string) => void;
+}) => {
+	const fields: {
+		name: keyof CoachFormValues;
+		label: string;
+		placeholder?: string;
+		component: (field: ControllerRenderProps<CoachFormValues>) => JSX.Element;
+	}[] = [
+		{
+			name: 'firstName',
+			label: 'First Name',
+			placeholder: 'John',
+			component: (field) => <Input placeholder="John" {...field} value={getStringValue(field.value)} />,
+		},
+		{
+			name: 'lastName',
+			label: 'Last Name',
+			placeholder: 'Doe',
+			component: (field) => <Input placeholder="Doe" {...field} value={getStringValue(field.value)} />,
+		},
+		{
+			name: 'email',
+			label: 'Email',
+			placeholder: 'email@example.com',
+			component: (field) => (
+				<Input
+				className='pl-8'
+					leftAdornment={<MailIcon />}
+					type="email"
+					placeholder="email@example.com"
+					{...field}
+					value={getStringValue(field.value)}
+				/>
+			),
+		},
+		{
+			name: 'phoneNumber',
+			label: 'Phone Number',
+			component: (field) => (
+				<div className="group flex border border-gray-300 rounded-lg focus-within:border-ring transition-all">
+					<PhoneNumberInput
+						className="flex-1"
+						inputClassName="!w-full !border-none !h-10 !rounded-lg"
+						countrySelectorStyleProps={{
+							buttonClassName: '!px-2.5 !py-3 !h-10 !rounded-lg transition-all !border-none',
+						}}
+						value={getStringValue(field.value)}
+						onChange={field.onChange}
+					/>
+				</div>
+			),
+		},
+	];
 
 	//  social fields for the form
 	const socialFields: {
@@ -151,7 +160,7 @@ const PersonalInfoStep = ({
 							<FormItem>
 								<FormLabel className="text-xs">{label}</FormLabel>
 								<FormControl>
-									<Input placeholder={placeholder} {...field} value={getStringValue(field.value)}  />
+									<Input placeholder={placeholder} {...field} value={getStringValue(field.value)} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -162,7 +171,11 @@ const PersonalInfoStep = ({
 
 			<Separator className="my-8" />
 
-			<CertificateField certifications={form.watch('certification') || []} addCertification={addCertification} />
+			<CertificateField
+				certifications={form.watch('certification') || []}
+				addCertification={addCertification}
+				removeCertification={removeCertification}
+			/>
 		</div>
 	);
 };
