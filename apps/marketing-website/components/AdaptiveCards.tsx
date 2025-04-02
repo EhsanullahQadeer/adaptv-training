@@ -3,6 +3,8 @@ import Image from 'next/image';
 import React from 'react';
 import { Button } from '@workspace/ui/components/button';
 import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
+import WaitingListDialog from './modals/WaitListDialog';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
 
 interface AdaptiveCardsProps {
 	title: string;
@@ -44,7 +46,17 @@ const AdaptiveCards: React.FC<AdaptiveCardsProps> = ({
 				{showButton && (
 					<div className="mt-8 w-fit">
 						{buttonText.toLowerCase() === 'become a coach' ? (
-							<BecomeACoachButton></BecomeACoachButton>
+							<BecomeACoachButton />
+						) : buttonText.toLowerCase() === 'join the waitlist' ? (
+							<WaitingListDialog
+								triggerButton={
+									<DialogTrigger asChild>
+										<Button type="button" size="xl">
+											{buttonText}
+										</Button>
+									</DialogTrigger>
+								}
+							/>
 						) : (
 							<Button type="button" size="xl">
 								{buttonText}

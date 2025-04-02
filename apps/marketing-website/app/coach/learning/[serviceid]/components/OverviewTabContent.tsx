@@ -16,7 +16,7 @@ const OverviewTabContent = (props: Props) => {
 		<div>
 			<span className="px-[6px] w-fit items-center py-[4px] mb-3 bg-[#E8E8E8] flex gap-1 rounded-md">
 				<span className="w-[9px] h-[9px] rounded-full" style={{ backgroundColor: labelColor }}></span>
-				<Typography as={'caption'} fontWeight="font-medium" sizeVariant="small" className="text-xs font-medium">
+				<Typography as={'p_caption'} fontWeight="font-medium" sizeVariant="small" className="text-xs font-medium">
 					{categoryName}
 				</Typography>
 			</span>

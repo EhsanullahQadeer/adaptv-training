@@ -1,6 +1,6 @@
 'use client';
 
-import { SubmitClientSubscribeBlog } from '@/lib/services/apiService';
+import { submitClientSubscribeBlog } from '@/lib/services/apiService';
 import { Button, CircularLoader, Input } from '@workspace/ui/components';
 import { toast } from '@workspace/ui/components/sonner';
 import React, { useState } from 'react';
@@ -31,7 +31,7 @@ const Subscribe = () => {
 
 		setLoading(true);
 		try {
-			await SubmitClientSubscribeBlog(formData);
+			await submitClientSubscribeBlog(formData);
 			toast.success('Your subscription has been submitted');
 			setName('');
 			setEmail('');

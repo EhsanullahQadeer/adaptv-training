@@ -4,6 +4,8 @@ import { Button, Typography } from '@workspace/ui/components';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Subscribe from './Subscribe';
 import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
+import WaitingListDialog from './modals/WaitListDialog';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
 
 const { platformImg1, platformImg2, ellipseTop, ellipseBottom } = imagesPaths;
 
@@ -67,7 +69,17 @@ const AccessToPlatformSection: React.FC<AccessToPlatformSectionProps> = ({
 						) : (
 							<>
 								{buttonText?.toLowerCase() === 'become a coach' ? (
-									<BecomeACoachButton></BecomeACoachButton>
+									<BecomeACoachButton />
+								) : buttonText?.toLowerCase() === 'join the waitlist' ? (
+									<WaitingListDialog
+										triggerButton={
+											<DialogTrigger asChild>
+												<Button size="xl" type="button">
+													Join the Waitlist
+												</Button>
+											</DialogTrigger>
+										}
+									/>
 								) : (
 									<Button size="xl" type="button">
 										{buttonText}

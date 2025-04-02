@@ -13,6 +13,7 @@ import {
 	MovementTrainingStylesResponse,
 	MusclesResponse,
 	ISubscribeClientBlog,
+	IClientWaitlist,
 } from '@/types/client';
 import { ICoachLearningResourcePosts } from '@/types/learning';
 import * as qs from 'qs-esm';
@@ -106,8 +107,8 @@ const getFeaturedClientBlog = () => apiCmsClient.get('/globals/client-blog-featu
 const postCoachApplication = async (data: CoachFormValues) =>
 	apiCmsClient.post<ApiErrorResponse, false>('/coach-application', data, { extractData: false });
 
-const postClientWaitlist = async (data: any) =>
-	apiCmsClient.post<ApiErrorResponse, false>('/collections/client-waitlist', data, { extractData: false });
+const postClientWaitlist = async (data: IClientWaitlist) =>
+	apiCmsClient.post<ApiErrorResponse, false>('/client-waitlist', data, { extractData: false });
 
 const getCoachApplicationConfig = () =>
 	apiCmsClient.get<ExtendedCoachApplicationConfig>('/globals/coach-application-config');

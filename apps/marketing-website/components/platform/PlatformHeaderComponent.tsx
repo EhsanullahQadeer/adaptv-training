@@ -3,6 +3,8 @@ import { imagesPaths } from '@/lib/public-assets-paths';
 import { Button, Typography } from '@workspace/ui/components';
 import Image from 'next/image';
 import React from 'react';
+import WaitingListDialog from '../modals/WaitListDialog';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
 
 interface Props {
 	title: string;
@@ -24,7 +26,17 @@ const PlatformHeaderComponent = (props: Props) => {
 
 				<div className="mt-5">
 					{buttonText.toLowerCase() === 'become a coach' ? (
-						<BecomeACoachButton></BecomeACoachButton>
+						<BecomeACoachButton />
+					) : buttonText.toLowerCase() === 'join the waitlist' ? (
+						<WaitingListDialog
+							triggerButton={
+								<DialogTrigger asChild>
+									<Button size="default" type="button">
+										Join the Waitlist
+									</Button>
+								</DialogTrigger>
+							}
+						/>
 					) : (
 						<Button onClick={() => {}} size="default" type="button">
 							{buttonText}

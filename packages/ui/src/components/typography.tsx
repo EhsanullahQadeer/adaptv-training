@@ -113,7 +113,7 @@ const typographyStyles: TypographyStyles = {
 		},
 		span_secondary: {
 			base: 'font-normal tracking-[-0.16px] leading-[132%]',
-			responsive: 'text-[14px] md:text-base',
+			responsive: 'text-[14px] md:text-[16px]',
 			responsive_reverse: 'md:text-[14px] text-base',
 			small: 'text-[14px]',
 			large: 'text-base',

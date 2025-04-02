@@ -50,6 +50,11 @@ declare module '@/types/client' {
 		name: string;
 		email: string;
 	}
+	export interface IClientWaitlist {
+		clientName: string;
+		clientEmail: string;
+	}
+
 
 	export type MusclesResponse = PaginatedResponse<Muscle>;
 	export type MovementEquipmentResponse = PaginatedResponse<MovementEquipment>;

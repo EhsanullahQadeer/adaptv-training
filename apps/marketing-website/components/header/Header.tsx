@@ -9,6 +9,8 @@ import NavBar from './NavBar';
 import { determineBgColor, handleRoleChange } from '@/lib/utils/headerUtils';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 import BecomeACoachButton from '@/app/coach/components/BecomeACoachButton';
+import WaitingListDialog from '../modals/WaitListDialog';
+import { DialogTrigger } from '@workspace/ui/components/dialog';
 const {
 	client,
 	clientAbout,
@@ -151,8 +153,17 @@ const Header = () => {
 
 						<div className="max-sm:hidden flex gap-2">
 							{showLoginButton ? <Button variant="outline">Login</Button> : <></>}
-							{buttonText.toLowerCase() === 'become a coach' ? (
-								<BecomeACoachButton></BecomeACoachButton>
+
+							{buttonText?.toLowerCase() === 'become a coach' ? (
+								<BecomeACoachButton />
+							) : buttonText?.toLowerCase() === 'join the waitlist' ? (
+								<WaitingListDialog
+									triggerButton={
+										<DialogTrigger asChild>
+											<Button variant={isDarkBg ? 'light' : 'default'}>{buttonText}</Button>
+										</DialogTrigger>
+									}
+								/>
 							) : (
 								<Button variant={isDarkBg ? 'light' : 'default'}>{buttonText}</Button>
 							)}

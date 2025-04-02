@@ -32,7 +32,7 @@ const PlatfomFeaturesTabs = (props: Props) => {
 						>
 							<Icon height={24} width={24} fill={isActiveTab ? 'black' : 'none'} />
 							<Typography
-								as={'caption'}
+								as={'p_caption'}
 								fontWeight="font-semibold"
 								className="max-sm:tracking-[-0.06px] leading-normal"
 							>
