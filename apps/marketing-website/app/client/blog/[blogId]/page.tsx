@@ -5,6 +5,7 @@ import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 import AccessToPlatformSection from '@/components/AccessToPlatformSection';
+import LexicalReadOnly from '@/components/LexicalReadOnly';
 
 interface PageProps {
 	params: {
@@ -16,9 +17,17 @@ const page = async ({ params }: PageProps) => {
 	const { blogId } = params;
 
 	const blogPostApiResponse = await getClientSingleBlogPost(blogId);
+	console.log('blogPostApiResponse', blogPostApiResponse);
 
-	const { category, id, title, learningContentMediaType, learningContentImageMedia, learningContentVideoMedia } =
-		blogPostApiResponse;
+	const {
+		category,
+		id,
+		title,
+		learningContentMediaType,
+		learningContentImageMedia,
+		learningContentVideoMedia,
+		blogPostBody,
+	} = blogPostApiResponse;
 
 	const { categoryName } = category;
 
@@ -69,7 +78,9 @@ const page = async ({ params }: PageProps) => {
 						) : null}
 					</div>
 
-					<div className="mt-6 md:mt-12 mb-6 md:mb-12">leaning content comes here</div>
+					<div className="mt-6 md:mt-12 mb-6 md:mb-12">
+						<LexicalReadOnly jsonData={blogPostBody} />
+					</div>
 				</div>
 			</div>
 
