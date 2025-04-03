@@ -14,7 +14,7 @@ const LearnGrow = () => {
 		{ name: 'CrossFit', variant: 'dim' },
 		{ name: 'Strength Training', variant: 'dim' },
 		{ name: 'Flexibility and Mobility Training', variant: 'dim' },
-		{ name: 'Health Fundamentals', variant: 'info'},
+		{ name: 'Health Fundamentals', variant: 'info' },
 		{ name: 'Bodyweight Workouts', variant: 'dim' },
 		{ name: 'Rehabilitation and Recovery Exercises', variant: 'dim' },
 		{ name: 'Prenatal or Postnatal Fitness', variant: 'dim' },
@@ -25,9 +25,9 @@ const LearnGrow = () => {
 
 	return (
 		<div className="bg-black overflow-hidden">
-			<div className="flex overflow-hidden pt-30 pb-25">
-				<div className="flex-1 min-w-[50%]">
-					<div className="sm:w-[430px] mb-20 flex flex-col mx-auto ">
+			<div className="flex   gap-8.5 overflow-hidden pt-16 md:pt-30 pb-15 md:pb-25 flex-wrap lg:flex-nowrap">
+				<div className="flex-1 md:min-w-[50%]">
+					<div className="sm:w-[430px] pl-4 flex flex-col lg:mx-auto ">
 						<Typography as={'h2'} color="text-white" className="leading-[100%]">
 							Learn & Grow as a Coach
 						</Typography>
@@ -44,15 +44,17 @@ const LearnGrow = () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex-1 min-w-[60%] ">
-					<div className="flex flex-wrap gap-3.5 justify-center ">
-						{badges.map(({ name, variant }) => (
-							<div key={name}>
-								<Badge className="py-3 px-6 rounded-2xl text-[20px] font-semibold h-fit" variant={variant ?? 'dim'}>
-									{name}
-								</Badge>
-							</div>
-						))}
+				<div className="relative w-full overflow-hidden md:min-w-[60%]">
+					<div className="flex-1 min-w-[600px] md:min-w-[60%] mx-auto translate-x-[-50%] left-[50%] relative">
+						<div className="flex flex-wrap gap-3.5 justify-center w-full">
+							{badges.map(({ name, variant }) => (
+								<div key={name}>
+									<Badge className="py-2 md:py-3 px-3 md:px-6 round-[10px] md:rounded-2xl sm:text-[11px] md:text-[20px] font-semibold h-fit" variant={variant ?? 'dim'}>
+										{name}
+									</Badge>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
