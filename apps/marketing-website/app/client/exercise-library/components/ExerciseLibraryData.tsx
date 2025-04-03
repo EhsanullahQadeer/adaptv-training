@@ -1,5 +1,6 @@
 import { getMovements, getMuscles, getMovementTrainingStyles } from '@/lib/services/cmsService';
 import { Suspense } from 'react';
+import { ExerciseLibrarySkeleton } from './ExerciseLibrarySkeleton';
 import MusclesSection from './MusclesSection';
 import TrainingStyleSection from './TrainingStyleSection';
 import DifficultySection from './DifficultySection';
@@ -25,7 +26,7 @@ async function ExerciseLibraryLoader() {
 
 export function ExerciseLibraryData() {
 	return (
-		<Suspense fallback={<div className="h-[600px]" />}>
+		<Suspense fallback={<ExerciseLibrarySkeleton />}>
 			<ExerciseLibraryLoader />
 		</Suspense>
 	);

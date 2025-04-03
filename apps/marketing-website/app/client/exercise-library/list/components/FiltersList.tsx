@@ -7,8 +7,11 @@ import Filters from './Filters';
 import { Movement, MovementEquipment, Muscle, TrainingStyles } from '@/types/client';
 import { getMovementsByServerAction } from '@/lib/server-actions/client-blog-actions';
 import { toast } from '@workspace/ui/components/sonner';
+import { MovementsGridSkeleton } from './MovementsGridSkeleton';
+import { FiltersSkeleton } from './FiltersSkeleton';
 
 interface Props {
+	isLoadingFilters?: boolean;
 	muscleArr: Muscle[];
 	trainingStylesArr: TrainingStyles[];
 	movementEquipmentsArr: MovementEquipment[];
@@ -24,12 +27,12 @@ interface Props {
 }
 
 const FiltersList = (props: Props) => {
-	const { muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr, defaultSelectedFilters } = props;
+	const { muscleArr, trainingStylesArr, movementEquipmentsArr, movementsPostsArr, defaultSelectedFilters, isLoadingFilters = false } = props;
 
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const [filteredMovements, setFilteredMovements] = useState(movementsPostsArr);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoadingMovements, setIsLoadingMovements] = useState(true);
 
 	const getFiltersFromURL = React.useCallback(() => {
 		const params = new URLSearchParams(searchParams.toString());
@@ -55,7 +58,7 @@ const FiltersList = (props: Props) => {
 			if (newFilters.equipment?.length) params.set('equipment', newFilters.equipment.join(','));
 			if (newFilters.difficultyLevel) params.set('difficulty-level', newFilters.difficultyLevel);
 			if (newFilters.search) params.set('search', newFilters.search);
-			router.push(`?${params.toString()}`, { scroll: false });
+			router.replace(`?${params.toString()}`, { scroll: false });
 		},
 		[router],
 	);
@@ -75,13 +78,13 @@ const FiltersList = (props: Props) => {
 
 		const fetchMovements = async () => {
 			try {
-				setIsLoading(true);
+				setIsLoadingMovements(true);
 				const movement = await getMovementsByServerAction(filters);
 				setFilteredMovements(movement.docs);
 			} catch {
 				toast.error('some error');
 			} finally {
-				setIsLoading(false);
+				setIsLoadingMovements(false);
 			}
 		};
 
@@ -91,14 +94,21 @@ const FiltersList = (props: Props) => {
 	return (
 		<div className="flex gap-5">
 			<div className="max-md:hidden md:max-w-[260px] md:pr-5 flex-1 md:border-r border-light-gray">
-				<Filters
-					{...{ muscleArr, trainingStylesArr, movementEquipmentsArr, defaultSelectedFilters }}
-					onFilterChange={handelFilterChange}
-				/>
+				{isLoadingFilters ? (
+					<FiltersSkeleton />
+				) : (
+					<Filters
+						{...{ muscleArr, trainingStylesArr, movementEquipmentsArr, defaultSelectedFilters }}
+						onFilterChange={handelFilterChange}
+					/>
+				)}
 			</div>
 
-			<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-4 md:gap-3 h-fit">
-				{filteredMovements.length === 0 && !isLoading ? (
+			{isLoadingMovements ? (
+				<MovementsGridSkeleton />
+			) : (
+				<div className="flex-1 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:max-lg:grid-cols-2 gap-4 md:gap-3 h-fit">
+				{filteredMovements.length === 0 ? (
 					<div className="col-span-full text-center py-8 text-gray-500">
 						<h2 className="text-xl font-semibold text-charcoal-gray mb-4">Oops! No movements found</h2>
 						<p className="text-sm md:text-base">
@@ -106,12 +116,11 @@ const FiltersList = (props: Props) => {
 							categories to discover great resources.
 						</p>
 					</div>
-				) : isLoading ? (
-					<>Loading ...</>
 				) : (
 					filteredMovements.map((movement, index: number) => <LibraryCard key={index} {...{ movement }} />)
 				)}
-			</div>
+				</div>
+			)}
 		</div>
 	);
 };

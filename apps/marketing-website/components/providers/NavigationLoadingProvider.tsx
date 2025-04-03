@@ -6,7 +6,6 @@ import Loading from '@/app/loading';
 
 export function NavigationLoadingProvider() {
 	const pathname = usePathname();
-	const searchParams = useSearchParams();
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
@@ -17,7 +16,7 @@ export function NavigationLoadingProvider() {
 		}, 300);
 
 		return () => clearTimeout(timer);
-	}, [pathname, searchParams]);
+	}, [pathname]);
 
 	if (!isLoading) return null;
 

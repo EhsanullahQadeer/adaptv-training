@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Movement, MovementEquipment, Muscle, TrainingStyles } from '@/types/client';
+import { toast } from '@workspace/ui/components/sonner';
 import FiltersList from './FiltersList';
 import {
 	getMovementEquipmentByServerAction,
@@ -32,6 +33,8 @@ const FiltersWrapper = () => {
 		[primaryMuscleFocus, secondaryMuscleFocus, trainingStyle, equipment, difficultyLevel, search],
 	);
 
+	const [isLoadingFilters, setIsLoadingFilters] = useState(true);
+
 	const [filtersData, setFiltersData] = useState<{
 		muscleArr: Muscle[];
 		trainingStylesArr: TrainingStyles[];
@@ -46,8 +49,10 @@ const FiltersWrapper = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const [musclesApiResponse, trainingStylesApiResponse, movementEquipmentsApiResponse, movementsPostApiResponse] =
-				await Promise.all([
+			try {
+				setIsLoadingFilters(true);
+				const [musclesApiResponse, trainingStylesApiResponse, movementEquipmentsApiResponse, movementsPostApiResponse] =
+					await Promise.all([
 					getMusclesByServerAction(),
 					getMovementTrainingStylesByServerAction(),
 					getMovementEquipmentByServerAction(),
@@ -55,15 +60,21 @@ const FiltersWrapper = () => {
 				]);
 
 			setFiltersData({
+				
 				muscleArr: musclesApiResponse?.docs || [],
 				trainingStylesArr: trainingStylesApiResponse?.docs || [],
 				movementEquipmentsArr: movementEquipmentsApiResponse?.docs || [],
 				movementsPostsArr: movementsPostApiResponse?.docs || [],
 			});
+			} catch (error) {
+				toast.error('Failed to load filters');
+			} finally {
+				setIsLoadingFilters(false);
+			}
 		};
 
 		fetchData();
-	}, [defaultSelectedFilters, searchParams]); // Re-fetch data when search params change
+	}, []); 
 
 	return (
 		<FiltersList
@@ -72,6 +83,7 @@ const FiltersWrapper = () => {
 			movementEquipmentsArr={filtersData.movementEquipmentsArr}
 			movementsPostsArr={filtersData.movementsPostsArr}
 			defaultSelectedFilters={defaultSelectedFilters}
+			isLoadingFilters={isLoadingFilters}
 		/>
 	);
 };
