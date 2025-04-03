@@ -18,7 +18,7 @@ const page = async () => {
 
 	return (
 		<>
-			<div className="pt-8 md:pt-[70px] bg-snow-white">
+			<div className="pt-8 md:pt-[70px]">
 				<div className="mx-4">
 					<div className="max-w-[1100px] mx-auto overflow-hidden">
 						<div className="mb-12 m-auto text-black text-center">

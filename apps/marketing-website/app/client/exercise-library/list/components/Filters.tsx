@@ -102,9 +102,9 @@ const Filters: React.FC<Props> = ({
 
 	return (
 		<div className="w-full flex flex-col gap-5">
-			{renderMultiSelect('Primary Muscle', 'primaryMuscleFocus', muscleOptions, 'Select Primary Muscles')}
-			{renderMultiSelect('Secondary Muscle', 'secondaryMuscleFocus', muscleOptions, 'Select Secondary Muscles')}
-			{renderMultiSelect('Training Style', 'trainingStyle', trainingStyleOptions, 'Select Training Styles')}
+			{renderMultiSelect('Primary Muscle', 'primaryMuscleFocus', muscleOptions, 'All')}
+			{renderMultiSelect('Secondary Muscle', 'secondaryMuscleFocus', muscleOptions, 'All')}
+			{renderMultiSelect('Training Style', 'trainingStyle', trainingStyleOptions, 'All')}
 			<div>
 				<Typography
 					as="span"
@@ -137,7 +137,7 @@ const Filters: React.FC<Props> = ({
 				</div>
 			</div>
 
-			{renderMultiSelect('Equipment', 'equipment', equipmentOptions, 'Select Equipment')}
+			{renderMultiSelect('Equipment', 'equipment', equipmentOptions, 'All')}
 		</div>
 	);
 };

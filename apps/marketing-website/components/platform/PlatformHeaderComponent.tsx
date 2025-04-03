@@ -17,7 +17,7 @@ const { platformToolsImg } = imagesPaths;
 const PlatformHeaderComponent = (props: Props) => {
 	const { title, subHeading, buttonText } = props;
 	return (
-		<div className="bg-snow-white pt-8 md:pt-[70px] px-4">
+		<div className="pt-8 md:pt-[70px] px-4">
 			<div className="max-w-[700px] m-auto text-black text-center">
 				<Typography as={'h1'} className="mb-2.5">
 					{title}

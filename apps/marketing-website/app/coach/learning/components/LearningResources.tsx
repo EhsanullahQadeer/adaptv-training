@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Categories from './Categories';
 import ServiceCard from './ServiceCard';
 import getCoachLearningResourcePostsByServerAction from '@/lib/server-actions/learning-actions';
+import { Typography } from '@workspace/ui/components';
 
 interface LearningResourcesProps {
 	categoriesArr: BlogCategory[];
@@ -47,11 +48,13 @@ const LearningResources = ({ categoriesArr, learningPostsArr, categoryCounts }: 
 	}, [selectedCategory, learningPostsArr, fetchFilteredPosts]);
 
 	return (
-		<div className="pt-8 md:pt-[70px] bg-snow-white">
+		<div className="pt-8 md:pt-[70px]">
 			<div className="mx-4">
 				<div className="max-w-[780px] mb-12 md:mb-[60px] m-auto text-black text-center">
-					<h1 className="mb-2.5">Coaching Learning Resources</h1>
-					<h5>Master virtual training, grow your fitness business.</h5>
+					<Typography as={'h1'} className="mb-2.5">
+						Coaching Learning Resources
+					</Typography>
+					<Typography as={'p'}>Master virtual training, grow your fitness business.</Typography>
 				</div>
 			</div>
 

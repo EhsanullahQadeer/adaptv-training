@@ -1,7 +1,7 @@
 'use client';
 
 import React, { ReactNode, useState, useCallback, useMemo } from 'react';
-import { Button, Dialog, Input, Typography } from '@workspace/ui/components';
+import { Button, CircularLoader, Dialog, Input, Typography } from '@workspace/ui/components';
 import {
 	DialogContent,
 	DialogDescription,
@@ -72,6 +72,11 @@ const WaitingListForm = ({ onSubmit }: { onSubmit: (values: FormValues) => void 
 				<DialogFooter className="!justify-center !flex-row flex-wrap gap-3">
 					<Button className="w-full" size="lg" type="submit">
 						Join Waiting List
+						{form.formState.isSubmitting && (
+							<span className="ml-2">
+								<CircularLoader size={16} />
+							</span>
+						)}
 					</Button>
 				</DialogFooter>
 			</form>
@@ -117,7 +122,7 @@ const WaitingListDialog = ({ triggerButton }: { triggerButton: ReactNode }) => {
 		} catch {
 			toast.error('An error occurred. Please try again later.');
 		} finally {
-			PointerUtils.disable({ loading: false });
+			PointerUtils.enable();
 		}
 	}, []);
 

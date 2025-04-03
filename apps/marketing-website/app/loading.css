@@ -1,15 +1,15 @@
-.loader {
+.global-loader {
 	transform: rotateZ(45deg);
 	perspective: 1000px;
 	border-radius: 50%;
 	width: 96px;
 	height: 96px;
-	color: #000;
+	color: var(--color-black);
 	position: relative;
 }
 
-.loader:before,
-.loader:after {
+.global-loader:before,
+.global-loader:after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -19,16 +19,16 @@
 	height: inherit;
 	border-radius: 50%;
 	transform: rotateX(70deg);
-	animation: 1s spin linear infinite;
+	animation: 1s global-loader-spin linear infinite;
 }
 
-.loader:after {
-	color: #b9e567;
+.global-loader:after {
+	color: var(--color-ocean-glow);
 	transform: rotateY(70deg);
 	animation-delay: 0.4s;
 }
 
-@keyframes spin {
+@keyframes global-loader-spin {
 	0%,
 	100% {
 		box-shadow: 0.4em 0px 0 0px currentcolor;

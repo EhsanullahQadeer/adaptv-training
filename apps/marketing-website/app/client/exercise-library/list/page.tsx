@@ -17,7 +17,7 @@ const Page = async (params: Promise<{ searchParams: Promise<Record<string, strin
 
 	return (
 		<>
-			<div className="bg-snow-white pt-8 md:pt-[34px] px-4">
+			<div className="pt-8 md:pt-[34px] px-4">
 				<div className="mb-[42px] sm:mb-8 max-w-[1100px] mx-auto">
 					<Breadcrumbs {...{ items: breadcrumbs }} />
 					<Search initialSearchTerm={search || ''} />
