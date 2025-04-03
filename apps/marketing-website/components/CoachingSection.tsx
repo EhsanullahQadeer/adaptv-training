@@ -3,25 +3,22 @@ import { ReactNode } from 'react';
 
 interface CoachingFeature {
 	title: string;
-	icon:ReactNode;
+	icon: ReactNode;
 	desc: string;
 }
 
 interface CoachingSectionProps {
-	heading1: string,
-	heading2: string,
-	heading3: string,
+	heading1: string;
+	heading2: string;
+	heading3: string;
 	features: CoachingFeature[];
 }
 
-const CoachingSection = ({ features , heading1 ,heading2 ,heading3}: CoachingSectionProps) => {
+const CoachingSection = ({ features, heading1, heading2, heading3 }: CoachingSectionProps) => {
 	return (
 		<div className="my-16 md:my-[120px]">
 			<Typography as={'h3'}>
-				{heading1}{' '}
-				<span className="text-semi-transparent-black">
-				{heading2}</span>{' '}
-				{heading3}
+				{heading1} <span className="text-semi-transparent-black">{heading2}</span> {heading3}
 			</Typography>
 
 			<div className="mt-9 flex gap-5 flex-wrap">

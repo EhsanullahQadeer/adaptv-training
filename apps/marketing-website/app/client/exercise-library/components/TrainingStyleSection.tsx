@@ -23,7 +23,7 @@ const TrainingStyleSection = ({ trainingStyles }: TrainingStyleSectionProps) => 
 					const { trainingStyleName, id } = train;
 
 					return (
-						<Link key={id} href={{ pathname: clientExerciseLibraryList, query: { "training-style": id } }}>
+						<Link key={id} href={{ pathname: clientExerciseLibraryList, query: { 'training-style': id } }}>
 							<div
 								key={id}
 								className="flex gap-3.5 items-center px-4 py-3 md:px-5 md:py-4 rounded-full border border-ash-gray bg-white shadow-[0px_1px_2px_0px_rgba(0, 0, 0, 0.05)] max-sm:h-8"

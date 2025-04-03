@@ -3,7 +3,7 @@ import type { ApiResponse } from '@workspace/api-handler/api';
 import type { CoachFormValues } from '@/types/coach';
 import { apiRoutes } from '../routes/api-routes';
 import { IClientWaitlist, ISubscribeClientBlog } from '@/types/client';
-const { CoachApplication, ClientSubscribeBlog,ClientWaitlist } = apiRoutes;
+const { CoachApplication, ClientSubscribeBlog, ClientWaitlist } = apiRoutes;
 
 // API functions
 const submitCoachApplication = async (data: CoachFormValues): Promise<ApiResponse<any>> => {

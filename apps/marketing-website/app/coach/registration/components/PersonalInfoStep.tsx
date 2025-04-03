@@ -79,7 +79,7 @@ const PersonalInfoStep = ({
 			placeholder: 'email@example.com',
 			component: (field) => (
 				<Input
-				className='pl-8'
+					className="pl-8"
 					leftAdornment={<MailIcon />}
 					type="email"
 					placeholder="email@example.com"
@@ -136,9 +136,7 @@ const PersonalInfoStep = ({
 						render={({ field }) => (
 							<FormItem className={index < 2 ? ' col-span-1 ' : 'col-span-2 sm:col-span-1'}>
 								<FormLabel className="text-xs">{label}</FormLabel>
-								<FormControl>
-									{component(field)}
-								</FormControl>
+								<FormControl>{component(field)}</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}

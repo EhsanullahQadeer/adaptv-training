@@ -25,7 +25,6 @@ function Test() {
 				placeholder="Select frameworks"
 				variant="default"
 				maxCount={1}
-                
 			/>
 		</div>
 	);

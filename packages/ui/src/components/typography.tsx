@@ -148,7 +148,7 @@ const colorStyles = {
 	primary: 'text-blue-600',
 	secondary: 'text-purple-600',
 	danger: 'text-red-600',
-	light:'text-white',
+	light: 'text-white',
 };
 
 const alignStyles = {

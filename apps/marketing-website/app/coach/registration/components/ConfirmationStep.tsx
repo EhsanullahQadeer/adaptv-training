@@ -33,7 +33,9 @@ const ConfirmationStep = () => {
 			</div>
 			<div>
 				<Link href={pagesRoutes.coach}>
-					<Button type='button' className="w-[251px] sm:w-auto">Back to home</Button>
+					<Button type="button" className="w-[251px] sm:w-auto">
+						Back to home
+					</Button>
 				</Link>
 			</div>
 		</div>

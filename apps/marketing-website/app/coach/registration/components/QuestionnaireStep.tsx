@@ -55,7 +55,7 @@ const QuestionnaireStep = ({ form }: PersonalInfoStepProps) => {
 									maxLength={300}
 									{...field}
 									onChange={field.onChange}
-                  value={getStringValue(field.value)} 
+									value={getStringValue(field.value)}
 								/>
 							</FormControl>
 							<FormMessage />

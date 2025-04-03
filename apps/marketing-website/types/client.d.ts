@@ -55,7 +55,6 @@ declare module '@/types/client' {
 		clientEmail: string;
 	}
 
-
 	export type MusclesResponse = PaginatedResponse<Muscle>;
 	export type MovementEquipmentResponse = PaginatedResponse<MovementEquipment>;
 	export type MovementTrainingStylesResponse = PaginatedResponse<TrainingStyles>;

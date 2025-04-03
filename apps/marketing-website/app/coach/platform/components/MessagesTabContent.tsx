@@ -13,7 +13,8 @@ const sections = [
 		image: connectedClients,
 		reverse: true,
 		textSectionProps: 'max-w-[390px]',
-		leftSideWrapProps: 'sm:self-end lg:ml-[50px] md:ml-6 sm:ml-5 mt-5 max-sm:mx-5 max-w-[303px] sm:max-w-[420px] max-sm:order-2',
+		leftSideWrapProps:
+			'sm:self-end lg:ml-[50px] md:ml-6 sm:ml-5 mt-5 max-sm:mx-5 max-w-[303px] sm:max-w-[420px] max-sm:order-2',
 		rightSideWrapProps: 'lg:mr-20 md:mr-10 sm:mr-5 max-sm:mx-5 max-sm:mt-8 flex sm:justify-end max-sm:order-1',
 	},
 	{

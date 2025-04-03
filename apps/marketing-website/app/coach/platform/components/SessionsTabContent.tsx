@@ -13,7 +13,7 @@ const sections = [
 		image: trackProgress,
 		reverse: false,
 		textSectionProps: 'max-w-[450px]',
-        leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
+		leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
 		rightSideWrapProps: 'my-5 max-sm:self-end max-sm:ml-5 max-sm:max-w-[323px]',
 	},
 	{
@@ -23,7 +23,8 @@ const sections = [
 		image: sessionCalender,
 		reverse: true,
 		textSectionProps: 'max-w-[430px]',
-		leftSideWrapProps: 'sm:self-end lg:ml-[70px] md:ml-6 sm:ml-5 mt-5 max-sm:mx-5 max-w-[303px] sm:max-w-[386px] max-sm:order-2',
+		leftSideWrapProps:
+			'sm:self-end lg:ml-[70px] md:ml-6 sm:ml-5 mt-5 max-sm:mx-5 max-w-[303px] sm:max-w-[386px] max-sm:order-2',
 		rightSideWrapProps: 'lg:mr-20 md:mr-10 sm:mr-5 max-sm:mx-5 max-sm:mt-8 flex sm:justify-end max-sm:order-1',
 	},
 	{

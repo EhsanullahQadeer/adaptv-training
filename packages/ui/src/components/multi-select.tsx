@@ -215,28 +215,27 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
 										<span>(Select All)</span>
 									</CommandItem>
 								)}
-{options.map((option) => {
-	const isSelected = selectedValues.includes(option.value);
-	return (
-		<CommandItem
-			key={option.value}
-			onSelect={() => toggleOption(option.value)}
-			className="cursor-pointer flex items-center"
-		>
-			<div
-				className={cn(
-					'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary flex-shrink-0',
-					isSelected ? 'bg-background text-primary-foreground' : 'opacity-50 [&_svg]:invisible',
-				)}
-			>
-				<CheckIcon className="h-4 w-4" />
-			</div>
-			{option.icon && <option.icon className="mr-2 h-4 w-4 text-muted-foreground flex-shrink-0" />}
-			<span className="truncate overflow-hidden min-w-0 flex-1">{option.label}</span>
-		</CommandItem>
-	);
-})}
-
+								{options.map((option) => {
+									const isSelected = selectedValues.includes(option.value);
+									return (
+										<CommandItem
+											key={option.value}
+											onSelect={() => toggleOption(option.value)}
+											className="cursor-pointer flex items-center"
+										>
+											<div
+												className={cn(
+													'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary flex-shrink-0',
+													isSelected ? 'bg-background text-primary-foreground' : 'opacity-50 [&_svg]:invisible',
+												)}
+											>
+												<CheckIcon className="h-4 w-4" />
+											</div>
+											{option.icon && <option.icon className="mr-2 h-4 w-4 text-muted-foreground flex-shrink-0" />}
+											<span className="truncate overflow-hidden min-w-0 flex-1">{option.label}</span>
+										</CommandItem>
+									);
+								})}
 							</CommandGroup>
 							{/* <CommandSeparator />
 							<CommandGroup>

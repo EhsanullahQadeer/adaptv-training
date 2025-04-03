@@ -39,7 +39,7 @@ const MusclesSection = ({ movements, muscles }: MusclesSectionProps) => {
 					const { muscleName, muscleGraphic, id, muscleLabelColor } = muscle;
 					const { url, alt, width, height } = muscleGraphic;
 					return (
-						<Link key={id} href={{ pathname: clientExerciseLibraryList, query: { "primary-muscle": muscle.id } }}>
+						<Link key={id} href={{ pathname: clientExerciseLibraryList, query: { 'primary-muscle': muscle.id } }}>
 							<div className="flex gap-3.5 items-center w-[163px] md:w-[245px]">
 								<div
 									style={{ backgroundColor: muscleLabelColor }}

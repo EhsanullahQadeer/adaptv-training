@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const ProfileSlider = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+	return <div></div>;
+};
 
-export default ProfileSlider
+export default ProfileSlider;

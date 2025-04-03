@@ -55,7 +55,7 @@ const LearnSection = () => {
 											{id}
 										</div>
 										<div className="flex flex-col gap-1 md:gap-2.5">
-											<Typography color='light' as={'h3'} fontWeight="font-medium">
+											<Typography color="light" as={'h3'} fontWeight="font-medium">
 												{title}
 											</Typography>
 											<Typography as={'p_secondary'} className="md:text-lg text-translucent-white">

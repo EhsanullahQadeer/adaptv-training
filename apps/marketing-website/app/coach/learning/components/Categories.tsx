@@ -20,7 +20,6 @@ const Categories = ({ categoriesArr, categoryCounts, onCategorySelect }: IProps)
 		onCategorySelect(category);
 	};
 
-	
 	const categoryOptions = categoriesArr.map((category) => ({
 		value: category.id.toString(),
 		label: category.categoryName,

@@ -8,7 +8,6 @@ import Search from './list/components/Search';
 const page = () => {
 	const { libraryHeroBg } = imagesPaths;
 
-
 	return (
 		<>
 			<div className="pt-[58px] max-sm:pb-[42px] bg-[linear-gradient(180deg,_#000_67.56%,_#383838_100%)]">

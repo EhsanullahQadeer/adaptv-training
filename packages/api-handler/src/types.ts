@@ -35,4 +35,3 @@ export interface ApiMethods {
 	put: <T>(url: string, data?: any, config?: ExtendedAxiosRequestConfig) => Promise<T | ApiResponse<T>>;
 	delete: <T>(url: string, config?: ExtendedAxiosRequestConfig) => Promise<T | ApiResponse<T>>;
 }
-

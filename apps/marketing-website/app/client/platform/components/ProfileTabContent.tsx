@@ -7,7 +7,8 @@ const { profileImg } = profile;
 const sections = [
 	{
 		title: 'Customize your profile, your way',
-		description: 'Manage your account details, favorite coaches, notifications, and device integrations for a seamless training experience—all in one place.',
+		description:
+			'Manage your account details, favorite coaches, notifications, and device integrations for a seamless training experience—all in one place.',
 		buttonText: 'Update Your Profile',
 		image: profileImg,
 		reverse: false,

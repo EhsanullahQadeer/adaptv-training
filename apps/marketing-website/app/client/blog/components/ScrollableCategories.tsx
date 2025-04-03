@@ -8,10 +8,7 @@ interface ScrollableCategoriesProps {
 	onCategoryChange: (categoryId: string) => void;
 }
 
-const ScrollableCategories: React.FC<ScrollableCategoriesProps> = ({
-	categoriesArr,
-	onCategoryChange,
-}) => {
+const ScrollableCategories: React.FC<ScrollableCategoriesProps> = ({ categoriesArr, onCategoryChange }) => {
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [showLeftButton, setShowLeftButton] = useState(false);
 	const [showRightButton, setShowRightButton] = useState(true);

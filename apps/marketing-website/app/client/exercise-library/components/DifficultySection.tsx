@@ -43,7 +43,10 @@ const DifficultySection = ({ movements }: DifficultySectionProps) => {
 					return (
 						<Link
 							key={id}
-							href={{ pathname: clientExerciseLibraryList, query: { 'difficulty-level': difficultyLevel.toLowerCase() } }}
+							href={{
+								pathname: clientExerciseLibraryList,
+								query: { 'difficulty-level': difficultyLevel.toLowerCase() },
+							}}
 						>
 							<div
 								key={id}

@@ -12,8 +12,8 @@ const sections = [
 		image: paymentStatus,
 		reverse: false,
 		textSectionProps: 'max-w-[450px]',
-        leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
-        rightSideWrapProps: 'lg:mr-11 md:mr-6 sm:mr-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[437px]',
+		leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
+		rightSideWrapProps: 'lg:mr-11 md:mr-6 sm:mr-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[437px]',
 	},
 	{
 		title: 'Understand your income at a glance',
@@ -22,7 +22,7 @@ const sections = [
 		image: analyzeEarnings,
 		reverse: true,
 		textSectionProps: 'max-w-[400px]',
-        leftSideWrapProps: 'lg:ml-[30px] md:ml-6 sm:ml-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[497px] max-sm:order-2',
+		leftSideWrapProps: 'lg:ml-[30px] md:ml-6 sm:ml-5 my-5 max-sm:mx-5 max-w-[303px] sm:max-w-[497px] max-sm:order-2',
 		rightSideWrapProps: 'lg:mr-20 md:mr-10 sm:mr-5 max-sm:mx-5 max-sm:mt-8 flex sm:justify-end max-sm:order-1',
 	},
 	{
@@ -32,8 +32,8 @@ const sections = [
 		image: paymentHistory,
 		reverse: false,
 		textSectionProps: 'max-w-[400px]',
-        leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
-        rightSideWrapProps: 'mt-5 self-end max-sm:ml-5 max-sm:max-w-[323px]',
+		leftSideWrapProps: 'lg:ml-20 md:ml-10 sm:ml-5 max-sm:mx-5 max-sm:mt-8',
+		rightSideWrapProps: 'mt-5 self-end max-sm:ml-5 max-sm:max-w-[323px]',
 	},
 ];
 

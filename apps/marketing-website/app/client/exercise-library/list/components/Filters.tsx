@@ -31,7 +31,9 @@ const Filters: React.FC<Props> = ({
 	onFilterChange,
 }) => {
 	const [selectedFilters, setSelectedFilters] = useState({
-		primaryMuscleFocus: defaultSelectedFilters?.primaryMuscleFocus ? defaultSelectedFilters.primaryMuscleFocus : ([] as string[]),
+		primaryMuscleFocus: defaultSelectedFilters?.primaryMuscleFocus
+			? defaultSelectedFilters.primaryMuscleFocus
+			: ([] as string[]),
 		secondaryMuscleFocus: defaultSelectedFilters?.secondaryMuscleFocus
 			? defaultSelectedFilters.secondaryMuscleFocus
 			: ([] as string[]),

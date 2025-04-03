@@ -9,62 +9,62 @@ import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
 interface BlogCategory {
-  id: string;
-  categoryName: string;
-  labelColor: string;
-  createdAt: string;
-  updatedAt: string;
+	id: string;
+	categoryName: string;
+	labelColor: string;
+	createdAt: string;
+	updatedAt: string;
 }
 
 interface LearningPost {
-  category: BlogCategory;
-  title: string;
-  id: string;
-  faq: any[];
-  learningContentMediaType: 'image' | 'video';
-  learningContentImageMedia?: {
-    alt: string;
-    url: string;
-    height: number;
-    width: number;
-  };
-  learningContentVideoMedia?: string;
-  'suggested-learning'?: any[];
-  learningContentBody: any;
+	category: BlogCategory;
+	title: string;
+	id: string;
+	faq: any[];
+	learningContentMediaType: 'image' | 'video';
+	learningContentImageMedia?: {
+		alt: string;
+		url: string;
+		height: number;
+		width: number;
+	};
+	learningContentVideoMedia?: string;
+	'suggested-learning'?: any[];
+	learningContentBody: any;
 }
 
 interface PageProps {
-  params: {
-    serviceid: string;
-  };
+	params: {
+		serviceid: string;
+	};
 }
 
 const page = async ({ params }: PageProps) => {
-  const { serviceid } = params;
+	const { serviceid } = params;
 
-  // Fetch main post data and suggested learning in parallel
-  const [learningPostApiResponse, suggestedLearningResponse] = await Promise.allSettled([
-    getCoachLearningPost(serviceid),
-    getCoachLearningResourcePosts() // Fetch suggested posts
-  ]);
+	// Fetch main post data and suggested learning in parallel
+	const [learningPostApiResponse, suggestedLearningResponse] = await Promise.allSettled([
+		getCoachLearningPost(serviceid),
+		getCoachLearningResourcePosts(), // Fetch suggested posts
+	]);
 
-  // Handle main post fetch error
-  if (learningPostApiResponse.status === 'rejected') {
-    throw new Error('Failed to load learning resource');
-  }
+	// Handle main post fetch error
+	if (learningPostApiResponse.status === 'rejected') {
+		throw new Error('Failed to load learning resource');
+	}
 
-  const post = learningPostApiResponse.value as LearningPost;
-  const {
-    category,
-    title,
-    id,
-    faq,
-    learningContentMediaType,
-    learningContentImageMedia,
-    learningContentVideoMedia,
-    ['suggested-learning']: suggestedLearning,
-    learningContentBody,
-  } = post;
+	const post = learningPostApiResponse.value as LearningPost;
+	const {
+		category,
+		title,
+		id,
+		faq,
+		learningContentMediaType,
+		learningContentImageMedia,
+		learningContentVideoMedia,
+		['suggested-learning']: suggestedLearning,
+		learningContentBody,
+	} = post;
 
 	const { alt = '', url = '', height = 0, width = 0 } = learningContentImageMedia || {};
 
@@ -102,16 +102,23 @@ const page = async ({ params }: PageProps) => {
 						<div className="lg:w-2/3 w-full">
 							<OverviewFAQ {...{ category, title, faq, learningContentBody }} />
 						</div>
-						{((suggestedLearningResponse.status === 'fulfilled' && suggestedLearningResponse.value?.docs?.length > 0) || (suggestedLearning && suggestedLearning.length > 0)) && (
+						{((suggestedLearningResponse.status === 'fulfilled' && suggestedLearningResponse.value?.docs?.length > 0) ||
+							(suggestedLearning && suggestedLearning.length > 0)) && (
 							<div className="lg:w-1/3">
 								<Typography as={'h5'}>Suggested learning</Typography>
 								<div className="lg:flex hidden flex-col mt-5 gap-4 w-full">
-									{(suggestedLearningResponse.status === 'fulfilled' ? suggestedLearningResponse.value.docs : suggestedLearning || []).map((suggestion, index: number) => (
+									{(suggestedLearningResponse.status === 'fulfilled'
+										? suggestedLearningResponse.value.docs
+										: suggestedLearning || []
+									).map((suggestion, index: number) => (
 										<SuggestionCard key={index} {...{ post: suggestion }} />
 									))}
 								</div>
 								<div className="lg:hidden flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5 h-fit mt-4">
-									{(suggestedLearningResponse.status === 'fulfilled' ? suggestedLearningResponse.value.docs : suggestedLearning || []).map((suggestion, index: number) => (
+									{(suggestedLearningResponse.status === 'fulfilled'
+										? suggestedLearningResponse.value.docs
+										: suggestedLearning || []
+									).map((suggestion, index: number) => (
 										<ServiceCard key={index} {...{ post: suggestion }} />
 									))}
 								</div>

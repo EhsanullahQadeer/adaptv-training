@@ -54,7 +54,9 @@ const MovementTabs = (props: Props) => {
 			</div>
 			<div className="mt-6 md:mt-8">
 				{selectedTab === 'overview' && <OverviewTabContent {...{ movement }} />}
-				{selectedTab === 'progression' && progressionMovements && <ProgressionMovements {...{ progressionMovements }} />}
+				{selectedTab === 'progression' && progressionMovements && (
+					<ProgressionMovements {...{ progressionMovements }} />
+				)}
 				{selectedTab === 'faq' && <FAQsSection {...{ isBlogPage: true, FAQsArr: faqs }} />}
 			</div>
 		</div>

@@ -49,7 +49,10 @@ const LearnGrow = () => {
 						<div className="flex flex-wrap gap-3.5 justify-center w-full">
 							{badges.map(({ name, variant }) => (
 								<div key={name}>
-									<Badge className="py-2 md:py-3 px-3 md:px-6 round-[10px] md:rounded-2xl sm:text-[11px] md:text-[20px] font-semibold h-fit" variant={variant ?? 'dim'}>
+									<Badge
+										className="py-2 md:py-3 px-3 md:px-6 round-[10px] md:rounded-2xl sm:text-[11px] md:text-[20px] font-semibold h-fit"
+										variant={variant ?? 'dim'}
+									>
 										{name}
 									</Badge>
 								</div>
@@ -63,8 +66,8 @@ const LearnGrow = () => {
 			</Typography>
 
 			<div className="my-8 gap-5">
-				<Suspense fallback={<div className="h-[470px]"/>}>
-					<LearnGrowSlider/>
+				<Suspense fallback={<div className="h-[470px]" />}>
+					<LearnGrowSlider />
 				</Suspense>
 			</div>
 		</div>

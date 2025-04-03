@@ -1,6 +1,12 @@
 'use server';
 
-import { getClientBlogPosts, getMovementEquipment, getMovements, getMovementTrainingStyles, getMuscles } from '../services/cmsService';
+import {
+	getClientBlogPosts,
+	getMovementEquipment,
+	getMovements,
+	getMovementTrainingStyles,
+	getMuscles,
+} from '../services/cmsService';
 
 export async function getClientBlogPostsByServerAction(category?: string) {
 	// Fetch data using the CMS service
@@ -56,8 +62,3 @@ export async function getMovementEquipmentByServerAction() {
 		throw new Error('Failed to fetch movement training styles');
 	}
 }
-
-
-
-
-

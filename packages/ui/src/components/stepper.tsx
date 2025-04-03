@@ -48,7 +48,9 @@ export default function Stepper({
 										</span>
 									</div>
 									{index < steps.length - 1 && (
-										<div className={`flex absolute w-1/2 -translate-x-1/2 -right-1/2  top-1/2 items-center flex-1 ${connectorClassName}`}>
+										<div
+											className={`flex absolute w-1/2 -translate-x-1/2 -right-1/2  top-1/2 items-center flex-1 ${connectorClassName}`}
+										>
 											{renderConnector ? (
 												renderConnector(index, isCompleted(index))
 											) : (

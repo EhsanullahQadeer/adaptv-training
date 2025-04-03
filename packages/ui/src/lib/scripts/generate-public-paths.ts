@@ -13,128 +13,127 @@ const OUTPUT_DIR = path.join(ROOT_DIR, 'apps', 'marketing-website', 'lib', 'publ
 
 // Function to recursively generate paths for a directory
 function generatePaths(directory: string, basePath: string = ''): { [key: string]: string | object } {
-    const items = fs.readdirSync(directory);
-    const paths: { [key: string]: string | object } = {};
+	const items = fs.readdirSync(directory);
+	const paths: { [key: string]: string | object } = {};
 
-    items.forEach((item) => {
-        const itemPath = path.join(directory, item);
-        const relativePath = path.join(basePath, item);
-        const stat = fs.statSync(itemPath);
+	items.forEach((item) => {
+		const itemPath = path.join(directory, item);
+		const relativePath = path.join(basePath, item);
+		const stat = fs.statSync(itemPath);
 
-        if (stat.isDirectory()) {
-            // If it's a directory, recursively generate paths for its contents
-            paths[item] = generatePaths(itemPath, relativePath);
-        } else {
-            // If it's a file, add the relative path and replace backslashes with forward slashes
-            paths[item] = `/${relativePath.replace(/\\/g, '/')}`;
-        }
-    });
+		if (stat.isDirectory()) {
+			// If it's a directory, recursively generate paths for its contents
+			paths[item] = generatePaths(itemPath, relativePath);
+		} else {
+			// If it's a file, add the relative path and replace backslashes with forward slashes
+			paths[item] = `/${relativePath.replace(/\\/g, '/')}`;
+		}
+	});
 
-    return paths;
+	return paths;
 }
 
 // Function to convert a string to lowerCamelCase
 function toLowerCamelCase(str: string): string {
-    return str
-        .replace(/\.[^/.]+$/, '') // Remove file extension
-        .replace(/[-_](.)/g, (_, char) => char.toUpperCase()) // Convert kebab-case or snake_case to camelCase
-        .replace(/^(.)/, (_, char) => char.toLowerCase()); // Ensure the first character is lowercase
+	return str
+		.replace(/\.[^/.]+$/, '') // Remove file extension
+		.replace(/[-_](.)/g, (_, char) => char.toUpperCase()) // Convert kebab-case or snake_case to camelCase
+		.replace(/^(.)/, (_, char) => char.toLowerCase()); // Ensure the first character is lowercase
 }
 
 // Function to recursively convert keys to lowerCamelCase
 function convertKeysToCamelCase(obj: Record<string, string | object>): Record<string, string | object> {
-    const result: Record<string, string | object> = {};
+	const result: Record<string, string | object> = {};
 
-    for (const [key, value] of Object.entries(obj)) {
-        const camelCaseKey = toLowerCamelCase(key);
-        if (typeof value === 'object' && !Array.isArray(value)) {
-            result[camelCaseKey] = convertKeysToCamelCase(value as Record<string, string | object>);
-        } else {
-            result[camelCaseKey] = value;
-        }
-    }
+	for (const [key, value] of Object.entries(obj)) {
+		const camelCaseKey = toLowerCamelCase(key);
+		if (typeof value === 'object' && !Array.isArray(value)) {
+			result[camelCaseKey] = convertKeysToCamelCase(value as Record<string, string | object>);
+		} else {
+			result[camelCaseKey] = value;
+		}
+	}
 
-    return result;
+	return result;
 }
 
 // Function to generate destructured exports for parent objects only
 function generateParentExports(obj: Record<string, string | object>, parentKey: string): string {
-    let parentExports = '';
-    for (const [key, value] of Object.entries(obj)) {
-        if (typeof value === 'object' && !Array.isArray(value)) {
-            // Explicitly cast value to Record<string, string | object> for recursive call
-            parentExports += `export const ${key} = ${parentKey}.${key};\n`;
-            parentExports += generateParentExports(value as Record<string, string | object>, `${parentKey}.${key}`);
-        }
-    }
-    return parentExports;
+	let parentExports = '';
+	for (const [key, value] of Object.entries(obj)) {
+		if (typeof value === 'object' && !Array.isArray(value)) {
+			// Explicitly cast value to Record<string, string | object> for recursive call
+			parentExports += `export const ${key} = ${parentKey}.${key};\n`;
+			parentExports += generateParentExports(value as Record<string, string | object>, `${parentKey}.${key}`);
+		}
+	}
+	return parentExports;
 }
 
 // Function to create a TypeScript file with exported paths
 function createExportFile(fileName: string, paths: { [key: string]: string | object }, outputDir: string) {
-    const filePath = path.join(outputDir, `${fileName}-paths.ts`);
+	const filePath = path.join(outputDir, `${fileName}-paths.ts`);
 
-    // Normalize paths to use forward slashes and format keys
-    const normalizedPaths = convertKeysToCamelCase(paths);
+	// Normalize paths to use forward slashes and format keys
+	const normalizedPaths = convertKeysToCamelCase(paths);
 
-    // Generate parent exports for nested objects
-    const parentExports = generateParentExports(normalizedPaths, fileName + 'Paths');
+	// Generate parent exports for nested objects
+	const parentExports = generateParentExports(normalizedPaths, fileName + 'Paths');
 
-    // Export as default and include parent exports
-    const content = `const ${fileName}Paths = ${JSON.stringify(normalizedPaths, null, 2)};\n\nexport default ${fileName}Paths;\n${parentExports}`;
+	// Export as default and include parent exports
+	const content = `const ${fileName}Paths = ${JSON.stringify(normalizedPaths, null, 2)};\n\nexport default ${fileName}Paths;\n${parentExports}`;
 
-    fs.writeFileSync(filePath, content);
-    console.log(`Generated: ${filePath}`);
+	fs.writeFileSync(filePath, content);
+	console.log(`Generated: ${filePath}`);
 }
-
 
 // Function to create an index.ts file that re-exports all paths
 async function createIndexFile(outputDir: string, assetTypes: string[]) {
-    const indexPath = path.join(outputDir, 'index.ts');
+	const indexPath = path.join(outputDir, 'index.ts');
 
-    let reExports = '';
+	let reExports = '';
 
-    for (const assetType of assetTypes) {
-        const assetFileName = `${assetType}-paths`;
-        reExports += `export { default as ${assetType}Paths } from './${assetFileName}';\n`;
-        reExports += `export * from './${assetFileName}';\n`;
-    }
+	for (const assetType of assetTypes) {
+		const assetFileName = `${assetType}-paths`;
+		reExports += `export { default as ${assetType}Paths } from './${assetFileName}';\n`;
+		reExports += `export * from './${assetFileName}';\n`;
+	}
 
-    // Write the index.ts file
-    fs.writeFileSync(indexPath, reExports);
-    console.log(`Generated: ${indexPath}`);
+	// Write the index.ts file
+	fs.writeFileSync(indexPath, reExports);
+	console.log(`Generated: ${indexPath}`);
 }
 
 // Main function to generate paths for all asset types
 function main() {
-    if (!fs.existsSync(PUBLIC_DIR)) {
-        console.error(`Public assets directory not found: ${PUBLIC_DIR}`);
-        process.exit(1);
-    }
+	if (!fs.existsSync(PUBLIC_DIR)) {
+		console.error(`Public assets directory not found: ${PUBLIC_DIR}`);
+		process.exit(1);
+	}
 
-    if (!fs.existsSync(OUTPUT_DIR)) {
-        fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-    }
+	if (!fs.existsSync(OUTPUT_DIR)) {
+		fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+	}
 
-    const assetTypes = fs.readdirSync(PUBLIC_DIR);
+	const assetTypes = fs.readdirSync(PUBLIC_DIR);
 
-    assetTypes.forEach((assetType) => {
-        const assetTypePath = path.join(PUBLIC_DIR, assetType);
-        const stat = fs.statSync(assetTypePath);
+	assetTypes.forEach((assetType) => {
+		const assetTypePath = path.join(PUBLIC_DIR, assetType);
+		const stat = fs.statSync(assetTypePath);
 
-        if (stat.isDirectory()) {
-            // Generate paths for the asset type (including nested directories)
-            const paths = generatePaths(assetTypePath, `assets/${assetType}`);
+		if (stat.isDirectory()) {
+			// Generate paths for the asset type (including nested directories)
+			const paths = generatePaths(assetTypePath, `assets/${assetType}`);
 
-            // Create the export file for the asset type
-            createExportFile(assetType, paths, OUTPUT_DIR);
-        }
-    });
+			// Create the export file for the asset type
+			createExportFile(assetType, paths, OUTPUT_DIR);
+		}
+	});
 
-    // Create the index.ts file
-    createIndexFile(OUTPUT_DIR, assetTypes);
+	// Create the index.ts file
+	createIndexFile(OUTPUT_DIR, assetTypes);
 
-    console.log('All paths generated successfully!');
+	console.log('All paths generated successfully!');
 }
 
 // Run the script
