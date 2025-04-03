@@ -1,4 +1,5 @@
 import FAQsSection from '@/components/FAQsSection';
+import LexicalReadOnly from '@/components/LexicalReadOnly';
 import { FAQItem } from '@/types/faq';
 import { Typography } from '@workspace/ui/components';
 import React from 'react';
@@ -7,10 +8,11 @@ interface Props {
 	category: BlogCategory;
 	title: string;
 	faq?: FAQItem[];
+	learningContentBody?: any;
 }
 
 const OverviewTabContent = (props: Props) => {
-	const { category, title, faq } = props;
+	const { category, title, faq, learningContentBody } = props;
 	const { categoryName, labelColor } = category;
 	return (
 		<div>
@@ -31,7 +33,9 @@ const OverviewTabContent = (props: Props) => {
 				</Typography>
 			</div>
 
-			<div className="mt-4 md:mt-8">learning content body will be here...</div>
+			<div className="mt-4 md:mt-8">
+				<LexicalReadOnly jsonData={learningContentBody} />
+			</div>
 
 			{faq && faq.length && (
 				<div className="mt-6 md:mt-8">

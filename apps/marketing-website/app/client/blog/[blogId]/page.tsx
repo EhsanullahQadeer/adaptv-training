@@ -17,7 +17,6 @@ const page = async ({ params }: PageProps) => {
 	const { blogId } = params;
 
 	const blogPostApiResponse = await getClientSingleBlogPost(blogId);
-	console.log('blogPostApiResponse', blogPostApiResponse);
 
 	const {
 		category,
