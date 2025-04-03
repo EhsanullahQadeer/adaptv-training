@@ -4,18 +4,10 @@ import * as React from 'react';
 import { cva } from 'class-variance-authority';
 import { CheckIcon, XCircle, ChevronDown, XIcon, WandSparkles } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { Button } from './button';
+import { Button, ButtonColorType } from './button';
 import { Badge } from './badge';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
-import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-	CommandSeparator,
-} from './command';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from './command';
 import { MultiSelectProps } from '../types/multi-select-types';
 
 /**
@@ -55,6 +47,7 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
 			showBadgeBorder = false,
 			showCrossIcon = false,
 			showSelectAll = false,
+			color = '',
 			...props
 		},
 		ref,
@@ -118,6 +111,7 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
 							'flex w-full overflow-hidden py-2.5 px-3 rounded-md border border-input min-h-10 h-auto items-center justify-between bg-inherit hover:bg-inherit [&_svg]:pointer-events-auto',
 							className,
 						)}
+						color={color as ButtonColorType}
 					>
 						{selectedValues.length > 0 ? (
 							<div className="flex justify-between items-center w-full overflow-hidden">

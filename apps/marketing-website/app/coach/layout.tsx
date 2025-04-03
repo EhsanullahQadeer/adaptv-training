@@ -10,7 +10,7 @@ const CoachLayout = async ({ children }: { children: React.ReactNode }) => {
 		}
 
 		return <FAQsProvider data={coachFAQsResponse}>{children}</FAQsProvider>;
-	} catch (error) {
+	} catch  {
 		throw new Error('Failed to load coach layout');
 	}
 };

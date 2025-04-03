@@ -4,7 +4,7 @@ import React from 'react';
 import { Button, Typography } from '@workspace/ui/components';
 import { useRouter } from 'next/navigation';
 
-export default function CoachError({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function CoachError({  reset }: { error: Error & { digest?: string }; reset: () => void }) {
 	const router = useRouter();
 
 	return (

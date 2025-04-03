@@ -14,7 +14,7 @@ interface LearningResourcesProps {
 
 const LearningResources = ({ categoriesArr, learningPostsArr, categoryCounts }: LearningResourcesProps) => {
 	const [selectedCategory, setSelectedCategory] = useState<BlogCategory | null>(null);
-	const [loading, setLoading] = useState(false);
+	const [, setLoading] = useState(false);
 	const [filteredPosts, setFilteredPosts] = useState<CoachPost[]>([]);
 
 	// Function to fetch filtered posts by category

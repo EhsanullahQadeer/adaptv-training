@@ -1,7 +1,6 @@
 import { Typography } from '@workspace/ui/components';
 import React from 'react';
 import Image from 'next/image';
-import { getMuscles } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';

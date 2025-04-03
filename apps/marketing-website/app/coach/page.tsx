@@ -1,4 +1,4 @@
-import { Button, Typography } from '@workspace/ui/components';
+import { Typography } from '@workspace/ui/components';
 import React from 'react';
 import { imagesPaths } from '@/lib/public-assets-paths';
 import Image from 'next/image';

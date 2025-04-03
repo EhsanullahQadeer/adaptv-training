@@ -60,4 +60,6 @@ function Button({
 	return <Comp data-slot="button" className={cn(buttonVariants({ variant, size, color, className }))} {...props} />;
 }
 
+export type ButtonColorType = NonNullable<VariantProps<typeof buttonVariants>['color']>;
+
 export { Button, buttonVariants };

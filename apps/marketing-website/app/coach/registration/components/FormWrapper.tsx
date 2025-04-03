@@ -62,7 +62,7 @@ const FormWrapper = ({ totalSteps, currentStep, setCurrentStep }: IProps) => {
 				toast.success('Your application has been successfully submitted.');
 				setCurrentStep(currentStep + 1);
 			}
-		} catch (error: any) {
+		} catch  {
 			toast.error('An error occurred while submitting the form');
 		} finally {
 			PointerUtils.enable();

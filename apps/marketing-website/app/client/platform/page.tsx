@@ -7,7 +7,7 @@ import ClientWrapper from './components/ClientWrapper';
 const FAQsAccesPlatformSection = dynamic(() => import('@/components/FAQsAccesPlatformSection'));
 const AdaptiveClient = dynamic(() => import('@/components/AdaptiveClient'));
 const PlatformHeaderComponent = dynamic(() => import('@/components/platform/PlatformHeaderComponent'));
-
+import { clientsData } from '@/components/data';
 export const metadata: Metadata = {
 	title: 'Adaptv Training Platform | Smart Fitness Training',
 	description:
@@ -44,7 +44,7 @@ export default function Page() {
 
 					<div className="mt-[66px] md:mt-[120px]">
 						<Suspense fallback={<Skeleton className="h-[300px] w-full" />}>
-							<AdaptiveClient steps={require('@/components/data').clientsData} title="How to become an Adaptv Client" />
+							<AdaptiveClient steps={clientsData} title="How to become an Adaptv Client" />
 						</Suspense>
 					</div>
 				</div>

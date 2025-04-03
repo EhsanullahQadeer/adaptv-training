@@ -1,6 +1,5 @@
 import React from 'react';
 import { Typography } from '@workspace/ui/components';
-import { getMovementTrainingStyles } from '@/lib/services/cmsService';
 import { MovementTrainingStylesResponse } from '@/types/client';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';

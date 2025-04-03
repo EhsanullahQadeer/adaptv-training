@@ -1,5 +1,4 @@
 import React from 'react';
-import { cn } from '../lib/utils';
 
 interface Step {
 	label: string; // Label for the step

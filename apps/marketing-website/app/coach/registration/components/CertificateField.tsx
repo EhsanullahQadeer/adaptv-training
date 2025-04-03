@@ -1,4 +1,4 @@
-import { Button, Typography } from '@workspace/ui/components';
+import { Typography } from '@workspace/ui/components';
 
 import React from 'react';
 import CertificateDialog from './Dialog/CertificateDialog';

@@ -1,4 +1,4 @@
-import { createApiInstance, type ApiConfig } from '@workspace/api-handler/api';
+import { createApiInstance } from '@workspace/api-handler/api';
 import { API_BASE_PATH, CMS_API_BASE_PATH } from '../config/config';
 
 const CMS_API_KEY = '35346526-f1bf-4703-9994-748d14cfb0e7';
