@@ -5,14 +5,13 @@ import { getMuscles } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
-import { MovementsResponse } from '@/types/client';
+import { MovementsResponse, MusclesResponse } from '@/types/client';
 interface MusclesSectionProps {
 	movements: MovementsResponse;
+	muscles: MusclesResponse;
 }
 
-const MusclesSection = async ({ movements }: MusclesSectionProps) => {
-	const musclesApiResponse = await getMuscles();
-
+const MusclesSection = ({ movements, muscles }: MusclesSectionProps) => {
 	const primaryMuscleCounts = movements.docs.reduce(
 		(acc, movement) => {
 			movement.primaryMuscleFocus?.forEach((muscle) => {
@@ -26,7 +25,7 @@ const MusclesSection = async ({ movements }: MusclesSectionProps) => {
 		{} as Record<string, number>,
 	);
 
-	const muscleArr = musclesApiResponse?.docs;
+	const muscleArr = muscles?.docs;
 
 	const { clientExerciseLibraryList } = pagesRoutes;
 
@@ -36,7 +35,7 @@ const MusclesSection = async ({ movements }: MusclesSectionProps) => {
 				Browse by Muscle
 			</Typography>
 			<div className="flex flex-wrap gap-x-4 md:gap-x-5 gap-y-7 md:gap-y-9">
-				{muscleArr.map((muscle) => {
+				{muscleArr.map((muscle: any) => {
 					const { muscleName, muscleGraphic, id, muscleLabelColor } = muscle;
 					const { url, alt, width, height } = muscleGraphic;
 					return (

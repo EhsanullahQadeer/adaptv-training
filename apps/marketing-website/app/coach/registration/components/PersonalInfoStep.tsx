@@ -137,7 +137,7 @@ const PersonalInfoStep = ({
 							<FormItem className={index < 2 ? ' col-span-1 ' : 'col-span-2 sm:col-span-1'}>
 								<FormLabel className="text-xs">{label}</FormLabel>
 								<FormControl>
-									<>{component(field)}</>
+									{component(field)}
 								</FormControl>
 								<FormMessage />
 							</FormItem>

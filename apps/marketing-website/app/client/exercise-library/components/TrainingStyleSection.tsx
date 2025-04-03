@@ -1,12 +1,16 @@
 import React from 'react';
 import { Typography } from '@workspace/ui/components';
 import { getMovementTrainingStyles } from '@/lib/services/cmsService';
+import { MovementTrainingStylesResponse } from '@/types/client';
 import Link from 'next/link';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
-const TrainingStyleSection = async () => {
-	const trainingStylesApiResponse = await getMovementTrainingStyles();
-	const trainingStylesArr = trainingStylesApiResponse?.docs;
+interface TrainingStyleSectionProps {
+	trainingStyles: MovementTrainingStylesResponse;
+}
+
+const TrainingStyleSection = ({ trainingStyles }: TrainingStyleSectionProps) => {
+	const trainingStylesArr = trainingStyles?.docs;
 	const { clientExerciseLibraryList } = pagesRoutes;
 
 	return (
@@ -15,7 +19,7 @@ const TrainingStyleSection = async () => {
 				Browse by Training Style
 			</Typography>
 			<div className="flex flex-wrap gap-3">
-				{trainingStylesArr.map((train) => {
+				{trainingStylesArr.map((train: any) => {
 					const { trainingStyleName, id } = train;
 
 					return (

@@ -3,35 +3,70 @@ import OverviewFAQ from './components/OverviewFAQ';
 import SuggestionCard from './components/SuggestionCard';
 import ServiceCard from '../components/ServiceCard';
 import { Typography } from '@workspace/ui/components';
-import { getCoachLearningPost } from '@/lib/services/cmsService';
+import { getCoachLearningPost, getCoachLearningResourcePosts } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
+interface BlogCategory {
+  id: string;
+  categoryName: string;
+  labelColor: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface LearningPost {
+  category: BlogCategory;
+  title: string;
+  id: string;
+  faq: any[];
+  learningContentMediaType: 'image' | 'video';
+  learningContentImageMedia?: {
+    alt: string;
+    url: string;
+    height: number;
+    width: number;
+  };
+  learningContentVideoMedia?: string;
+  'suggested-learning'?: any[];
+  learningContentBody: any;
+}
+
 interface PageProps {
-	params: {
-		serviceid: string;
-	};
+  params: {
+    serviceid: string;
+  };
 }
 
 const page = async ({ params }: PageProps) => {
-	const { serviceid } = params;
+  const { serviceid } = params;
 
-	const learningPostApiResponse = await getCoachLearningPost(serviceid);
+  // Fetch main post data and suggested learning in parallel
+  const [learningPostApiResponse, suggestedLearningResponse] = await Promise.allSettled([
+    getCoachLearningPost(serviceid),
+    getCoachLearningResourcePosts() // Fetch suggested posts
+  ]);
 
-	const {
-		category,
-		title,
-		id,
-		faq,
-		learningContentMediaType,
-		learningContentImageMedia,
-		learningContentVideoMedia,
-		['suggested-learning']: suggestedLearning,
-		learningContentBody,
-	} = learningPostApiResponse;
+  // Handle main post fetch error
+  if (learningPostApiResponse.status === 'rejected') {
+    throw new Error('Failed to load learning resource');
+  }
 
-	const { alt, url, height, width } = learningContentImageMedia || {};
+  const post = learningPostApiResponse.value as LearningPost;
+  const {
+    category,
+    title,
+    id,
+    faq,
+    learningContentMediaType,
+    learningContentImageMedia,
+    learningContentVideoMedia,
+    ['suggested-learning']: suggestedLearning,
+    learningContentBody,
+  } = post;
+
+	const { alt = '', url = '', height = 0, width = 0 } = learningContentImageMedia || {};
 
 	const { coachLearning } = pagesRoutes;
 	const breadcrumbs = [
@@ -67,16 +102,16 @@ const page = async ({ params }: PageProps) => {
 						<div className="lg:w-2/3 w-full">
 							<OverviewFAQ {...{ category, title, faq, learningContentBody }} />
 						</div>
-						{suggestedLearning && suggestedLearning.length && (
+						{((suggestedLearningResponse.status === 'fulfilled' && suggestedLearningResponse.value?.docs?.length > 0) || (suggestedLearning && suggestedLearning.length > 0)) && (
 							<div className="lg:w-1/3">
 								<Typography as={'h5'}>Suggested learning</Typography>
 								<div className="lg:flex hidden flex-col mt-5 gap-4 w-full">
-									{suggestedLearning.map((suggestion, index: number) => (
+									{(suggestedLearningResponse.status === 'fulfilled' ? suggestedLearningResponse.value.docs : suggestedLearning || []).map((suggestion, index: number) => (
 										<SuggestionCard key={index} {...{ post: suggestion }} />
 									))}
 								</div>
 								<div className="lg:hidden flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5 h-fit mt-4">
-									{suggestedLearning.map((suggestion, index: number) => (
+									{(suggestedLearningResponse.status === 'fulfilled' ? suggestedLearningResponse.value.docs : suggestedLearning || []).map((suggestion, index: number) => (
 										<ServiceCard key={index} {...{ post: suggestion }} />
 									))}
 								</div>

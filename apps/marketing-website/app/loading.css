@@ -1,11 +1,13 @@
-/* .loader {
+.loader {
 	transform: rotateZ(45deg);
 	perspective: 1000px;
 	border-radius: 50%;
 	width: 96px;
 	height: 96px;
-	color: #fff;
+	color: #000;
+	position: relative;
 }
+
 .loader:before,
 .loader:after {
 	content: '';
@@ -19,28 +21,11 @@
 	transform: rotateX(70deg);
 	animation: 1s spin linear infinite;
 }
+
 .loader:after {
 	color: #b9e567;
 	transform: rotateY(70deg);
 	animation-delay: 0.4s;
-}
-
-@keyframes rotate {
-	0% {
-		transform: translate(-50%, -50%) rotateZ(0deg);
-	}
-	100% {
-		transform: translate(-50%, -50%) rotateZ(360deg);
-	}
-}
-
-@keyframes rotateccw {
-	0% {
-		transform: translate(-50%, -50%) rotate(0deg);
-	}
-	100% {
-		transform: translate(-50%, -50%) rotate(-360deg);
-	}
 }
 
 @keyframes spin {
@@ -69,4 +54,4 @@
 	87% {
 		box-shadow: 0.4em -0.4em 0 0 currentcolor;
 	}
-} */
+}

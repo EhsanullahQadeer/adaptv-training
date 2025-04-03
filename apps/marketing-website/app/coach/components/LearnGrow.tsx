@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import LearnGrowSlider from './LearnGrowSlider';
 import { Badge, Button, Typography } from '@workspace/ui/components';
 import { BadgeVariant } from '@workspace/ui/components/badge';
@@ -63,7 +63,9 @@ const LearnGrow = () => {
 			</Typography>
 
 			<div className="my-8 gap-5">
-				<LearnGrowSlider/>
+				<Suspense fallback={<div className="h-[470px]"/>}>
+					<LearnGrowSlider/>
+				</Suspense>
 			</div>
 		</div>
 	);

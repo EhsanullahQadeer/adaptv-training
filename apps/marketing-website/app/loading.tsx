@@ -1,8 +1,10 @@
+import './loading.css';
+
 const Loading = () => {
 	return (
-		<div className="w-full h-screen  flex items-center justify-center ">
-			<div className="absolute top-1/2 -translate-y-1/2 h-[100px] w-[100px]">
-				<span className="loader"></span>;
+		<div className="fixed inset-0 bg-white/80 backdrop-blur-sm z-50 flex items-center justify-center">
+			<div className="relative">
+				<span className="loader" />
 			</div>
 		</div>
 	);
