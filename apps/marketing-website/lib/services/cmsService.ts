@@ -44,6 +44,7 @@ const getMovementTrainingStyles = () => apiCmsClient.get<MovementTrainingStylesR
 const getMovementEquipment = () => apiCmsClient.get<MovementEquipmentResponse>('/movement-equipment');
 
 const getMovements = (filters?: {
+	search?: string;
 	trainingStyle?: string[];
 	primaryMuscleFocus?: string[];
 	secondaryMuscleFocus?: string[];
@@ -56,9 +57,10 @@ const getMovements = (filters?: {
 		where: { or: [] },
 	};
 
-	// Collect AND conditions dynamically
 	const andConditions: any[] = [];
-
+	if (filters?.search) {
+		andConditions.push({ movementName: { contains: filters.search, mode: 'insensitive' } });
+	}
 	if (filters?.trainingStyle && filters.trainingStyle.length > 0) {
 		andConditions.push({ trainingStyle: { in: filters.trainingStyle } });
 	}
@@ -82,7 +84,7 @@ const getMovements = (filters?: {
 
 	// Construct query string
 	const queryString = qs.stringify(query, { encode: false });
-
+	console.log('queryString', queryString);
 	return apiCmsClient.get<MovementsResponse>(`/movements?${queryString}`);
 };
 

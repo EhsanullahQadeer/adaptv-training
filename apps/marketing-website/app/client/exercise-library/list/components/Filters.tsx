@@ -38,8 +38,6 @@ const Filters: React.FC<Props> = ({
 		trainingStyle: defaultSelectedFilters?.trainingStyle ? defaultSelectedFilters.trainingStyle : ([] as string[]),
 		equipment: defaultSelectedFilters?.equipment ? defaultSelectedFilters.equipment : ([] as string[]),
 	});
-	// const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(null);
-
 	const [selectedDifficulty, setSelectedDifficulty] = useState<string | null>(
 		defaultSelectedFilters?.difficulty ? defaultSelectedFilters.difficulty : null,
 	);

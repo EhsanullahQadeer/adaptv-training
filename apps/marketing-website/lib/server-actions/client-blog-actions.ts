@@ -1,6 +1,6 @@
 'use server';
 
-import { getClientBlogPosts, getMovements } from '../services/cmsService';
+import { getClientBlogPosts, getMovementEquipment, getMovements, getMovementTrainingStyles, getMuscles } from '../services/cmsService';
 
 export async function getClientBlogPostsByServerAction(category?: string) {
 	// Fetch data using the CMS service
@@ -27,3 +27,37 @@ export async function getMovementsByServerAction(filters?: {
 		throw new Error('Failed to fetch posts');
 	}
 }
+
+export async function getMusclesByServerAction() {
+	// Fetch data using the CMS service
+	try {
+		const muscles = await getMuscles();
+		return muscles;
+	} catch {
+		throw new Error('Failed to fetch muscles');
+	}
+}
+export async function getMovementTrainingStylesByServerAction() {
+	// Fetch data using the CMS service
+	try {
+		const data = await getMovementTrainingStyles();
+		return data;
+	} catch {
+		throw new Error('Failed to fetch movement training styles');
+	}
+}
+
+export async function getMovementEquipmentByServerAction() {
+	// Fetch data using the CMS service
+	try {
+		const data = await getMovementEquipment();
+		return data;
+	} catch {
+		throw new Error('Failed to fetch movement training styles');
+	}
+}
+
+
+
+
+
