@@ -8,19 +8,13 @@ import MovementTabs from './components/MovementTabs';
 import SuggestedExercise from './components/SuggestedExercise';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
 
-interface PageProps {
-	params: {
-		movementId: string;
-	};
-}
 
-const page = async ({ params }: PageProps) => {
-	const { movementId } = params;
-	console.log('params id', movementId);
+export type paramsType = Promise<{  movementId: string; }>;
 
+const page = async (props: { params: paramsType }) => {
+	const { movementId } = await props.params;
 	const movementPostApiResponse = await getSingleMovement(movementId);
 
-	console.log('movementPostApiResponse', movementPostApiResponse);
 
 	const { id, movementName, suggestedMovements, movementMediaType, movementImageMedia, movementVideoMediaUrl } =
 		movementPostApiResponse;

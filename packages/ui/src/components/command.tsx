@@ -6,8 +6,15 @@ import { SearchIcon } from 'lucide-react';
 
 import { cn } from '@workspace/ui/lib/utils';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@workspace/ui/components/dialog';
+import { DialogProps } from '@radix-ui/react-dialog';
 
-function Command({ className, ...props }: React.ComponentProps<typeof CommandPrimitive>) {
+
+interface CommandProps extends Omit<React.ComponentProps<typeof CommandPrimitive>, 'children'> {
+	className?: string;
+	children?: React.ReactNode; 
+  }
+
+function Command({ className, children, ...props }: CommandProps) {
 	return (
 		<CommandPrimitive
 			data-slot="command"
@@ -19,16 +26,18 @@ function Command({ className, ...props }: React.ComponentProps<typeof CommandPri
 		/>
 	);
 }
-
+interface CommandDialogProps extends DialogProps {
+	title?: string;
+	description?: string;
+	children?: React.ReactNode;
+  }
+  
 function CommandDialog({
 	title = 'Command Palette',
 	description = 'Search for a command to run...',
 	children,
 	...props
-}: React.ComponentProps<typeof Dialog> & {
-	title?: string;
-	description?: string;
-}) {
+}: CommandDialogProps) {
 	return (
 		<Dialog {...props}>
 			<DialogHeader className="sr-only">

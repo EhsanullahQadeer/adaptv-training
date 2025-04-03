@@ -33,14 +33,10 @@ interface LearningPost {
 	learningContentBody: any;
 }
 
-interface PageProps {
-	params: {
-		serviceid: string;
-	};
-}
+export type paramsType = Promise<{  serviceid: string; }>;
 
-const page = async ({ params }: PageProps) => {
-	const { serviceid } = params;
+const page = async (props:{ params: paramsType }) => {
+	const { serviceid } = await props.params;
 
 	// Fetch main post data and suggested learning in parallel
 	const [learningPostApiResponse, suggestedLearningResponse] = await Promise.allSettled([

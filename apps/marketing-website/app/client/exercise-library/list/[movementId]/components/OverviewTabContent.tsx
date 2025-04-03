@@ -46,7 +46,7 @@ interface Props {
 const OverviewTabContent = (props: Props) => {
 	const { movement } = props;
 
-	const { movementName, faqs, primaryMuscleFocus, equipment, trainingStyle, progressionMovements, difficulty } =
+	const { movementName, faqs, primaryMuscleFocus, equipment, trainingStyle, progressionMovements, difficulty, movementDescription } =
 		movement;
 
 	const { equipmentName } = equipment;
@@ -107,7 +107,7 @@ const OverviewTabContent = (props: Props) => {
 			</div>
 
 			<div className="mt-4 md:mt-8">
-				<LexicalReadOnly jsonData={blogPostBody} />
+				<LexicalReadOnly jsonData={movementDescription} />
 			</div>
 
 			{progressionMovements?.length ? (

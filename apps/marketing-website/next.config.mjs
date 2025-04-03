@@ -31,8 +31,14 @@ const nextConfig = {
   },
   
   images: {
-    domains: ["adaptvcms.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'adaptvcms.com',
+      },
+    ],
   },
+  
 };
 
 export default nextConfig;

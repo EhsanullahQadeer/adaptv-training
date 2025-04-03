@@ -1,98 +1,65 @@
-import Image from 'next/image';
-import { Typography } from '@workspace/ui/components';
 import { getClientSingleBlogPost } from '@/lib/services/cmsService';
-import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
-import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 import AccessToPlatformSection from '@/components/AccessToPlatformSection';
-import LexicalReadOnly from '@/components/LexicalReadOnly';
+import BlogHeader from '../components/BlogHeader';
+import BlogMedia from '../components/BlogMedia';
+import BlogContent from '../components/BlogContent';
 
-interface PageProps {
-	params: {
-		blogId: string;
-	};
-}
 
-const page = async ({ params }: PageProps) => {
-	const { blogId } = params;
 
-	const blogPostApiResponse = await getClientSingleBlogPost(blogId);
+export type paramsType = Promise<{  blogId: string; }>;
 
-	const {
-		category,
-		id,
-		title,
-		learningContentMediaType,
-		learningContentImageMedia,
-		learningContentVideoMedia,
-		blogPostBody,
-	} = blogPostApiResponse;
+export default async function Page(props: { params: paramsType }) {
+	const { blogId } = await props.params;
 
-	const { categoryName } = category;
+    const {
+        category,
+        id,
+        title,
+        learningContentMediaType,
+        learningContentImageMedia,
+        learningContentVideoMedia,
+        blogPostBody,
+    } = await getClientSingleBlogPost(blogId);
 
-	const { alt, url, height, width } = learningContentImageMedia || {};
+    const { categoryName } = category;
+    const { clientBlog } = pagesRoutes;
 
-	const { clientBlog } = pagesRoutes;
-	const breadcrumbs = [
-		{ label: 'Blog', href: clientBlog },
-		{ label: title, href: `/client/blog/${id}` },
-	];
+    const breadcrumbs = [
+        { label: 'Blog', href: clientBlog },
+        { label: title, href: `/client/blog/${id}` },
+    ];
 
-	return (
-		<div className="mt-4 md:mt-9 bg-white">
-			<div className="mx-4">
-				<div className="max-w-[1100px] mx-auto">
-					<Breadcrumbs {...{ items: breadcrumbs }} />
+    return (
+        <div className="mt-4 md:mt-9 bg-white">
+            <div className="mx-4">
+                <div className="max-w-[1100px] mx-auto">
+                    <BlogHeader
+                        title={title}
+                        categoryName={categoryName}
+                        breadcrumbs={breadcrumbs}
+                    />
 
-					<div className="mb-2.5 mt-4 md:mt-[60px]">
-						<span
-							className="px-[6px] py-[3px] text-[10px] rounded-lg w-fit text-white font-bold"
-							style={{ backgroundColor: '#9A38A6' }}
-						>
-							{categoryName}
-						</span>
-					</div>
+                    <div className="mt-8 max-h-[648px] overflow-hidden rounded-xl">
+                        <BlogMedia
+                            mediaType={learningContentMediaType}
+                            imageMedia={learningContentImageMedia}
+                            videoMedia={learningContentVideoMedia}
+                        />
+                    </div>
 
-					<div>
-						<Typography as="h2">{title}</Typography>
-					</div>
+                    <BlogContent blogPostBody={blogPostBody} />
+                </div>
+            </div>
 
-					<div className="mt-8 max-h-[648px] overflow-hidden rounded-xl">
-						{learningContentMediaType === 'image' ? (
-							<Image
-								width={width}
-								height={height}
-								src={cmsAssetsUrl(url)}
-								alt={alt}
-								className="rounded-xl w-full h-full object-cover"
-							/>
-						) : learningContentVideoMedia ? (
-							<iframe
-								className="w-full h-[648px] rounded-xl"
-								src={learningContentVideoMedia.replace('youtu.be/', 'www.youtube.com/embed/').split('?')[0]}
-								title="Movement Video"
-								frameBorder="0"
-								allowFullScreen
-							/>
-						) : null}
-					</div>
-
-					<div className="mt-6 md:mt-12 mb-6 md:mb-12">
-						<LexicalReadOnly jsonData={blogPostBody} />
-					</div>
-				</div>
-			</div>
-
-			<div className="max-sm:hidden">
-				<AccessToPlatformSection
-					title="Stay ahead in your fitness journey"
-					subtitle="Get exclusive tips and the latest trends in health & training"
-					textMaxWidth="max-w-[640px]"
-					inputRequired={true}
-				/>
-			</div>
-		</div>
-	);
+            <div className="max-sm:hidden">
+                <AccessToPlatformSection
+                    title="Stay ahead in your fitness journey"
+                    subtitle="Get exclusive tips and the latest trends in health & training"
+                    textMaxWidth="max-w-[640px]"
+                    inputRequired={true}
+                />
+            </div>
+        </div>
+    );
 };
-
-export default page;

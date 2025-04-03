@@ -4,8 +4,13 @@ import { pagesRoutes } from '@/lib/routes/pages-routes';
 import Search from './components/Search';
 import FiltersWrapper from './components/FiltersWrapper';
 
-const Page = async (params: Promise<{ searchParams: Promise<Record<string, string | undefined>> }>) => {
-	const { searchParams } = await params;
+export type paramsType = Promise<{ searchParams: Promise<Record<string, string | undefined>> }>;
+
+const Page = async ({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string }>
+}) => {
 	const searchObj = await searchParams;
 	const search = searchObj['search'];
 
