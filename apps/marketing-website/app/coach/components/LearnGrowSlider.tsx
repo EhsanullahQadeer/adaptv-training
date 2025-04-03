@@ -12,9 +12,15 @@ const LearnGrowSlider = async () => {
 
 	return (
 		<div className="my-8">
-			<Carousel>
+			<Carousel opts={{
+				loop: true,
+				dragFree: true,
+				containScroll: 'trimSnaps',
+				dragThreshold: 1,
+				align: 'start'
+			}}>
 				<CarouselContent className="-ml-4">
-					{experts.map((expert: Expert) => {
+					{experts.map((expert: any) => {
 						const { expertName, id, expertDescription, expertPhoto } = expert;
 
 						const { url, alt } = expertPhoto;

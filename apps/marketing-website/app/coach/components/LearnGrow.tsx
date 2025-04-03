@@ -63,7 +63,7 @@ const LearnGrow = () => {
 			</Typography>
 
 			<div className="my-8 gap-5">
-				<LearnGrowSlider></LearnGrowSlider>
+				<LearnGrowSlider/>
 			</div>
 		</div>
 	);

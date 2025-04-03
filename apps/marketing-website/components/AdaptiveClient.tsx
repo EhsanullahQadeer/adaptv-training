@@ -29,9 +29,15 @@ const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps, title }) => {
 			<Typography as={'h3'} align="center" className="mb-8">
 				{title}
 			</Typography>
-			{/* max-w-[830px] */}
-			<Carousel className="">
-				<CarouselContent>
+			<div className="relative px-4 md:px-12">
+				<Carousel
+					opts={{
+						align: 'start',
+						loop: true,
+					}}
+					className="w-full"
+				>
+					<CarouselContent className="-ml-4">
 					{steps.map((step, index) => (
 						<CarouselItem key={index}>
 							<AdaptiveCards
@@ -44,10 +50,11 @@ const AdaptiveClient: React.FC<AdaptiveClientProps> = ({ steps, title }) => {
 							/>
 						</CarouselItem>
 					))}
-				</CarouselContent>
-				<CarouselPrevious />
-				<CarouselNext />
-			</Carousel>
+					</CarouselContent>
+					<CarouselPrevious className="hidden md:flex absolute md:-left-14 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black border-none text-white" />
+					<CarouselNext className="hidden md:flex absolute md:-right-14 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black border-none text-white" />
+				</Carousel>
+			</div>
 		</div>
 	);
 };
