@@ -7,9 +7,19 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 interface SearchProps {
 	initialSearchTerm?: string;
+	redirectPath?: string;
+	className?: string;
+	buttonClassName?: string;
+	placeholder?: string;
 }
 
-const Search: React.FC<SearchProps> = ({ initialSearchTerm = '' }) => {
+const Search: React.FC<SearchProps> = ({
+	initialSearchTerm = '',
+	redirectPath,
+	className = 'bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-light',
+	buttonClassName = 'tracking-[-0.07px] leading-[18px] font-semibold py-4 !pl-5 !pr-6 flex items-center gap-1.5 h-auto',
+	placeholder = 'Find an exercise...',
+}) => {
 	const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
 	const router = useRouter();
 	const pathname = usePathname();
@@ -22,7 +32,8 @@ const Search: React.FC<SearchProps> = ({ initialSearchTerm = '' }) => {
 	const handleSearchClick = () => {
 		const currentParams = new URLSearchParams(searchParams.toString());
 		currentParams.set('search', searchTerm);
-		router.push(`${pathname}?${currentParams.toString()}`);
+
+		router.push(`${redirectPath || pathname}?${currentParams.toString()}`);
 	};
 
 	return (
@@ -30,14 +41,10 @@ const Search: React.FC<SearchProps> = ({ initialSearchTerm = '' }) => {
 			<Input
 				value={searchTerm}
 				onChange={handleSearchChange}
-				placeholder="Find an exercise..."
-				className="bg-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-light-gray rounded-xl shadow-light"
+				placeholder={placeholder}
+				className={className}
 				rightAdornment={
-					<Button
-						onClick={handleSearchClick}
-						type="button"
-						className="tracking-[-0.07px] leading-[18px] font-semibold py-4 !pl-5 !pr-6 flex items-center gap-1.5 h-auto"
-					>
+					<Button onClick={handleSearchClick} type="button" className={buttonClassName}>
 						<SearchIcon />
 						Search
 					</Button>

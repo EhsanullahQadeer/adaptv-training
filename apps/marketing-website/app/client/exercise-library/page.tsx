@@ -7,6 +7,7 @@ import TrainingStyleSection from './components/TrainingStyleSection';
 import DifficultySection from './components/DifficultySection';
 import EquipmentsSection from './components/EquipmentsSection';
 import { getMovements } from '@/lib/services/cmsService';
+import Search from './list/components/Search';
 
 const page = async () => {
 	const { libraryHeroBg } = imagesPaths;
@@ -30,18 +31,11 @@ const page = async () => {
 							</Typography>
 
 							<div className="mt-6 w-full max-w-[500px] mx-auto max-sm:hidden">
-								<Input
-									placeholder="Find an excercise.."
+								<Search
+									redirectPath="/client/exercise-library/list"
 									className="bg-faint-white text-base tracking-[-0.08px] leading-[20px] h-[66px] pl-5 border-pale-silver shadow-light"
-									rightAdornment={
-										<Button
-											type="button"
-											className="bg-ocean-glow hover:bg-ocean-glow/80 tracking-[-0.07px] leading-[18px] font-semibold py-4 !pl-5 !pr-6 flex items-center gap-1.5 h-auto"
-										>
-											<SearchIcon />
-											Search
-										</Button>
-									}
+									buttonClassName="bg-ocean-glow hover:bg-ocean-glow/80 tracking-[-0.07px] leading-[18px] font-semibold py-4 !pl-5 !pr-6 flex items-center gap-1.5 h-auto"
+									placeholder="Find an exercise..."
 								/>
 							</div>
 						</div>
@@ -70,8 +64,8 @@ const page = async () => {
 			<div className="mx-4">
 				<div className="max-md:my-8 md:mt-[70px] md:mb-[135px] max-w-[1100px] m-auto flex flex-col gap-[42px]">
 					<MusclesSection movements={movements} />
-					<TrainingStyleSection  />
-					<DifficultySection  movements={movements} />
+					<TrainingStyleSection />
+					<DifficultySection movements={movements} />
 					<EquipmentsSection movements={movements} />
 				</div>
 			</div>
