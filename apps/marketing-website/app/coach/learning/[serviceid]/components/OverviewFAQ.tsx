@@ -9,10 +9,11 @@ interface Props {
 	category: BlogCategory;
 	title: string;
 	faq?: FAQItem[];
+	learningContentBody: any;
 }
 
 const OverviewFAQ = (props: Props) => {
-	const { category, title, faq } = props;
+	const { category, title, faq, learningContentBody } = props;
 	const [selectedTab, setSelectedTab] = useState('overview');
 
 	return (
@@ -38,7 +39,7 @@ const OverviewFAQ = (props: Props) => {
 				)}
 			</div>
 			<div className="mt-6 md:mt-8">
-				{selectedTab === 'overview' && <OverviewTabContent {...{ category, title, faq }} />}
+				{selectedTab === 'overview' && <OverviewTabContent {...{ category, title, faq, learningContentBody }} />}
 				{selectedTab === 'faq' && <FAQsSection {...{ isBlogPage: true, FAQsArr: faq }} />}
 			</div>
 		</div>

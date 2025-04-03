@@ -5,7 +5,6 @@ import ServiceCard from '../components/ServiceCard';
 import { Typography } from '@workspace/ui/components';
 import { getCoachLearningPost } from '@/lib/services/cmsService';
 import { cmsAssetsUrl } from '@/lib/utils/cmsUtils';
-import { constantSuggestionData } from './components/data';
 import Breadcrumbs from '@/components/Breedcrumbs';
 import { pagesRoutes } from '@/lib/routes/pages-routes';
 
@@ -20,8 +19,6 @@ const page = async ({ params }: PageProps) => {
 
 	const learningPostApiResponse = await getCoachLearningPost(serviceid);
 
-	console.log('learningPostApiResponse', learningPostApiResponse);
-
 	const {
 		category,
 		title,
@@ -31,6 +28,7 @@ const page = async ({ params }: PageProps) => {
 		learningContentImageMedia,
 		learningContentVideoMedia,
 		['suggested-learning']: suggestedLearning,
+		learningContentBody,
 	} = learningPostApiResponse;
 
 	const { alt, url, height, width } = learningContentImageMedia || {};
@@ -67,7 +65,7 @@ const page = async ({ params }: PageProps) => {
 					</div>
 					<div className="flex lg:flex-row gap-[20px] mt-7 flex-col">
 						<div className="lg:w-2/3 w-full">
-							<OverviewFAQ {...{ category, title, faq }} />
+							<OverviewFAQ {...{ category, title, faq, learningContentBody }} />
 						</div>
 						{suggestedLearning && suggestedLearning.length && (
 							<div className="lg:w-1/3">

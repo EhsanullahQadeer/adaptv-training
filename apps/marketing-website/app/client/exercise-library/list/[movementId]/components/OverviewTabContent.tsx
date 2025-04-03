@@ -4,6 +4,7 @@ import { Typography } from '@workspace/ui/components';
 import { BarbellIcon, DifficultyLevelIcon, MuscleIcon, TrainingStyleIcon } from '@workspace/ui/icons';
 import { FC } from 'react';
 import ProgressionMovements from './ProgressionMovements';
+import LexicalReadOnly from '@/components/LexicalReadOnly';
 
 interface TrainingInfoCardProps {
 	icon: FC<{ height: number; width: number }>;
@@ -104,7 +105,9 @@ const OverviewTabContent = (props: Props) => {
 				/>
 			</div>
 
-			<div className="mt-4 md:mt-8">learning content body will be here...</div>
+			<div className="mt-4 md:mt-8">
+			<LexicalReadOnly jsonData={blogPostBody} />
+			</div>
 
 			{progressionMovements?.length ? (
 				<div className="mt-6 md:mt-8">
